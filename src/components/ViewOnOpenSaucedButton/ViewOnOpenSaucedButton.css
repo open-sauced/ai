@@ -1,0 +1,27 @@
+.user-opensauced-link {
+  display: inline-block;
+  margin: 1rem 0;
+  color: #fff;
+  border-radius: 6px;
+  padding: 8px 10px;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  user-select: none;
+  transition: 0.2s ease-in-out;
+  width: 100%;
+  border: 1px solid #ed5432;
+  cursor: pointer;
+}
+.opensauced-icon {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  vertical-align: middle;
+}
+
+.user-opensauced-link:hover {
+  text-decoration: none;
+  box-shadow: 0 0 0.2rem 0.2rem rgb(245, 131, 106, 0.2);
+}
