@@ -45,9 +45,18 @@ After running the above commands,
 You should now have the extension installed and running.
 
 ## 🙌🏼 Core Team
-* [Brian Douglas](https://github.com/bdougie)
-* [Divyansh Singh](https://github.com/diivi)
-* [Anush Shetty](https://github.com/Anush008")
+<p align="left>
+  <a href="https://github.com"/></a>
+  <a href="https://github.com/bdougie">
+    <img src="https://images.weserv.nl/?url=avatars.githubusercontent.com/u/5713670&h=60&w=60&fit=cover&mask=circle" alt="Brian Douglas">
+  </a>
+  <a href="https://github.com/diivi">
+    <img src="https://images.weserv.nl/?url=avatars.githubusercontent.com/u/41837037&h=60&w=60&fit=cover&mask=circle" alt="Divyansh Singh">
+  </a>
+  <a href="https://github.com/Anush008">
+    <img src="https://images.weserv.nl/?url=avatars.githubusercontent.com/u/46051506&h=60&w=60&fit=cover&mask=circle" alt="Anush Shetty">
+  </a>
+</p>
 
 ## 🤝 Contributing
 
