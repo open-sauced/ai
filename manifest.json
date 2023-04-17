@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "OpenSauced Browser Extension",
+  "version": "0.0.1",
+  "action": { "default_popup": "index.html" },
+  "content_scripts": [
+    {
+      "js": ["src/content-scripts/profileScreen.ts"],
+      "matches": ["https://github.com/*"]
+    }
+  ],
+  "permissions": ["chrome"]
+}
