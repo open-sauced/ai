@@ -17,9 +17,6 @@
   </a>
 </p>
 
-## Goals
-To enable developers find 
-
 ## Running the project locally
 
 To run the project, you'll need the following software binaries installed on your development machines:
