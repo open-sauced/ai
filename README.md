@@ -17,9 +17,12 @@
   </a>
 </p>
 
+## Goals
+To enable developers find 
+
 ## Running the project locally
 
-In order to run the project we need the following software binaries installed on our development machines:
+To run the project, you'll need the following software binaries installed on your development machines:
 
 - [Node.js](https://nodejs.org/en)
 - [NPM](https://www.npmjs.com/)
