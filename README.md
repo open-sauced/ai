@@ -44,6 +44,11 @@ After running the above commands,
 
 You should now have the extension installed and running.
 
+## 🙌🏼 Core Team
+* [Brian Douglas](https://github.com/bdougie)
+* [Divyansh Singh](https://github.com/diivi)
+* [Anush Shetty](https://github.com/Anush008")
+
 ## 🤝 Contributing
 
 We encourage you to contribute to OpenSauced! Please check out the [Contributing guide](https://docs.opensauced.pizza/contributing/introduction-to-contributing/) for guidelines about how to proceed.
