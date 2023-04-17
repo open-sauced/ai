@@ -1,7 +1,7 @@
 import { getGithubUsername } from "../../utils/getDetailsFromGithubUrl";
 import { getOpenSaucedUser } from "../../utils/fetchOpenSaucedApiData";
 import logoIcon from "../../assets/opensauced-icon.svg";
-import "./ViewOnOpenSaucedButton.css";
+import "../../index.css";
 
 function injectViewOnOpenSaucedButton() {
   const username = getGithubUsername(window.location.href);
@@ -16,13 +16,20 @@ function injectViewOnOpenSaucedButton() {
 
   const viewOnOpenSaucedButton = document.createElement("a");
   viewOnOpenSaucedButton.href = `https://insights.opensauced.pizza/user/${username}/contributions`;
-  viewOnOpenSaucedButton.className = "user-opensauced-link";
+  viewOnOpenSaucedButton.className =
+    "inline-block mt-4 mb-1 text-white rounded-md p-2 no-underline text-md font-semibold text-center select-none w-full border cursor-pointer border-orange hover:shadow-button";
   viewOnOpenSaucedButton.target = "_blank";
   viewOnOpenSaucedButton.rel = "noopener noreferrer";
   viewOnOpenSaucedButton.innerHTML = `
-    <img class="opensauced-icon" src="${chrome.runtime.getURL(
-      logoIcon
-    )}" alt="OpenSauced Logo" />
+    <img
+      class="mx-2 inline-block"
+      src="${chrome.runtime.getURL(
+        logoIcon
+      )}"
+      alt="OpenSauced Logo"
+      width="20"
+      height="20"
+    />
     <span>View On OpenSauced</span>
     `;
 
