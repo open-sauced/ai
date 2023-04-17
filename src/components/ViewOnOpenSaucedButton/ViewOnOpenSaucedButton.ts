@@ -1,19 +1,7 @@
-import { getGithubUsername } from "../../utils/getDetailsFromGithubUrl";
-import { getOpenSaucedUser } from "../../utils/fetchOpenSaucedApiData";
 import logoIcon from "../../assets/opensauced-icon.svg";
 import "../../index.css";
 
-function injectViewOnOpenSaucedButton() {
-  const username = getGithubUsername(window.location.href);
-  if (!username) {
-    return;
-  }
-
-  const openSaucedUser = getOpenSaucedUser(username);
-  if (!openSaucedUser) {
-    return;
-  }
-
+export const ViewOnOpenSaucedButton = (username: string) => {
   const viewOnOpenSaucedButton = document.createElement("a");
   viewOnOpenSaucedButton.href = `https://insights.opensauced.pizza/user/${username}/contributions`;
   viewOnOpenSaucedButton.className =
@@ -23,21 +11,12 @@ function injectViewOnOpenSaucedButton() {
   viewOnOpenSaucedButton.innerHTML = `
     <img
       class="mx-2 inline-block align-top"
-      src="${chrome.runtime.getURL(
-        logoIcon
-      )}"
+      src="${chrome.runtime.getURL(logoIcon)}"
       alt="OpenSauced Logo"
       width="20"
       height="20"
     />
     <span>View On OpenSauced</span>
     `;
-
-  const userBio = document.querySelector(".p-note.user-profile-bio");
-  if (!userBio) {
-    return;
-  }
-  userBio.appendChild(viewOnOpenSaucedButton);
-}
-
-injectViewOnOpenSaucedButton();
+  return viewOnOpenSaucedButton;
+};

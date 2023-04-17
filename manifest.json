@@ -5,7 +5,7 @@
   "action": { "default_popup": "index.html" },
   "content_scripts": [
     {
-      "js": ["src/components/ViewOnOpenSaucedButton/ViewOnOpenSaucedButton.ts"],
+      "js": ["src/content-scripts/profileScreen.ts"],
       "matches": ["https://github.com/*"]
     }
   ],
