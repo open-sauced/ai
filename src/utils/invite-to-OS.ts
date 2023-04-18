@@ -26,13 +26,6 @@ const injectViewOnOS = (username: string) => {
     userBio.appendChild(inviteToOpenSaucedButton);
     document.body.appendChild(inviteToOpenSaucedModal);
     
-    window.onclick = function(event) {
-        console.log("DABA");
-        if (event.target == inviteToOpenSaucedButton) {
-            console.log("DABAYA");
-        }
-        }
-    
 }
 
 export default injectViewOnOS;
