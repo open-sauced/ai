@@ -1,19 +1,22 @@
 import "../../index.css";
+
 interface Socials {
-    mailAddress?: string;
-    twitterUsername?: string;
-    linkedInUsername?: string;
+  mailAddress?: string;
+  twitterUsername?: string;
+  linkedInUsername?: string;
 }
 
-export const InviteToOpenSaucedModal = (username: string, {mailAddress, twitterUsername, linkedInUsername}: Socials = {}) => {
-
-    
-    const inviteToOpenSaucedModal = document.createElement("div");
-    Object.assign(inviteToOpenSaucedModal, {
-        className: "fixed h-full w-full z-50 bg-gray-600 bg-opacity-50 overflow-y-auto  inset-0 ",
-        style: "display: none;",
-        id: "invite-modal",
-        innerHTML: `<div
+export const InviteToOpenSaucedModal = (
+  username: string,
+  { mailAddress, twitterUsername, linkedInUsername }: Socials = {}
+) => {
+  const inviteToOpenSaucedModal = document.createElement("div");
+  Object.assign(inviteToOpenSaucedModal, {
+    className:
+      "fixed h-full w-full z-50 bg-gray-600 bg-opacity-50 overflow-y-auto  inset-0 ",
+    style: "display: none;",
+    id: "invite-modal",
+    innerHTML: `<div
         class="min-w-[30%] relative top-60 mx-auto p-4 border w-96 rounded-md shadow-button border-solid border-orange bg-slate-800"
     >
         <div class="mt-2 text-left">
@@ -24,7 +27,7 @@ export const InviteToOpenSaucedModal = (username: string, {mailAddress, twitterU
                 </p>
             </div>
         </div>
-    </div>`
-    });
-    return inviteToOpenSaucedModal;
+    </div>`,
+  });
+  return inviteToOpenSaucedModal;
 };
