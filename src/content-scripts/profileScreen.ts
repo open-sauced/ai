@@ -1,25 +1,13 @@
-import { getGithubUsername } from "../utils/getDetailsFromGithubUrl";
+import { getGithubUsername } from "../utils/matchers/gh-username-matcher";
 import { getOpenSaucedUser } from "../utils/fetchOpenSaucedApiData";
-import { ViewOnOpenSaucedButton } from "../components/ViewOnOpenSaucedButton/ViewOnOpenSaucedButton";
+import injectViewOnOpenSauced from "../utils/view-on-OS";
+import injectInviteToOpenSauced from "../utils/invite-to-OS";
 
-function injectViewOnOpenSaucedButton() {
   const username = getGithubUsername(window.location.href);
-  if (!username) {
-    return;
+  if(username != null) {
+    const openSaucedUser = getOpenSaucedUser(username);
+    if(openSaucedUser) injectViewOnOpenSauced(username);
+    else injectInviteToOpenSauced(username);
   }
 
-  const openSaucedUser = getOpenSaucedUser(username);
-  if (!openSaucedUser) {
-    return;
-  }
 
-  const viewOnOpenSaucedButton = ViewOnOpenSaucedButton(username);
-
-  const userBio = document.querySelector(".p-note.user-profile-bio");
-  if (!userBio) {
-    return;
-  }
-  userBio.appendChild(viewOnOpenSaucedButton);
-}
-
-injectViewOnOpenSaucedButton();
