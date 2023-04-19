@@ -9,5 +9,5 @@
       "matches": ["https://github.com/*"]
     }
   ],
-  "permissions": ["chrome"]
+  "permissions": ["storage"]
 }
