@@ -14,18 +14,49 @@ export const InviteToOpenSaucedModal = (
   username: string,
   { emailAddress, twitterUsername, linkedInUsername }: Socials = {}
 ) => {
-  const emailIcon = emailAddress ? createHtmlElement("a", {
-    href: `mailto:${emailAddress}`,
-    innerHTML: `<img src=${chrome.runtime.getURL(emailSocialIcon)} alt="Email">`,
-  }) : "";
-  const twitterIcon = twitterUsername ? createHtmlElement("a", {
-    href: `https://twitter.com/${twitterUsername}`,
-    innerHTML: `<img src=${chrome.runtime.getURL(twitterSocialIcon)} alt="Twitter">`,
-  }) : "";
-  const linkedInIcon = linkedInUsername ? createHtmlElement("a", {
-    href: `https://www.linkedin.com/in/${linkedInUsername}`,
-    innerHTML: `<img src=${chrome.runtime.getURL(linkedInSocailIcon)} alt="LinkedIn">`,
-  }) : "";
+  const emailBody =
+    typeof emailAddress === "string" &&
+    `Hey ${username}. I'm using OpenSauced to manage my open source contributions. It's a great way to keep track of your contributions and discover new projects. Check it out at https://hot.opensauced.pizza/`;
+  const emailHref =
+    typeof emailAddress === "string" &&
+    `mailto:${emailAddress}?subject=${encodeURIComponent(
+      "Invitation to join OpenSauced!"
+    )}&body=${encodeURIComponent(emailBody)}`;
+  const tweetHref =
+    typeof twitterUsername === "string" &&
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+      `Check out @saucedopen. A social platform for open source contributors to find their next contribution. https://opensauced.pizza/blog/social-coding-is-back. @${twitterUsername}`
+    )}&hashtags=opensource,github`;
+  const linkedinHref =
+    typeof linkedInUsername === "string" &&
+    `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+      "https://opensauced.pizza/blog/social-coding-is-back"
+    )}`;
+
+  const emailIcon = emailBody
+    ? createHtmlElement("a", {
+        href: emailHref,
+        innerHTML: `<img src=${chrome.runtime.getURL(
+          emailSocialIcon
+        )} alt="Email">`,
+      })
+    : "";
+  const twitterIcon = tweetHref
+    ? createHtmlElement("a", {
+        href: tweetHref,
+        innerHTML: `<img src=${chrome.runtime.getURL(
+          twitterSocialIcon
+        )} alt="Twitter">`,
+      })
+    : "";
+  const linkedInIcon = linkedinHref
+    ? createHtmlElement("a", {
+        href: linkedinHref,
+        innerHTML: `<img src=${chrome.runtime.getURL(
+          linkedInSocailIcon
+        )} alt="LinkedIn">`,
+      })
+    : "";
 
   const socialIcons = createHtmlElement("span", {
     className: "flex flex-nowrap space-x-3",
@@ -40,16 +71,21 @@ export const InviteToOpenSaucedModal = (
 
   const inviteToOpenSaucedModalContainer = createHtmlElement("div", {
     className:
-      "mt-2 text-left min-w-[30%] relative top-60 mx-auto p-4 border w-96 rounded-md shadow-button border-solid border-orange bg-slate-800",
+      "mt-2 min-w-[30%] relative top-60 mx-auto p-4 border w-96 rounded-md shadow-button border-solid border-orange bg-slate-800",
     innerHTML: `
-    <h3 class="text-2xl leading-6 font-bold">Invite ${username} to OpenSauced!</h3>
+    <h3 class="text-2xl leading-6 font-bold">Invite ${username} to <a href="https://hot.opensauced.pizza/"><span class="hover:text-orange hover:underline">OpenSauced!</span></a></h3>
     <div class="mt-2">
-       <p class="text-sm">
-          Use the social icons below to invite them to OpenSauced.
+       <p class="text-md">
+          Use the social icons below to invite them.
        </p>
     </div>
 `,
   });
+
+  inviteToOpenSaucedModal.onclick = (e) => {
+    if (e.target === inviteToOpenSaucedModal)
+      inviteToOpenSaucedModal.style.display = "none";
+  };
 
   socialIcons.replaceChildren(emailIcon, twitterIcon, linkedInIcon);
   inviteToOpenSaucedModalContainer.appendChild(socialIcons);
