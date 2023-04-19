@@ -1,45 +1,51 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+
+import Start from "./pages/start";
+import SignIn from "./pages/signin";
+import Home from "./pages/home";
+import Loading from "./pages/loading";
+
+import { checkTokenValidity } from "./utils/fetchOpenSaucedApiData";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [osAccessToken, setOsAccessToken] = useState("");
+  // renderedPage can be either "start", "home", "signin" or "loading"
+  const [renderedPage, setRenderedPage] = useState("loading");
+
+  useEffect(() => {
+    async function checkAuth() {
+      chrome.storage.sync.get(["os-access-token"], (result) => {
+        if (result["os-access-token"]) {
+          checkTokenValidity(result["os-access-token"]).then((valid) => {
+            if (!valid) {
+              setOsAccessToken("");
+              setRenderedPage("signin");
+            } else {
+              setOsAccessToken(result["os-access-token"]);
+              setRenderedPage("home");
+            }
+          });
+        } else {
+          setRenderedPage("start");
+        }
+      });
+    }
+    checkAuth();
+  }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div className="p-4">
+      {renderedPage === "start" ? (
+        <Start setRenderedPage={setRenderedPage} />
+      ) : renderedPage === "home" ? (
+        <Home osAccessToken={osAccessToken} setRenderedPage={setRenderedPage} />
+      ) : renderedPage === "signin" ? (
+        <SignIn setRenderedPage={setRenderedPage} />
+      ) : (
+        <Loading />
+      )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
