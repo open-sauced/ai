@@ -13,24 +13,21 @@ function App() {
   const [renderedPage, setRenderedPage] = useState("loading");
 
   useEffect(() => {
-    async function checkAuth() {
-      chrome.storage.sync.get(["os-access-token"], (result) => {
-        if (result["os-access-token"]) {
-          checkTokenValidity(result["os-access-token"]).then((valid) => {
-            if (!valid) {
-              setOsAccessToken("");
-              setRenderedPage("signin");
-            } else {
-              setOsAccessToken(result["os-access-token"]);
-              setRenderedPage("home");
-            }
-          });
-        } else {
-          setRenderedPage("start");
-        }
-      });
-    }
-    checkAuth();
+    chrome.storage.sync.get(["os-access-token"], (result) => {
+      if (result["os-access-token"]) {
+        checkTokenValidity(result["os-access-token"]).then((valid) => {
+          if (!valid) {
+            setOsAccessToken("");
+            setRenderedPage("signin");
+          } else {
+            setOsAccessToken(result["os-access-token"]);
+            setRenderedPage("home");
+          }
+        });
+      } else {
+        setRenderedPage("start");
+      }
+    });
   }, []);
 
   return (
