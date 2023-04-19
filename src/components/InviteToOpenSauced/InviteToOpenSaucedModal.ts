@@ -1,5 +1,4 @@
 import "../../index.css";
-import { TEST } from "../../config.json";
 
 interface Socials {
   emailAddress?: string;
@@ -9,7 +8,7 @@ interface Socials {
 
 export const InviteToOpenSaucedModal = (
   username: string,
-  { mailAddress, twitterUsername, linkedInUsername }: Socials = {}
+  { emailAddress, twitterUsername, linkedInUsername }: Socials = {}
 ) => {
   //TODO: Conditionally render social icons
   const socialIcons = `<span class="flex flex-nowrap space-x-3"> <a href="https://github.com/bdougie">

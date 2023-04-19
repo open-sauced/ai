@@ -1,4 +1,4 @@
-export const getOpenSaucedUser = async (username) => {
+export const getOpenSaucedUser = async (username: string) => {
     try {
         const response = await fetch(`https://api.opensauced.pizza/v1/users/${username}`);
         return response.status === 200;

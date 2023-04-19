@@ -1,4 +1,3 @@
-//import {USER_BIO_SELECTOR} from "../config.json" assert { type: 'json' };
 import { ViewOnOpenSaucedButton } from "../components/ViewOnOpenSaucedButton/ViewOnOpenSaucedButton";
 
 const injectViewOnOpenSauced = (username: string) => {

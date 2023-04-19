@@ -1,11 +1,11 @@
 //import {USER_BIO_SELECTOR} from "../config.json";
 import { InviteToOpenSaucedButton } from "../components/InviteToOpenSauced/InviteToOpenSaucedButton";
 import { InviteToOpenSaucedModal } from "../components/InviteToOpenSauced/InviteToOpenSaucedModal";
-import { getTwitterUsername } from "./matchers/tw-username-matcher";
-import { getLinkedInUsername } from "./matchers/li-username-matcher";
+import { getTwitterUsername } from "./matchers";
+import { getLinkedInUsername } from "./matchers";
 
 const injectViewOnOS = (username: string) => {
-  const mailAddress: string | undefined = (
+  const emailAddress: string | undefined = (
     document.querySelector(`a[href^="mailto:"]`) as HTMLAnchorElement
   )?.href.substr(7);
   const twitterUrl: string | undefined = (
@@ -15,13 +15,13 @@ const injectViewOnOS = (username: string) => {
     document.querySelector(`a[href*="linkedin.com"]`) as HTMLAnchorElement
   )?.href;
   console.log(linkedInUrl);
-  if (!(mailAddress || twitterUrl || linkedInUrl)) return;
+  if (!(emailAddress || twitterUrl || linkedInUrl)) return;
 
   const twitterUsername = twitterUrl && getTwitterUsername(twitterUrl);
   const linkedInUsername = linkedInUrl && getLinkedInUsername(linkedInUrl);
   const inviteToOpenSaucedButton = InviteToOpenSaucedButton();
   const inviteToOpenSaucedModal = InviteToOpenSaucedModal(username, {
-    mailAddress,
+    emailAddress,
     twitterUsername,
     linkedInUsername,
   });
