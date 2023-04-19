@@ -16,5 +16,5 @@ export const checkTokenValidity = async (token: string) => {
       Authorization: `Bearer ${token}`,
     },
   });
-  return response.status === 200 ? true : false;
+  return response.status === 200;
 };
