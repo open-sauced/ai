@@ -2,7 +2,7 @@ import "../../index.css";
 import { TEST } from "../../config.json";
 
 interface Socials {
-  mailAddress?: string;
+  emailAddress?: string;
   twitterUsername?: string;
   linkedInUsername?: string;
 }
