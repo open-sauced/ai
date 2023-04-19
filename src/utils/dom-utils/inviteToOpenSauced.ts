@@ -1,4 +1,3 @@
-//import {USER_BIO_SELECTOR} from "../config.json";
 import { InviteToOpenSaucedButton } from "../../components/InviteToOpenSauced/InviteToOpenSaucedButton";
 import { InviteToOpenSaucedModal } from "../../components/InviteToOpenSauced/InviteToOpenSaucedModal";
 import { getTwitterUsername, getLinkedInUsername } from "../matchers";
