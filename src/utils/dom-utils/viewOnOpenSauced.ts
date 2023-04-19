@@ -1,4 +1,4 @@
-import { ViewOnOpenSaucedButton } from "../components/ViewOnOpenSaucedButton/ViewOnOpenSaucedButton";
+import { ViewOnOpenSaucedButton } from "../../components/ViewOnOpenSaucedButton/ViewOnOpenSaucedButton";
 
 const injectViewOnOpenSauced = (username: string) => {
   const viewOnOpenSaucedButton = ViewOnOpenSaucedButton(username);
