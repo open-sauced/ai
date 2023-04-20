@@ -29,9 +29,7 @@ export const InviteToOpenSaucedModal = (
     )}&hashtags=opensource,github`;
   const linkedinHref =
     typeof linkedInUsername === "string" &&
-    `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-      "https://opensauced.pizza/blog/social-coding-is-back"
-    )}`;
+    `https://www.linkedin.com/in/${linkedInUsername}`;
 
   const emailIcon = emailBody
     ? createHtmlElement("a", {
