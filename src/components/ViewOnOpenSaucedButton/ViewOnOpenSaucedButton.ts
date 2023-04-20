@@ -6,7 +6,7 @@ export const ViewOnOpenSaucedButton = (username: string) => {
   const viewOnOpenSaucedButton = createHtmlElement("a", {
     href: `https://insights.opensauced.pizza/user/${username}/contributions`,
     className:
-      "inline-block mt-4 mb-1 text-white rounded-md p-2 no-underline text-md font-semibold text-center select-none w-full border border-solid cursor-pointer border-orange hover:shadow-button hover:no-underline",
+      "inline-block mt-4 text-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border border-solid cursor-pointer border-orange hover:shadow-button hover:no-underline",
     target: "_blank",
     rel: "noopener noreferrer",
     innerHTML: `
