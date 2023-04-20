@@ -6,7 +6,7 @@ const injectViewOnOpenSauced = (username: string) => {
   const userBio = document.querySelector(
     ".p-nickname.vcard-username.d-block, button.js-profile-editable-edit-button"
   );
-  if (!userBio || userBio.parentNode == null) return;
+  if (!userBio || !userBio.parentNode) return;
   userBio.parentNode.replaceChild(viewOnOpenSaucedButton, userBio);
 };
 
