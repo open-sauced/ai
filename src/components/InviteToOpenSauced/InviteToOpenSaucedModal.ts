@@ -69,7 +69,7 @@ export const InviteToOpenSaucedModal = (
 
   const inviteToOpenSaucedModalContainer = createHtmlElement("div", {
     className:
-      "mt-2 min-w-[30%] relative top-60 mx-auto p-4 border w-96 rounded-md shadow-button border-solid border-orange bg-slate-800",
+      "mt-2 min-w-[33%] relative top-60 mx-auto p-4 border w-96 rounded-md shadow-button border-solid border-orange bg-slate-800",
     innerHTML: `
     <h3 class="text-2xl leading-6 font-bold">Invite ${username} to <a href="https://hot.opensauced.pizza/"><span class="hover:text-orange hover:underline">OpenSauced!</span></a></h3>
     <div class="mt-2">
