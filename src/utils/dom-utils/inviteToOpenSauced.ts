@@ -27,10 +27,9 @@ const injectViewOnOS = (username: string) => {
     inviteToOpenSaucedModal.style.display = "block";
   };
 
-  const userBio = document.querySelector(".p-note.user-profile-bio");
-  if (!userBio) return;
-
-  userBio.appendChild(inviteToOpenSaucedButton);
+  const userBio = document.querySelector(".p-nickname.vcard-username.d-block");
+  if (!userBio || userBio.parentNode == null) return;
+  userBio.parentNode.replaceChild(inviteToOpenSaucedButton, userBio);
   document.body.appendChild(inviteToOpenSaucedModal);
 };
 

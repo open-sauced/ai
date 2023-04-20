@@ -3,10 +3,11 @@ import { ViewOnOpenSaucedButton } from "../../components/ViewOnOpenSaucedButton/
 const injectViewOnOpenSauced = (username: string) => {
   const viewOnOpenSaucedButton = ViewOnOpenSaucedButton(username);
 
-  const userBio = document.querySelector(".p-note.user-profile-bio");
-  if (!userBio) return;
-
-  userBio.appendChild(viewOnOpenSaucedButton);
+  const userBio = document.querySelector(
+    ".p-nickname.vcard-username.d-block, button.js-profile-editable-edit-button"
+  );
+  if (!userBio || userBio.parentNode == null) return;
+  userBio.parentNode.replaceChild(viewOnOpenSaucedButton, userBio);
 };
 
 export default injectViewOnOpenSauced;
