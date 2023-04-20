@@ -16,7 +16,7 @@ export const InviteToOpenSaucedModal = (
 ) => {
   const emailBody =
     typeof emailAddress === "string" &&
-    `Hey ${username}. I'm using OpenSauced to manage my open source contributions. It's a great way to keep track of your contributions and discover new projects. Check it out at https://hot.opensauced.pizza/`;
+    `Hey ${username}. I'm using OpenSauced to keep track of your contributions and discover new projects. Check it out at https://hot.opensauced.pizza/`;
   const emailHref =
     typeof emailAddress === "string" &&
     `mailto:${emailAddress}?subject=${encodeURIComponent(
@@ -25,7 +25,7 @@ export const InviteToOpenSaucedModal = (
   const tweetHref =
     typeof twitterUsername === "string" &&
     `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-      `Check out @saucedopen. A social platform for open source contributors to find their next contribution. https://opensauced.pizza/blog/social-coding-is-back. @${twitterUsername}`
+      `Check out @saucedopen. The platform for open source contributors to find their next contribution. https://opensauced.pizza/blog/social-coding-is-back. @${twitterUsername}`
     )}&hashtags=opensource,github`;
   const linkedinHref =
     typeof linkedInUsername === "string" &&
@@ -74,7 +74,7 @@ export const InviteToOpenSaucedModal = (
     <h3 class="text-2xl leading-6 font-bold">Invite ${username} to <a href="https://hot.opensauced.pizza/"><span class="hover:text-orange hover:underline">OpenSauced!</span></a></h3>
     <div class="mt-2">
        <p class="text-md">
-          Use the social icons below to invite them.
+          Use the links below to invite them.
        </p>
     </div>
 `,
