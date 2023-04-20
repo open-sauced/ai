@@ -9,11 +9,11 @@
       "matches": ["https://github.com/*"]
     }
   ],
-  "permissions": ["chrome"],
   "icons": {
     "16": "src/assets/os-icons/os-icon-16.png",
     "32": "src/assets/os-icons/os-icon-32.png",
     "48": "src/assets/os-icons/os-icon-48.png",
     "128": "src/assets/os-icons/os-icon-128.png"
-  }
+  },
+  "permissions": ["storage"]
 }

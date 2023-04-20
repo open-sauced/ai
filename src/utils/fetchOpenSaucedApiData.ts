@@ -7,3 +7,14 @@ export const getOpenSaucedUser = async (username: string) => {
   }
   return await response.json();
 };
+
+export const checkTokenValidity = async (token: string) => {
+  const url = "https://api.opensauced.pizza/v1/auth/session";
+  const response = await fetch(url, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.status === 200;
+};
