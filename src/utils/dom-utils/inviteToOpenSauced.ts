@@ -2,7 +2,7 @@ import { InviteToOpenSaucedButton } from "../../components/InviteToOpenSauced/In
 import { InviteToOpenSaucedModal } from "../../components/InviteToOpenSauced/InviteToOpenSaucedModal";
 import { getTwitterUsername, getLinkedInUsername } from "../matchers";
 
-const injectViewOnOS = (username: string) => {
+const injectOpenSaucedInviteButton = (username: string) => {
   const emailAddress: string | undefined = (
     document.querySelector(`a[href^="mailto:"]`) as HTMLAnchorElement
   )?.href.substr(7);
@@ -33,4 +33,4 @@ const injectViewOnOS = (username: string) => {
   document.body.appendChild(inviteToOpenSaucedModal);
 };
 
-export default injectViewOnOS;
+export default injectOpenSaucedInviteButton;
