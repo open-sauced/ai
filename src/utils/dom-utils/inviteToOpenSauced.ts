@@ -1,6 +1,6 @@
 import { InviteToOpenSaucedButton } from "../../components/InviteToOpenSauced/InviteToOpenSaucedButton";
 import { InviteToOpenSaucedModal } from "../../components/InviteToOpenSauced/InviteToOpenSaucedModal";
-import { getTwitterUsername, getLinkedInUsername } from "../matchers";
+import { getTwitterUsername, getLinkedInUsername } from "../socalLinkMatchers";
 
 const injectOpenSaucedInviteButton = (username: string) => {
   const emailAddress: string | undefined = (

@@ -1,4 +1,4 @@
-import { getGithubUsername } from "../utils/matchers";
+import { getGithubUsername } from "../utils/socalLinkMatchers";
 import { getOpenSaucedUser } from "../utils/fetchOpenSaucedApiData";
 import injectViewOnOpenSauced from "../utils/dom-utils/viewOnOpenSauced";
 import injectInviteToOpenSauced from "../utils/dom-utils/inviteToOpenSauced";
