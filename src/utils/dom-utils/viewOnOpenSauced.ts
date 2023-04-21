@@ -1,6 +1,6 @@
 import { ViewOnOpenSaucedButton } from "../../components/ViewOnOpenSaucedButton/ViewOnOpenSaucedButton";
 
-const injectViewOnOpenSauced = (username: string) => {
+const injectViewOnOpenSaucedButton = (username: string) => {
   const viewOnOpenSaucedButton = ViewOnOpenSaucedButton(username);
 
   const userBio = document.querySelector(
@@ -10,4 +10,4 @@ const injectViewOnOpenSauced = (username: string) => {
   userBio.parentNode.replaceChild(viewOnOpenSaucedButton, userBio);
 };
 
-export default injectViewOnOpenSauced;
+export default injectViewOnOpenSaucedButton;
