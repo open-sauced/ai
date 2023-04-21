@@ -31,7 +31,7 @@ function App() {
   }, []);
 
   return (
-    <div className="p-4">
+    <div className="p-4 bg-slate-800">
       {renderedPage === "start" ? (
         <Start setRenderedPage={setRenderedPage} />
       ) : renderedPage === "home" ? (
