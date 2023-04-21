@@ -1,11 +1,12 @@
 export const getOpenSaucedUser = async (username: string) => {
-  const response = await fetch(
-    `https://api.opensauced.pizza/v1/users/${username}`
-  );
-  if (response.status !== 200) {
-    return null;
+  try {
+    const response = await fetch(
+      `https://api.opensauced.pizza/v1/users/${username}`
+    );
+    return response.status === 200;
+  } catch (error) {
+    return false;
   }
-  return await response.json();
 };
 
 export const checkTokenValidity = async (token: string) => {
