@@ -16,7 +16,7 @@ export const InviteToOpenSaucedModal = (
 ) => {
   const emailBody =
     typeof emailAddress === "string" &&
-    `Hey ${username}. I'm using OpenSauced to keep track of your contributions and discover new projects. Check it out at https://hot.opensauced.pizza/`;
+    `Hey ${username}. I'm using OpenSauced to keep track of my contributions and discover new projects. Check it out at https://hot.opensauced.pizza/`;
   const emailHref =
     typeof emailAddress === "string" &&
     `mailto:${emailAddress}?subject=${encodeURIComponent(
