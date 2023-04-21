@@ -21,11 +21,7 @@ const injectOpenSaucedInviteButton = (username: string) => {
     emailAddress,
     twitterUsername,
     linkedInUsername,
-  });
-
-  inviteToOpenSaucedButton.onclick = () => {
-    inviteToOpenSaucedModal.style.display = "block";
-  };
+  }, inviteToOpenSaucedButton);
 
   const userBio = document.querySelector(".p-nickname.vcard-username.d-block");
   if (!userBio || !userBio.parentNode) return;

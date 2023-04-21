@@ -12,7 +12,7 @@ interface Socials {
 
 export const InviteToOpenSaucedModal = (
   username: string,
-  { emailAddress, twitterUsername, linkedInUsername }: Socials = {}
+  { emailAddress, twitterUsername, linkedInUsername }: Socials = {}, modalDisplayTrigger?: HTMLElement
 ) => {
   const emailBody =
     typeof emailAddress === "string" &&
@@ -85,6 +85,10 @@ export const InviteToOpenSaucedModal = (
       inviteToOpenSaucedModal.style.display = "none";
   };
 
+  if (modalDisplayTrigger) modalDisplayTrigger.onclick = () => {
+    inviteToOpenSaucedModal.style.display = "block";
+  };
+  
   socialIcons.replaceChildren(emailIcon, twitterIcon, linkedInIcon);
   inviteToOpenSaucedModalContainer.appendChild(socialIcons);
   inviteToOpenSaucedModal.appendChild(inviteToOpenSaucedModalContainer);
