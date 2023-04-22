@@ -5,3 +5,4 @@ chrome.webRequest.onCompleted.addListener(
     { urls: ["https://ibcwmlhcimymasokhgvn.supabase.co/auth/v1/logout"] }
   );
   
+export {};
