@@ -10,7 +10,7 @@
     },
     {
       "js": ["src/content-scripts/hotOSHomePage.ts"],
-      "matches": ["https://hot.opensauced.pizza/"],
+      "matches": ["https://hot.opensauced.pizza/*"],
       "run_at": "document_end"
     }
   ],
