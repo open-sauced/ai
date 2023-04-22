@@ -6,7 +6,11 @@ interface HomeProps {
 }
 
 function Home({ osAccessToken, setRenderedPage }: HomeProps) {
-  return <div>Home</div>;
+  return (
+    <div>
+      <p className="text-white">Home</p>
+    </div>
+  );
 }
 
 export default Home;
