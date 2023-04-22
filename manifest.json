@@ -9,8 +9,8 @@
       "matches": ["https://github.com/*"]
     },
     {
-      "js": ["src/content-scripts/hotHomePage.ts"],
-      "matches": ["https://hot.opensauced.pizza/*"],
+      "js": ["src/content-scripts/hotOSHomePage.ts"],
+      "matches": ["https://hot.opensauced.pizza/"],
       "run_at": "document_end"
     }
   ],
