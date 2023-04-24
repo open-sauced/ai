@@ -1,4 +1,4 @@
-import "../../index.css";
+import "../../content-scripts.css";
 import { createHtmlElement } from "../../utils/createHtmlElement";
 import emailSocialIcon from "../../assets/mail-icon.svg";
 import twitterSocialIcon from "../../assets/twitter-icon.svg";
