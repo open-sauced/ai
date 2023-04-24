@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
 import Start from "./pages/start";
-import SignIn from "./pages/signin";
 import Home from "./pages/home";
 import Loading from "./pages/loading";
 
@@ -9,7 +8,7 @@ import { checkTokenValidity } from "./utils/fetchOpenSaucedApiData";
 
 function App() {
   const [osAccessToken, setOsAccessToken] = useState("");
-  // renderedPage can be either "start", "home", "signin" or "loading"
+  // renderedPage can be either "start", "home" or "loading"
   const [renderedPage, setRenderedPage] = useState("loading");
 
   useEffect(() => {
@@ -36,8 +35,6 @@ function App() {
         <Start setRenderedPage={setRenderedPage} />
       ) : renderedPage === "home" ? (
         <Home osAccessToken={osAccessToken} setRenderedPage={setRenderedPage} />
-      ) : renderedPage === "signin" ? (
-        <SignIn setRenderedPage={setRenderedPage} />
       ) : (
         <Loading />
       )}
