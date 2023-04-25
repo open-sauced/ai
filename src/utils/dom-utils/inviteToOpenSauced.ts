@@ -1,5 +1,6 @@
 import { InviteToOpenSaucedButton } from "../../components/InviteToOpenSauced/InviteToOpenSaucedButton";
 import { InviteToOpenSaucedModal } from "../../components/InviteToOpenSauced/InviteToOpenSaucedModal";
+import { GITHUB_PROFILE_MENU_SELECTOR } from "../../constants";
 import { getTwitterUsername, getLinkedInUsername } from "../urlMatchers";
 
 const injectOpenSaucedInviteButton = (username: string) => {
@@ -23,7 +24,7 @@ const injectOpenSaucedInviteButton = (username: string) => {
     linkedInUsername,
   }, inviteToOpenSaucedButton);
 
-  const userBio = document.querySelector(".p-nickname.vcard-username.d-block");
+  const userBio = document.querySelector(GITHUB_PROFILE_MENU_SELECTOR);
   if (!userBio || !userBio.parentNode) return;
   userBio.parentNode.replaceChild(inviteToOpenSaucedButton, userBio);
   document.body.appendChild(inviteToOpenSaucedModal);

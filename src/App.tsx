@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-
+import { OPEN_SAUCED_AUTH_TOKEN_KEY } from "./constants";
 import Start from "./pages/start";
 import Home from "./pages/home";
 import Loading from "./pages/loading";
-
 import { checkTokenValidity } from "./utils/fetchOpenSaucedApiData";
 
 function App() {
@@ -12,14 +11,15 @@ function App() {
   const [renderedPage, setRenderedPage] = useState("loading");
 
   useEffect(() => {
-    chrome.storage.sync.get(["os-access-token"], (result) => {
-      if (result["os-access-token"]) {
-        checkTokenValidity(result["os-access-token"]).then((valid) => {
+    chrome.storage.sync.get([OPEN_SAUCED_AUTH_TOKEN_KEY], (result) => {
+      const authToken: string | undefined = result[OPEN_SAUCED_AUTH_TOKEN_KEY];
+      if (authToken) {
+        checkTokenValidity(authToken).then((valid) => {
           if (!valid) {
             setOsAccessToken("");
             setRenderedPage("signin");
           } else {
-            setOsAccessToken(result["os-access-token"]);
+            setOsAccessToken(authToken);
             setRenderedPage("home");
           }
         });
