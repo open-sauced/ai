@@ -18,13 +18,15 @@ function Start({ setRenderedPage }: StartProps) {
         </a>{" "}
         browser extension.
       </p>
-      <button
-        className="bg-orange border-none rounded-md text-white font-bold py-2 px-4 cursor-pointer
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://ibcwmlhcimymasokhgvn.supabase.co/auth/v1/authorize?provider=github&redirect_to=https://hot.opensauced.pizza/"
+        className="bg-orange no-underline border-none rounded-md text-white font-bold py-2 px-4 cursor-pointer
           bg-gradient-to-r from-[#e67e22] to-[#d35400]"
-        onClick={() => setRenderedPage("signin")}
       >
-        Get Started
-      </button>
+        Login!
+      </a>
     </div>
   );
 }
