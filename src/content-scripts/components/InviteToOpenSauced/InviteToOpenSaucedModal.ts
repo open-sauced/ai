@@ -1,8 +1,8 @@
 import "../../content-scripts.css";
-import { createHtmlElement } from "../../utils/createHtmlElement";
-import emailSocialIcon from "../../assets/mail-icon.svg";
-import twitterSocialIcon from "../../assets/twitter-icon.svg";
-import linkedInSocailIcon from "../../assets/linkedin-icon.svg";
+import { createHtmlElement } from "../../../utils/createHtmlElement";
+import emailSocialIcon from "../../../assets/mail-icon.svg";
+import twitterSocialIcon from "../../../assets/twitter-icon.svg";
+import linkedInSocailIcon from "../../../assets/linkedin-icon.svg";
 
 interface Socials {
   emailAddress?: string;

@@ -1,6 +1,6 @@
-import logoIcon from "../../assets/opensauced-icon.svg";
+import logoIcon from "../../../assets/opensauced-icon.svg";
 import "../../content-scripts.css";
-import { createHtmlElement } from "../../utils/createHtmlElement";
+import { createHtmlElement } from "../../../utils/createHtmlElement";
 
 export const ViewOnOpenSaucedButton = (username: string) => {
   const viewOnOpenSaucedButton = createHtmlElement("a", {
