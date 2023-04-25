@@ -3,7 +3,11 @@ export const getOpenSaucedUser = async (username: string) => {
     const response = await fetch(
       `https://api.opensauced.pizza/v1/users/${username}`
     );
-    return response.status === 200;
+    if (response.status === 200) {
+      const data = await response.json();
+      return data.is_open_sauced_member;
+    }
+    return false;
   } catch (error) {
     return false;
   }
