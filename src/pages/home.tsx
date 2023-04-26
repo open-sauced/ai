@@ -36,7 +36,7 @@ function Home() {
             className='flex items-center bg-slate-700 hover:bg-slate-700/70 text-white hover:text-orange no-underline gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm'
           >
             <HiArrowTopRightOnSquare />
-            Go to Highlight page
+            Go to Highlights feed
           </a>
           <a
             target='_blank'
@@ -54,7 +54,7 @@ function Home() {
               }} 
               className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm">
                 <HiUserCircle />
-                See {checkedUser} profile
+                View {checkedUser}'s profile
             </button>
           }
         </div>
