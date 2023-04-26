@@ -1,8 +1,8 @@
+import  { SUPABASE_LOGOUT_URL, OPEN_SAUCED_AUTH_TOKEN_KEY } from "../constants";
+
 chrome.webRequest.onCompleted.addListener(
     (details) => {
-      chrome.storage.sync.remove("os-access-token");
+      chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY);
     },
-    { urls: ["https://ibcwmlhcimymasokhgvn.supabase.co/auth/v1/logout"] }
+    { urls: [SUPABASE_LOGOUT_URL] }
   );
-  
-export {};
