@@ -5,7 +5,11 @@ export const isOpenSaucedUser = async (username: string) => {
     const response = await fetch(
       `${OPEN_SAUCED_USERS_ENDPOINT}/${username}`
     );
-    return response.status === 200;
+    if (response.status === 200) {
+      const data = await response.json();
+      return data.is_open_sauced_member;
+    }
+    return false;
   } catch (error) {
     return false;
   }
