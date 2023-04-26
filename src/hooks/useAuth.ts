@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { OPEN_SAUCED_AUTH_TOKEN_KEY } from "../constants"
+import { OPEN_SAUCED_AUTH_TOKEN_KEY, OPEN_SAUCED_SESSION_ENDPOINT } from "../constants"
 import { cachedFetch } from "../utils/cache"
 
 const removeTokenFromStorage = () => {
@@ -20,9 +20,9 @@ export const useAuth = () => {
   useEffect(() => {
     chrome.storage.sync.get([OPEN_SAUCED_AUTH_TOKEN_KEY], (result) => {
       if (result[OPEN_SAUCED_AUTH_TOKEN_KEY]) {
-        setAuthToken(result['os-access-token'])
+        setAuthToken(result[OPEN_SAUCED_AUTH_TOKEN_KEY])
         //get account data
-        cachedFetch('https://api.opensauced.pizza/v1/auth/session', {
+        cachedFetch(OPEN_SAUCED_SESSION_ENDPOINT, {
           expireInSeconds: 2 * 60 * 60, // 2 hours
           headers: {
             Authorization: `Bearer ${result['os-access-token']}`,
