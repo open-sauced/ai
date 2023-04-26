@@ -1,4 +1,6 @@
 export const SUPABASE_LOCAL_STORAGE_KEY = "supabase.auth.token"
+export const SUPABASE_AUTH_DOMAIN = "ibcwmlhcimymasokhgvn.supabase.co"
+export const SUPABASE_COOKIE_NAME = "sb-access-token"
 export const SUPABASE_LOGIN_URL = "https://ibcwmlhcimymasokhgvn.supabase.co/auth/v1/authorize?provider=github&redirect_to=https://hot.opensauced.pizza/"
 export const SUPABASE_LOGOUT_URL = "https://ibcwmlhcimymasokhgvn.supabase.co/auth/v1/logout"
 export const OPEN_SAUCED_AUTH_TOKEN_KEY = "os-access-token"
