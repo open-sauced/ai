@@ -68,6 +68,7 @@ export const Profile = () => {
             <div className='social flex gap-0.5'>
               {user?.linkedin_url &&
                 <a 
+                  target={'_blank'}
                   href={user.linkedin_url} 
                   title={user.linkedin_url} 
                   className='rounded-sm border bg-slate-700 hover:bg-slate-700/50 hover:text-orange p-1'>
@@ -76,6 +77,7 @@ export const Profile = () => {
               }
               {user?.twitter_username &&
                 <a 
+                  target={'_blank'}
                   href={`https://twitter.com/${user.twitter_username}`} 
                   title={`https://twitter.com/${user.twitter_username}`} 
                   className='rounded-sm border bg-slate-700 hover:bg-slate-700/50 hover:text-orange p-1'>
@@ -86,7 +88,7 @@ export const Profile = () => {
           }
           {user?.bio && <p>This is my bio</p>}
           {user?.url &&
-            <a href="#" className='flex text-orange items-center gap-0.5'>
+            <a target={'_blank'} href={user.url} className='flex text-orange items-center gap-0.5'>
               <RiLinkM />
               {user.url}
             </a>
