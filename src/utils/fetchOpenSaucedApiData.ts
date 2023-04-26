@@ -9,6 +9,10 @@ export const getOpenSaucedUser = async (username: string) => {
   }
 };
 
+export const isOpenSaucedUser = async (username: string) => {
+  return await getOpenSaucedUser(username) != false;
+}
+
 export const checkTokenValidity = async (token: string) => {
   const url = "https://api.opensauced.pizza/v1/auth/session";
   const response = await fetch(url, {

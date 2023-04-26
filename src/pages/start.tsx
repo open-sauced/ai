@@ -1,10 +1,7 @@
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 
-interface StartProps {
-  setRenderedPage: (page: string) => void;
-}
+function Start() {
 
-function Start({ setRenderedPage }: StartProps) {
   return (
     <div>
       <img src={OpenSaucedLogo} alt="Open Sauced Logo" />
