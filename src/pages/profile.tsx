@@ -29,7 +29,7 @@ type InterestIconKeys = keyof typeof interestIcon;
 
 export const Profile = () => {
   const { page, setCurrentPage } = useContext(RouteContext)
-  const [user, setUser] = useState<null | { id: string, user_name: string, bio: string, created_at: string, linkedin_url: string, twitter_username: string, url: string, interests: string, open_issues: number }>(null)
+  const [user, setUser] = useState<null | { id: string, user_name: string, bio: string, created_at: string, linkedin_url: string, twitter_username: string, blog: string, interests: string, open_issues: number }>(null)
   const [userPR, setUserPR] = useState<null | { meta: {itemCount: number} }>(null)
 
 useEffect(() => {
@@ -92,10 +92,10 @@ useEffect(() => {
             </div>
           }
           {user?.bio && <span>{user.bio}</span>}
-          {user?.url &&
-            <a target={'_blank'} href={user.blog_url} className='flex text-orange items-center gap-0.5'>
+          {user?.blog &&
+            <a target={'_blank'} href={user.blog} className='flex text-orange items-center gap-0.5'>
               <RiLinkM />
-              {user.url}
+              {user.blog}
             </a>
           }
         </div>
