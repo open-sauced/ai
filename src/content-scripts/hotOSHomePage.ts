@@ -1,10 +1,11 @@
 import { checkTokenValidity } from "../utils/fetchOpenSaucedApiData";
 import getAccessToken from "../utils/getAccessToken";
 import setAccessTokenInChromeStorage from "../utils/setAccessToken";
+import {OPEN_SAUCED_AUTH_TOKEN_KEY} from "../constants";
 
 const processHotOSHomePage = async () => {
-  const data = await chrome.storage.sync.get(["os-access-token"]);
-  if (data["os-access-token"]) return;
+  const data = await chrome.storage.sync.get([OPEN_SAUCED_AUTH_TOKEN_KEY]);
+  if (data[OPEN_SAUCED_AUTH_TOKEN_KEY]) return;
   try {
     const accessToken = getAccessToken();
     if (!accessToken) return;

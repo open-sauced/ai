@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
+import { OPEN_SAUCED_AUTH_TOKEN_KEY } from "../constants"
 import { cachedFetch } from "../utils/cache"
 
 const removeTokenFromStorage = () => {
   return new Promise((resolve, reject) => {
 
-    chrome.storage.sync.remove("os-access-token", () => {
+    chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY, () => {
       console.log("token removed")
       resolve(true)
     })
@@ -17,8 +18,8 @@ export const useAuth = () => {
   const [isTokenValid, setIsTokenValid] = useState<boolean|null>(null)
   
   useEffect(() => {
-    chrome.storage.sync.get(["os-access-token"], (result) => {
-      if (result["os-access-token"]) {
+    chrome.storage.sync.get([OPEN_SAUCED_AUTH_TOKEN_KEY], (result) => {
+      if (result[OPEN_SAUCED_AUTH_TOKEN_KEY]) {
         setAuthToken(result['os-access-token'])
         //get account data
         cachedFetch('https://api.opensauced.pizza/v1/auth/session', {

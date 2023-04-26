@@ -1,4 +1,5 @@
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
+import { SUPABASE_LOGIN_URL } from "../constants";
 
 function Start() {
 
@@ -18,7 +19,7 @@ function Start() {
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://ibcwmlhcimymasokhgvn.supabase.co/auth/v1/authorize?provider=github&redirect_to=https://hot.opensauced.pizza/"
+        href={SUPABASE_LOGIN_URL}
         className="bg-orange no-underline border-none rounded-md text-white font-bold py-2 px-4 cursor-pointer
           bg-gradient-to-r from-[#e67e22] to-[#d35400]"
       >
