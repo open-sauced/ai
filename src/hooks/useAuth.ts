@@ -25,7 +25,7 @@ export const useAuth = () => {
         cachedFetch(OPEN_SAUCED_SESSION_ENDPOINT, {
           expireInSeconds: 2 * 60 * 60, // 2 hours
           headers: {
-            Authorization: `Bearer ${result['os-access-token']}`,
+            Authorization: `Bearer ${result[OPEN_SAUCED_AUTH_TOKEN_KEY]}`,
             Accept: 'application/json',
           },
         }).then((resp) => {
