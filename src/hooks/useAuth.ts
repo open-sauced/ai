@@ -6,7 +6,6 @@ const removeTokenFromStorage = () => {
   return new Promise((resolve, reject) => {
 
     chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY, () => {
-      console.log("token removed")
       resolve(true)
     })
   })
@@ -40,12 +39,10 @@ export const useAuth = () => {
           return resp.json()
         })
           .then((json) => {
-            // console.log(json)
             setUser(json)
             setIsTokenValid(true)
           })
       } else {
-        console.log('No auth token found')
         setIsTokenValid(false)
       }
     });
