@@ -27,7 +27,7 @@ export const checkTokenValidity = async (token: string) => {
 };
 
 export const getUserData = async (userName: string, forceRefresh: boolean = false) => {
-  return cachedFetch(`https://api.opensauced.pizza/v1/users/${userName}`, {
+  return cachedFetch(`${OPEN_SAUCED_USERS_ENDPOINT}/${userName}`, {
     expireInSeconds: 2 * 60 * 60, // 2 hours
     forceRefresh,
     headers: {
@@ -46,7 +46,7 @@ export const getUserData = async (userName: string, forceRefresh: boolean = fals
 }
 
 export const getUserPRData = async (userName: string, forceRefresh: boolean = false) => {
-  return cachedFetch(`https://api.opensauced.pizza/v1/users/${userName}/prs`, {
+  return cachedFetch(`${OPEN_SAUCED_USERS_ENDPOINT}/${userName}/prs`, {
     expireInSeconds: 2 * 60 * 60, // 2 hours
     forceRefresh,
     headers: {
