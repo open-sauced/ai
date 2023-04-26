@@ -40,7 +40,6 @@ export const getUserData = async (userName: string, forceRefresh: boolean = fals
     return resp.json()
   })
     .then((json) => {
-      // console.log(json)
       return json
     })
 }
@@ -59,7 +58,6 @@ export const getUserPRData = async (userName: string, forceRefresh: boolean = fa
     return resp.json()
   })
     .then((json) => {
-      // console.log(json)
       return json
     })
 }
