@@ -19,7 +19,6 @@ type RouteKeys = keyof typeof routes;
 
 function App() {
   const {isTokenValid} = useAuth()
-  // renderedPage can be either "start", "home" or "loading"
   const [renderedPage, setRenderedPage] = useState<{name: RouteKeys, props?: any}>({name: "loading", props: {}});
 
   const setCurrentPage = (name: RouteKeys, props: any = {}) => {
@@ -28,7 +27,6 @@ function App() {
 
 
   useEffect(() => {
-    // console.log("isTokenValid", isTokenValid)
     if(isTokenValid === null) {
       setCurrentPage("loading")
     }
