@@ -86,7 +86,7 @@ export const Profile = () => {
               }
             </div>
           }
-          {user?.bio && <p>This is my bio</p>}
+          {user?.bio && <span>{user.bio}</span>}
           {user?.url &&
             <a target={'_blank'} href={user.blog_url} className='flex text-orange items-center gap-0.5'>
               <RiLinkM />
