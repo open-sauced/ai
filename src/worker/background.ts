@@ -17,9 +17,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
 
 chrome.cookies.onChanged.addListener(async (changeInfo) => {
   try {
-  console.log("cookie changed")
   if (changeInfo.cookie.name != SUPABASE_COOKIE_NAME || changeInfo.cookie.domain != SUPABASE_AUTH_DOMAIN) return;
-  console.log("ITS OUR COOKIE!")
   if (changeInfo.removed) return chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY);
   const isValidToken = await checkTokenValidity(changeInfo.cookie.value)
   if (!isValidToken) return chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY);
