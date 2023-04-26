@@ -32,10 +32,14 @@ export const Profile = () => {
   const [user, setUser] = useState<null | { id: string, user_name: string, bio: string, created_at: string, linkedin_url: string, twitter_username: string, url: string, interests: string, open_issues: number }>(null)
   const [userPR, setUserPR] = useState<null | { meta: {itemCount: number} }>(null)
 
-  useEffect(() => {
-    getUserData(page.props.userName).then((data) => { setUser(data)})
-    getUserPRData(page.props.userName).then((data) => { setUserPR(data)})
-  }, [])
+useEffect(() => {
+    const fetchUserData = async () => {
+        const [userData, userPRData] = await Promise.all([getUserData(page.props.userName), getUserPRData(page.props.userName)]);
+        setUser(userData);
+        setUserPR(userPRData);
+    }
+    fetchUserData();
+}, [])
 
 
   return (
@@ -50,9 +54,10 @@ export const Profile = () => {
         <button 
           title='Refresh user data'
           className='hover:text-orange text-lg' 
-          onClick={() => {
-            getUserData(page.props.userName, true).then((data) => { setUser(data)})
-            getUserPRData(page.props.userName, true).then((data) => { setUserPR(data)})
+          onClick={async () => {
+            const [userData, userPRData] = await Promise.all([getUserData(page.props.userName), getUserPRData(page.props.userName)]);
+            setUser(userData);
+            setUserPR(userPRData);
           }}>
           <AiOutlineReload />
         </button>
