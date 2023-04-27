@@ -1,44 +1,50 @@
-import { useState, useEffect } from "react";
-import { OPEN_SAUCED_AUTH_TOKEN_KEY } from "./constants";
+import { useState, useEffect, createContext } from "react";
+
 import Start from "./pages/start";
 import Home from "./pages/home";
 import Loading from "./pages/loading";
-import { checkTokenValidity } from "./utils/fetchOpenSaucedApiData";
+import { Profile } from "./pages/profile";
+import { useAuth } from "./hooks/useAuth";
+
+export const RouteContext = createContext<{page: {name: string, props?: any}, setCurrentPage: (page: RouteKeys, props?: any) => void}>({page: {name: "loading"}, setCurrentPage: () => {}});
+
+const routes = {
+  start: <Start />,
+  home: <Home />,
+  loading: <Loading />,
+  profile: <Profile />
+}
+
+type RouteKeys = keyof typeof routes;
 
 function App() {
-  const [osAccessToken, setOsAccessToken] = useState("");
-  // renderedPage can be either "start", "home" or "loading"
-  const [renderedPage, setRenderedPage] = useState("loading");
+  const {isTokenValid} = useAuth()
+  const [renderedPage, setRenderedPage] = useState<{name: RouteKeys, props?: any}>({name: "loading", props: {}});
+
+  const setCurrentPage = (name: RouteKeys, props: any = {}) => {
+    setRenderedPage({name: name, props})
+  }
+
 
   useEffect(() => {
-    chrome.storage.sync.get([OPEN_SAUCED_AUTH_TOKEN_KEY], (result) => {
-      const authToken: string | undefined = result[OPEN_SAUCED_AUTH_TOKEN_KEY];
-      if (authToken) {
-        checkTokenValidity(authToken).then((valid) => {
-          if (!valid) {
-            setOsAccessToken("");
-            setRenderedPage("signin");
-          } else {
-            setOsAccessToken(authToken);
-            setRenderedPage("home");
-          }
-        });
-      } else {
-        setRenderedPage("start");
-      }
-    });
-  }, []);
+    if(isTokenValid === null) {
+      setCurrentPage("loading")
+    }
+    else if(isTokenValid) {
+      setCurrentPage("home")
+    } 
+    else {
+      setCurrentPage("start")
+    }
+  }, [isTokenValid]);
 
   return (
-    <div className="p-4 bg-slate-800">
-      {renderedPage === "start" ? (
-        <Start setRenderedPage={setRenderedPage} />
-      ) : renderedPage === "home" ? (
-        <Home osAccessToken={osAccessToken} setRenderedPage={setRenderedPage} />
-      ) : (
-        <Loading />
-      )}
-    </div>
+    <RouteContext.Provider value={{page: renderedPage, setCurrentPage: setCurrentPage}}>
+      <div className="p-4 bg-slate-800">
+        {routes[renderedPage.name]}
+        </div>
+    </RouteContext.Provider>
+    
   );
 }
 

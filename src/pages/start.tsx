@@ -1,11 +1,8 @@
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { SUPABASE_LOGIN_URL } from "../constants";
 
-interface StartProps {
-  setRenderedPage: (page: string) => void;
-}
+function Start() {
 
-function Start({ setRenderedPage }: StartProps) {
   return (
     <div>
       <img src={OpenSaucedLogo} alt="Open Sauced Logo" />

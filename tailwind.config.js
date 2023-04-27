@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -14,6 +16,44 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    // plugin for centering dividers
+    // usage: <div class=" divide-white divide-y divider-y-center-2"></div>
+    plugin(function({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          'divider-x-center': (value) => {
+            return {
+              "& > :not([hidden]):first-child": {
+                paddingLeft: 0,
+              },
+              "& > :not([hidden])": {
+                paddingLeft: value,
+                paddingRight: value,
+              },
+              "& > :not([hidden]):last-child": {
+                paddingRight: 0,
+              },
+            };
+          },
+          'divider-y-center': (value) => {
+            return {
+              "& > :not([hidden]):first-child": {
+                paddingTop: 0,
+              },
+              "& > :not([hidden])": {
+                paddingTop: value,
+                paddingBottom: value,
+              },
+              "& > :not([hidden]):last-child": {
+                paddingBottom: 0,
+              },
+            };
+          }
+        },
+        { values: theme('padding') }
+      )
+    })
+  ],
   important: true,
 };
