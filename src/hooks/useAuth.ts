@@ -26,7 +26,7 @@ export const useAuth = () => {
           },
         });
 
-        if (!resp.ok) {
+        if (!resp?.ok) {
           removeTokenFromStorage().then(() => {
             setAuthToken(null);
             setUser(null);

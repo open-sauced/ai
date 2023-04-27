@@ -179,7 +179,7 @@ export const Profile = () => {
                 target="_blank"
                 title={`https://insights.opensauced.pizza/${interest}/dashboard/filter/recent`}
               >
-                {interestIcon[interest as InterestIconKeys] ?? null}
+                {interestIcon[interest as InterestIconKeys]}
 
                 {interest}
               </a>
