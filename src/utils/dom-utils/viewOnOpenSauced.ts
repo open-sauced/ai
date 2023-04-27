@@ -8,7 +8,7 @@ const injectViewOnOpenSaucedButton = (username: string) => {
     `${GITHUB_PROFILE_MENU_SELECTOR}, ${GITHUB_PROFILE_EDIT_MENU_SELECTOR}`,
   );
 
-  if (!userBio || !userBio.parentNode) {
+  if (!(userBio?.parentNode)) {
     return;
   }
   userBio.parentNode.replaceChild(viewOnOpenSaucedButton, userBio);

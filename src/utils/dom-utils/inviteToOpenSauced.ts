@@ -44,7 +44,7 @@ const injectOpenSaucedInviteButton = (username: string) => {
 
   const userBio = document.querySelector(GITHUB_PROFILE_MENU_SELECTOR);
 
-  if (!userBio || !userBio.parentNode) {
+  if (!(userBio?.parentNode)) {
     return;
   }
   userBio.parentNode.replaceChild(inviteToOpenSaucedButton, userBio);
