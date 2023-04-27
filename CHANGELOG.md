@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.0-beta.2](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2023-04-27)
+
+
+### 🐛 Bug Fixes
+
+* attach dist folder to release assets ([#47](https://github.com/open-sauced/browser-extensions/issues/47)) ([4f50e72](https://github.com/open-sauced/browser-extensions/commit/4f50e721cdb52bc74d906b17fecb72a84f312928))
+
 ## 1.0.0-beta.1 (2023-04-27)
 
 

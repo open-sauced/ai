@@ -1,8 +1,8 @@
 {
   "name": "opensauced-browser-extension",
   "private": true,
-  "version": "1.0.0-beta.1",
-  "files":[
+  "version": "1.0.0-beta.2",
+  "files": [
     "dist"
   ],
   "scripts": {
