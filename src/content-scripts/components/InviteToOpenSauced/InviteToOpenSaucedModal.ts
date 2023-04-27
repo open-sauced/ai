@@ -34,6 +34,8 @@ export const InviteToOpenSaucedModal = (
   const emailIcon = emailBody
     ? createHtmlElement("a", {
         href: emailHref,
+        target: "_blank",
+        rel: "noopener noreferrer",
         innerHTML: `<img src=${chrome.runtime.getURL(
           emailSocialIcon
         )} alt="Email">`,
@@ -42,6 +44,8 @@ export const InviteToOpenSaucedModal = (
   const twitterIcon = tweetHref
     ? createHtmlElement("a", {
         href: tweetHref,
+        target: "_blank",
+        rel: "noopener noreferrer",
         innerHTML: `<img src=${chrome.runtime.getURL(
           twitterSocialIcon
         )} alt="Twitter">`,
@@ -50,6 +54,8 @@ export const InviteToOpenSaucedModal = (
   const linkedInIcon = linkedinHref
     ? createHtmlElement("a", {
         href: linkedinHref,
+        target: "_blank",
+        rel: "noopener noreferrer",
         innerHTML: `<img src=${chrome.runtime.getURL(
           linkedInSocailIcon
         )} alt="LinkedIn">`,
