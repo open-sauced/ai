@@ -12,7 +12,8 @@ interface Socials {
 
 export const InviteToOpenSaucedModal = (
   username: string,
-  { emailAddress, twitterUsername, linkedInUsername }: Socials = {}, modalDisplayTrigger?: HTMLElement
+  { emailAddress, twitterUsername, linkedInUsername }: Socials = {},
+  modalDisplayTrigger?: HTMLElement,
 ) => {
   const emailBody =
     typeof emailAddress === "string" &&
@@ -20,12 +21,12 @@ export const InviteToOpenSaucedModal = (
   const emailHref =
     typeof emailAddress === "string" &&
     `mailto:${emailAddress}?subject=${encodeURIComponent(
-      "Invitation to join OpenSauced!"
+      "Invitation to join OpenSauced!",
     )}&body=${encodeURIComponent(emailBody)}`;
   const tweetHref =
     typeof twitterUsername === "string" &&
     `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-      `Check out @saucedopen. The platform for open source contributors to find their next contribution. https://opensauced.pizza/blog/social-coding-is-back. @${twitterUsername}`
+      `Check out @saucedopen. The platform for open source contributors to find their next contribution. https://opensauced.pizza/blog/social-coding-is-back. @${twitterUsername}`,
     )}&hashtags=opensource,github`;
   const linkedinHref =
     typeof linkedInUsername === "string" &&
@@ -33,32 +34,30 @@ export const InviteToOpenSaucedModal = (
 
   const emailIcon = emailBody
     ? createHtmlElement("a", {
-        href: emailHref,
-        innerHTML: `<img src=${chrome.runtime.getURL(
-          emailSocialIcon
-        )} alt="Email">`,
-      })
+      href: emailHref,
+      innerHTML: `<img src=${chrome.runtime.getURL(
+        emailSocialIcon,
+      )} alt="Email">`,
+    })
     : "";
   const twitterIcon = tweetHref
     ? createHtmlElement("a", {
-        href: tweetHref,
-        innerHTML: `<img src=${chrome.runtime.getURL(
-          twitterSocialIcon
-        )} alt="Twitter">`,
-      })
+      href: tweetHref,
+      innerHTML: `<img src=${chrome.runtime.getURL(
+        twitterSocialIcon,
+      )} alt="Twitter">`,
+    })
     : "";
   const linkedInIcon = linkedinHref
     ? createHtmlElement("a", {
-        href: linkedinHref,
-        innerHTML: `<img src=${chrome.runtime.getURL(
-          linkedInSocailIcon
-        )} alt="LinkedIn">`,
-      })
+      href: linkedinHref,
+      innerHTML: `<img src=${chrome.runtime.getURL(
+        linkedInSocailIcon,
+      )} alt="LinkedIn">`,
+    })
     : "";
 
-  const socialIcons = createHtmlElement("span", {
-    className: "flex flex-nowrap space-x-3",
-  });
+  const socialIcons = createHtmlElement("span", { className: "flex flex-nowrap space-x-3" });
 
   const inviteToOpenSaucedModal = createHtmlElement("div", {
     className:
@@ -80,15 +79,18 @@ export const InviteToOpenSaucedModal = (
 `,
   });
 
-  inviteToOpenSaucedModal.onclick = (e) => {
-    if (e.target === inviteToOpenSaucedModal)
+  inviteToOpenSaucedModal.onclick = e => {
+    if (e.target === inviteToOpenSaucedModal) {
       inviteToOpenSaucedModal.style.display = "none";
+    }
   };
 
-  if (modalDisplayTrigger) modalDisplayTrigger.onclick = () => {
-    inviteToOpenSaucedModal.style.display = "block";
-  };
-  
+  if (modalDisplayTrigger) {
+    modalDisplayTrigger.onclick = () => {
+      inviteToOpenSaucedModal.style.display = "block";
+    };
+  }
+
   socialIcons.replaceChildren(emailIcon, twitterIcon, linkedInIcon);
   inviteToOpenSaucedModalContainer.appendChild(socialIcons);
   inviteToOpenSaucedModal.appendChild(inviteToOpenSaucedModalContainer);
