@@ -2,8 +2,8 @@
   "name": "opensauced-browser-extension",
   "private": true,
   "version": "1.0.0-beta.1",
-  "files": [
-    "dist/**/*"
+  "files":[
+    "dist"
   ],
   "scripts": {
     "dev": "vite",
