@@ -68,7 +68,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build
-          path: build
+          path: dist
 
       - name: "🚀 release"
         id: semantic-release
