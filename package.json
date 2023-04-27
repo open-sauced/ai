@@ -2,6 +2,9 @@
   "name": "opensauced-browser-extension",
   "private": true,
   "version": "0.0.0",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
