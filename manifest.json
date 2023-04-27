@@ -25,5 +25,5 @@
     "128": "src/assets/os-icons/os-icon-128.png"
   },
   "host_permissions": ["<all_urls>"],
-  "permissions": ["storage","webRequest", "activeTab"]
+  "permissions": ["storage","webRequest", "activeTab", "tabs", "cookies"]
 }

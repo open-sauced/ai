@@ -11,4 +11,11 @@ if (username != null) {
   else injectInviteToOpenSauced(username);
 }
 };
+
+chrome.runtime.onMessage.addListener((request) => {
+  if (request.message === "GITHUB_URL_CHANGED") {
+    processProfilePage();
+  }
+});
+
 processProfilePage();

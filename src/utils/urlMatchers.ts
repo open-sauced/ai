@@ -1,5 +1,5 @@
 export const getGithubUsername = (url: string) => {
-  const match = url.match(/github\.com\/([^/]+)/);
+  const match = url.match(/github\.com\/([\w.-]+)/);
   return match && match[1];
 };
 
