@@ -13,7 +13,7 @@ export const useOpensaucedUserCheck = () => {
         const tab = tabs[0];
         const username = getGithubUsername(tab.url!);
 
-        if (username !== null) {
+        if (username) {
           setCheckedUser(username);
           setCurrentTabIsOpensaucedUser(await isOpenSaucedUser(username));
         } else {

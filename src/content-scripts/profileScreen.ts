@@ -6,7 +6,7 @@ import injectInviteToOpenSauced from "../utils/dom-utils/inviteToOpenSauced";
 const processProfilePage = async () => {
   const username = getGithubUsername(window.location.href);
 
-  if (username !== null) {
+  if (username) {
     const user = await isOpenSaucedUser(username);
 
     if (user) {
