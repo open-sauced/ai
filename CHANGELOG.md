@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.0-beta.3](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2023-04-28)
+
+
+### 🍕 Features
+
+* Added light mode to GH profile buttons ([#40](https://github.com/open-sauced/browser-extensions/issues/40)) ([a7ea43a](https://github.com/open-sauced/browser-extensions/commit/a7ea43afb743de445e8d1c20c0dd9a362214aaa2))
+
 ## [1.0.0-beta.2](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2023-04-27)
 
 
