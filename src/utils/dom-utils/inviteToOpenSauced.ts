@@ -36,7 +36,8 @@ const injectOpenSaucedInviteButton = (
   const userBio = document.querySelector(GITHUB_PROFILE_MENU_SELECTOR);
   if (!userBio || !userBio.parentNode) return;
   if (darkMode) userBio.parentElement?.classList.add("dark");
-  userBio.parentNode.replaceChild(inviteToOpenSaucedButton, userBio);
+  if(userBio.lastChild?.isEqualNode(inviteToOpenSaucedButton)) return;
+  userBio.append(inviteToOpenSaucedButton);
   document.body.appendChild(inviteToOpenSaucedModal);
 };
 

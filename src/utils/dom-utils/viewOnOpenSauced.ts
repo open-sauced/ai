@@ -17,7 +17,8 @@ const injectViewOnOpenSaucedButton = (
   );
   if (!userBio || !userBio.parentNode) return;
   if (darkMode) userBio.parentElement?.classList.add("dark");
-  userBio.parentNode.replaceChild(viewOnOpenSaucedButton, userBio);
+  if(userBio.lastChild?.isEqualNode(viewOnOpenSaucedButton)) return;
+  userBio.append(viewOnOpenSaucedButton);
 };
 
 export default injectViewOnOpenSaucedButton;
