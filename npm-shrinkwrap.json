@@ -1,12 +1,12 @@
 {
   "name": "opensauced-browser-extension",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
       "name": "opensauced-browser-extension",
-      "version": "1.0.0-beta.3",
+      "version": "1.0.0-beta.4",
       "dependencies": {
         "@types/chrome": "^0.0.231",
         "react": "^18.0.0",

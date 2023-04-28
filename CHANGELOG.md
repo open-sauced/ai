@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.0-beta.4](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2023-04-28)
+
+
+### 🐛 Bug Fixes
+
+* Duplicate buttons on GH profile page ([#48](https://github.com/open-sauced/browser-extensions/issues/48)) ([9ee2dca](https://github.com/open-sauced/browser-extensions/commit/9ee2dcab3d85eef164b43b886a959c9aaff4cdc5))
+
 ## [1.0.0-beta.3](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2023-04-28)
 
 
