@@ -1,13 +1,10 @@
-export type ColorScheme = "auto" | "light" | "dark";
+type ColorScheme = "auto" | "light" | "dark";
 
-export const getGHColorScheme = (cookieString: string) => {
+export const prefersDarkMode = (cookieString: string): boolean => {
   const regex = /(?<=\bcolor_mode=)[^;]+/g;
   const match = regex.exec(cookieString);
   const cookie = match && JSON.parse(decodeURIComponent(match[0]));
-  return (cookie.color_mode as ColorScheme) || "auto";
-};
-
-export const prefersDarkMode = (colorScheme: ColorScheme): boolean => {
+  const colorScheme: ColorScheme = cookie.color_mode ?? "auto";
   if (colorScheme === "auto") {
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   }
