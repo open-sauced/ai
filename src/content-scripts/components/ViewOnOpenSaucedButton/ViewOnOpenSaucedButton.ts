@@ -20,5 +20,6 @@ export const ViewOnOpenSaucedButton = (username: string) => {
     <span>View On OpenSauced</span>
     `,
   });
+
   return viewOnOpenSaucedButton;
 };

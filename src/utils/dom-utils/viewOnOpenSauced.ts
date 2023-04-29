@@ -8,10 +8,15 @@ const injectViewOnOpenSaucedButton = (username: string) => {
   const viewOnOpenSaucedButton = ViewOnOpenSaucedButton(username);
 
   const userBio = document.querySelector(
-    `${GITHUB_PROFILE_MENU_SELECTOR}, ${GITHUB_PROFILE_EDIT_MENU_SELECTOR}`
+    `${GITHUB_PROFILE_MENU_SELECTOR}, ${GITHUB_PROFILE_EDIT_MENU_SELECTOR}`,
   );
-  if (!userBio || !userBio.parentNode) return;
-  if (userBio.lastChild?.isEqualNode(viewOnOpenSaucedButton)) return;
+
+  if (!userBio?.parentNode) {
+ return;
+}
+  if (userBio.lastChild?.isEqualNode(viewOnOpenSaucedButton)) {
+ return;
+}
   userBio.append(viewOnOpenSaucedButton);
 };
 

@@ -5,6 +5,7 @@ export const prefersDarkMode = (cookieString: string): boolean => {
   const match = regex.exec(cookieString);
   const cookie = match && JSON.parse(decodeURIComponent(match[0]));
   const colorScheme: ColorScheme = cookie.color_mode ?? "auto";
+
   if (colorScheme === "auto") {
     return window.matchMedia("(prefers-color-scheme: dark)").matches;
   }

@@ -6,19 +6,27 @@ import { prefersDarkMode } from "../utils/colorPreference";
 
 const processProfilePage = async () => {
   const username = getGithubUsername(window.location.href);
-  if (username != null) {
+
+  if (username) {
     const darkMode = prefersDarkMode(document.cookie);
-    if (darkMode) document.documentElement.classList.add("dark");
+
+    if (darkMode) {
+ document.documentElement.classList.add("dark");
+}
     const user = await isOpenSaucedUser(username);
-    if (user) injectViewOnOpenSauced(username);
-    else injectInviteToOpenSauced(username);
+
+    if (user) {
+ injectViewOnOpenSauced(username);
+} else {
+ injectInviteToOpenSauced(username);
+}
   }
 };
 
-chrome.runtime.onMessage.addListener((request) => {
+chrome.runtime.onMessage.addListener(request => {
   if (request.message === "GITHUB_URL_CHANGED") {
-    processProfilePage();
+    void processProfilePage();
   }
 });
 
-processProfilePage();
+void processProfilePage();
