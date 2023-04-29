@@ -5,6 +5,19 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.0-beta.5](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2023-04-29)
+
+
+### 🍕 Features
+
+* Added linting to the project. ([#49](https://github.com/open-sauced/browser-extensions/issues/49)) ([1f73007](https://github.com/open-sauced/browser-extensions/commit/1f730079bffb8f2514c90860b09a0d0d5cc36892))
+
+
+### 🐛 Bug Fixes
+
+* remove activeTab manifest.json ([#50](https://github.com/open-sauced/browser-extensions/issues/50)) ([dd71480](https://github.com/open-sauced/browser-extensions/commit/dd7148064b66109c744be288593b1adb0a26fa77))
+* set-output deprecation warning ([#51](https://github.com/open-sauced/browser-extensions/issues/51)) ([486f84b](https://github.com/open-sauced/browser-extensions/commit/486f84baba98f219b3ac69bd447da22e710e3daa))
+
 ## [1.0.0-beta.4](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2023-04-28)
 
 
