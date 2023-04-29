@@ -7,13 +7,12 @@ export const useOpensaucedUserCheck = () => {
   const [checkedUser, setCheckedUser] = useState<string|null>(null);
 
   useEffect(() => {
-    // get active tab
     chrome.tabs.query({ active: true, currentWindow: true }, async tabs => {
       if (tabs.length > 0) {
         const tab = tabs[0];
         const username = getGithubUsername(tab.url!);
 
-        if (username != null) {
+        if (username) {
           setCheckedUser(username);
           setCurrentTabIsOpensaucedUser(await isOpenSaucedUser(username));
         } else {

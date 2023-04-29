@@ -7,7 +7,7 @@ import { prefersDarkMode } from "../utils/colorPreference";
 const processProfilePage = async () => {
   const username = getGithubUsername(window.location.href);
 
-  if (username != null) {
+  if (username) {
     const darkMode = prefersDarkMode(document.cookie);
 
     if (darkMode) {
@@ -25,8 +25,8 @@ const processProfilePage = async () => {
 
 chrome.runtime.onMessage.addListener(request => {
   if (request.message === "GITHUB_URL_CHANGED") {
-    processProfilePage();
+    void processProfilePage();
   }
 });
 
-processProfilePage();
+void processProfilePage();

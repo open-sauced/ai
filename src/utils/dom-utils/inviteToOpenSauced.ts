@@ -4,15 +4,30 @@ import { InviteToOpenSaucedModal } from "../../content-scripts/components/Invite
 import { getTwitterUsername, getLinkedInUsername } from "../urlMatchers";
 
 const injectOpenSaucedInviteButton = (username: string) => {
-  const emailAddress: string | undefined = (
-    document.querySelector(`a[href^="mailto:"]`)!
-  ).href.substr(7);
-  const twitterUrl: string | undefined = (
-    document.querySelector(`a[href*="twitter.com"]`)!
-  ).href;
-  const linkedInUrl: string | undefined = (
-    document.querySelector(`a[href*="linkedin.com"]`)!
-  ).href;
+  const emailAddress: string | undefined = (() => {
+    const element = document.querySelector(`a[href^="mailto:"]`);
+
+    if (element instanceof HTMLAnchorElement) {
+      return element.href;
+    }
+    return undefined;
+  })();
+  const twitterUrl: string | undefined = (() => {
+    const element = document.querySelector(`a[href*="twitter.com"]`);
+
+    if (element instanceof HTMLAnchorElement) {
+      return element.href;
+    }
+    return undefined;
+  })();
+  const linkedInUrl: string | undefined = (() => {
+    const element = document.querySelector(`a[href*="linkedin.com"]`);
+
+    if (element instanceof HTMLAnchorElement) {
+      return element.href;
+    }
+    return undefined;
+  })();
 
   if (!(emailAddress || twitterUrl || linkedInUrl)) {
  return;
@@ -33,7 +48,7 @@ const injectOpenSaucedInviteButton = (username: string) => {
 
   const userBio = document.querySelector(GITHUB_PROFILE_MENU_SELECTOR);
 
-  if (!userBio || !userBio.parentNode) {
+  if (!userBio?.parentNode) {
  return;
 }
   if (userBio.lastChild?.isEqualNode(inviteToOpenSaucedButton)) {

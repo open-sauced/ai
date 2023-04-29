@@ -12,9 +12,9 @@ export function createHtmlElement<T extends keyof HTMLElementTagNameMap> (
   props: ElementProps,
 ) {
   const { style, ...nonStyleProps } = props;
-  const element = Object.assign(document.createElement(nodeName), props);
+  const element = Object.assign(document.createElement(nodeName), nonStyleProps);
 
-  if (style != undefined) {
+  if (style !== undefined) {
  Object.entries(style).forEach(([key, value]) => {
       element.style[key as CssDeclaration] = value;
     });

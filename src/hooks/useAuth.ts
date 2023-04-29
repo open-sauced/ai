@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { OPEN_SAUCED_AUTH_TOKEN_KEY, OPEN_SAUCED_SESSION_ENDPOINT } from "../constants";
 import { cachedFetch } from "../utils/cache";
 
-const removeTokenFromStorage = async () => new Promise((resolve, reject) => {
-    chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY, () => {
-      resolve(true);
-    });
+const removeTokenFromStorage = async () => new Promise(resolve => {
+  chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY, () => {
+    resolve(true);
   });
+});
 
 export const useAuth = () => {
   const [authToken, setAuthToken] = useState<null | string>(null);
@@ -14,32 +14,32 @@ export const useAuth = () => {
   const [isTokenValid, setIsTokenValid] = useState<boolean|null>(null);
 
   useEffect(() => {
-    chrome.storage.sync.get([OPEN_SAUCED_AUTH_TOKEN_KEY], result => {
+    chrome.storage.sync.get([OPEN_SAUCED_AUTH_TOKEN_KEY], async result => {
       if (result[OPEN_SAUCED_AUTH_TOKEN_KEY]) {
         setAuthToken(result[OPEN_SAUCED_AUTH_TOKEN_KEY]);
 
-        // get account data
-        cachedFetch(OPEN_SAUCED_SESSION_ENDPOINT, {
-          expireInSeconds: 2 * 60 * 60, // 2 hours
+        const resp = await cachedFetch(OPEN_SAUCED_SESSION_ENDPOINT, {
+          expireInSeconds: 2 * 60 * 60,
           headers: {
             Authorization: `Bearer ${result[OPEN_SAUCED_AUTH_TOKEN_KEY]}`,
             Accept: "application/json",
           },
-        }).then(async resp => {
-          if (!resp.ok) {
-            console.log("error getting user info");
-            removeTokenFromStorage().then(() => {
-              setAuthToken(null);
-              setUser(null);
-              setIsTokenValid(false);
-            });
-          }
-          return resp.json();
-        })
-          .then(json => {
-            setUser(json);
-            setIsTokenValid(true);
-          });
+        });
+
+        if (!resp?.ok) {
+          removeTokenFromStorage().then(() => {
+            setAuthToken(null);
+            setUser(null);
+            setIsTokenValid(false);
+            return null;
+          })
+            .catch(console.error);
+        } else {
+          const json = await resp.json();
+
+          setUser(json);
+          setIsTokenValid(true);
+        }
       } else {
         setIsTokenValid(false);
       }

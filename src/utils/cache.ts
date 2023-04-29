@@ -2,10 +2,10 @@ export const cachedFetch = async (
   url: string,
   options:
     | number
-    | (RequestInit & { expireInSeconds: number; forceRefresh?: boolean })
+    | (RequestInit & { expireInSeconds?: number; forceRefresh?: boolean })
     | undefined,
 ) => {
-  let expiry = 5 * 60; // 5 min default
+  let expiry = 5 * 60;
 
   if (typeof options === "number") {
     expiry = options;
@@ -26,24 +26,22 @@ export const cachedFetch = async (
 
       return Promise.resolve(response);
     }
-      chrome.storage.local.remove(cacheKey);
-      chrome.storage.local.remove(`${cacheKey}:ts`);
+    void chrome.storage.local.remove(cacheKey);
+    void chrome.storage.local.remove(`${cacheKey}:ts`);
   }
 
-  return fetch(url, options).then(response => {
+  return fetch(url, options).then(async response => {
     if (response.status === 200) {
       const ct = response.headers.get("Content-Type");
 
-      if (ct && ct.match(/(application\/json|text\/.*)/i)) {
-        response
-          .clone()
-          .text()
-          .then(content => {
-            chrome.storage.local.set({ [cacheKey]: content });
-            chrome.storage.local.set({ [`${cacheKey}:ts`]: Date.now() });
-          });
+      if (ct?.match(/(application\/json|text\/.*)/i)) {
+        const content = await response.clone().text();
+
+        void chrome.storage.local.set({ [cacheKey]: content });
+        void chrome.storage.local.set({ [`${cacheKey}:ts`]: Date.now() });
       }
     }
     return response;
-  });
+  })
+.catch(console.error);
 };

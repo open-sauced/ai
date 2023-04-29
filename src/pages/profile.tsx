@@ -32,16 +32,16 @@ export const Profile = () => {
   const [user, setUser] = useState<null | { id: string, user_name: string, bio: string, created_at: string, linkedin_url: string, twitter_username: string, blog: string, interests: string, open_issues: number }>(null);
   const [userPR, setUserPR] = useState<null | { meta: { itemCount: number } }>(null);
 
-useEffect(() => {
+  useEffect(() => {
     const fetchUserData = async () => {
-        const [userData, userPRData] = await Promise.all([getUserData(page.props.userName), getUserPRData(page.props.userName)]);
+      const [userData, userPRData] = await Promise.all([getUserData(page.props.userName), getUserPRData(page.props.userName)]);
 
-        setUser(userData);
-        setUserPR(userPRData);
+      setUser(userData);
+      setUserPR(userPRData);
     };
 
-    fetchUserData();
-}, []);
+    void fetchUserData();
+  }, []);
 
 
   return (
@@ -51,8 +51,8 @@ useEffect(() => {
           <button
             className="rounded-full p-2 bg-slate-700 hover:bg-slate-700/50"
             onClick={() => {
- setCurrentPage("home");
-}}
+              setCurrentPage("home");
+            }}
           >
             <FaChevronLeft className="text-osOrange" />
           </button>
@@ -81,14 +81,14 @@ useEffect(() => {
       <main>
         <div className="flex flex-col items-center gap-1 mb-4">
           <img
-            alt="profile image"
+            alt="User avatar"
             className="rounded-full w-14 aspect-square p-1 bg-slate-700"
             src={`https://github.com/${page.props.userName}.png`}
           />
 
           <p className="font-medium">
-@
-{page.props.userName}
+            @
+            {page.props.userName}
           </p>
 
           {(user?.linkedin_url || user?.twitter_username) &&
@@ -117,7 +117,7 @@ useEffect(() => {
             </div>}
 
           {user?.bio && <span>
-{user.bio}
+            {user.bio}
                         </span>}
 
           {user?.blog &&
@@ -138,7 +138,7 @@ useEffect(() => {
             <p>Open Issues</p>
 
             <p className="font-medium text-5xl">
-{user?.open_issues}
+              {user?.open_issues}
             </p>
           </div>
 
@@ -146,7 +146,7 @@ useEffect(() => {
             <p>PRs Made</p>
 
             <p className="font-medium text-5xl">
-{userPR?.meta.itemCount}
+              {userPR?.meta.itemCount}
             </p>
           </div>
 
@@ -164,27 +164,27 @@ useEffect(() => {
         </div>
 
         <div>
-            <h2 className="font-medium text-lg mb-2">Current Interest</h2>
+          <h2 className="font-medium text-lg mb-2">Current Interest</h2>
 
-            <div
-              className="flex gap-1.5"
-              style={{ flexWrap: "wrap" }}
-            >
-              {user?.interests.split(",").map(interest => (
-                <a
-                  key={interest}
-                  className="flex gap-1 items-center p-1.5 px-4 rounded-full bg-slate-700 hover:bg-slate-700/50"
-                  href={`https://insights.opensauced.pizza/${interest}/dashboard/filter/recent`}
-                  rel="noreferrer"
-                  target="_blank"
-                  title={`https://insights.opensauced.pizza/${interest}/dashboard/filter/recent`}
-                >
-                  {interestIcon[interest as InterestIconKeys] ?? null}
+          <div
+            className="flex gap-1.5"
+            style={{ flexWrap: "wrap" }}
+          >
+            {user?.interests.split(",").map(interest => (
+              <a
+                key={interest}
+                className="flex gap-1 items-center p-1.5 px-4 rounded-full bg-slate-700 hover:bg-slate-700/50"
+                href={`https://insights.opensauced.pizza/${interest}/dashboard/filter/recent`}
+                rel="noreferrer"
+                target="_blank"
+                title={`https://insights.opensauced.pizza/${interest}/dashboard/filter/recent`}
+              >
+                {interestIcon[interest as InterestIconKeys]}
 
-                  {interest}
-                </a>
-              ))}
-            </div>
+                {interest}
+              </a>
+            ))}
+          </div>
         </div>
       </main>
     </div>

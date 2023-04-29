@@ -28,25 +28,25 @@ export const checkTokenValidity = async (token: string) => {
 };
 
 export const getUserData = async (userName: string, forceRefresh: boolean = false) => cachedFetch(`${OPEN_SAUCED_USERS_ENDPOINT}/${userName}`, {
-    expireInSeconds: 2 * 60 * 60, // 2 hours
-    forceRefresh,
-    headers: { Accept: "application/json" },
-  }).then(async resp => {
-    if (!resp.ok) {
-      console.log("error getting user info");
-    }
-    return resp.json();
-  })
-    .then(json => json);
+  expireInSeconds: 2 * 60 * 60,
+  forceRefresh,
+  headers: { Accept: "application/json" },
+}).then(async resp => {
+  if (!resp?.ok) {
+    console.log("error getting user info");
+  }
+  return resp?.json();
+})
+  .then(json => json);
 
 export const getUserPRData = async (userName: string, forceRefresh: boolean = false) => cachedFetch(`${OPEN_SAUCED_USERS_ENDPOINT}/${userName}/prs`, {
-    expireInSeconds: 2 * 60 * 60, // 2 hours
-    forceRefresh,
-    headers: { Accept: "application/json" },
-  }).then(async resp => {
-    if (!resp.ok) {
-      console.log("error getting user PR info");
-    }
-    return resp.json();
-  })
-    .then(json => json);
+  expireInSeconds: 2 * 60 * 60,
+  forceRefresh,
+  headers: { Accept: "application/json" },
+}).then(async resp => {
+  if (!resp?.ok) {
+    console.log("error getting user PR info");
+  }
+  return resp?.json();
+})
+  .then(json => json);
