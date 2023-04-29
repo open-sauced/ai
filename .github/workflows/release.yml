@@ -18,8 +18,10 @@ jobs:
       - name: "☁️ compute environment variables"
         id: env
         run: |
-          echo "::set-output name=DEPLOY_ENVIRONMENT::$([[ ${{ github.ref_name }} == 'main' ]] && echo 'production' || echo ${{ github.ref_name }})"
-          echo "::set-output name=DEPLOY_SUBDOMAIN::$([[ ${{ github.ref_name }} == 'main' ]] && echo '' || echo '${{ github.ref_name }}.')"
+          DEPLOY_ENVIRONMENT=$([[ ${{ github.ref_name }} == 'main' ]] && echo 'production' || echo ${{ github.ref_name }})
+          DEPLOY_SUBDOMAIN=$([[ ${{ github.ref_name }} == 'main' ]] && echo '' || echo "${{ github.ref_name }}.")
+          echo "DEPLOY_ENVIRONMENT=$DEPLOY_ENVIRONMENT" >> $GITHUB_ENV
+          echo "DEPLOY_SUBDOMAIN=$DEPLOY_SUBDOMAIN" >> $GITHUB_ENV
   build:
     name: Build application
     runs-on: ubuntu-latest
