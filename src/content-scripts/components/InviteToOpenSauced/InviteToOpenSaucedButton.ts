@@ -16,5 +16,6 @@ export const InviteToOpenSaucedButton = () => {
         <span>Invite to OpenSauced</span>
         `,
   });
+
   return inviteToOpenSaucedButton;
 };

@@ -5,15 +5,18 @@ import { getTwitterUsername, getLinkedInUsername } from "../urlMatchers";
 
 const injectOpenSaucedInviteButton = (username: string) => {
   const emailAddress: string | undefined = (
-    document.querySelector(`a[href^="mailto:"]`) as HTMLAnchorElement
-  )?.href.substr(7);
+    document.querySelector(`a[href^="mailto:"]`)!
+  ).href.substr(7);
   const twitterUrl: string | undefined = (
-    document.querySelector(`a[href*="twitter.com"]`) as HTMLAnchorElement
-  )?.href;
+    document.querySelector(`a[href*="twitter.com"]`)!
+  ).href;
   const linkedInUrl: string | undefined = (
-    document.querySelector(`a[href*="linkedin.com"]`) as HTMLAnchorElement
-  )?.href;
-  if (!(emailAddress || twitterUrl || linkedInUrl)) return;
+    document.querySelector(`a[href*="linkedin.com"]`)!
+  ).href;
+
+  if (!(emailAddress || twitterUrl || linkedInUrl)) {
+ return;
+}
 
   const twitterUsername = twitterUrl && getTwitterUsername(twitterUrl);
   const linkedInUsername = linkedInUrl && getLinkedInUsername(linkedInUrl);
@@ -25,12 +28,17 @@ const injectOpenSaucedInviteButton = (username: string) => {
       twitterUsername,
       linkedInUsername,
     },
-    inviteToOpenSaucedButton
+    inviteToOpenSaucedButton,
   );
 
   const userBio = document.querySelector(GITHUB_PROFILE_MENU_SELECTOR);
-  if (!userBio || !userBio.parentNode) return;
-  if (userBio.lastChild?.isEqualNode(inviteToOpenSaucedButton)) return;
+
+  if (!userBio || !userBio.parentNode) {
+ return;
+}
+  if (userBio.lastChild?.isEqualNode(inviteToOpenSaucedButton)) {
+ return;
+}
   userBio.append(inviteToOpenSaucedButton);
   document.body.appendChild(inviteToOpenSaucedModal);
 };
