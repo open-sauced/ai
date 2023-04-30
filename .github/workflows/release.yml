@@ -106,7 +106,7 @@ jobs:
         staged_changes=$(git diff --cached)
         if [ -n "$staged_changes" ]; then
           last_author=$(git log -1 --pretty=format:'%an <%ae>' | xargs)
-          git commit --author="$last_author" -m "Bump manifest version to $(json -f package.json version)"
+          git commit --author="$last_author" -m "Bump manifest version to $(json -f package.json version) [skip ci]"
           git push
         else
           echo "No version bump to commit"
