@@ -77,7 +77,41 @@ jobs:
         uses: open-sauced/release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+  bump-manifest:
+    name: Bump Manifest
+    runs-on: ubuntu-latest
+    needs:
+      - release
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
 
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16.x'
+        
+    - name: Bump manifest.json version
+      run: |
+        git pull
+        npm i -g json
+        json -I -f manifest.json -e "this.version=\"$(json -f package.json version)\""
+        
+    - name: Commit and push manifest version bump
+      run: |
+        git config user.name "OpenSauced Manifest Bump"
+        git config user.email "hello@opensauced.pizza"
+        git add manifest.json
+        staged_changes=$(git diff --cached)
+        if [ -n "$staged_changes" ]; then
+          last_author=$(git log -1 --pretty=format:'%an <%ae>' | xargs)
+          git commit --author="$last_author" -m "Bump manifest version to $(json -f package.json version)"
+          git push
+        else
+          echo "No version bump to commit"
+        fi
+        
   cleanup:
     name: Cleanup actions
     needs:
