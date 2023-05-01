@@ -9,13 +9,11 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
 
 chrome.cookies.onChanged.addListener(changeInfo => {
     if (
-      changeInfo.cookie.name !== SUPABASE_AUTH_COOKIE_NAME ||
-      changeInfo.cookie.domain !== OPEN_SAUCED_INSIGHTS_DOMAIN
+      changeInfo.cookie.name === SUPABASE_AUTH_COOKIE_NAME ||
+      changeInfo.cookie.domain === OPEN_SAUCED_INSIGHTS_DOMAIN
     ) {
-      return;
+      checkAuthentication();
     }
-    else checkAuthentication();
-
 });
 
 chrome.runtime.onInstalled.addListener(checkAuthentication);
