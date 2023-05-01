@@ -6,46 +6,44 @@ import Loading from "./pages/loading";
 import { Profile } from "./pages/profile";
 import { useAuth } from "./hooks/useAuth";
 
-export const RouteContext = createContext<{page: {name: string, props?: any}, setCurrentPage: (page: RouteKeys, props?: any) => void}>({page: {name: "loading"}, setCurrentPage: () => {}});
+export const RouteContext = createContext<{ page: { name: string, props?: any }, setCurrentPage:(page: RouteKeys, props?: any) => void }>({ page: { name: "loading" }, setCurrentPage: () => {} });
 
 const routes = {
   start: <Start />,
   home: <Home />,
   loading: <Loading />,
-  profile: <Profile />
-}
+  profile: <Profile />,
+};
 
 type RouteKeys = keyof typeof routes;
 
-function App() {
-  const {isTokenValid} = useAuth()
-  const [renderedPage, setRenderedPage] = useState<{name: RouteKeys, props?: any}>({name: "loading", props: {}});
+const App = () => {
+  const { isTokenValid } = useAuth();
+  const [renderedPage, setRenderedPage] = useState<{ name: RouteKeys, props?: any }>({ name: "loading", props: {} });
 
   const setCurrentPage = (name: RouteKeys, props: any = {}) => {
-    setRenderedPage({name: name, props})
-  }
+    setRenderedPage({ name, props });
+  };
 
 
   useEffect(() => {
-    if(isTokenValid === null) {
-      setCurrentPage("loading")
-    }
-    else if(isTokenValid) {
-      setCurrentPage("home")
-    } 
-    else {
-      setCurrentPage("start")
+    if (isTokenValid === null) {
+      setCurrentPage("loading");
+    } else if (isTokenValid) {
+      setCurrentPage("home");
+    } else {
+      setCurrentPage("start");
     }
   }, [isTokenValid]);
 
   return (
-    <RouteContext.Provider value={{page: renderedPage, setCurrentPage: setCurrentPage}}>
+    <RouteContext.Provider value={{ page: renderedPage, setCurrentPage }}>
       <div className="p-4 bg-slate-800">
         {routes[renderedPage.name]}
-        </div>
+      </div>
     </RouteContext.Provider>
-    
+
   );
-}
+};
 
 export default App;

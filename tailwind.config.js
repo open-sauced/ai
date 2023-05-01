@@ -13,6 +13,7 @@ module.exports = {
       },
       backgroundColor: {
         "gh-gray": "#21262d",
+        "gh-white": "#f6f8fa"
       }
     },
   },
@@ -56,4 +57,5 @@ module.exports = {
     })
   ],
   important: true,
+  darkMode: "class"
 };

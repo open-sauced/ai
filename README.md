@@ -40,7 +40,7 @@ npm run dev
 After running the above commands,
 1. Navigate to `chrome://extensions`. 
 2. Enable the `Developer Mode`.
-3. Select `Load Extension` and choose the generated `dist` directory from the project folder to install it.
+3. Select `Load unpacked` and choose the generated `dist` directory from the project folder to install it.
 
 You should now have the extension installed and running.
 

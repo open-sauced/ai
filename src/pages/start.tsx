@@ -1,25 +1,32 @@
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { SUPABASE_LOGIN_URL } from "../constants";
 
-function Start() {
-
-  return (
+const Start = () => (
     <div>
-      <img src={OpenSaucedLogo} alt="Open Sauced Logo" />
+      <img
+        alt="Open Sauced Logo"
+        src={OpenSaucedLogo}
+      />
+
       <p className="my-4 text-base font-bold text-white leading-5">
-        Welcome to the{" "}
+        Welcome to the
+{" "}
+
         <a
-          href="https://opensauced.pizza/"
           className="text-orange no-underline"
+          href="https://opensauced.pizza/"
         >
           OpenSauced
-        </a>{" "}
+        </a>
+
+{" "}
         browser extension.
       </p>
+
       <a
-        target="_blank"
-        rel="noopener noreferrer"
         href={SUPABASE_LOGIN_URL}
+        rel="noopener noreferrer"
+        target="_blank"
         className="bg-orange no-underline border-none rounded-md text-white font-bold py-2 px-4 cursor-pointer
           bg-gradient-to-r from-[#e67e22] to-[#d35400]"
       >
@@ -27,6 +34,5 @@ function Start() {
       </a>
     </div>
   );
-}
 
 export default Start;
