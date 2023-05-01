@@ -7,11 +7,6 @@
     {
       "js": ["src/content-scripts/profileScreen.ts"],
       "matches": ["https://github.com/*"]
-    },
-    {
-      "js": ["src/content-scripts/hotOSHomePage.ts"],
-      "matches": ["https://hot.opensauced.pizza/*"],
-      "run_at": "document_end"
     }
   ],
   "background": {
@@ -25,5 +20,5 @@
     "128": "src/assets/os-icons/os-icon-128.png"
   },
   "host_permissions": ["<all_urls>"],
-  "permissions": ["storage","webRequest", "tabs", "cookies"]
+  "permissions": ["storage", "tabs", "cookies"]
 }
