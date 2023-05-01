@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.0-beta.6](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2023-05-01)
+
+
+### 🐛 Bug Fixes
+
+* unrecognized-manifest-key ([#55](https://github.com/open-sauced/browser-extensions/issues/55)) ([d622500](https://github.com/open-sauced/browser-extensions/commit/d6225003fd3bcf5b16ab7c5113c6e559e5a50849))
+
 ## [1.0.0-beta.5](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2023-04-29)
 
 
