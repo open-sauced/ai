@@ -3,7 +3,7 @@ import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
 
 export const AddPRToHighlightsButton = () => {
   const addPRToHighlightsButton = createHtmlElement("a", {
-    href: "https://insights.opensauced.pizza/feed",
+    href: `https://insights.opensauced.pizza/feed?url=${encodeURIComponent(window.location.href)}`,
     target: "_blank",
     rel: "noopener noreferrer",
     innerHTML: `<md-header id="add-highlight-0" role="button" class="toolbar-item btn-octicon">
