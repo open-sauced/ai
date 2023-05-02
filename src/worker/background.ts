@@ -1,13 +1,5 @@
-import { SUPABASE_LOGOUT_URL, SUPABASE_AUTH_DOMAIN, SUPABASE_COOKIE_NAME, OPEN_SAUCED_AUTH_TOKEN_KEY } from "../constants";
-import { checkTokenValidity } from "../utils/fetchOpenSaucedApiData";
-import setAccessTokenInChromeStorage from "../utils/setAccessToken";
-
-chrome.webRequest.onCompleted.addListener(
-  () => {
-    void chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY);
-  },
-  { urls: [SUPABASE_LOGOUT_URL] },
-);
+import { checkAuthentication } from "../utils/checkAuthentication";
+import { SUPABASE_AUTH_COOKIE_NAME, OPEN_SAUCED_INSIGHTS_DOMAIN } from "../constants";
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
   if (changeInfo.url?.includes("github.com")) {
@@ -15,21 +7,14 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
   }
 });
 
-chrome.cookies.onChanged.addListener(async changeInfo => {
-  try {
-    if (changeInfo.cookie.name !== SUPABASE_COOKIE_NAME || changeInfo.cookie.domain !== SUPABASE_AUTH_DOMAIN) {
-      return;
+chrome.cookies.onChanged.addListener(changeInfo => {
+    if (
+      changeInfo.cookie.name === SUPABASE_AUTH_COOKIE_NAME ||
+      changeInfo.cookie.domain === OPEN_SAUCED_INSIGHTS_DOMAIN
+    ) {
+      checkAuthentication();
     }
-    if (changeInfo.removed) {
-      return chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY);
-    }
-    const isValidToken = await checkTokenValidity(changeInfo.cookie.value);
-
-    if (!isValidToken) {
-      return chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY);
-    }
-    void setAccessTokenInChromeStorage(changeInfo.cookie.value);
-  } catch (error) {
-    console.error("Error processing cookie update:", error);
-  }
 });
+
+chrome.runtime.onInstalled.addListener(checkAuthentication);
+chrome.runtime.onStartup.addListener(checkAuthentication);
