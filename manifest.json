@@ -5,6 +5,10 @@
   "action": { "default_popup": "index.html" },
   "content_scripts": [
     {
+      "js": ["src/content-scripts/repositoryPage.ts"],
+      "matches": ["https://github.com/*"] 
+    },
+    {
       "js": ["src/content-scripts/profileScreen.ts"],
       "matches": ["https://github.com/*"]
     },
