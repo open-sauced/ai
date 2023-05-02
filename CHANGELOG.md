@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.0-beta.7](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2023-05-02)
+
+
+### 🧑‍💻 Code Refactoring
+
+* improved-auth-strategy ([#56](https://github.com/open-sauced/browser-extensions/issues/56)) ([d8b27c3](https://github.com/open-sauced/browser-extensions/commit/d8b27c3e8a4259a4f40086feaf5e229a95fb59e9))
+
 ## [1.0.0-beta.6](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2023-05-01)
 
 
