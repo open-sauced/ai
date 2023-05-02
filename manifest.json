@@ -6,7 +6,8 @@
   "content_scripts": [
     {
       "js": ["src/content-scripts/profileScreen.ts"],
-      "matches": ["https://github.com/*"]
+      "matches": ["https://github.com/*"],
+      "run_at": "document_end"
     },
     {
       "js": ["src/content-scripts/hotOSHomePage.ts"],
