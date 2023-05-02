@@ -1,32 +1,40 @@
-import { getGithubUsername } from "../utils/urlMatchers";
+import {
+  getGithubUsername,
+  isGithubProfilePage,
+  isGithubPullRequestPage,
+} from "../utils/urlMatchers";
 import { isOpenSaucedUser } from "../utils/fetchOpenSaucedApiData";
 import injectViewOnOpenSauced from "../utils/dom-utils/viewOnOpenSauced";
 import injectInviteToOpenSauced from "../utils/dom-utils/inviteToOpenSauced";
 import { prefersDarkMode } from "../utils/colorPreference";
+import injectAddPRToHighlightsButton from "../utils/dom-utils/addPRToHighlights";
 
-const processProfilePage = async () => {
-  const username = getGithubUsername(window.location.href);
+const processGithubPage = async () => {
+  const darkMode = prefersDarkMode(document.cookie);
 
-  if (username) {
-    const darkMode = prefersDarkMode(document.cookie);
+  if (darkMode) {
+    document.documentElement.classList.add("dark");
+  }
 
-    if (darkMode) {
- document.documentElement.classList.add("dark");
-}
-    const user = await isOpenSaucedUser(username);
+  if (isGithubPullRequestPage(window.location.href)) {
+    injectAddPRToHighlightsButton();
+  } else if (isGithubProfilePage(window.location.href)) {
+    const username = getGithubUsername(window.location.href);
 
-    if (user) {
- injectViewOnOpenSauced(username);
-} else {
- injectInviteToOpenSauced(username);
-}
+    if (username) {
+      if (await isOpenSaucedUser(username)) {
+        injectViewOnOpenSauced(username);
+      } else {
+        injectInviteToOpenSauced(username);
+      }
+    }
   }
 };
 
 chrome.runtime.onMessage.addListener(request => {
   if (request.message === "GITHUB_URL_CHANGED") {
-    void processProfilePage();
+    void processGithubPage();
   }
 });
 
-void processProfilePage();
+void processGithubPage();

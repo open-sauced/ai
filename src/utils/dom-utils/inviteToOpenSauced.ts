@@ -4,34 +4,20 @@ import { InviteToOpenSaucedModal } from "../../content-scripts/components/Invite
 import { getTwitterUsername, getLinkedInUsername } from "../urlMatchers";
 
 const injectOpenSaucedInviteButton = (username: string) => {
-  const emailAddress: string | undefined = (() => {
-    const element = document.querySelector(`a[href^="mailto:"]`);
-
-    if (element instanceof HTMLAnchorElement) {
-      return element.href;
-    }
-    return undefined;
-  })();
-  const twitterUrl: string | undefined = (() => {
-    const element = document.querySelector(`a[href*="twitter.com"]`);
-
-    if (element instanceof HTMLAnchorElement) {
-      return element.href;
-    }
-    return undefined;
-  })();
-  const linkedInUrl: string | undefined = (() => {
-    const element = document.querySelector(`a[href*="linkedin.com"]`);
-
-    if (element instanceof HTMLAnchorElement) {
-      return element.href;
-    }
-    return undefined;
-  })();
+  const emailAddress = document
+    .querySelector(`a[href^="mailto:"]`)
+    ?.getAttribute("href")
+    ?.replace("mailto:", "");
+  const twitterUrl = document
+    .querySelector(`a[href*="twitter.com"]`)
+    ?.getAttribute("href");
+  const linkedInUrl = document
+    .querySelector(`a[href*="linkedin.com"]`)
+    ?.getAttribute("href");
 
   if (!(emailAddress || twitterUrl || linkedInUrl)) {
- return;
-}
+    return;
+  }
 
   const twitterUsername = twitterUrl && getTwitterUsername(twitterUrl);
   const linkedInUsername = linkedInUrl && getLinkedInUsername(linkedInUrl);
@@ -48,13 +34,11 @@ const injectOpenSaucedInviteButton = (username: string) => {
 
   const userBio = document.querySelector(GITHUB_PROFILE_MENU_SELECTOR);
 
-  if (!userBio?.parentNode) {
- return;
-}
-  if (userBio.lastChild?.isEqualNode(inviteToOpenSaucedButton)) {
- return;
-}
-  userBio.append(inviteToOpenSaucedButton);
+
+  if (userBio?.lastChild?.isEqualNode(inviteToOpenSaucedButton)) {
+    return;
+  }
+  userBio?.append(inviteToOpenSaucedButton);
   document.body.appendChild(inviteToOpenSaucedModal);
 };
 
