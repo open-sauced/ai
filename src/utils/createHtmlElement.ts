@@ -9,7 +9,7 @@ type CssDeclaration = keyof Omit<CSSStyleDeclaration, "length" | "parentRule">;
 
 export function createHtmlElement<T extends keyof HTMLElementTagNameMap> (
   nodeName: T,
-  props: ElementProps,
+  props: ElementProps = {},
 ) {
   const { style, ...nonStyleProps } = props;
   const element = Object.assign(document.createElement(nodeName), nonStyleProps);
