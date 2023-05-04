@@ -1,4 +1,4 @@
-const domUpdateWatch = (callback: () => void) => {
+const domUpdateWatch = (callback: () => void, delayInMs = 0) => {
   const oldLocation = document.location.href;
   const observer = new MutationObserver(
     (_: unknown, observer: MutationObserver) => {
@@ -8,7 +8,7 @@ const domUpdateWatch = (callback: () => void) => {
         return;
       }
       observer.disconnect();
-      setTimeout(callback, 20);
+      setTimeout(callback, delayInMs);
     },
   );
 
