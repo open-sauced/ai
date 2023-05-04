@@ -7,15 +7,16 @@ import {
 import { isLoggedIn } from "../checkAuthentication";
 
 const injectAddPRToHighlightsButton = async () => {
-  if(!await isLoggedIn()) return;
+  if (!(await isLoggedIn())) {
+ return;
+}
 
   const prAuthorUserName = document.getElementsByClassName(
     GITHUB_PR_AUTHOR_USERNAME_SELECTOR,
-  )[0]?.textContent;
-  const loggedInUserUserName = document.querySelector(
-    GITHUB_LOGGED_IN_USER_USERNAME_SELECTOR,
-  )?.getAttribute("content");
-  console.log(prAuthorUserName, loggedInUserUserName);
+  )[0].textContent;
+  const loggedInUserUserName = document
+    .querySelector(GITHUB_LOGGED_IN_USER_USERNAME_SELECTOR)
+    ?.getAttribute("content");
 
   if (loggedInUserUserName && prAuthorUserName === loggedInUserUserName) {
     const commentFormatRow = document.getElementsByClassName(
@@ -23,11 +24,15 @@ const injectAddPRToHighlightsButton = async () => {
     )[0];
     const addPRToHighlightsButton = AddPRToHighlightsButton();
 
-    if (!commentFormatRow.lastElementChild?.previousElementSibling?.isEqualNode(addPRToHighlightsButton)) {
-    commentFormatRow.insertBefore(
-      addPRToHighlightsButton,
-      commentFormatRow.lastElementChild,
-    );
+    if (
+      !commentFormatRow.lastElementChild?.previousElementSibling?.isEqualNode(
+        addPRToHighlightsButton,
+      )
+    ) {
+      commentFormatRow.insertBefore(
+        addPRToHighlightsButton,
+        commentFormatRow.lastElementChild,
+      );
     }
   }
 };

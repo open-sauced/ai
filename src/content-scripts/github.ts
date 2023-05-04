@@ -9,7 +9,6 @@ import injectInviteToOpenSauced from "../utils/dom-utils/inviteToOpenSauced";
 import { prefersDarkMode } from "../utils/colorPreference";
 import injectAddPRToHighlightsButton from "../utils/dom-utils/addPRToHighlights";
 import domUpdateWatch from "../utils/dom-utils/domUpdateWatcher";
-import { isLoggedIn } from "../utils/checkAuthentication";
 
 const processGithubPage = async () => {
   if (prefersDarkMode(document.cookie)) {
@@ -21,7 +20,9 @@ const processGithubPage = async () => {
   } else if (isGithubProfilePage(window.location.href)) {
     const username = getGithubUsername(window.location.href);
 
-    if (!username) return;
+    if (!username) {
+      return;
+    }
     if (await isOpenSaucedUser(username)) {
       injectViewOnOpenSauced(username);
     } else {
