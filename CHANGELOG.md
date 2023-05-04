@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.0-beta.8](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2023-05-04)
+
+
+### 🍕 Features
+
+* add to highlights button ([#64](https://github.com/open-sauced/browser-extensions/issues/64)) ([e2120a1](https://github.com/open-sauced/browser-extensions/commit/e2120a13d64fee2ab0867e5f17d647f64796467a))
+
 ## [1.0.0-beta.7](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2023-05-02)
 
 
