@@ -5,9 +5,9 @@ import twitterSocialIcon from "../../../assets/twitter-icon.svg";
 import linkedInSocailIcon from "../../../assets/linkedin-icon.svg";
 
 interface Socials {
-  emailAddress?: string;
-  twitterUsername?: string;
-  linkedInUsername?: string;
+  emailAddress?: string | null;
+  twitterUsername?: string | null;
+  linkedInUsername?: string | null;
 }
 
 export const InviteToOpenSaucedModal = (

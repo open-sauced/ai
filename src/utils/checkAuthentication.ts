@@ -31,3 +31,9 @@ export const checkAuthentication = () => {
       },
     );
 };
+
+export const isLoggedIn = async () =>
+
+  // only a valid auth token can exist in the storage due to the check in line 23
+   Object.entries(await chrome.storage.sync.get(OPEN_SAUCED_AUTH_TOKEN_KEY)).length !== 0;
+

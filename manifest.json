@@ -5,8 +5,9 @@
   "action": { "default_popup": "index.html" },
   "content_scripts": [
     {
-      "js": ["src/content-scripts/profileScreen.ts"],
-      "matches": ["https://github.com/*"]
+      "js": ["src/content-scripts/github.ts"],
+      "matches": ["https://github.com/*"],
+      "run": "document_end"
     }
   ],
   "background": {
