@@ -30,7 +30,7 @@ const processGithubPage = async () => {
     }
   }
 
-  domUpdateWatch(processGithubPage);
+  domUpdateWatch(processGithubPage, 25);
 };
 
 void processGithubPage();
