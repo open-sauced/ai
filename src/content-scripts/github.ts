@@ -16,7 +16,7 @@ const processGithubPage = async () => {
   }
 
   if (isGithubPullRequestPage(window.location.href)) {
-    setTimeout(injectAddPRToHighlightsButton, 10);
+    injectAddPRToHighlightsButton();
   } else if (isGithubProfilePage(window.location.href)) {
     const username = getGithubUsername(window.location.href);
 
