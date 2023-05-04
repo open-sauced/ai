@@ -6,3 +6,6 @@ export const OPEN_SAUCED_SESSION_ENDPOINT = "https://api.opensauced.pizza/v1/aut
 export const OPEN_SAUCED_INSIGHTS_DOMAIN = "insights.opensauced.pizza";
 export const GITHUB_PROFILE_MENU_SELECTOR = ".p-nickname.vcard-username.d-block";
 export const GITHUB_PROFILE_EDIT_MENU_SELECTOR = "button.js-profile-editable-edit-button";
+export const GITHUB_PR_AUTHOR_USERNAME_SELECTOR = "author Link--primary text-bold css-overflow-wrap-anywhere";
+export const GITHUB_LOGGED_IN_USER_USERNAME_SELECTOR = "meta[name=\"user-login\"]";
+export const GITHUB_PR_COMMENT_HEADER_SELECTOR = "timeline-comment-header clearfix d-flex";
