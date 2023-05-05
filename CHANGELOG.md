@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.0-beta.9](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2023-05-05)
+
+
+### 🐛 Bug Fixes
+
+* render emojis in user bio ([#68](https://github.com/open-sauced/browser-extensions/issues/68)) ([d0158a5](https://github.com/open-sauced/browser-extensions/commit/d0158a55fd49960d1f8d07af87d7621871965679))
+
 ## [1.0.0-beta.8](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2023-05-04)
 
 
