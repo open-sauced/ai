@@ -82,7 +82,7 @@ export const Profile = () => {
       <main>
         <div className="flex flex-col items-center gap-1 mb-4">
           <a
-            className="hover:text-orange hover:scale-105"
+            className="flex flex-col items-center hover:text-orange hover:scale-105"
             href={`https://insights.opensauced.pizza/user/${page.props.userName}`}
             rel="noopener noreferrer"
             target="_blank"
@@ -94,8 +94,7 @@ export const Profile = () => {
           />
 
           <p className="font-medium">
-            @
-            {page.props.userName}
+            @{page.props.userName}
           </p>
           </a>
 
