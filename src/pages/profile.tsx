@@ -7,6 +7,7 @@ import { DiJava } from "react-icons/di";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { getUserData, getUserPRData } from "../utils/fetchOpenSaucedApiData";
 import { RouteContext } from "../App";
+import { emojify } from "node-emoji";
 
 const interestIcon = {
   python: <SiPython />,
@@ -124,7 +125,7 @@ export const Profile = () => {
             </div>}
 
           {user?.bio && <span>
-            {user.bio}
+            {emojify(user.bio)}
                         </span>}
 
           {user?.blog &&
