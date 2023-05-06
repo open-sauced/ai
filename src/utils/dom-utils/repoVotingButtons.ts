@@ -8,7 +8,6 @@ import {
 } from "../fetchOpenSaucedApiData";
 
 const injectRepoVotingButtons = async (ownerName: string, repoName: string) => {
-  console.log(await repoExistsOnOpenSauced(ownerName, repoName));
   if (!(await isLoggedIn())) {
     return;
   }
@@ -27,7 +26,6 @@ const injectRepoVotingButtons = async (ownerName: string, repoName: string) => {
 
   const userVotedRepo = await checkUserVotedRepo(userToken, repoName);
 
-  console.log(userVotedRepo);
   if (userVotedRepo) {
     repoActions.appendChild(repoUnvoteButton);
   } else {
