@@ -27,8 +27,14 @@ const injectRepoVotingButtons = async (ownerName: string, repoName: string) => {
   const userVotedRepo = await checkUserVotedRepo(userToken, repoName);
 
   if (userVotedRepo) {
+    if (repoActions.lastChild?.isEqualNode(repoUnvoteButton)) {
+      return;
+    }
     repoActions.appendChild(repoUnvoteButton);
   } else {
+    if (repoActions.lastChild?.isEqualNode(voteRepoButton)) {
+      return;
+    }
     repoActions.appendChild(voteRepoButton);
   }
 };
