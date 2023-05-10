@@ -9,6 +9,7 @@ import injectInviteToOpenSauced from "../utils/dom-utils/inviteToOpenSauced";
 import { prefersDarkMode } from "../utils/colorPreference";
 import injectAddPRToHighlightsButton from "../utils/dom-utils/addPRToHighlights";
 import domUpdateWatch from "../utils/dom-utils/domUpdateWatcher";
+import injectAddHighlightGeneratorButton from "../utils/dom-utils/addHighlightGenerator";
 
 const processGithubPage = async () => {
   if (prefersDarkMode(document.cookie)) {
@@ -16,7 +17,8 @@ const processGithubPage = async () => {
   }
 
   if (isGithubPullRequestPage(window.location.href)) {
-    injectAddPRToHighlightsButton();
+    void injectAddPRToHighlightsButton();
+    void injectAddHighlightGeneratorButton();
   } else if (isGithubProfilePage(window.location.href)) {
     const username = getGithubUsername(window.location.href);
 
@@ -30,7 +32,7 @@ const processGithubPage = async () => {
     }
   }
 
-  domUpdateWatch(processGithubPage, 25);
+  domUpdateWatch(processGithubPage, 50);
 };
 
 void processGithubPage();

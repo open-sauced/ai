@@ -24,18 +24,12 @@ const injectAddHighlightGeneratorButton = async () => {
     )[0];
 
     // todo: don't ship any HERE
-    const addGeneratorButton: any = HighlightGeneratorButton();
+    const addGeneratorButton = HighlightGeneratorButton();
 
-    if (
-      !commentFormatRow.lastElementChild?.previousElementSibling?.isEqualNode(
-        addGeneratorButton,
-      )
-    ) {
-      commentFormatRow.insertBefore(
-        addGeneratorButton,
-        commentFormatRow.lastElementChild,
-      );
+    if (commentFormatRow.firstChild?.isEqualNode(addGeneratorButton)) {
+      return;
     }
+    commentFormatRow.insertBefore(addGeneratorButton, commentFormatRow.firstChild);
   }
 };
 
