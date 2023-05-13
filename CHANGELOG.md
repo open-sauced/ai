@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.0-beta.11](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2023-05-13)
+
+
+### 🐛 Bug Fixes
+
+* incorrect request for voting ([#72](https://github.com/open-sauced/browser-extensions/issues/72)) ([7a35014](https://github.com/open-sauced/browser-extensions/commit/7a35014448fbf836702251176f54e4983f638bef))
+
 ## [1.0.0-beta.10](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2023-05-12)
 
 
