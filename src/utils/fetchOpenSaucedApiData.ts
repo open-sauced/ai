@@ -88,11 +88,11 @@ export const repoExistsOnOpenSauced = async (ownerName: string, repoName: string
   return response.status === 200;
 };
 
-export const voteOrUnvoteRepo = async (userToken: string, ownerName: string, repoName: string, vote: boolean) => {
+export const voteOrUnvoteRepo = async (userToken: string, ownerName: string, repoName: string, method: "PUT" | "DELETE") => {
   const response = await fetch(
     `${OPEN_SAUCED_REPOS_ENDPOINT}/${ownerName}/${repoName}/vote`,
     {
-      method: vote ? "PUT" : "DELETE",
+      method,
       headers: { Authorization: `Bearer ${userToken}` },
     },
   );
