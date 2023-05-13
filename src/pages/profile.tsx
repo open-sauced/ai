@@ -7,6 +7,7 @@ import { DiJava } from "react-icons/di";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { getUserData, getUserPRData } from "../utils/fetchOpenSaucedApiData";
 import { RouteContext } from "../App";
+import { emojify } from "node-emoji";
 
 const interestIcon = {
   python: <SiPython />,
@@ -80,6 +81,12 @@ export const Profile = () => {
 
       <main>
         <div className="flex flex-col items-center gap-1 mb-4">
+          <a
+            className="flex flex-col items-center hover:text-orange hover:scale-105"
+            href={`https://insights.opensauced.pizza/user/${page.props.userName}`}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
           <img
             alt="User avatar"
             className="rounded-full w-14 aspect-square p-1 bg-slate-700"
@@ -87,15 +94,15 @@ export const Profile = () => {
           />
 
           <p className="font-medium">
-            @
-            {page.props.userName}
+            @{page.props.userName}
           </p>
+          </a>
 
           {(user?.linkedin_url || user?.twitter_username) &&
             <div className="social flex gap-0.5">
               {user.linkedin_url &&
                 <a
-                  className="rounded-sm border bg-slate-700 hover:bg-slate-700/50 hover:text-orange p-1"
+                  className="rounded-sm border bg-slate-700 hover:bg-slate-700/50 hover:text-cyan-400 p-1"
                   href={user.linkedin_url}
                   rel="noreferrer"
                   target="_blank"
@@ -106,7 +113,7 @@ export const Profile = () => {
 
               {user.twitter_username &&
                 <a
-                  className="rounded-sm border bg-slate-700 hover:bg-slate-700/50 hover:text-orange p-1"
+                  className="rounded-sm border bg-slate-700 hover:bg-slate-700/50 hover:text-cyan-400 p-1"
                   href={`https://twitter.com/${user.twitter_username}`}
                   rel="noreferrer"
                   target="_blank"
@@ -117,7 +124,7 @@ export const Profile = () => {
             </div>}
 
           {user?.bio && <span>
-            {user.bio}
+            {emojify(user.bio)}
                         </span>}
 
           {user?.blog &&

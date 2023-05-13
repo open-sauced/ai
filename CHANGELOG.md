@@ -5,6 +5,55 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.0-beta.12](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.11...v1.0.0-beta.12) (2023-05-13)
+
+
+### 🐛 Bug Fixes
+
+* circular-deps in vote buttons ([675496c](https://github.com/open-sauced/browser-extensions/commit/675496cc3b3cbbb214c0ea77e49a059bc5ba6d7c))
+
+## [1.0.0-beta.11](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2023-05-13)
+
+
+### 🐛 Bug Fixes
+
+* incorrect request for voting ([#72](https://github.com/open-sauced/browser-extensions/issues/72)) ([7a35014](https://github.com/open-sauced/browser-extensions/commit/7a35014448fbf836702251176f54e4983f638bef))
+
+## [1.0.0-beta.10](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2023-05-12)
+
+
+### 🍕 Features
+
+* vote repos ([#70](https://github.com/open-sauced/browser-extensions/issues/70)) ([ff2c8f4](https://github.com/open-sauced/browser-extensions/commit/ff2c8f4198cd09fa8f591498298e6eddbc982c49))
+
+## [1.0.0-beta.9](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2023-05-05)
+
+
+### 🐛 Bug Fixes
+
+* render emojis in user bio ([#68](https://github.com/open-sauced/browser-extensions/issues/68)) ([d0158a5](https://github.com/open-sauced/browser-extensions/commit/d0158a55fd49960d1f8d07af87d7621871965679))
+
+## [1.0.0-beta.8](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2023-05-04)
+
+
+### 🍕 Features
+
+* add to highlights button ([#64](https://github.com/open-sauced/browser-extensions/issues/64)) ([e2120a1](https://github.com/open-sauced/browser-extensions/commit/e2120a13d64fee2ab0867e5f17d647f64796467a))
+
+## [1.0.0-beta.7](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2023-05-02)
+
+
+### 🧑‍💻 Code Refactoring
+
+* improved-auth-strategy ([#56](https://github.com/open-sauced/browser-extensions/issues/56)) ([d8b27c3](https://github.com/open-sauced/browser-extensions/commit/d8b27c3e8a4259a4f40086feaf5e229a95fb59e9))
+
+## [1.0.0-beta.6](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2023-05-01)
+
+
+### 🐛 Bug Fixes
+
+* unrecognized-manifest-key ([#55](https://github.com/open-sauced/browser-extensions/issues/55)) ([d622500](https://github.com/open-sauced/browser-extensions/commit/d6225003fd3bcf5b16ab7c5113c6e559e5a50849))
+
 ## [1.0.0-beta.5](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2023-04-29)
 
 

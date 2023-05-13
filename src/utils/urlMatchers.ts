@@ -19,3 +19,22 @@ export const getTwitterUsername = (url: string) => {
 
   return match ? match[1] : undefined;
 };
+
+export const isGithubPullRequestPage = (url: string) => {
+  const githubPullRequestPattern = /github\.com\/[\w.-]+\/[^/]+\/pull\/\d+/;
+
+  return githubPullRequestPattern.test(url);
+};
+
+export const isGithubProfilePage = (url: string) => {
+  const githubProfilePattern = /github\.com\/[^/]+$/;
+
+  return githubProfilePattern.test(url);
+};
+
+
+export const isGithubRepoPage = (url: string) => {
+  const githubRepoPattern = /github\.com\/[^/]+\/[^/]+$/;
+
+  return githubRepoPattern.test(url);
+};

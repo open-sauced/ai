@@ -11,13 +11,10 @@ const injectViewOnOpenSaucedButton = (username: string) => {
     `${GITHUB_PROFILE_MENU_SELECTOR}, ${GITHUB_PROFILE_EDIT_MENU_SELECTOR}`,
   );
 
-  if (!userBio?.parentNode) {
+  if (userBio?.lastChild?.isEqualNode(viewOnOpenSaucedButton)) {
  return;
 }
-  if (userBio.lastChild?.isEqualNode(viewOnOpenSaucedButton)) {
- return;
-}
-  userBio.append(viewOnOpenSaucedButton);
+  userBio?.append(viewOnOpenSaucedButton);
 };
 
 export default injectViewOnOpenSaucedButton;

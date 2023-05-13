@@ -1,7 +1,7 @@
 {
   "name": "opensauced-browser-extension",
   "private": true,
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0-beta.12",
   "files": [
     "dist"
   ],
@@ -14,6 +14,8 @@
   },
   "dependencies": {
     "@types/chrome": "^0.0.231",
+    "@types/node-emoji": "^1.8.2",
+    "node-emoji": "^1.11.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-icons": "^4.8.0"

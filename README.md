@@ -17,6 +17,10 @@
   </a>
 </p>
 
+## Documentation
+
+The documentation for the project can be found [here](https://docs.opensauced.pizza/chrome-extension/introduction-to-the-chrome-extension/).
+
 ## Running the project locally
 
 To run the project, you'll need the following software binaries installed on your development machines:
@@ -36,7 +40,7 @@ To run a local instance of the project:
 npm run dev
 ```
 
-## Installing the extension on a Chromium based browser:
+## Installing the local build on a Chromium based browser:
 After running the above commands,
 1. Navigate to `chrome://extensions`. 
 2. Enable the `Developer Mode`.
