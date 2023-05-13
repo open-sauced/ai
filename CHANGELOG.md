@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.0.0-beta.12](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.11...v1.0.0-beta.12) (2023-05-13)
+
+
+### 🐛 Bug Fixes
+
+* circular-deps in vote buttons ([675496c](https://github.com/open-sauced/browser-extensions/commit/675496cc3b3cbbb214c0ea77e49a059bc5ba6d7c))
+
 ## [1.0.0-beta.11](https://github.com/open-sauced/browser-extensions/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2023-05-13)
 
 
