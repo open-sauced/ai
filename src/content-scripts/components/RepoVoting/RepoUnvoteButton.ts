@@ -20,12 +20,11 @@ export const RepoUnvoteButton = (ownerName: string, repoName: string) => {
     `;
     const userToken = await getAuthToken();
 
-    const unvoted = await voteOrUnvoteRepo(userToken, ownerName, repoName, false);
+    const unvoted = await voteOrUnvoteRepo(userToken, ownerName, repoName, "DELETE");
 
     if (unvoted) {
-      const voteRepoButton = VoteRepoButton(ownerName, repoName);
-
-      repoUnvoteButton.replaceWith(voteRepoButton);
+      const { VoteRepoButton } = await import("./RepoVoteButton");
+      repoUnvoteButton.replaceWith(VoteRepoButton(ownerName, repoName));
     } else {
       console.log("Something went wrong");
     }
