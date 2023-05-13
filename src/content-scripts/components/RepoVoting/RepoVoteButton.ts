@@ -20,7 +20,7 @@ export const VoteRepoButton = (ownerName: string, repoName: string) => {
     `;
     const userToken = await getAuthToken();
 
-    const voted = await voteOrUnvoteRepo(userToken, ownerName, repoName, false);
+    const voted = await voteOrUnvoteRepo(userToken, ownerName, repoName, true);
 
     if (voted) {
       const unvoteRepoButton = RepoUnvoteButton(ownerName, repoName);

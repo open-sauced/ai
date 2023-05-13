@@ -92,7 +92,7 @@ export const voteOrUnvoteRepo = async (userToken: string, ownerName: string, rep
   const response = await fetch(
     `${OPEN_SAUCED_REPOS_ENDPOINT}/${ownerName}/${repoName}/vote`,
     {
-      method: vote ? "POST" : "DELETE",
+      method: vote ? "PUT" : "DELETE",
       headers: { Authorization: `Bearer ${userToken}` },
     },
   );
