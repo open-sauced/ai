@@ -31,3 +31,10 @@ export const isGithubProfilePage = (url: string) => {
 
   return githubProfilePattern.test(url);
 };
+
+
+export const isGithubRepoPage = (url: string) => {
+  const githubRepoPattern = /github\.com\/[^/]+\/[^/]+$/;
+
+  return githubRepoPattern.test(url);
+};

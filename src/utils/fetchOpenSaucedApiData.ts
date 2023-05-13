@@ -1,5 +1,5 @@
 import { cachedFetch } from "./cache";
-import { OPEN_SAUCED_USERS_ENDPOINT, OPEN_SAUCED_SESSION_ENDPOINT } from "../constants";
+import { OPEN_SAUCED_USERS_ENDPOINT, OPEN_SAUCED_SESSION_ENDPOINT, OPEN_SAUCED_REPOS_ENDPOINT } from "../constants";
 
 export const isOpenSaucedUser = async (username: string) => {
   try {
@@ -50,3 +50,52 @@ export const getUserPRData = async (userName: string, forceRefresh: boolean = fa
   return resp?.json();
 })
   .then(json => json);
+
+const getUserVotes = async (userToken: string, page: number = 1, limit: number = 1000, repos: any[] = []): Promise<any[]> => {
+  const response = await fetch(
+    `${OPEN_SAUCED_REPOS_ENDPOINT}/listUserVoted?page=${page}&limit=${limit}`,
+    {
+      method: "GET",
+      headers: { Authorization: `Bearer ${userToken}` },
+    },
+  );
+
+  if (response.status === 200) {
+    const votesData = await response.json();
+
+    const newRepos = repos.concat(votesData.data);
+
+    if (votesData.data.length === limit) {
+      return getUserVotes(userToken, page + 1, limit, newRepos);
+    }
+    return newRepos;
+  }
+  return repos;
+};
+
+
+export const checkUserVotedRepo = async (userToken: string, repoName: string) => {
+  const userVotes = await getUserVotes(userToken);
+
+  return userVotes.some((repo: any) => repo.name === repoName);
+};
+
+export const repoExistsOnOpenSauced = async (ownerName: string, repoName: string) => {
+  const response = await fetch(
+    `${OPEN_SAUCED_REPOS_ENDPOINT}/${ownerName}/${repoName}`,
+  );
+
+  return response.status === 200;
+};
+
+export const voteOrUnvoteRepo = async (userToken: string, ownerName: string, repoName: string, vote: boolean) => {
+  const response = await fetch(
+    `${OPEN_SAUCED_REPOS_ENDPOINT}/${ownerName}/${repoName}/vote`,
+    {
+      method: vote ? "PUT" : "DELETE",
+      headers: { Authorization: `Bearer ${userToken}` },
+    },
+  );
+
+  return response.status === 200;
+};

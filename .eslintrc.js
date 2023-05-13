@@ -43,14 +43,6 @@ module.exports = {
 	rules: {
 	  // eslint:recommended
 	  "arrow-body-style": ["error", "as-needed"],
-	  "capitalized-comments": [
-		"error",
-		"never",
-		{
-		  ignorePattern: "pragma|ignored",
-		  ignoreInlineComments: true,
-		},
-	  ],
 	  curly: ["error", "all"],
 	  "dot-notation": "error",
 	  eqeqeq: ["error", "always"],
