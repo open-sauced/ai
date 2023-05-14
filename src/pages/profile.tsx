@@ -152,7 +152,7 @@ export const Profile = () => {
           </div>
 
           <div className="flex flex-col items-center justify-center p-2 text-xs">
-            <p>Open PRs</p>
+            <p>PR Count</p>
 
             <p className="font-medium text-5xl">
               {userPR?.meta.itemCount}
