@@ -3,7 +3,7 @@ export const SUPABASE_LOGIN_URL = "https://ibcwmlhcimymasokhgvn.supabase.co/auth
 export const SUPABASE_AUTH_COOKIE_NAME = "supabase-auth-token";
 export const OPEN_SAUCED_AUTH_TOKEN_KEY = "os-access-token";
 export const OPEN_SAUCED_INSIGHTS_DOMAIN = "insights.opensauced.pizza";
-
+export const AI_PR_DESCRIPTION_CONFIG_KEY = "ai-pr-description-config";
 // API endpoints
 export const OPEN_SAUCED_USERS_ENDPOINT = "https://api.opensauced.pizza/v1/users";
 export const OPEN_SAUCED_REPOS_ENDPOINT = "https://api.opensauced.pizza/v1/repos";
