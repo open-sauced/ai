@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.1.0-beta.1](https://github.com/open-sauced/browser-extensions/compare/v1.0.0...v1.1.0-beta.1) (2023-05-14)
+
+
+### 🍕 Features
+
+* replace open issues count with highlights count ([#76](https://github.com/open-sauced/browser-extensions/issues/76)) ([0fb8149](https://github.com/open-sauced/browser-extensions/commit/0fb814901fd575d3f1434740f8f8140fc6ff1aae))
+
 ## 1.0.0 (2023-05-13)
 
 
