@@ -5,7 +5,7 @@ import { AiOutlineReload } from "react-icons/ai";
 import { SiC, SiCplusplus, SiCsharp, SiGoland, SiJavascript, SiPhp, SiPython, SiReact, SiRuby, SiRust, SiTypescript } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
-import { getUserData, getUserPRData } from "../utils/fetchOpenSaucedApiData";
+import { getUserData, getUserPRData, getUserHighlightsData } from "../utils/fetchOpenSaucedApiData";
 import { RouteContext } from "../App";
 import { emojify } from "node-emoji";
 
@@ -32,13 +32,15 @@ export const Profile = () => {
   const { page, setCurrentPage } = useContext(RouteContext);
   const [user, setUser] = useState<null | { id: string, user_name: string, bio: string, created_at: string, linkedin_url: string, twitter_username: string, blog: string, interests: string, open_issues: number }>(null);
   const [userPR, setUserPR] = useState<null | { meta: { itemCount: number } }>(null);
+  const [userHighlights, setUserHighlights] = useState<null | { meta: { itemCount: number } }>(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const [userData, userPRData] = await Promise.all([getUserData(page.props.userName), getUserPRData(page.props.userName)]);
+      const [userData, userPRData, userHighlightsData] = await Promise.all([getUserData(page.props.userName), getUserPRData(page.props.userName), getUserHighlightsData(page.props.userName)]);
 
       setUser(userData);
       setUserPR(userPRData);
+      setUserHighlights(userHighlightsData);
     };
 
     void fetchUserData();
@@ -142,15 +144,15 @@ export const Profile = () => {
 
         <div className="grid grid-cols-2 text-white bg-osOrange -mx-4 mb-4 p-4 py-8">
           <div className="flex flex-col items-center justify-center p-2 text-xs">
-            <p>Open Issues</p>
+            <p>Total Highlights</p>
 
             <p className="font-medium text-5xl">
-              {user?.open_issues}
+              {userHighlights?.meta.itemCount}
             </p>
           </div>
 
           <div className="flex flex-col items-center justify-center p-2 text-xs">
-            <p>PRs Made</p>
+            <p>PR Count</p>
 
             <p className="font-medium text-5xl">
               {userPR?.meta.itemCount}

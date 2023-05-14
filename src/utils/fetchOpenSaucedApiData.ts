@@ -51,6 +51,18 @@ export const getUserPRData = async (userName: string, forceRefresh: boolean = fa
 })
   .then(json => json);
 
+export const getUserHighlightsData = async (userName: string, forceRefresh: boolean = false) => cachedFetch(`${OPEN_SAUCED_USERS_ENDPOINT}/${userName}/highlights`, {
+  expireInSeconds: 2 * 60 * 60,
+  forceRefresh,
+  headers: { Accept: "application/json" },
+}).then(async resp => {
+  if (!resp?.ok) {
+    console.log("error getting user highlights info");
+  }
+  return resp?.json();
+})
+  .then(json => json);
+
 const getUserVotes = async (userToken: string, page: number = 1, limit: number = 1000, repos: any[] = []): Promise<any[]> => {
   const response = await fetch(
     `${OPEN_SAUCED_REPOS_ENDPOINT}/listUserVoted?page=${page}&limit=${limit}`,
