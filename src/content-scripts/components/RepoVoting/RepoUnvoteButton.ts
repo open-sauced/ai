@@ -28,6 +28,9 @@ export const RepoUnvoteButton = (ownerName: string, repoName: string) => {
       repoUnvoteButton.replaceWith(voteRepoButton);
     } else {
       console.log("Something went wrong");
+      repoUnvoteButton.innerHTML = `
+        <span>Unvote</span>
+        `;
     }
   });
 
