@@ -1,7 +1,6 @@
 import "../../content-scripts.css";
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 import { getAuthToken } from "../../../utils/checkAuthentication";
-import { RepoUnvoteButton } from "./RepoUnvoteButton";
 import { voteOrUnvoteRepo } from "../../../utils/fetchOpenSaucedApiData";
 import { InsightsSelectDropdown } from "../InsightsSelectDropdown/InsightsSelectDropdown";
 
@@ -24,12 +23,11 @@ export const VoteRepoButton = (ownerName: string, repoName: string) => {
     `;
     const userToken = await getAuthToken();
 
-    const voted = await voteOrUnvoteRepo(userToken, ownerName, repoName, true);
+    const voted = await voteOrUnvoteRepo(userToken, ownerName, repoName, "PUT");
 
     if (voted) {
-      const unvoteRepoButton = RepoUnvoteButton(ownerName, repoName);
-
-      voteRepoButton.replaceWith(unvoteRepoButton);
+      const { RepoUnvoteButton } = await import("./RepoUnvoteButton");
+      voteRepoButton.replaceWith(RepoUnvoteButton(ownerName, repoName));
     } else {
       console.log("Something went wrong");
       voteRepoButton.innerHTML = `
