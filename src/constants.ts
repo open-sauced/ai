@@ -15,5 +15,6 @@ export const GITHUB_PROFILE_EDIT_MENU_SELECTOR = "button.js-profile-editable-edi
 export const GITHUB_PR_AUTHOR_USERNAME_SELECTOR = "author Link--primary text-bold css-overflow-wrap-anywhere";
 export const GITHUB_LOGGED_IN_USER_USERNAME_SELECTOR = "meta[name=\"user-login\"]";
 export const GITHUB_PR_COMMENT_HEADER_SELECTOR = "timeline-comment-header clearfix d-flex";
-export const GITHUB_PR_COMMENT_HEADER_EDITOR = "flex-nowrap d-none d-md-inline-block mr-md-0 mr-3";
+export const GITHUB_PR_COMMENT_EDITOR_SELECTOR = "flex-nowrap d-none d-md-inline-block mr-md-0 mr-3";
 export const GITHUB_REPO_ACTIONS_SELECTOR = ".pagehead-actions";
+export const GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR = "pull_request[body]"

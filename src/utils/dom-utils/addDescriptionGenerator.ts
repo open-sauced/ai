@@ -1,12 +1,10 @@
 import { DescriptionGeneratorButton } from "../../content-scripts/components/GenerateAIDescription/DescriptionGeneratorButton";
-import { GITHUB_PR_COMMENT_HEADER_EDITOR } from "../../constants";
+import { GITHUB_PR_COMMENT_EDITOR_SELECTOR } from "../../constants";
 
 const injectDescriptionGeneratorButton = async () => {
-//   if (!(await isLoggedIn())) {
-//  return;
-// }
+  console.log("BOI!")
     const commentFormatRow = document.getElementsByClassName(
-      GITHUB_PR_COMMENT_HEADER_EDITOR,
+      GITHUB_PR_COMMENT_EDITOR_SELECTOR,
     )[0];
 
     const addGeneratorButton = DescriptionGeneratorButton();

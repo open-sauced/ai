@@ -8,6 +8,7 @@ export interface DescriptionConfig {
     openai_api_key: string | null;
     length: number;
     temperature: number;
+    language: string;
     tone: DescriptionTone;
     source: DescriptionSource;
   };
