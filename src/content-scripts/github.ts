@@ -3,6 +3,7 @@ import {
   isGithubProfilePage,
   isGithubPullRequestPage,
   isGithubRepoPage,
+  isPullRequestCreatePage,
 } from "../utils/urlMatchers";
 import { isOpenSaucedUser } from "../utils/fetchOpenSaucedApiData";
 import injectViewOnOpenSauced from "../utils/dom-utils/viewOnOpenSauced";
@@ -11,16 +12,17 @@ import { prefersDarkMode } from "../utils/colorPreference";
 import injectAddPRToHighlightsButton from "../utils/dom-utils/addPRToHighlights";
 import injectRepoVotingButtons from "../utils/dom-utils/repoVotingButtons";
 import domUpdateWatch from "../utils/dom-utils/domUpdateWatcher";
-import injectAddHighlightGeneratorButton from "../utils/dom-utils/addHighlightGenerator";
+import injectDescriptionGeneratorButton from "../utils/dom-utils/addDescriptionGenerator";
 
 const processGithubPage = async () => {
   if (prefersDarkMode(document.cookie)) {
     document.documentElement.classList.add("dark");
   }
-
-  if (isGithubPullRequestPage(window.location.href)) {
+  if (isPullRequestCreatePage(window.location.href)) {
+    void injectDescriptionGeneratorButton();
+  }
+  else if (isGithubPullRequestPage(window.location.href)) {
     void injectAddPRToHighlightsButton();
-    void injectAddHighlightGeneratorButton();
   } else if (isGithubProfilePage(window.location.href)) {
     const username = getGithubUsername(window.location.href);
 

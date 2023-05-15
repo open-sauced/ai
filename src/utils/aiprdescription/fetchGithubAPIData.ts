@@ -4,32 +4,21 @@ interface Commit {
   };
 }
 
-export const getPRCommitMessages = async (
-  owner: string,
-  repoName: string,
-  pullNumber: number
-) => {
-  const response = await fetch(
-    `https://api.github.com/repos/${owner}/${repoName}/pulls/${pullNumber}/commits`
-  );
-  const data = await response.json();
-  const commitMessages = data.map((commit: Commit) => commit.commit.message);
-  return commitMessages;
-};
-
-export const getPRDiff = async (
-  owner: string,
-  repoName: string,
-  pullNumber: number
-) => {
-  const response = await fetch(
-    `https://api.github.com/repos/${owner}/${repoName}/pulls/${pullNumber}`,
+export const getPRDiff = async (url: string) => {
+  const response = await fetch(url,
     {
       headers: {
         Accept: "application/vnd.github.v3.diff",
       },
     }
   );
-  const data = await response.text();
-  return data;
+  const diff = await response.text();
+  return diff.replace(/.*/, "").substring(1);
 };
+
+export const getPRCommitMessages = async (url: string) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  const commitMessages = data.commits.map((commit: Commit) => commit.commit.message);
+  return commitMessages;
+}
