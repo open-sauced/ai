@@ -25,3 +25,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.SelectMenu-modal {
+  font-size: 12px;
+  color: var(--color-fg-default)!important;
+  line-height: 1.5!important;
+}
