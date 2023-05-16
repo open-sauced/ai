@@ -1,5 +1,6 @@
 import { cachedFetch } from "./cache";
-import { OPEN_SAUCED_USERS_ENDPOINT, OPEN_SAUCED_SESSION_ENDPOINT, OPEN_SAUCED_REPOS_ENDPOINT } from "../constants";
+import { OPEN_SAUCED_USERS_ENDPOINT, OPEN_SAUCED_SESSION_ENDPOINT, OPEN_SAUCED_REPOS_ENDPOINT, OPEN_SAUCED_USER_INSIGHTS_ENDPOINT } from "../constants";
+import { IInsight } from "../ts/InsightDto";
 
 export const isOpenSaucedUser = async (username: string) => {
   try {
@@ -100,12 +101,71 @@ export const repoExistsOnOpenSauced = async (ownerName: string, repoName: string
   return response.status === 200;
 };
 
+export const getRepoData = async (ownerName: string, repoName: string, forceRefresh: boolean = false) => cachedFetch(`${OPEN_SAUCED_REPOS_ENDPOINT}/${ownerName}/${repoName}`, {
+  expireInSeconds: 2 * 60 * 60,
+  forceRefresh,
+  headers: { Accept: "application/json" },
+}).then(async resp => {
+  if (!resp?.ok) {
+    console.log("error getting repo info");
+  }
+  return resp?.json();
+})
+  .then(json => json);
+
 export const voteOrUnvoteRepo = async (userToken: string, ownerName: string, repoName: string, method: "PUT" | "DELETE") => {
   const response = await fetch(
     `${OPEN_SAUCED_REPOS_ENDPOINT}/${ownerName}/${repoName}/vote`,
     {
       method,
       headers: { Authorization: `Bearer ${userToken}` },
+    },
+  );
+
+  return response.status === 200;
+};
+
+export const getUserInsightsData = async (userToken: string) => {
+  const response = await fetch(
+    `${OPEN_SAUCED_USER_INSIGHTS_ENDPOINT}`,
+    {
+      method: "GET",
+      headers: { Authorization: `Bearer ${userToken}` },
+    },
+  );
+
+  return response.json();
+};
+
+export const updateInsight = async (userToken: string, repoId: string, checked: boolean, repoFullName: string, insight: IInsight) => {
+  insight.repos = insight.repos.map((repo: any) => ({
+    id: repo.repo_id,
+    fullName: repo.full_name,
+  }));
+
+  const response = await fetch(
+    `${OPEN_SAUCED_USER_INSIGHTS_ENDPOINT}/${insight.id}`,
+    {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${userToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: insight.name,
+        is_public: insight.is_public,
+        repos: checked
+          ? [
+            ...insight.repos,
+            {
+              id: repoId,
+              fullName: `${repoFullName}`,
+            },
+          ]
+          : insight.repos.filter(
+            (repo: any) => repo.id !== repoId,
+          ),
+      }),
     },
   );
 
