@@ -13,6 +13,7 @@ import {
   DescriptionLanguage,
   setAIDescriptionConfig,
   getDefaultDescriptionConfig,
+  setDefaultDescriptionConfig,
 } from "../utils/aiprdescription/descriptionconfig";
 import { useRefs } from "../hooks/useRefs";
 import { configurationReducer } from "../utils/aiprdescription/configurationReducer";
@@ -42,9 +43,9 @@ const AIPRDescription = () => {
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const openai_api_key = refs.openai_api_key!.getAttribute("value");
+    const openai_api_key = refs.openai_api_key!.getAttribute("value")!;
     const length = parseInt(refs.length?.getAttribute("value")!);
-    const temperature = Number((Number(refs.temperature?.getAttribute("value")!) / 10).toFixed(1));
+    const temperature = Number(+refs.temperature?.getAttribute("value")!);
     const maxInputLength = parseInt(refs.maxInputLength?.getAttribute("value")!);
     const language = (refs.language as HTMLSelectElement).value as DescriptionLanguage;
     const source = (refs.source as HTMLSelectElement).value as DescriptionSource;
@@ -60,7 +61,7 @@ const AIPRDescription = () => {
   return (
 
     <>
-<Toaster />
+      <Toaster />
 
       <div className="grid grid-cols-1 divide-y divider-y-center-2 min-w-[320px]">
         <header className="flex justify-between">
@@ -88,6 +89,11 @@ const AIPRDescription = () => {
             onClick={() => {
               setFormDisabled(!formDisabled);
               dispatch({ type: "CLEAR", value: null });
+              if (formDisabled) toast.success("AI PR Description enabled!");
+              else {
+                toast.error("AI PR Description disabled!")
+                setDefaultDescriptionConfig();
+              };
             }}
           >
             <ImSwitch />
@@ -123,16 +129,18 @@ const AIPRDescription = () => {
                 type="password"
                 value={config.config.openai_api_key!}
                 onChange={e => dispatch({ type: "SET_OPENAI_API_KEY", value: e.currentTarget.value })}
+                pattern="sk-[a-zA-Z0-9]{40,55}"
+                placeholder="sk-xxxxxxxxxxxxxxxxx"
               />
 
               <div className="grid grid-cols-2 -mx-4 mb-4 text-gray-300 text-sm">
                 <div className="flex flex-col items-center justify-center">
                   <p>
-Description Length [
-<b>
-{config.config.length!}
-</b>
-]
+                    Description Length [
+                    <b>
+                      {config.config.length!}
+                    </b>
+                    ]
                   </p>
 
                   <input
@@ -150,11 +158,11 @@ Description Length [
 
                 <div className="flex flex-col items-center justify-center">
                   <p>
-Temparature [
-<b>
-{config.config.temperature! / 10}
-</b>
-]
+                    Temperature [
+                    <b>
+                      {config.config.temperature! / 10}
+                    </b>
+                    ]
                   </p>
 
                   <input
@@ -172,11 +180,11 @@ Temparature [
 
                 <div className="flex flex-col items-center justify-center">
                   <p>
-Max Input Length [
-<b>
-{config.config.maxInputLength!}
-</b>
-]
+                    Max Input Length [
+                    <b>
+                      {config.config.maxInputLength!}
+                    </b>
+                    ]
                   </p>
 
                   <input
@@ -204,13 +212,13 @@ Max Input Length [
                     onChange={e => dispatch({ type: "SET_LANGUAGE", value: e.target.value })}
                   >
                     {languages.map(language => (
-                        <option
-                          key={language}
-                          value={language}
-                        >
-                          {language.charAt(0).toUpperCase() + language.slice(1)}
-                        </option>
-                      ))}
+                      <option
+                        key={language}
+                        value={language}
+                      >
+                        {language.charAt(0).toUpperCase() + language.slice(1)}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
@@ -226,13 +234,13 @@ Max Input Length [
                     onChange={e => dispatch({ type: "SET_TONE", value: e.target.value })}
                   >
                     {tones.map(tone => (
-                        <option
-                          key={tone}
-                          value={tone}
-                        >
-                          {tone.charAt(0).toUpperCase() + tone.slice(1)}
-                        </option>
-                      ))}
+                      <option
+                        key={tone}
+                        value={tone}
+                      >
+                        {tone.charAt(0).toUpperCase() + tone.slice(1)}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
@@ -248,13 +256,13 @@ Max Input Length [
                     onChange={e => dispatch({ type: "SET_SOURCE", value: e.target.value })}
                   >
                     {sources.map(source => (
-                        <option
-                          key={source}
-                          value={source}
-                        >
-                          {source.charAt(0).toUpperCase() + source.slice(1)}
-                        </option>
-                      ))}
+                      <option
+                        key={source}
+                        value={source}
+                      >
+                        {source.charAt(0).toUpperCase() + source.slice(1)}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>

@@ -17,13 +17,13 @@ export type DescriptionLanguage =
 export interface DescriptionConfig {
   enabled: boolean;
   config: {
-    openai_api_key: string | null;
-    length: number | null;
-    maxInputLength: number | null;
-    temperature: number | null;
-    language: DescriptionLanguage | null;
-    tone: DescriptionTone | null;
-    source: DescriptionSource | null;
+    openai_api_key: string;
+    length: number;
+    maxInputLength: number;
+    temperature: number;
+    language: DescriptionLanguage;
+    tone: DescriptionTone;
+    source: DescriptionSource;
   };
   [key: string]: any;
 }
@@ -48,12 +48,13 @@ export const getDefaultDescriptionConfig = (): DescriptionConfig => ({
       openai_api_key: "",
       length: 500,
       maxInputLength: 3000,
-      temperature: 0.7,
+      temperature: 7,
       language: "english",
       tone: "informative",
       source: "diff",
     },
   });
+  
 export const setDefaultDescriptionConfig = () => {
   const defaultConfig = getDefaultDescriptionConfig();
 
