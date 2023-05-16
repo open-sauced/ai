@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.1.0-beta.2](https://github.com/open-sauced/browser-extensions/compare/v1.1.0-beta.1...v1.1.0-beta.2) (2023-05-16)
+
+
+### 🍕 Features
+
+* add/remove repos to/from insights. ([#77](https://github.com/open-sauced/browser-extensions/issues/77)) ([8e4a6ed](https://github.com/open-sauced/browser-extensions/commit/8e4a6ed61efd8c52812d42e216b05baacd006dea))
+
 ## [1.1.0-beta.1](https://github.com/open-sauced/browser-extensions/compare/v1.0.0...v1.1.0-beta.1) (2023-05-14)
 
 
