@@ -17,7 +17,7 @@ const createChatCompletion = async (
     json: CreateChatCompletionRequest,
 ): Promise<ReadableStream<Uint8Array>> => {
     const stream = await OpenAI("chat", json, {
-        apiKey: apiKey,
+        apiKey,
         mode: "tokens"
     });
     return stream;

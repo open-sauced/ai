@@ -13,17 +13,17 @@ export type DescriptionLanguage =
   | "russian"
   | "chinese"
   | "korean"
-  
+
 export interface DescriptionConfig {
   enabled: boolean;
   config: {
     openai_api_key: string | null;
-    length: number;
-    maxInputLength: number;
-    temperature: number;
-    language: DescriptionLanguage;
-    tone: DescriptionTone;
-    source: DescriptionSource;
+    length: number | null;
+    maxInputLength: number | null;
+    temperature: number | null;
+    language: DescriptionLanguage | null;
+    tone: DescriptionTone | null;
+    source: DescriptionSource | null;
   };
   [key: string]: any;
 }
@@ -38,11 +38,11 @@ export const getAIDescriptionConfig = async (): Promise<
 };
 
 export const setAIDescriptionConfig = async (data: DescriptionConfig): Promise<void> => {
-  await chrome.storage.local.set({AI_PR_DESCRIPTION_CONFIG_KEY: data});
+  await chrome.storage.local.set({ [AI_PR_DESCRIPTION_CONFIG_KEY]: data });
 }
 
-export const setDefaultDescriptionConfig = async (): Promise<void> => {
-  const defaultConfig: DescriptionConfig = {
+export const getDefaultDescriptionConfig = (): DescriptionConfig => {
+  return {
     enabled: false,
     config: {
       openai_api_key: null,
@@ -54,5 +54,8 @@ export const setDefaultDescriptionConfig = async (): Promise<void> => {
       source: "diff"
     }
   }
+};
+export const setDefaultDescriptionConfig = async (): Promise<void> => {
+  const defaultConfig = getDefaultDescriptionConfig();
   void setAIDescriptionConfig(defaultConfig);
 }
