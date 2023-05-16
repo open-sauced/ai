@@ -6,7 +6,7 @@ const generatePrompt = (
     maxLength: number,
     tone: DescriptionTone
 ) => [
-    `Generate an apt, concise github PR description written in present tense and ${tone} tone for the given code diff/commit-messages with the specifications mentioned below`,
+    `Generate an apt github PR description written in present tense and ${tone} tone for the given code diff/commit-messages with the specifications mentioned below`,
     `Description language: ${locale}`,
     `Description must be a maximum of ${maxLength} characters.`,
     'Exclude anything unnecessary such as translation. Your entire response will be passed directly into a pull request description',

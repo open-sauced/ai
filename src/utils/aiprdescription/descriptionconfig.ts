@@ -2,13 +2,26 @@ import { AI_PR_DESCRIPTION_CONFIG_KEY } from "../../constants";
 
 export type DescriptionTone = "exciting" | "persuasive" | "informative" | "humorous" | "formal";
 export type DescriptionSource = "diff" | "commitMessage" | "both";
+export type DescriptionLanguage =
+  | "english"
+  | "spanish"
+  | "french"
+  | "german"
+  | "italian"
+  | "portuguese"
+  | "dutch"
+  | "russian"
+  | "chinese"
+  | "korean"
+  
 export interface DescriptionConfig {
   enabled: boolean;
   config: {
     openai_api_key: string | null;
     length: number;
+    maxInputLength: number;
     temperature: number;
-    language: string;
+    language: DescriptionLanguage;
     tone: DescriptionTone;
     source: DescriptionSource;
   };
@@ -19,7 +32,11 @@ export const getAIDescriptionConfig = async (): Promise<
   DescriptionConfig | undefined
 > => {
   const response: DescriptionConfig | undefined = (
-    await chrome.storage.sync.get(AI_PR_DESCRIPTION_CONFIG_KEY)
+    await chrome.storage.local.get(AI_PR_DESCRIPTION_CONFIG_KEY)
   )[AI_PR_DESCRIPTION_CONFIG_KEY];
   return response;
 };
+
+export const setAIDescriptionConfig = async (data: DescriptionConfig): Promise<void> => {
+  await chrome.storage.local.set({AI_PR_DESCRIPTION_CONFIG_KEY: data});
+}

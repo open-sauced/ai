@@ -16,10 +16,10 @@ export const DescriptionGeneratorButton = () => {
       const logo = document.getElementById("ai-description-button-logo");
       if(!logo) return alert("Logo not found!");
       const url = getPullRequestAPIURL(window.location.href);
-      document.getElementById("ai-description-button-logo")?.classList.toggle("animate-pulse");
+      logo.classList.toggle("animate-pulse");
       const [diff, commitMessages] = await Promise.all([getPRDiff(url), getPRCommitMessages(url)]);
       const descriptionStream = await generateDescription("", "gpt-3.5-turbo", "english", 300, 0.7, "informative", diff);
-      document.getElementById("ai-description-button-logo")?.classList.toggle("animate-pulse");
+      logo.classList.toggle("animate-pulse");
       if(!descriptionStream) return alert("No description was generated!");
       const textArea = document.getElementsByName(GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR)[0] as HTMLTextAreaElement;
       if(!textArea) return alert("Comment box not found!");
