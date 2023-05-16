@@ -1,7 +1,7 @@
 import { DescriptionGeneratorButton } from "../../content-scripts/components/GenerateAIDescription/DescriptionGeneratorButton";
 import { GITHUB_PR_COMMENT_EDITOR_SELECTOR } from "../../constants";
 
-const injectDescriptionGeneratorButton = async () => {
+const injectDescriptionGeneratorButton = () => {
     const commentFormatRow = document.getElementsByClassName(
       GITHUB_PR_COMMENT_EDITOR_SELECTOR,
     )[0];

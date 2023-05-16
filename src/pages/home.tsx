@@ -13,7 +13,11 @@ const Home = () => {
   return (
     <div className="grid grid-cols-1 divide-y divide-white/40 divider-y-center-2 min-w-[320px] text-white">
       <header className="flex justify-between">
-        <img alt="OpenSauced logo" className="w-[45%]" src={OpenSaucedLogo} />
+        <img
+          alt="OpenSauced logo"
+          className="w-[45%]"
+          src={OpenSaucedLogo}
+        />
 
         {user && (
           <button
@@ -56,6 +60,7 @@ const Home = () => {
             <HiArrowTopRightOnSquare />
             Go to Dashboard
           </a>
+
           <button
             className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
             onClick={() => {
@@ -65,6 +70,7 @@ const Home = () => {
             <HiPencil />
             AI PR Description
           </button>
+
           {currentTabIsOpensaucedUser && (
             <button
               className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
@@ -73,7 +79,11 @@ const Home = () => {
               }}
             >
               <HiUserCircle />
-              View {checkedUser}
+              View
+
+{" "}
+
+{checkedUser}
               &apos;s profile
             </button>
           )}

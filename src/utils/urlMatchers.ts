@@ -43,9 +43,9 @@ export const isPullRequestCreatePage = (url: string) => {
   const githubPullRequestPattern = /github\.com\/[\w.-]+\/[^/]+\/compare\/\w+/;
 
   return githubPullRequestPattern.test(url);
-}
+};
 
 export const getPullRequestAPIURL = (url: string) => {
-  url = url.replace(/github\.com/, 'api.github.com/repos');
+  url = url.replace(/github\.com/, "api.github.com/repos");
   return url;
-}
+};

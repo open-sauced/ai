@@ -2,6 +2,7 @@ import { DescriptionConfig, getDefaultDescriptionConfig } from "./descriptioncon
 
 export const configurationReducer = (state: DescriptionConfig, action: { type: string, value: any }) => {
     let newState: DescriptionConfig = { ...state };
+
     switch (action.type) {
         case "SET":
             newState = action.value;

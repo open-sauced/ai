@@ -19,9 +19,8 @@ const processGithubPage = async () => {
     document.documentElement.classList.add("dark");
   }
   if (isPullRequestCreatePage(window.location.href)) {
-    void injectDescriptionGeneratorButton();
-  }
-  else if (isGithubPullRequestPage(window.location.href)) {
+    injectDescriptionGeneratorButton();
+  } else if (isGithubPullRequestPage(window.location.href)) {
     void injectAddPRToHighlightsButton();
   } else if (isGithubProfilePage(window.location.href)) {
     const username = getGithubUsername(window.location.href);

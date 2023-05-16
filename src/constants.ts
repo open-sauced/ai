@@ -4,6 +4,7 @@ export const SUPABASE_AUTH_COOKIE_NAME = "supabase-auth-token";
 export const OPEN_SAUCED_AUTH_TOKEN_KEY = "os-access-token";
 export const OPEN_SAUCED_INSIGHTS_DOMAIN = "insights.opensauced.pizza";
 export const AI_PR_DESCRIPTION_CONFIG_KEY = "ai-pr-description-config";
+
 // API endpoints
 export const OPEN_SAUCED_USERS_ENDPOINT = "https://api.opensauced.pizza/v1/users";
 export const OPEN_SAUCED_REPOS_ENDPOINT = "https://api.opensauced.pizza/v1/repos";
@@ -17,4 +18,4 @@ export const GITHUB_LOGGED_IN_USER_USERNAME_SELECTOR = "meta[name=\"user-login\"
 export const GITHUB_PR_COMMENT_HEADER_SELECTOR = "timeline-comment-header clearfix d-flex";
 export const GITHUB_PR_COMMENT_EDITOR_SELECTOR = "flex-nowrap d-none d-md-inline-block mr-md-0 mr-3";
 export const GITHUB_REPO_ACTIONS_SELECTOR = ".pagehead-actions";
-export const GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR = "pull_request[body]"
+export const GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR = "pull_request[body]";

@@ -14,7 +14,7 @@ const routes = {
   home: <Home />,
   loading: <Loading />,
   profile: <Profile />,
-  aiprdescription: <AIPRDescription />
+  aiprdescription: <AIPRDescription />,
 };
 
 type RouteKeys = keyof typeof routes;
