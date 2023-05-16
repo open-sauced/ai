@@ -20,8 +20,10 @@ export const DescriptionGeneratorButton = () => {
       }
       const url = getPullRequestAPIURL(window.location.href);
       const descriptionConfig = await getAIDescriptionConfig();
-      if (!descriptionConfig) return;
+      if (!descriptionConfig ) return;
+      if (!descriptionConfig.enabled) return alert("AI PR description is disabled!");
       logo.classList.toggle("animate-pulse");
+      //TODO: Conditionally fetch diff and commit messages based on config
       const [diff, commitMessages] = await Promise.all([getPRDiff(url), getPRCommitMessages(url)]);
       const descriptionStream = await generateDescription(descriptionConfig.config.openai_api_key!,
         "gpt-3.5-turbo",
