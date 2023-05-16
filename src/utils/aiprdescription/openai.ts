@@ -1,5 +1,5 @@
 import type { DescriptionTone } from './descriptionconfig';
-import { Configuration, OpenAIApi, CreateChatCompletionRequest, CreateChatCompletionResponse } from 'openai';
+import { OpenAI, CreateChatCompletionRequest } from 'openai-streams';
 
 const generatePrompt = (
     locale: string,
@@ -15,26 +15,12 @@ const generatePrompt = (
 const createChatCompletion = async (
     apiKey: string,
     json: CreateChatCompletionRequest,
-): Promise<CreateChatCompletionResponse | undefined> => {
-    const configuration = new Configuration({ apiKey });
-    const openai = new OpenAIApi(configuration);
-    const response = await openai.createChatCompletion(json);
-
-    if (
-        !response.status
-        || response.status < 200
-        || response.status > 299
-    ) {
-        let errorMessage = `OpenAI API Error: ${response.status} - ${response.statusText}`;
-
-        if (response.status === 500) {
-            errorMessage += '\n\nCheck the API status: https://status.openai.com';
-        }
-
-        alert(errorMessage);
-    }
-
-    else return response.data;
+): Promise<ReadableStream<Uint8Array>> => {
+    const stream = await OpenAI("chat", json, {
+        apiKey: apiKey,
+        mode: "tokens"
+    });
+    return stream;
 };
 
 export const generateDescription = async (
@@ -71,9 +57,7 @@ export const generateDescription = async (
             }
         );
 
-        if (completion) {
-            return completion.choices[0].message?.content;
-        }
+        return completion;
     } catch (error: any) {
         alert(error);
     }
