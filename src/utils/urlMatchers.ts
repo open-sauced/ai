@@ -48,9 +48,15 @@ export const isPullRequestCreatePage = (url: string) => {
 };
 
 export const getPullRequestAPIURL = (url: string) => {
-  const baseBranch = document.getElementsByClassName(GITHUB_PR_BASE_BRANCH_SELECTOR)[1].textContent;
-  url = url.replace(/github\.com/, "api.github.com/repos");
-  if(url.match(/compare\/.*\.\.\./)) return url;
-  url = url.replace(/compare\//, `compare/${baseBranch}...`);
-  return url;
-};
+  let apiURL = url.replace(/github\.com/, "api.github.com/repos");
+  
+  if (isGithubPullRequestPage(url)) {
+    return apiURL.replace("pull", "pulls");
+  }
+  else {
+    if (url.match(/compare\/.*\.\.\./)) return apiURL;
+    const baseBranch = document.getElementsByClassName(GITHUB_PR_BASE_BRANCH_SELECTOR)[1].textContent;
+    return apiURL.replace(/compare\//, `compare/${baseBranch}...`);
+  };
+
+}

@@ -21,6 +21,7 @@ const processGithubPage = async () => {
   if (isPullRequestCreatePage(window.location.href)) {
     injectDescriptionGeneratorButton();
   } else if (isGithubPullRequestPage(window.location.href)) {
+    injectDescriptionGeneratorButton();
     void injectAddPRToHighlightsButton();
   } else if (isGithubProfilePage(window.location.href)) {
     const username = getGithubUsername(window.location.href);
