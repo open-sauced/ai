@@ -19,7 +19,7 @@
 
 ## Documentation
 
-The documentation for the project can be found [here](https://docs.opensauced.pizza/chrome-extension/introduction-to-the-chrome-extension/).
+The documentation for the project can be found [here](https://docs.opensauced.pizza/chrome-extension/introduction-to-the-chrome-extension/). boogie man
 
 ## Running the project locally
 
