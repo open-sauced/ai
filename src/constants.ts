@@ -4,6 +4,7 @@ export const SUPABASE_AUTH_COOKIE_NAME = "supabase-auth-token";
 export const OPEN_SAUCED_AUTH_TOKEN_KEY = "os-access-token";
 export const OPEN_SAUCED_INSIGHTS_DOMAIN = "insights.opensauced.pizza";
 export const AI_PR_DESCRIPTION_CONFIG_KEY = "ai-pr-description-config";
+export const OPEN_AI_COMPLETION_MODEL_NAME = "gpt-3.5-turbo";
 
 // API endpoints
 export const OPEN_SAUCED_USERS_ENDPOINT = "https://api.opensauced.pizza/v1/users";

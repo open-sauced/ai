@@ -3,7 +3,7 @@ import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
 import { getPullRequestAPIURL } from "../../../utils/urlMatchers";
 import { getDescriptionContext, getDescriptionContextLength } from "../../../utils/fetchGithubAPIData";
 import { generateDescription } from "../../../utils/aiprdescription/openai";
-import { GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR, SUPABASE_LOGIN_URL } from "../../../constants";
+import { GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR, OPEN_AI_COMPLETION_MODEL_NAME, SUPABASE_LOGIN_URL } from "../../../constants";
 import { insertAtCursorFromStream } from "../../../utils/aiprdescription/cursorPositionInsert";
 import { getAIDescriptionConfig } from "../../../utils/aiprdescription/descriptionconfig";
 import { isLoggedIn } from "../../../utils/checkAuthentication";
@@ -39,7 +39,7 @@ const handleSubmit = async () => {
     const contextLength = getDescriptionContextLength([diff, commitMessages]);
     if (contextLength > descriptionConfig.config.maxInputLength) return alert(`Max context length exceeded. Try setting the description source to commit-messages.`);
     const descriptionStream = await generateDescription(descriptionConfig.config.openai_api_key!,
-      "gpt-3.5-turbo",
+      OPEN_AI_COMPLETION_MODEL_NAME,
       descriptionConfig.config.language,
       descriptionConfig.config.length,
       descriptionConfig.config.temperature / 10,

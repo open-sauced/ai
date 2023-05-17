@@ -52,7 +52,6 @@ export const generateDescription = async (
                     },
                 ],
                 temperature,
-                stream: false,
                 n: 1,
             },
         );
