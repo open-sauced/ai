@@ -22,30 +22,34 @@ export const DescriptionGeneratorButton = () => {
 
 
 const handleSubmit = async () => {
-  const logo = document.getElementById("ai-description-button-logo");
-  if (!logo) {
-    return alert("Logo not found!");
-  }
-  const url = getPullRequestAPIURL(window.location.href);
-  const descriptionConfig = await getAIDescriptionConfig();
-  if (!descriptionConfig ) return;
-  if (!descriptionConfig.enabled) return alert("AI PR description is disabled!");
-  logo.classList.toggle("animate-spin");
-  //TODO: Conditionally fetch diff and commit messages based on config
-  const [diff, commitMessages] = await Promise.all([getPRDiff(url), getPRCommitMessages(url)]);
-  const descriptionStream = await generateDescription(descriptionConfig.config.openai_api_key!,
-    "gpt-3.5-turbo",
-    descriptionConfig.config.language,
-    descriptionConfig.config.length,
-    descriptionConfig.config.temperature / 10,
-    descriptionConfig.config.tone, diff, commitMessages
-  );
+  try {
+    const logo = document.getElementById("ai-description-button-logo");
+    if (!logo) {
+      return alert("Logo not found!");
+    }
+    const url = getPullRequestAPIURL(window.location.href);
+    const descriptionConfig = await getAIDescriptionConfig();
+    if (!descriptionConfig) return;
+    if (!descriptionConfig.enabled) return alert("AI PR description is disabled!");
+    logo.classList.toggle("animate-spin");
+    //TODO: Conditionally fetch diff and commit messages based on config
+    const [diff, commitMessages] = await Promise.all([getPRDiff(url), getPRCommitMessages(url)]);
+    const descriptionStream = await generateDescription(descriptionConfig.config.openai_api_key!,
+      "gpt-3.5-turbo",
+      descriptionConfig.config.language,
+      descriptionConfig.config.length,
+      descriptionConfig.config.temperature / 10,
+      descriptionConfig.config.tone, diff, commitMessages
+    );
 
-  logo.classList.toggle("animate-spin");
-  if (!descriptionStream) {
-    return alert("No description was generated!");
-  }
-  const textArea = document.getElementsByName(GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR)[0] as HTMLTextAreaElement;
+    logo.classList.toggle("animate-spin");
+    if (!descriptionStream) {
+      return console.error("No description was generated!");
+    }
+    const textArea = document.getElementsByName(GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR)[0] as HTMLTextAreaElement;
 
-  void insertAtCursorFromStream(textArea, descriptionStream);
+    void insertAtCursorFromStream(textArea, descriptionStream);
+  } catch (error: unknown) {
+    if(error instanceof Error) console.error("Description generation error:", error.message);
+  }
 };

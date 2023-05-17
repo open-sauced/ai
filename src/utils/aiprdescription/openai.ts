@@ -58,7 +58,7 @@ export const generateDescription = async (
         );
 
         return completion;
-    } catch (error: any) {
-        console.log("OpenAI error: ", error.message);
+    } catch (error: unknown) {
+        if(error instanceof Error) console.error("OpenAI error: ", error.message);
     }
 };
