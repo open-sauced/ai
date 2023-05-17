@@ -107,7 +107,7 @@ const AIPRDescription = () => {
           >
             <fieldset disabled={formDisabled}>
               <h1 className="text-2xl text-white font-bold my-2">
-                AI PR Description
+                OpenSauced AI
               </h1>
 
               <p className="mb-2 text-gray-300 text-sm">
