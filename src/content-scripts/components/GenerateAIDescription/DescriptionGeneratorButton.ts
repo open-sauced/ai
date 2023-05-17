@@ -1,11 +1,12 @@
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
 import { getPullRequestAPIURL } from "../../../utils/urlMatchers";
-import { getDescriptionContext } from "../../../utils/fetchGithubAPIData";
+import { getDescriptionContext, getDescriptionContextLength } from "../../../utils/fetchGithubAPIData";
 import { generateDescription } from "../../../utils/aiprdescription/openai";
-import { GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR } from "../../../constants";
+import { GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR, SUPABASE_LOGIN_URL } from "../../../constants";
 import { insertAtCursorFromStream } from "../../../utils/aiprdescription/cursorPositionInsert";
 import { getAIDescriptionConfig } from "../../../utils/aiprdescription/descriptionconfig";
+import { isLoggedIn } from "../../../utils/checkAuthentication";
 
 export const DescriptionGeneratorButton = () => {
   const descriptionGeneratorButton = createHtmlElement("a", {
@@ -22,6 +23,9 @@ export const DescriptionGeneratorButton = () => {
 
 const handleSubmit = async () => {
   try {
+    if (!(await isLoggedIn())) {
+      return window.open(SUPABASE_LOGIN_URL, "_blank");
+    }
     const logo = document.getElementById("ai-description-button-logo");
     if (!logo) {
       return;
@@ -32,13 +36,15 @@ const handleSubmit = async () => {
     if (!descriptionConfig.enabled) return alert("AI PR description is disabled!");
     logo.classList.toggle("animate-spin");
     const [diff, commitMessages] = await getDescriptionContext(url, descriptionConfig.config.source);
+    const contextLength = getDescriptionContextLength([diff, commitMessages]);
+    if (contextLength > descriptionConfig.config.maxInputLength) return alert(`Max context length exceeded. Try setting the description source to commit-messages.`);
     const descriptionStream = await generateDescription(descriptionConfig.config.openai_api_key!,
       "gpt-3.5-turbo",
       descriptionConfig.config.language,
       descriptionConfig.config.length,
       descriptionConfig.config.temperature / 10,
-      descriptionConfig.config.tone, 
-      diff, 
+      descriptionConfig.config.tone,
+      diff,
       commitMessages
     );
     logo.classList.toggle("animate-spin");

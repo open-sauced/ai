@@ -1,5 +1,8 @@
 import { DescriptionSource } from "./aiprdescription/descriptionconfig";
 
+type DescriptionContextPromise = Promise<[string | undefined, string[] | undefined]>;
+type DescriptionContext = Awaited<DescriptionContextPromise>;
+
 interface Commit {
   commit: {
     message: string;
@@ -24,7 +27,7 @@ export const getPRCommitMessages = async (url: string) => {
   return commitMessages;
 };
 
-export const getDescriptionContext = async (url: string, source: DescriptionSource): Promise<[string | undefined, string[] | undefined]> => {
+export const getDescriptionContext = async (url: string, source: DescriptionSource): DescriptionContextPromise => {
   let promises: [Promise<string | undefined>, Promise<string[] | undefined>] = [Promise.resolve(undefined), Promise.resolve(undefined)];
   
   if (source === "diff") promises = [getPRDiff(url), Promise.resolve(undefined)];
@@ -34,3 +37,10 @@ export const getDescriptionContext = async (url: string, source: DescriptionSour
 
   return response;
 };
+
+export const getDescriptionContextLength = ([diff, commitMessages]: DescriptionContext): number => {
+  let length: number = 0;
+  if (diff) length += diff.length;
+  if (commitMessages) length += commitMessages.join("").length;
+  return length;
+}

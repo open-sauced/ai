@@ -180,7 +180,7 @@ const AIPRDescription = () => {
 
                 <div className="flex flex-col items-center justify-center">
                   <p>
-                    Max Input Length [
+                    Max Context Length [
                     <b>
                       {config.config.maxInputLength!}
                     </b>
@@ -191,8 +191,8 @@ const AIPRDescription = () => {
                     ref={setRefFromKey("maxInputLength")}
                     className="text-black p-1.5 rounded-md w-half accent-orange"
                     id="inputlength"
-                    max="4000"
-                    min="0"
+                    max="3900"
+                    min="200"
                     name="inputlength"
                     type="range"
                     value={config.config.maxInputLength!}

@@ -47,7 +47,7 @@ export const getDefaultDescriptionConfig = (): DescriptionConfig => ({
     config: {
       openai_api_key: "",
       length: 500,
-      maxInputLength: 3000,
+      maxInputLength: 3900,
       temperature: 7,
       language: "english",
       tone: "informative",
