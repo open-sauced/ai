@@ -1,3 +1,5 @@
+import { GITHUB_PR_BASE_BRANCH_SELECTOR } from "../constants";
+
 export const getGithubUsername = (url: string) => {
   const match = url.match(/github\.com\/([\w.-]+)/);
 
@@ -46,6 +48,9 @@ export const isPullRequestCreatePage = (url: string) => {
 };
 
 export const getPullRequestAPIURL = (url: string) => {
+  const baseBranch = document.getElementsByClassName(GITHUB_PR_BASE_BRANCH_SELECTOR)[1].textContent;
   url = url.replace(/github\.com/, "api.github.com/repos");
+  if(url.match(/compare\/.*\.\.\./)) return url;
+  url = url.replace(/compare\//, `compare/${baseBranch}...`);
   return url;
 };

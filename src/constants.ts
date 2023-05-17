@@ -19,3 +19,4 @@ export const GITHUB_PR_COMMENT_HEADER_SELECTOR = "timeline-comment-header clearf
 export const GITHUB_PR_COMMENT_EDITOR_SELECTOR = "flex-nowrap d-none d-md-inline-block mr-md-0 mr-3";
 export const GITHUB_REPO_ACTIONS_SELECTOR = ".pagehead-actions";
 export const GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR = "pull_request[body]";
+export const GITHUB_PR_BASE_BRANCH_SELECTOR = "css-truncate css-truncate-target";

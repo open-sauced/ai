@@ -52,7 +52,6 @@ export const generateDescription = async (
                     },
                 ],
                 temperature,
-                max_tokens: 600,
                 stream: false,
                 n: 1,
             },
@@ -60,6 +59,6 @@ export const generateDescription = async (
 
         return completion;
     } catch (error: any) {
-        alert(error);
+        console.log("OpenAI error: ", error.message);
     }
 };
