@@ -1,5 +1,5 @@
 import { cachedFetch } from "./cache";
-import { OPEN_SAUCED_USERS_ENDPOINT, OPEN_SAUCED_SESSION_ENDPOINT, OPEN_SAUCED_REPOS_ENDPOINT, OPEN_SAUCED_USER_INSIGHTS_ENDPOINT } from "../constants";
+import { OPEN_SAUCED_USERS_ENDPOINT, OPEN_SAUCED_SESSION_ENDPOINT, OPEN_SAUCED_REPOS_ENDPOINT, OPEN_SAUCED_USER_INSIGHTS_ENDPOINT, OPEN_SAUCED_HIGHLIGHTS_ENDPOINT } from "../constants";
 import { IInsight } from "../ts/InsightDto";
 
 export const isOpenSaucedUser = async (username: string) => {
@@ -170,4 +170,16 @@ export const updateInsight = async (userToken: string, repoId: string, checked: 
   );
 
   return response.status === 200;
+};
+
+export const getHighlights = async () => {
+ const response = await fetch(
+    `${OPEN_SAUCED_HIGHLIGHTS_ENDPOINT}`,
+    
+    {
+      method: "GET",
+    },
+  );
+
+  return response.json();
 };

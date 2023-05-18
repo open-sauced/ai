@@ -1,14 +1,26 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { HiArrowTopRightOnSquare, HiUserCircle } from "react-icons/hi2";
 import { RouteContext } from "../App";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { useAuth } from "../hooks/useAuth";
 import { useOpensaucedUserCheck } from "../hooks/useOpensaucedUserCheck";
+import { getHighlights } from "../utils/fetchOpenSaucedApiData";
 
 const Home = () => {
+const [highlight, setHighlight] = useState(null);
+
+  useEffect(() => {
+    const fetchHighlights = async () => {
+      const userHighlightsData = await getHighlights();
+      const highlights = userHighlightsData.data[0];
+      setHighlight(highlights);
+    };
+    fetchHighlights()
+  }, []);
   const { setCurrentPage } = useContext(RouteContext);
   const { user } = useAuth();
   const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
+
 
   return (
     <div className="grid grid-cols-1 divide-y divide-white/40 divider-y-center-2 min-w-[320px] text-white">
@@ -37,6 +49,17 @@ const Home = () => {
       </header>
 
       <main className="main-content">
+        <h3 className="text font-medium text-base leading-10">Latest Highlight:</h3>
+
+        <div className="border border-white/40 rounded-sm p-3 mt-2">
+        <h3 className="text-base font-medium">
+        {highlight?.title}
+        </h3>
+
+        <p>
+          {highlight?.highlight}
+        </p>
+        </div>
         <h3 className="text font-medium text-base leading-10">Tools:</h3>
 
         <div className="tools flex flex-col gap-2">
