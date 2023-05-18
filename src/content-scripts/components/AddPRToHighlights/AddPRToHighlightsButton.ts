@@ -16,20 +16,26 @@ export const AddPRToHighlightsButton = () => {
   </details-menu>`,
     onclick: () => {
       const menu = document.getElementById("details-menu-os");
-      if (!menu) return;
+
+      if (!menu) {
+ return;
+}
       menu.classList.toggle("hidden");
-    }
+    },
   });
 
-  addPRToHighlightsButton.addEventListener("click", (e) => {
+  addPRToHighlightsButton.addEventListener("click", e => {
     e.stopPropagation();
   });
 
   document.addEventListener("click", () => {
     const menu = document.getElementById("details-menu-os");
-    if (!menu) return;
+
+    if (!menu) {
+ return;
+}
     menu.classList.add("hidden");
   });
-  
+
   return addPRToHighlightsButton;
 };

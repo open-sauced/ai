@@ -20,7 +20,7 @@ const processGithubPage = async () => {
     document.documentElement.classList.add("dark");
   }
   if (isPullRequestCreatePage(window.location.href)) {
-    injectDescriptionGeneratorButton();
+    void injectDescriptionGeneratorButton();
   } else if (isGithubPullRequestPage(window.location.href)) {
     prEditWatch(injectDescriptionGeneratorButton);
     void injectAddPRToHighlightsButton();

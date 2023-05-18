@@ -27,25 +27,37 @@ const handleSubmit = async () => {
       return window.open(SUPABASE_LOGIN_URL, "_blank");
     }
     const logo = document.getElementById("ai-description-button-logo");
+
     if (!logo) {
       return;
     }
     const url = getPullRequestAPIURL(window.location.href);
     const descriptionConfig = await getAIDescriptionConfig();
-    if (!descriptionConfig) return;
-    if (!descriptionConfig.enabled) return alert("AI PR description is disabled!");
+
+    if (!descriptionConfig) {
+ return;
+}
+    if (!descriptionConfig.enabled) {
+ return alert("AI PR description is disabled!");
+}
     logo.classList.toggle("animate-spin");
     const [diff, commitMessages] = await getDescriptionContext(url, descriptionConfig.config.source);
-    if (!isContextWithinBounds([diff, commitMessages] ,descriptionConfig.config.maxInputLength)) return alert(`Max input length exceeded. Try setting the description source to commit-messages.`);
-    const descriptionStream = await generateDescription(descriptionConfig.config.openai_api_key!,
+
+    if (!isContextWithinBounds([diff, commitMessages], descriptionConfig.config.maxInputLength)) {
+      logo.classList.toggle("animate-spin");
+      return alert(`Max input length exceeded. Try setting the description source to commit-messages.`);
+    }
+    const descriptionStream = await generateDescription(
+descriptionConfig.config.openai_api_key,
       OPEN_AI_COMPLETION_MODEL_NAME,
       descriptionConfig.config.language,
       descriptionConfig.config.length,
       descriptionConfig.config.temperature / 10,
       descriptionConfig.config.tone,
       diff,
-      commitMessages
+      commitMessages,
     );
+
     logo.classList.toggle("animate-spin");
     if (!descriptionStream) {
       return console.error("No description was generated!");
@@ -54,6 +66,8 @@ const handleSubmit = async () => {
 
     void insertAtCursorFromStream(textArea, descriptionStream);
   } catch (error: unknown) {
-    if (error instanceof Error) console.error("Description generation error:", error.message);
+    if (error instanceof Error) {
+ console.error("Description generation error:", error.message);
+}
   }
 };

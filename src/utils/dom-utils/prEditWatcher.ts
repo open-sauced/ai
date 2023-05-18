@@ -7,8 +7,8 @@ const prEditWatch = (callback: () => void, delayInMs = 0) => {
             }
         }
     });
-    observer.observe(document.body, { attributes: true, subtree: true });
 
+    observer.observe(document.body, { attributes: true, subtree: true });
 };
 
 export default prEditWatch;

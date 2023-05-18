@@ -45,7 +45,7 @@ const AIPRDescription = () => {
     e.preventDefault();
     const openai_api_key = refs.openai_api_key!.getAttribute("value")!;
     const length = parseInt(refs.length?.getAttribute("value")!);
-    const temperature = Number(+refs.temperature?.getAttribute("value")!);
+    const temperature = Number(Number(refs.temperature?.getAttribute("value")!));
     const maxInputLength = parseInt(refs.maxInputLength?.getAttribute("value")!);
     const language = (refs.language as HTMLSelectElement).value as DescriptionLanguage;
     const source = (refs.source as HTMLSelectElement).value as DescriptionSource;
@@ -89,11 +89,12 @@ const AIPRDescription = () => {
             onClick={() => {
               setFormDisabled(!formDisabled);
               dispatch({ type: "CLEAR", value: null });
-              if (formDisabled) toast.success("AI PR Description enabled!");
-              else {
-                toast.error("AI PR Description disabled!")
+              if (formDisabled) {
+ toast.success("AI PR Description enabled!");
+} else {
+                toast.error("AI PR Description disabled!");
                 setDefaultDescriptionConfig();
-              };
+              }
             }}
           >
             <ImSwitch />
@@ -126,11 +127,11 @@ const AIPRDescription = () => {
               <input
                 ref={setRefFromKey("openai_api_key")}
                 className="p-1.5 rounded-md mb-2 w-full text-black"
-                type="password"
-                value={config.config.openai_api_key!}
-                onChange={e => dispatch({ type: "SET_OPENAI_API_KEY", value: e.currentTarget.value })}
                 pattern="sk-[a-zA-Z0-9]{40,55}"
                 placeholder="sk-xxxxxxxxxxxxxxxxx"
+                type="password"
+                value={config.config.openai_api_key}
+                onChange={e => dispatch({ type: "SET_OPENAI_API_KEY", value: e.currentTarget.value })}
               />
 
               <div className="grid grid-cols-2 -mx-4 mb-4 text-gray-300 text-sm">
@@ -138,7 +139,7 @@ const AIPRDescription = () => {
                   <p>
                     Description Length [
                     <b>
-                      {config.config.length!}
+                      {config.config.length}
                     </b>
                     ]
                   </p>
@@ -151,7 +152,7 @@ const AIPRDescription = () => {
                     min="100"
                     name="length"
                     type="range"
-                    value={config.config.length!}
+                    value={config.config.length}
                     onChange={e => dispatch({ type: "SET_LENGTH", value: parseInt(e.target.value) })}
                   />
                 </div>
@@ -160,7 +161,7 @@ const AIPRDescription = () => {
                   <p>
                     Temperature [
                     <b>
-                      {config.config.temperature! / 10}
+                      {config.config.temperature / 10}
                     </b>
                     ]
                   </p>
@@ -173,7 +174,7 @@ const AIPRDescription = () => {
                     min="0"
                     name="length"
                     type="range"
-                    value={config.config.temperature!}
+                    value={config.config.temperature}
                     onChange={e => dispatch({ type: "SET_TEMPERATURE", value: parseInt(e.target.value) })}
                   />
                 </div>
@@ -182,7 +183,7 @@ const AIPRDescription = () => {
                   <p>
                     Max Input Length [
                     <b>
-                      {config.config.maxInputLength!}
+                      {config.config.maxInputLength}
                     </b>
                     ]
                   </p>
@@ -195,7 +196,7 @@ const AIPRDescription = () => {
                     min="200"
                     name="inputlength"
                     type="range"
-                    value={config.config.maxInputLength!}
+                    value={config.config.maxInputLength}
                     onChange={e => dispatch({ type: "SET_MAX_INPUT_LENGTH", value: parseInt(e.target.value) })}
                   />
                 </div>
@@ -208,7 +209,7 @@ const AIPRDescription = () => {
                     className="text-black mt-2 p-1.5 rounded-md mb-2 w-[80%]"
                     id="descriptionlanguage"
                     name="descriptionlanguage"
-                    value={config.config.language!}
+                    value={config.config.language}
                     onChange={e => dispatch({ type: "SET_LANGUAGE", value: e.target.value })}
                   >
                     {languages.map(language => (
@@ -230,7 +231,7 @@ const AIPRDescription = () => {
                     className="text-black mt-2 p-1.5 rounded-md mb-2 w-[80%]"
                     id="tone"
                     name="tone"
-                    value={config.config.tone!}
+                    value={config.config.tone}
                     onChange={e => dispatch({ type: "SET_TONE", value: e.target.value })}
                   >
                     {tones.map(tone => (
@@ -252,7 +253,7 @@ const AIPRDescription = () => {
                     className="text-black mt-2 p-1.5 rounded-md mb-2 w-[80%]"
                     id="source"
                     name="source"
-                    value={config.config.source!}
+                    value={config.config.source}
                     onChange={e => dispatch({ type: "SET_SOURCE", value: e.target.value })}
                   >
                     {sources.map(source => (

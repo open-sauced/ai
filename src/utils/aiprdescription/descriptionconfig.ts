@@ -54,7 +54,7 @@ export const getDefaultDescriptionConfig = (): DescriptionConfig => ({
       source: "diff",
     },
   });
-  
+
 export const setDefaultDescriptionConfig = () => {
   const defaultConfig = getDefaultDescriptionConfig();
 

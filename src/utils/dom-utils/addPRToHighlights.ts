@@ -5,6 +5,7 @@ import {
   GITHUB_PR_COMMENT_HEADER_SELECTOR,
 } from "../../constants";
 import { isLoggedIn } from "../checkAuthentication";
+import { isPublicRepository } from "../fetchGithubAPIData";
 
 const injectAddPRToHighlightsButton = async () => {
   if (!(await isLoggedIn())) {
@@ -19,6 +20,9 @@ const injectAddPRToHighlightsButton = async () => {
     ?.getAttribute("content");
 
   if (loggedInUserUserName && prAuthorUserName === loggedInUserUserName) {
+    if (!(await isPublicRepository(window.location.href))) {
+ return;
+}
     const commentFormatRow = document.getElementsByClassName(
       GITHUB_PR_COMMENT_HEADER_SELECTOR,
     )[0];
