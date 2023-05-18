@@ -1,3 +1,17 @@
+# 📦 open-sauced/ai changelog
+
+[![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
+
+> All notable changes to this project will be documented in this file
+
+## [1.1.0-beta.6](https://github.com/open-sauced/ai/compare/v1.1.0-beta.5...v1.1.0-beta.6) (2023-05-18)
+
+
+### 🐛 Bug Fixes
+
+* add extra line and italics ([#93](https://github.com/open-sauced/ai/issues/93)) ([2cbd790](https://github.com/open-sauced/ai/commit/2cbd790345b7412224915c8175f2d273cd537294))
+
 # 📦 open-sauced/browser-extensions changelog
 
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
