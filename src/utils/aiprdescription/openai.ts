@@ -1,7 +1,7 @@
 import type { DescriptionTone } from "./descriptionconfig";
 import { OpenAI, CreateChatCompletionRequest } from "openai-streams";
 
-const generatePrompt = (
+const generatePRDescriptionPrompt = (
     locale: string,
     maxLength: number,
     tone: DescriptionTone,
@@ -10,6 +10,16 @@ const generatePrompt = (
     `Description language: ${locale}`,
     `Description must be a maximum of ${maxLength} characters.`,
     "Exclude anything unnecessary such as translation. Your entire response will be passed directly into a pull request description",
+].join("\n");
+
+const generateCodeSuggestionPrompt = (
+    locale: string,
+    maxLength: number,
+    tone: DescriptionTone,
+) => [
+    `Generate a code refactor suggestion for a given code snippet written in ${locale} with the specifications mentioned below`,
+    `The code snippet must be a maximum of ${maxLength} characters.`,
+    "Exclude anything unnecessary such as translation. Start with \"```suggestion\" and end with ``` to create a valid GitHub suggestion codeblock.",
 ].join("\n");
 
 const createChatCompletion = async (
@@ -44,7 +54,46 @@ export const generateDescription = async (
                 messages: [
                     {
                         role: "system",
-                        content: generatePrompt(locale, maxLength, tone),
+                        content: generatePRDescriptionPrompt(locale, maxLength, tone),
+                    },
+                    {
+                        role: "user",
+                        content,
+                    },
+                ],
+                temperature,
+                n: 1,
+            },
+        );
+
+        return completion;
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+ console.error("OpenAI error: ", error.message);
+}
+    }
+};
+
+export const generateCodeSuggestion = async (
+    apiKey: string,
+    model: "gpt-3.5-turbo" | "gpt-3.5-turbo-0301",
+    locale: string,
+    maxLength: number,
+    temperature: number,
+    tone: DescriptionTone,
+    code: string,
+) => {
+    const content = `Code: ${code}`;
+
+    try {
+        const completion = await createChatCompletion(
+            apiKey,
+            {
+                model,
+                messages: [
+                    {
+                        role: "system",
+                        content: generateCodeSuggestionPrompt(locale, maxLength, tone),
                     },
                     {
                         role: "user",
