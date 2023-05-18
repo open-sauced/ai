@@ -180,7 +180,7 @@ const AIPRDescription = () => {
 
                 <div className="flex flex-col items-center justify-center">
                   <p>
-                    Max Context Length [
+                    Max Input Length [
                     <b>
                       {config.config.maxInputLength!}
                     </b>

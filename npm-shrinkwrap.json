@@ -10,6 +10,7 @@
       "dependencies": {
         "@types/chrome": "^0.0.231",
         "@types/node-emoji": "^1.8.2",
+        "gpt-tokenizer": "^1.0.5",
         "node-emoji": "^1.11.0",
         "openai-streams": "^5.3.0",
         "react": "^18.0.0",
@@ -2991,6 +2992,11 @@
       "funding": {
         "url": "https://github.com/sponsors/ljharb"
       }
+    },
+    "node_modules/gpt-tokenizer": {
+      "version": "1.0.5",
+      "resolved": "https://registry.npmjs.org/gpt-tokenizer/-/gpt-tokenizer-1.0.5.tgz",
+      "integrity": "sha512-uLq42+uNAJENy1AcVJ3VIIA5BimrcDG8AhbohUro2wYF9nYPq92AlGWe299NqC9pBIY3r+oqwYse0OtIWkJAwg=="
     },
     "node_modules/graceful-fs": {
       "version": "4.2.11",

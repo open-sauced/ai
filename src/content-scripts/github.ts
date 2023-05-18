@@ -13,6 +13,7 @@ import injectAddPRToHighlightsButton from "../utils/dom-utils/addPRToHighlights"
 import injectRepoVotingButtons from "../utils/dom-utils/repoVotingButtons";
 import domUpdateWatch from "../utils/dom-utils/domUpdateWatcher";
 import injectDescriptionGeneratorButton from "../utils/dom-utils/addDescriptionGenerator";
+import prEditWatch from "../utils/dom-utils/prEditWatcher";
 
 const processGithubPage = async () => {
   if (prefersDarkMode(document.cookie)) {
@@ -21,7 +22,7 @@ const processGithubPage = async () => {
   if (isPullRequestCreatePage(window.location.href)) {
     injectDescriptionGeneratorButton();
   } else if (isGithubPullRequestPage(window.location.href)) {
-    injectDescriptionGeneratorButton();
+    prEditWatch(injectDescriptionGeneratorButton);
     void injectAddPRToHighlightsButton();
   } else if (isGithubProfilePage(window.location.href)) {
     const username = getGithubUsername(window.location.href);

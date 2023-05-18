@@ -1,7 +1,7 @@
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
 import { getPullRequestAPIURL } from "../../../utils/urlMatchers";
-import { getDescriptionContext, getDescriptionContextLength } from "../../../utils/fetchGithubAPIData";
+import { getDescriptionContext, isContextWithinBounds } from "../../../utils/fetchGithubAPIData";
 import { generateDescription } from "../../../utils/aiprdescription/openai";
 import { GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR, OPEN_AI_COMPLETION_MODEL_NAME, SUPABASE_LOGIN_URL } from "../../../constants";
 import { insertAtCursorFromStream } from "../../../utils/aiprdescription/cursorPositionInsert";
@@ -36,8 +36,7 @@ const handleSubmit = async () => {
     if (!descriptionConfig.enabled) return alert("AI PR description is disabled!");
     logo.classList.toggle("animate-spin");
     const [diff, commitMessages] = await getDescriptionContext(url, descriptionConfig.config.source);
-    const contextLength = getDescriptionContextLength([diff, commitMessages]);
-    if (contextLength > descriptionConfig.config.maxInputLength) return alert(`Max context length exceeded. Try setting the description source to commit-messages.`);
+    if (!isContextWithinBounds([diff, commitMessages] ,descriptionConfig.config.maxInputLength)) return alert(`Max input length exceeded. Try setting the description source to commit-messages.`);
     const descriptionStream = await generateDescription(descriptionConfig.config.openai_api_key!,
       OPEN_AI_COMPLETION_MODEL_NAME,
       descriptionConfig.config.language,

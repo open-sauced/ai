@@ -1,4 +1,5 @@
 import { DescriptionSource } from "./aiprdescription/descriptionconfig";
+import { isWithinTokenLimit } from 'gpt-tokenizer'
 
 type DescriptionContextPromise = Promise<[string | undefined, string[] | undefined]>;
 type DescriptionContext = Awaited<DescriptionContextPromise>;
@@ -29,7 +30,7 @@ export const getPRCommitMessages = async (url: string) => {
 
 export const getDescriptionContext = async (url: string, source: DescriptionSource): DescriptionContextPromise => {
   let promises: [Promise<string | undefined>, Promise<string[] | undefined>] = [Promise.resolve(undefined), Promise.resolve(undefined)];
-  
+
   if (source === "diff") promises = [getPRDiff(url), Promise.resolve(undefined)];
   else if (source === "commitMessage") promises = [Promise.resolve(undefined), getPRCommitMessages(url)];
   else promises = [getPRDiff(url), getPRCommitMessages(url)];
@@ -38,9 +39,10 @@ export const getDescriptionContext = async (url: string, source: DescriptionSour
   return response;
 };
 
-export const getDescriptionContextLength = ([diff, commitMessages]: DescriptionContext): number => {
-  let length: number = 0;
-  if (diff) length += diff.length;
-  if (commitMessages) length += commitMessages.join("").length;
-  return length;
+export const isContextWithinBounds = (context: DescriptionContext, limit: number): boolean => {
+  let text = "";
+  if(context[0]) text+=context[0];
+  if(context[1]) text+=context[1].join("");
+  return Boolean(isWithinTokenLimit(text, limit));
+
 }
