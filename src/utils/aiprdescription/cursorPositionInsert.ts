@@ -7,12 +7,13 @@ export const insertAtCursorFromStream = async (textArea: HTMLTextAreaElement, st
     const { done, value } = await reader.read();
 
     if (done) {
- break;
-} else {
+      break;
+    } else {
       const chunk = decoder.decode(value);
       const [start, end] = [textArea.selectionStart, textArea.selectionEnd];
 
       textArea.setRangeText(chunk, start, end, "end");
     }
   }
+  textArea.setRangeText("\nDescription generated using [OpenSauced](https://opensauced.ai/).", textArea.selectionStart, textArea.selectionEnd, "end");
 };
