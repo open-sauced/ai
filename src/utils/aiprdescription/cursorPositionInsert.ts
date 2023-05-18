@@ -15,5 +15,5 @@ export const insertAtCursorFromStream = async (textArea: HTMLTextAreaElement, st
       textArea.setRangeText(chunk, start, end, "end");
     }
   }
-  textArea.setRangeText("\nDescription generated using [OpenSauced](https://opensauced.ai/).", textArea.selectionStart, textArea.selectionEnd, "end");
+  textArea.setRangeText("\n\n_Description generated using [OpenSauced](https://opensauced.ai/_).", textArea.selectionStart, textArea.selectionEnd, "end");
 };
