@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "OpenSauced",
+  "name": "OpenSauced.ai",
   "version": "0.0.1",
   "action": { "default_popup": "index.html" },
   "content_scripts": [
