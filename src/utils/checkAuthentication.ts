@@ -3,7 +3,7 @@ import {
   SUPABASE_AUTH_COOKIE_NAME,
   OPEN_SAUCED_INSIGHTS_DOMAIN,
 } from "../constants";
-import { checkTokenValidity } from "../utils/fetchOpenSaucedApiData";
+import { checkTokenValidity } from "./fetchOpenSaucedApiData";
 import setAccessTokenInChromeStorage from "../utils/setAccessToken";
 
 export const checkAuthentication = () => {

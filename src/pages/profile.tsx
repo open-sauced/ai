@@ -96,7 +96,8 @@ export const Profile = () => {
           />
 
           <p className="font-medium">
-            @{page.props.userName}
+            @
+{page.props.userName}
           </p>
           </a>
 
