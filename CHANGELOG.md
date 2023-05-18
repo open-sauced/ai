@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.1.0-beta.4](https://github.com/open-sauced/browser-extensions/compare/v1.1.0-beta.3...v1.1.0-beta.4) (2023-05-18)
+
+
+### 🍕 Features
+
+* OpenSauced AI PR description  ([#79](https://github.com/open-sauced/browser-extensions/issues/79)) ([0e38777](https://github.com/open-sauced/browser-extensions/commit/0e387771a60c17417bb0c8806f2684eae4c69c42))
+
 ## [1.1.0-beta.3](https://github.com/open-sauced/browser-extensions/compare/v1.1.0-beta.2...v1.1.0-beta.3) (2023-05-17)
 
 
