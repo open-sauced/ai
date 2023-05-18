@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.1.0-beta.5](https://github.com/open-sauced/browser-extensions/compare/v1.1.0-beta.4...v1.1.0-beta.5) (2023-05-18)
+
+
+### 🐛 Bug Fixes
+
+* update name in README ([dba4734](https://github.com/open-sauced/browser-extensions/commit/dba473404d24e421bf748e691291109e2fe267ac))
+
 ## [1.1.0-beta.4](https://github.com/open-sauced/browser-extensions/compare/v1.1.0-beta.3...v1.1.0-beta.4) (2023-05-18)
 
 
