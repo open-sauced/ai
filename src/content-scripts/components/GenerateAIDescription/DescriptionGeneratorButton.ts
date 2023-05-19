@@ -1,12 +1,12 @@
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
 import { getPullRequestAPIURL } from "../../../utils/urlMatchers";
-import { getDescriptionContext, isContextWithinBounds } from "../../../utils/fetchGithubAPIData";
+import { getDescriptionContext, isOutOfContextBounds } from "../../../utils/fetchGithubAPIData";
 import { generateDescription } from "../../../utils/aiprdescription/openai";
-import { GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR, OPEN_AI_COMPLETION_MODEL_NAME, SUPABASE_LOGIN_URL } from "../../../constants";
-import { insertAtCursorFromStream } from "../../../utils/aiprdescription/cursorPositionInsert";
+import { GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR, SUPABASE_LOGIN_URL } from "../../../constants";
+import { insertTextAtCursor } from "../../../utils/aiprdescription/cursorPositionInsert";
 import { getAIDescriptionConfig } from "../../../utils/aiprdescription/descriptionconfig";
-import { isLoggedIn } from "../../../utils/checkAuthentication";
+import { getAuthToken, isLoggedIn } from "../../../utils/checkAuthentication";
 
 export const DescriptionGeneratorButton = () => {
   const descriptionGeneratorButton = createHtmlElement("a", {
@@ -42,14 +42,17 @@ const handleSubmit = async () => {
 }
     logo.classList.toggle("animate-spin");
     const [diff, commitMessages] = await getDescriptionContext(url, descriptionConfig.config.source);
-
-    if (!isContextWithinBounds([diff, commitMessages], descriptionConfig.config.maxInputLength)) {
+    if(!diff && !commitMessages) {
+      logo.classList.toggle("animate-spin");
+      return alert(`No input context was generated.`)
+    }
+    if (isOutOfContextBounds([diff, commitMessages], descriptionConfig.config.maxInputLength)) {
       logo.classList.toggle("animate-spin");
       return alert(`Max input length exceeded. Try setting the description source to commit-messages.`);
     }
+    const token = await getAuthToken();
     const descriptionStream = await generateDescription(
-descriptionConfig.config.openai_api_key,
-      OPEN_AI_COMPLETION_MODEL_NAME,
+      token,
       descriptionConfig.config.language,
       descriptionConfig.config.length,
       descriptionConfig.config.temperature / 10,
@@ -64,7 +67,7 @@ descriptionConfig.config.openai_api_key,
     }
     const textArea = document.getElementsByName(GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR)[0] as HTMLTextAreaElement;
 
-    void insertAtCursorFromStream(textArea, descriptionStream);
+    void insertTextAtCursor(textArea, descriptionStream);
   } catch (error: unknown) {
     if (error instanceof Error) {
  console.error("Description generation error:", error.message);

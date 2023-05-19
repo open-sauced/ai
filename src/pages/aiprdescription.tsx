@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useReducer, useState } from "react";
-import { BiInfoCircle } from "react-icons/bi";
 import { FaChevronLeft } from "react-icons/fa";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { RouteContext } from "../App";
@@ -13,7 +12,7 @@ import {
   DescriptionLanguage,
   setAIDescriptionConfig,
   getDefaultDescriptionConfig,
-  setDefaultDescriptionConfig,
+  toggleAIPRDescriptionEnabled,
 } from "../utils/aiprdescription/descriptionconfig";
 import { useRefs } from "../hooks/useRefs";
 import { configurationReducer } from "../utils/aiprdescription/configurationReducer";
@@ -35,7 +34,6 @@ const AIPRDescription = () => {
 
       dispatch({ type: "SET", value: configData });
       setFormDisabled(!configData?.enabled);
-      console.log(config.config.openai_api_key);
     };
 
     void descriptionConfig();
@@ -43,7 +41,6 @@ const AIPRDescription = () => {
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const openai_api_key = refs.openai_api_key!.getAttribute("value")!;
     const length = parseInt(refs.length?.getAttribute("value")!);
     const temperature = Number(Number(refs.temperature?.getAttribute("value")!));
     const maxInputLength = parseInt(refs.maxInputLength?.getAttribute("value")!);
@@ -53,7 +50,7 @@ const AIPRDescription = () => {
 
     void setAIDescriptionConfig({
       enabled: true,
-      config: { openai_api_key, length, temperature, maxInputLength, language, source, tone },
+      config: { length, temperature, maxInputLength, language, source, tone },
     });
     toast.success("Configuration updated!");
   };
@@ -88,12 +85,12 @@ const AIPRDescription = () => {
               }`}
             onClick={() => {
               setFormDisabled(!formDisabled);
-              dispatch({ type: "CLEAR", value: null });
+              dispatch({ type: "TOGGLE_ENABLED", value: config });
+              void toggleAIPRDescriptionEnabled();
               if (formDisabled) {
- toast.success("AI PR Description enabled!");
-} else {
+                toast.success("AI PR Description enabled!");
+              } else {
                 toast.error("AI PR Description disabled!");
-                setDefaultDescriptionConfig();
               }
             }}
           >
@@ -110,29 +107,6 @@ const AIPRDescription = () => {
               <h1 className="text-2xl text-white font-bold my-2">
                 OpenSauced AI
               </h1>
-
-              <p className="mb-2 text-gray-300 text-sm">
-                OpenAI API Key
-                <BiInfoCircle
-                  className="inline-block ml-1 text-gray-400 align-middle cursor-pointer"
-                  title="Find your API key here"
-                  onClick={() =>
-                    window.open(
-                      "https://platform.openai.com/account/api-keys",
-                      "_blank",
-                    )}
-                />
-              </p>
-
-              <input
-                ref={setRefFromKey("openai_api_key")}
-                className="p-1.5 rounded-md mb-2 w-full text-black"
-                pattern="sk-[a-zA-Z0-9]{40,55}"
-                placeholder="sk-xxxxxxxxxxxxxxxxx"
-                type="password"
-                value={config.config.openai_api_key}
-                onChange={e => dispatch({ type: "SET_OPENAI_API_KEY", value: e.currentTarget.value })}
-              />
 
               <div className="grid grid-cols-2 -mx-4 mb-4 text-gray-300 text-sm">
                 <div className="flex flex-col items-center justify-center">

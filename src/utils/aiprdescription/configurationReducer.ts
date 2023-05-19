@@ -7,9 +7,6 @@ export const configurationReducer = (state: DescriptionConfig, action: { type: s
         case "SET":
             newState = action.value;
             break;
-        case "SET_OPENAI_API_KEY":
-            newState.config.openai_api_key = action.value;
-            break;
         case "SET_LENGTH":
             newState.config.length = action.value;
             break;
@@ -27,6 +24,9 @@ export const configurationReducer = (state: DescriptionConfig, action: { type: s
             break;
         case "SET_TONE":
             newState.config.tone = action.value;
+            break;
+        case "TOGGLE_ENABLED":
+            newState.enabled = !newState.enabled;
             break;
         case "CLEAR":
             newState = getDefaultDescriptionConfig();

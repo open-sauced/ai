@@ -4,13 +4,13 @@ export const SUPABASE_AUTH_COOKIE_NAME = "supabase-auth-token";
 export const OPEN_SAUCED_AUTH_TOKEN_KEY = "os-access-token";
 export const OPEN_SAUCED_INSIGHTS_DOMAIN = "insights.opensauced.pizza";
 export const AI_PR_DESCRIPTION_CONFIG_KEY = "ai-pr-description-config";
-export const OPEN_AI_COMPLETION_MODEL_NAME = "gpt-3.5-turbo";
 
 // API endpoints
 export const OPEN_SAUCED_USERS_ENDPOINT = "https://api.opensauced.pizza/v1/users";
 export const OPEN_SAUCED_REPOS_ENDPOINT = "https://api.opensauced.pizza/v1/repos";
 export const OPEN_SAUCED_SESSION_ENDPOINT = "https://api.opensauced.pizza/v1/auth/session";
 export const OPEN_SAUCED_USER_INSIGHTS_ENDPOINT = "https://api.opensauced.pizza/v1/user/insights";
+export const OPEN_SAUCED_AI_PR_DESCRIPTION_ENDPOINT = "https://api.opensauced.pizza/v1/prs/description/generate";
 
 // GitHub constants/selectors
 export const GITHUB_PROFILE_MENU_SELECTOR = ".p-nickname.vcard-username.d-block";
