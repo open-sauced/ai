@@ -19,7 +19,7 @@ const generateCodeSuggestionPrompt = (
 ) => [
     `Generate a code refactor suggestion for a given code snippet written in ${locale} with the specifications mentioned below`,
     `The code snippet must be a maximum of ${maxLength} characters.`,
-    "Exclude anything unnecessary such as translation. Start with \"```suggestion\" and end with ``` to create a valid GitHub suggestion codeblock.",
+    "Exclude anything unnecessary such as translation and instructions. The code snippet you suggest should start with \"```suggestion\" and end with ``` to create a valid GitHub suggestion codeblock. All non-code text or description should be outside of the codeblock.",
 ].join("\n");
 
 const createChatCompletion = async (
