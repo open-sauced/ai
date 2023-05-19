@@ -11,6 +11,7 @@ export const OPEN_SAUCED_USERS_ENDPOINT = "https://api.opensauced.pizza/v1/users
 export const OPEN_SAUCED_REPOS_ENDPOINT = "https://api.opensauced.pizza/v1/repos";
 export const OPEN_SAUCED_SESSION_ENDPOINT = "https://api.opensauced.pizza/v1/auth/session";
 export const OPEN_SAUCED_USER_INSIGHTS_ENDPOINT = "https://api.opensauced.pizza/v1/user/insights";
+export const OPEN_SAUCED_AI_PR_DESCRIPTION_ENDPOINT = "https://api.opensauced.pizza/v1/prs/description/generate";
 
 // GitHub constants/selectors
 export const GITHUB_PROFILE_MENU_SELECTOR = ".p-nickname.vcard-username.d-block";

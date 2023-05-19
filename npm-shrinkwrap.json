@@ -12,7 +12,6 @@
         "@types/node-emoji": "^1.8.2",
         "gpt-tokenizer": "^1.0.5",
         "node-emoji": "^1.11.0",
-        "openai-streams": "^5.3.0",
         "react": "^18.0.0",
         "react-dom": "^18.0.0",
         "react-hot-toast": "^2.4.1",
@@ -1934,14 +1933,6 @@
         "url": "https://github.com/fb55/domutils?sponsor=1"
       }
     },
-    "node_modules/dotenv": {
-      "version": "16.0.3",
-      "resolved": "https://registry.npmjs.org/dotenv/-/dotenv-16.0.3.tgz",
-      "integrity": "sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==",
-      "engines": {
-        "node": ">=12"
-      }
-    },
     "node_modules/electron-to-chromium": {
       "version": "1.4.365",
       "resolved": "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.365.tgz",
@@ -2645,14 +2636,6 @@
       "dev": true,
       "engines": {
         "node": ">=0.10.0"
-      }
-    },
-    "node_modules/eventsource-parser": {
-      "version": "1.0.0",
-      "resolved": "https://registry.npmjs.org/eventsource-parser/-/eventsource-parser-1.0.0.tgz",
-      "integrity": "sha512-9jgfSCa3dmEme2ES3mPByGXfgZ87VbP97tng1G2nWwWx6bV2nYxm2AWCrbQjXToSe+yYlqaZNtxffR9IeQr95g==",
-      "engines": {
-        "node": ">=14.18"
       }
     },
     "node_modules/fast-deep-equal": {
@@ -4039,19 +4022,6 @@
         "wrappy": "1"
       }
     },
-    "node_modules/openai-streams": {
-      "version": "5.3.0",
-      "resolved": "https://registry.npmjs.org/openai-streams/-/openai-streams-5.3.0.tgz",
-      "integrity": "sha512-481B3eWLQ4P4E7jvF38vRzz2/aQz6CLHx2XSV7J+w83791fhiUxvTNGw8uh/M04N0X5AdCqPaEPqHc+sfxNTUQ==",
-      "dependencies": {
-        "dotenv": "^16.0.3",
-        "eventsource-parser": "^1.0.0",
-        "yield-stream": "^3.0.0"
-      },
-      "engines": {
-        "node": ">=14"
-      }
-    },
     "node_modules/optionator": {
       "version": "0.9.1",
       "resolved": "https://registry.npmjs.org/optionator/-/optionator-0.9.1.tgz",
@@ -4681,14 +4651,6 @@
         "node": ">=8"
       }
     },
-    "node_modules/shim-streams": {
-      "version": "0.0.2",
-      "resolved": "https://registry.npmjs.org/shim-streams/-/shim-streams-0.0.2.tgz",
-      "integrity": "sha512-9Otb+FCl13XxRp1nVddtsCbwvB7AEMTjzc3/fixowyzvSVoCzu/VEstblB2SdIDbd61u5D/zpS5u9fGzDdOoZg==",
-      "engines": {
-        "node": ">=14"
-      }
-    },
     "node_modules/side-channel": {
       "version": "1.0.4",
       "resolved": "https://registry.npmjs.org/side-channel/-/side-channel-1.0.4.tgz",
@@ -5224,14 +5186,6 @@
         }
       }
     },
-    "node_modules/web-streams-polyfill": {
-      "version": "3.2.1",
-      "resolved": "https://registry.npmjs.org/web-streams-polyfill/-/web-streams-polyfill-3.2.1.tgz",
-      "integrity": "sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==",
-      "engines": {
-        "node": ">= 8"
-      }
-    },
     "node_modules/which": {
       "version": "2.0.2",
       "resolved": "https://registry.npmjs.org/which/-/which-2.0.2.tgz",
@@ -5327,18 +5281,6 @@
       "dev": true,
       "engines": {
         "node": ">= 6"
-      }
-    },
-    "node_modules/yield-stream": {
-      "version": "3.0.0",
-      "resolved": "https://registry.npmjs.org/yield-stream/-/yield-stream-3.0.0.tgz",
-      "integrity": "sha512-I0fHp7xcR+ilGKgtLP+6d0SxTLfJcLDX/iiTEQZtg0U/cqWKvcHy4D9em6adhs3emSgik8YAZ2Jmv7gc1kyuhA==",
-      "dependencies": {
-        "shim-streams": "^0.0.2",
-        "web-streams-polyfill": "^3.2.1"
-      },
-      "engines": {
-        "node": ">=14"
       }
     },
     "node_modules/yocto-queue": {

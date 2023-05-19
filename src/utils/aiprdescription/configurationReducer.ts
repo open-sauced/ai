@@ -7,9 +7,6 @@ export const configurationReducer = (state: DescriptionConfig, action: { type: s
         case "SET":
             newState = action.value;
             break;
-        case "SET_OPENAI_API_KEY":
-            newState.config.openai_api_key = action.value;
-            break;
         case "SET_LENGTH":
             newState.config.length = action.value;
             break;

@@ -17,7 +17,6 @@ export type DescriptionLanguage =
 export interface DescriptionConfig {
   enabled: boolean;
   config: {
-    openai_api_key: string;
     length: number;
     maxInputLength: number;
     temperature: number;
@@ -45,7 +44,6 @@ export const setAIDescriptionConfig = async (data: DescriptionConfig): Promise<v
 export const getDefaultDescriptionConfig = (): DescriptionConfig => ({
     enabled: false,
     config: {
-      openai_api_key: "",
       length: 500,
       maxInputLength: 3900,
       temperature: 7,
