@@ -25,6 +25,9 @@ export const configurationReducer = (state: DescriptionConfig, action: { type: s
         case "SET_TONE":
             newState.config.tone = action.value;
             break;
+        case "TOGGLE_ENABLED":
+            newState.enabled = !newState.enabled;
+            break;
         case "CLEAR":
             newState = getDefaultDescriptionConfig();
             break;

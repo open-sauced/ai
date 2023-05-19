@@ -12,7 +12,7 @@ import {
   DescriptionLanguage,
   setAIDescriptionConfig,
   getDefaultDescriptionConfig,
-  setDefaultDescriptionConfig,
+  toggleAIPRDescriptionEnabled,
 } from "../utils/aiprdescription/descriptionconfig";
 import { useRefs } from "../hooks/useRefs";
 import { configurationReducer } from "../utils/aiprdescription/configurationReducer";
@@ -85,12 +85,12 @@ const AIPRDescription = () => {
               }`}
             onClick={() => {
               setFormDisabled(!formDisabled);
-              dispatch({ type: "CLEAR", value: null });
+              dispatch({ type: "TOGGLE_ENABLED", value: config });
+              void toggleAIPRDescriptionEnabled();
               if (formDisabled) {
- toast.success("AI PR Description enabled!");
-} else {
+                toast.success("AI PR Description enabled!");
+              } else {
                 toast.error("AI PR Description disabled!");
-                setDefaultDescriptionConfig();
               }
             }}
           >
