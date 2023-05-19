@@ -7,19 +7,19 @@ import { insertAtCursorFromStream } from "../../../utils/aiprdescription/cursorP
 import { getAIDescriptionConfig } from "../../../utils/aiprdescription/descriptionconfig";
 import { isLoggedIn } from "../../../utils/checkAuthentication";
 
-export const ChangeSuggestorButton = () => {
+export const ChangeSuggestorButton = (commentNode: HTMLElement) => {
     const changeSuggestoreButton = createHtmlElement("a", {
       innerHTML: `<span id="ai-change-gen" class="toolbar-item btn-octicon">
       <img class="octicon octicon-heading" height="16px" width="16px" id="ai-description-button-logo" src=${chrome.runtime.getURL(openSaucedLogoIcon)}>
       </span>
       <tool-tip for="ai-change-gen" class="sr-only" role="tooltip">Get Refactor Suggestions</tool-tip>`,
-      onclick: handleSubmit,
+      onclick: async () => handleSubmit(commentNode),
     });
 
     return changeSuggestoreButton;
   };
 
-const handleSubmit = async () => {
+const handleSubmit = async (commentNode: HTMLElement) => {
     try {
         if (!(await isLoggedIn())) {
           return window.open(SUPABASE_LOGIN_URL, "_blank");
@@ -63,9 +63,9 @@ const handleSubmit = async () => {
         if (!suggestionStream) {
           return console.error("No description was generated!");
         }
-        const textArea = document.getElementsByName(GITHUB_PR_SUGGESTION_TEXT_AREA_SELECTOR)[0] as HTMLTextAreaElement;
+        const textArea = commentNode.querySelector(GITHUB_PR_SUGGESTION_TEXT_AREA_SELECTOR)!;
 
-        void insertAtCursorFromStream(textArea, suggestionStream);
+        void insertAtCursorFromStream(textArea as HTMLTextAreaElement, suggestionStream);
       } catch (error: unknown) {
         if (error instanceof Error) {
      console.error("Description generation error:", error.message);

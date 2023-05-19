@@ -23,5 +23,5 @@ export const GITHUB_PR_COMMENT_EDITOR_SELECTOR = "flex-nowrap d-inline-block mr-
 export const GITHUB_REVIEW_SUGGESTION_SELECTOR = "js-suggestion-button-placeholder";
 export const GITHUB_REPO_ACTIONS_SELECTOR = ".pagehead-actions";
 export const GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR = "pull_request[body]";
-export const GITHUB_PR_SUGGESTION_TEXT_AREA_SELECTOR = "comment[body]";
+export const GITHUB_PR_SUGGESTION_TEXT_AREA_SELECTOR = "[name='comment[body]']";
 export const GITHUB_PR_BASE_BRANCH_SELECTOR = "css-truncate css-truncate-target";
