@@ -5,7 +5,7 @@ export const insertTextAtCursor = async (textArea: HTMLTextAreaElement, text: st
     textArea.setRangeText(text[length++], textArea.selectionStart, textArea.selectionEnd, "end");
     if (length >= text.length) {
       clearInterval(typewriter);
-      textArea.setRangeText("\n\n_Description generated using [OpenSauced](https://opensauced.ai/)._", textArea.selectionStart, textArea.selectionEnd, "end");
+      textArea.setRangeText("\n\n_Generated using [OpenSauced](https://opensauced.ai/)._", textArea.selectionStart, textArea.selectionEnd, "end");
     }
   }, 10);
   
@@ -27,5 +27,5 @@ export const insertAtCursorFromStream = async (textArea: HTMLTextAreaElement, st
       textArea.setRangeText(chunk, start, end, "end");
     }
   }
-  textArea.setRangeText("\n\n_Description generated using [OpenSauced](https://opensauced.ai/)._", textArea.selectionStart, textArea.selectionEnd, "end");
+  textArea.setRangeText("\n\n_Generated using [OpenSauced](https://opensauced.ai/)._", textArea.selectionStart, textArea.selectionEnd, "end");
 };
