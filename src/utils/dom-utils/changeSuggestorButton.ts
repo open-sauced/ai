@@ -11,10 +11,8 @@ const injectChangeSuggestorButton = async (commentNode: HTMLElement) => {
     const changeSuggestorButton = ChangeSuggestorButton(commentNode);
 
     if (suggestChangesIcon.firstChild?.isEqualNode(changeSuggestorButton)) {
-        console.log("Change suggestor button already exists");
         return;
     }
-    console.log("Injecting change suggestor button", changeSuggestorButton);
     suggestChangesIcon.insertBefore(changeSuggestorButton, suggestChangesIcon.firstChild);
 };
 

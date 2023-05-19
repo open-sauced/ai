@@ -24,7 +24,7 @@ const processGithubPage = async () => {
   if (isPullRequestCreatePage(window.location.href)) {
     void injectDescriptionGeneratorButton();
   } else if (isPullRequestFilesChangedPage(window.location.href)) {
-    prReviewWatch(injectChangeSuggestorButton);
+    prReviewWatch(injectChangeSuggestorButton, 500);
   } else if (isGithubPullRequestPage(window.location.href)) {
     prEditWatch(injectDescriptionGeneratorButton);
     void injectAddPRToHighlightsButton();
