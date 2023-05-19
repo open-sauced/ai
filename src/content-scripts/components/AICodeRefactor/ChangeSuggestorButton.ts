@@ -42,9 +42,15 @@ const handleSubmit = async (commentNode: HTMLElement) => {
         logo.classList.toggle("animate-spin");
 
         const selectedLines = document.querySelectorAll(".code-review.selected-line");
-        const selectedCode = Array.from(selectedLines).map(line => line.textContent)
+        let selectedCode = Array.from(selectedLines).map(line => line.textContent)
                                                                         .join("\n");
 
+        // find input with name="position" and get its value
+        if (!selectedCode) {
+          const position = (commentNode.querySelector("input[name=position]")!).value;
+
+          selectedCode = document.querySelector(`[data-line-number="${position}"]`)?.nextSibling?.nextSibling.getElementsByClassName("blob-code-inner")[0].textContent;
+        }
         if (!isContextWithinBounds([selectedCode, [] ], descriptionConfig.config.maxInputLength)) {
           logo.classList.toggle("animate-spin");
           return alert(`Max input length exceeded. Try reducing the number of selected lines to refactor.`);

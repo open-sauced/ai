@@ -3,7 +3,6 @@ import { GITHUB_REVIEW_SUGGESTION_SELECTOR } from "../../constants";
 import { isPublicRepository } from "../fetchGithubAPIData";
 
 const injectChangeSuggestorButton = async (commentNode: HTMLElement) => {
-    console.log(commentNode);
     if (!(await isPublicRepository(window.location.href))) {
         return;
     }
