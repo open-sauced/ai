@@ -47,9 +47,12 @@ const handleSubmit = async (commentNode: HTMLElement) => {
 
         // find input with name="position" and get its value
         if (!selectedCode) {
-          const position = (commentNode.querySelector("input[name=position]")!).value;
+          const positionElement = (commentNode.querySelector("input[name=position]")!);
+          const position = positionElement.getAttribute("value")!;
 
-          selectedCode = document.querySelector(`[data-line-number="${position}"]`)?.nextSibling?.nextSibling.getElementsByClassName("blob-code-inner")[0].textContent;
+          const codeDiv = document.querySelector(`[data-line-number="${position}"]`)?.nextSibling?.nextSibling as HTMLElement;
+
+          selectedCode = codeDiv.getElementsByClassName("blob-code-inner")[0].textContent!;
         }
         if (!isContextWithinBounds([selectedCode, [] ], descriptionConfig.config.maxInputLength)) {
           logo.classList.toggle("animate-spin");
