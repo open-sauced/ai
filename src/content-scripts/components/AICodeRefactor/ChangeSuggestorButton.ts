@@ -12,7 +12,7 @@ export const ChangeSuggestorButton = () => {
       innerHTML: `<span id="ai-change-gen" class="toolbar-item btn-octicon">
       <img class="octicon octicon-heading" height="16px" width="16px" id="ai-description-button-logo" src=${chrome.runtime.getURL(openSaucedLogoIcon)}>
       </span>
-      <tool-tip for="ai-change-gen">Get Refactor Suggestions</tool-tip>`,
+      <tool-tip for="ai-change-gen" class="sr-only" role="tooltip">Get Refactor Suggestions</tool-tip>`,
       onclick: handleSubmit,
     });
 
