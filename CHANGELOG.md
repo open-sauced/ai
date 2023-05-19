@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.1.0-beta.7](https://github.com/open-sauced/ai/compare/v1.1.0-beta.6...v1.1.0-beta.7) (2023-05-19)
+
+
+### 🍕 Features
+
+* Updated to the new AI PR description endpoint ([#94](https://github.com/open-sauced/ai/issues/94)) ([cf8f64c](https://github.com/open-sauced/ai/commit/cf8f64cf4860ce96903234989920ec25bced2b76))
+
 ## [1.1.0-beta.6](https://github.com/open-sauced/ai/compare/v1.1.0-beta.5...v1.1.0-beta.6) (2023-05-18)
 
 
