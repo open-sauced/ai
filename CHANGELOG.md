@@ -5,6 +5,27 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.1.0](https://github.com/open-sauced/ai/compare/v1.0.0...v1.1.0) (2023-05-20)
+
+
+### 📝 Documentation
+
+* how we create extension releases ([#81](https://github.com/open-sauced/ai/issues/81)) ([10b1c48](https://github.com/open-sauced/ai/commit/10b1c48b799bfa412525e6c7da5a0f8268da6b16))
+
+
+### 🐛 Bug Fixes
+
+* add extra line and italics ([#93](https://github.com/open-sauced/ai/issues/93)) ([2cbd790](https://github.com/open-sauced/ai/commit/2cbd790345b7412224915c8175f2d273cd537294))
+* update name in README ([dba4734](https://github.com/open-sauced/ai/commit/dba473404d24e421bf748e691291109e2fe267ac))
+
+
+### 🍕 Features
+
+* add/remove repos to/from insights. ([#77](https://github.com/open-sauced/ai/issues/77)) ([8e4a6ed](https://github.com/open-sauced/ai/commit/8e4a6ed61efd8c52812d42e216b05baacd006dea))
+* OpenSauced AI PR description  ([#79](https://github.com/open-sauced/ai/issues/79)) ([0e38777](https://github.com/open-sauced/ai/commit/0e387771a60c17417bb0c8806f2684eae4c69c42))
+* replace open issues count with highlights count ([#76](https://github.com/open-sauced/ai/issues/76)) ([0fb8149](https://github.com/open-sauced/ai/commit/0fb814901fd575d3f1434740f8f8140fc6ff1aae))
+* Updated to the new AI PR description endpoint ([#94](https://github.com/open-sauced/ai/issues/94)) ([cf8f64c](https://github.com/open-sauced/ai/commit/cf8f64cf4860ce96903234989920ec25bced2b76))
+
 ## [1.1.0-beta.7](https://github.com/open-sauced/ai/compare/v1.1.0-beta.6...v1.1.0-beta.7) (2023-05-19)
 
 
