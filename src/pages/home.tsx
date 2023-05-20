@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { HiArrowTopRightOnSquare, HiUserCircle } from "react-icons/hi2";
+import { HiArrowTopRightOnSquare, HiPencil, HiUserCircle } from "react-icons/hi2";
 import { RouteContext } from "../App";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { useAuth } from "../hooks/useAuth";
@@ -19,7 +19,7 @@ const Home = () => {
           src={OpenSaucedLogo}
         />
 
-        {user &&
+        {user && (
           <button
             className="flex gap-1 items-center hover:text-orange text-white no-underline"
             onClick={() => {
@@ -33,7 +33,8 @@ const Home = () => {
               className="rounded-full w-6 aspect-square border border-orange"
               src={`https://github.com/${user.user_name}.png`}
             />
-          </button>}
+          </button>
+        )}
       </header>
 
       <main className="main-content">
@@ -60,23 +61,32 @@ const Home = () => {
             Go to Dashboard
           </a>
 
-          {
-            currentTabIsOpensaucedUser &&
-              <button
-                className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                onClick={() => {
-                  setCurrentPage("profile", { userName: checkedUser });
-                }}
-              >
-                <HiUserCircle />
-                View
+          <button
+            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+            onClick={() => {
+              setCurrentPage("aiprdescription");
+            }}
+          >
+            <HiPencil />
+            AI PR Description
+          </button>
 
-                {" "}
+          {currentTabIsOpensaucedUser && (
+            <button
+              className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+              onClick={() => {
+                setCurrentPage("profile", { userName: checkedUser });
+              }}
+            >
+              <HiUserCircle />
+              View
 
-                {checkedUser}
-                &apos;s profile
-              </button>
-          }
+{" "}
+
+{checkedUser}
+              &apos;s profile
+            </button>
+          )}
         </div>
       </main>
     </div>

@@ -1,7 +1,7 @@
 <div align="center">
   <br>
   <img alt="Open Sauced" src="https://i.ibb.co/7jPXt0Z/logo1-92f1a87f.png" width="300px">
-  <h1>🍕 Open Sauced Browser Extension(s) 🍕</h1>
+  <h1>🍕 OpenSauced.ai 🍕</h1>
 </div>
 <p align="center">
   <img src="https://img.shields.io/github/languages/code-size/open-sauced/browser-extensions" alt="GitHub code size in bytes">
@@ -67,6 +67,16 @@ You should now have the extension installed and running.
 We encourage you to contribute to OpenSauced! Please check out the [Contributing guide](https://docs.opensauced.pizza/contributing/introduction-to-contributing/) for guidelines about how to proceed.
 
 We have a commit utility called [@open-sauced/conventional-commit](https://github.com/open-sauced/conventional-commit) that helps you write your commits in a way that is easy to understand and process by others.
+
+## 🚀 Releases
+
+We use our own [configuration for semantic-release](https://github.com/open-sauced/release). This allows us to automatically generate changelogs and releases for our projects based on the commit messages.
+
+The `beta` branch is the default branch. We squash & merge PRs to the `beta` branch. We never commit directly to `main`.
+
+A merge to `beta` will trigger a beta release. A merge to `main` will trigger a full release.
+
+Make sure to checkout the beta branch for the latest changes, and follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification when writing commit messages.
 
 ## 🍕 Community
 
