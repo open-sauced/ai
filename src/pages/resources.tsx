@@ -4,10 +4,8 @@ import { FaChevronLeft } from "react-icons/fa";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { RouteContext } from "../App";
 import { Toaster } from "react-hot-toast";
-import { DISCUSSIONS, ISSUES } from "../constants";
+import { EXTERNAL_RESOURCES } from "../constants";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
-
-const externalLinks = [DISCUSSIONS, ISSUES];
 
 const Resources = () => {
   const { setCurrentPage } = useContext(RouteContext);
@@ -42,7 +40,7 @@ const Resources = () => {
           </h3>
 
           <div className="tools flex flex-col gap-2">
-            {externalLinks.map(externalLink => (
+            {EXTERNAL_RESOURCES.map(externalLink => (
               <a
                 key={externalLink.key}
                 className="flex items-center bg-slate-700 hover:bg-slate-700/70 text-white hover:text-orange no-underline gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
@@ -52,7 +50,7 @@ const Resources = () => {
               >
                 <HiArrowTopRightOnSquare />
 
-                {externalLink.displayValue}
+                {externalLink.key}
               </a>
             ))}
           </div>
