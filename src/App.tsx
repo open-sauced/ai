@@ -6,6 +6,7 @@ import Loading from "./pages/loading";
 import { Profile } from "./pages/profile";
 import { useAuth } from "./hooks/useAuth";
 import AIPRDescription from "./pages/aiprdescription";
+import Resources from "./pages/resources";
 
 export const RouteContext = createContext<{ page: { name: string, props?: any }, setCurrentPage:(page: RouteKeys, props?: any) => void }>({ page: { name: "loading" }, setCurrentPage: () => {} });
 
@@ -15,6 +16,7 @@ const routes = {
   loading: <Loading />,
   profile: <Profile />,
   aiprdescription: <AIPRDescription />,
+  resources: <Resources />,
 };
 
 type RouteKeys = keyof typeof routes;
