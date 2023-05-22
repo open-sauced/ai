@@ -2,10 +2,10 @@ import { createHtmlElement } from "../../../utils/createHtmlElement";
 import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
 import { GITHUB_PR_SUGGESTION_TEXT_AREA_SELECTOR, OPEN_AI_COMPLETION_MODEL_NAME, SUPABASE_LOGIN_URL } from "../../../constants";
 import { generateCodeSuggestion } from "../../../utils/aiprdescription/openai";
-import { isContextWithinBounds } from "../../../utils/fetchGithubAPIData";
+import { isOutOfContextBounds } from "../../../utils/fetchGithubAPIData";
 import { insertAtCursorFromStream } from "../../../utils/aiprdescription/cursorPositionInsert";
 import { getAIDescriptionConfig } from "../../../utils/aiprdescription/descriptionconfig";
-import { isLoggedIn } from "../../../utils/checkAuthentication";
+import { getAuthToken, isLoggedIn } from "../../../utils/checkAuthentication";
 
 export const ChangeSuggestorButton = (commentNode: HTMLElement) => {
     const changeSuggestorButton = createHtmlElement("a", {
@@ -54,17 +54,16 @@ const handleSubmit = async (commentNode: HTMLElement) => {
 
           selectedCode = codeDiv.getElementsByClassName("blob-code-inner")[0].textContent!;
         }
-        if (!isContextWithinBounds([selectedCode, [] ], descriptionConfig.config.maxInputLength)) {
+        if (isOutOfContextBounds([selectedCode, [] ], descriptionConfig.config.maxInputLength)) {
           logo.classList.toggle("animate-spin");
           return alert(`Max input length exceeded. Try reducing the number of selected lines to refactor.`);
         }
+        const token = await getAuthToken();
         const suggestionStream = await generateCodeSuggestion(
-            descriptionConfig.config.openai_api_key,
-            OPEN_AI_COMPLETION_MODEL_NAME,
+            token,
             descriptionConfig.config.language,
             descriptionConfig.config.length,
             descriptionConfig.config.temperature / 10,
-            descriptionConfig.config.tone,
             selectedCode,
         );
 

@@ -42,9 +42,10 @@ const handleSubmit = async () => {
 }
     logo.classList.toggle("animate-spin");
     const [diff, commitMessages] = await getDescriptionContext(url, descriptionConfig.config.source);
-    if(!diff && !commitMessages) {
+
+    if (!diff && !commitMessages) {
       logo.classList.toggle("animate-spin");
-      return alert(`No input context was generated.`)
+      return alert(`No input context was generated.`);
     }
     if (isOutOfContextBounds([diff, commitMessages], descriptionConfig.config.maxInputLength)) {
       logo.classList.toggle("animate-spin");
