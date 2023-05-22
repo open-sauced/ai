@@ -15,7 +15,6 @@ const generatePRDescriptionPrompt = (
 const generateCodeSuggestionPrompt = (
     locale: string,
     maxLength: number,
-    tone: DescriptionTone,
 ) => [
     `Generate a code refactor suggestion for a given code snippet written in ${locale} with the specifications mentioned below`,
     `The code snippet must be a maximum of ${maxLength} characters.`,
@@ -80,7 +79,6 @@ export const generateCodeSuggestion = async (
     locale: string,
     maxLength: number,
     temperature: number,
-    tone: DescriptionTone,
     code: string,
 ) => {
     const content = `Code: ${code}`;
@@ -93,7 +91,7 @@ export const generateCodeSuggestion = async (
                 messages: [
                     {
                         role: "system",
-                        content: generateCodeSuggestionPrompt(locale, maxLength, tone),
+                        content: generateCodeSuggestionPrompt(locale, maxLength),
                     },
                     {
                         role: "user",
