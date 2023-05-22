@@ -47,7 +47,7 @@ export const getDescriptionContext = async (url: string, source: DescriptionSour
   return response;
 };
 
-export const isContextWithinBounds = (context: DescriptionContext, limit: number): boolean => {
+export const isOutOfContextBounds = (context: DescriptionContext, limit: number): boolean => {
   let text = "";
 
   if (context[0]) {
@@ -57,7 +57,7 @@ export const isContextWithinBounds = (context: DescriptionContext, limit: number
  text += context[1].join("");
 }
 
-  return Boolean(isWithinTokenLimit(text, limit));
+  return isWithinTokenLimit(text, limit) === false;
 };
 
 export const isPublicRepository = async (url: string): Promise<boolean> => {
