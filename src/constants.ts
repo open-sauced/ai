@@ -23,3 +23,7 @@ export const GITHUB_PR_COMMENT_EDITOR_SELECTOR = "flex-nowrap d-inline-block mr-
 export const GITHUB_REPO_ACTIONS_SELECTOR = ".pagehead-actions";
 export const GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR = "pull_request[body]";
 export const GITHUB_PR_BASE_BRANCH_SELECTOR = "css-truncate css-truncate-target";
+
+// External Links
+export const DISCUSSIONS = { link: "https://github.com/orgs/open-sauced/discussions", key: "Discussions", displayValue: "Go to feedback Discussions" };
+export const ISSUES = { link: "https://github.com/open-sauced/ai/issues", key: "Issues", displayValue: "Go to our current Issues" };
