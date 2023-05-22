@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { RouteContext } from "../App";
+import GhOpenGraphImg from "../content-scripts/components/githhub-open-graph";
 
 
 const PostOnHighlight = () => {
@@ -29,6 +30,10 @@ const PostOnHighlight = () => {
         </header>
 
         <main className="text-white">
+
+        <GhOpenGraphImg
+          githubLink={"https://github.com/open-sauced/insights/pull/1184"}
+        />
 
         <input
           className="p-1.5 rounded-md mb-2 w-full text-black"
