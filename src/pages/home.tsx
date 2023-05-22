@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { HiArrowTopRightOnSquare, HiPencil, HiUserCircle } from "react-icons/hi2";
+import { HiArrowTopRightOnSquare, HiPencil, HiSquare3Stack3D, HiUserCircle } from "react-icons/hi2";
 import { RouteContext } from "../App";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { useAuth } from "../hooks/useAuth";
@@ -94,7 +94,7 @@ const Home = () => {
               setCurrentPage("resources");
             }}
           >
-            <HiArrowTopRightOnSquare />
+            <HiSquare3Stack3D />
             Resources
           </button>
         </div>
