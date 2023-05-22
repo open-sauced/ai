@@ -1,9 +1,9 @@
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
-import { GITHUB_PR_SUGGESTION_TEXT_AREA_SELECTOR, OPEN_AI_COMPLETION_MODEL_NAME, SUPABASE_LOGIN_URL } from "../../../constants";
+import { GITHUB_PR_SUGGESTION_TEXT_AREA_SELECTOR, SUPABASE_LOGIN_URL } from "../../../constants";
 import { generateCodeSuggestion } from "../../../utils/aiprdescription/openai";
 import { isOutOfContextBounds } from "../../../utils/fetchGithubAPIData";
-import { insertAtCursorFromStream } from "../../../utils/aiprdescription/cursorPositionInsert";
+import { insertTextAtCursor } from "../../../utils/aiprdescription/cursorPositionInsert";
 import { getAIDescriptionConfig } from "../../../utils/aiprdescription/descriptionconfig";
 import { getAuthToken, isLoggedIn } from "../../../utils/checkAuthentication";
 
@@ -73,7 +73,7 @@ const handleSubmit = async (commentNode: HTMLElement) => {
         }
         const textArea = commentNode.querySelector(GITHUB_PR_SUGGESTION_TEXT_AREA_SELECTOR)!;
 
-        void insertAtCursorFromStream(textArea as HTMLTextAreaElement, suggestionStream);
+        void insertTextAtCursor(textArea as HTMLTextAreaElement, suggestionStream);
       } catch (error: unknown) {
         if (error instanceof Error) {
      console.error("Description generation error:", error.message);
