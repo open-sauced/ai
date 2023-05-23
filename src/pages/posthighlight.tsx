@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { RouteContext } from "../App";
@@ -7,6 +7,18 @@ import GhOpenGraphImg from "../content-scripts/components/githhub-open-graph";
 
 const PostOnHighlight = () => {
   const { setCurrentPage } = useContext(RouteContext);
+  const [pageURL, setPageURL] = useState("");
+
+
+  chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
+    function fallBack (domContent) {
+      console.log("fallBack", domContent);
+    }
+    console.log(tabs);
+    setPageURL(tabs[0]?.url ?? "");
+    chrome.tabs.sendMessage(Number(tabs[0].id), { text: "report_back" }, fallBack);
+});
+
 
   return (
     <div className="grid grid-cols-1 divide-y divider-y-center-2 min-w-[320px]">
@@ -32,7 +44,7 @@ const PostOnHighlight = () => {
         <main className="text-white">
 
         <GhOpenGraphImg
-          githubLink={"https://github.com/open-sauced/insights/pull/1184"}
+          githubLink={pageURL}
         />
 
         <input

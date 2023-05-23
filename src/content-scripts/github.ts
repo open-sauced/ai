@@ -55,3 +55,9 @@ const processGithubPage = async () => {
 };
 
 void processGithubPage();
+
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+if (msg.text === "getAiHighlights") {
+    sendResponse("test");
+  }
+});
