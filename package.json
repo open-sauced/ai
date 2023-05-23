@@ -1,7 +1,7 @@
 {
   "name": "opensauced-browser-extension",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.1.1-beta.1",
   "files": [
     "dist"
   ],
@@ -18,6 +18,7 @@
     "gpt-tokenizer": "^1.0.5",
     "node-emoji": "^1.11.0",
     "react": "^18.0.0",
+    "react-chrome-extension-router": "^1.4.0",
     "react-dom": "^18.0.0",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.8.0"

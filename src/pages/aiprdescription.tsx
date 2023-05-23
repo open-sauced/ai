@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
-import { RouteContext } from "../App";
 import { ImSwitch } from "react-icons/im";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -16,9 +15,9 @@ import {
 } from "../utils/aiprdescription/descriptionconfig";
 import { useRefs } from "../hooks/useRefs";
 import { configurationReducer } from "../utils/aiprdescription/configurationReducer";
+import { goBack } from "react-chrome-extension-router";
 
 const AIPRDescription = () => {
-  const { setCurrentPage } = useContext(RouteContext);
   const [config, dispatch] = useReducer(configurationReducer, getDefaultDescriptionConfig());
   const { refs, setRefFromKey } = useRefs();
 
@@ -57,16 +56,16 @@ const AIPRDescription = () => {
 
   return (
 
-    <>
-      <Toaster />
-
+  <>
+    <Toaster />
+    <div className="p-4 bg-slate-800">
       <div className="grid grid-cols-1 divide-y divider-y-center-2 min-w-[320px]">
         <header className="flex justify-between">
           <div className="flex items-center gap-2">
             <button
               className="rounded-full p-2 bg-slate-700 hover:bg-slate-700/50"
               onClick={() => {
-                setCurrentPage("home");
+                goBack();
               }}
             >
               <FaChevronLeft className="text-osOrange text-white" />
@@ -251,7 +250,8 @@ const AIPRDescription = () => {
           </form>
         </main>
       </div>
-    </>
+    </div>
+  </>
   );
 };
 

@@ -1,16 +1,12 @@
-import { useContext } from "react";
-
 import { FaChevronLeft } from "react-icons/fa";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { RouteContext } from "../App";
 import { Toaster } from "react-hot-toast";
 import { EXTERNAL_RESOURCES } from "../constants";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
+import { goBack } from "react-chrome-extension-router";
 
-const Resources = () => {
-  const { setCurrentPage } = useContext(RouteContext);
-
-  return (
+const Resources = () => (
     <>
       <Toaster />
 
@@ -20,7 +16,7 @@ const Resources = () => {
             <button
               className="rounded-full p-2 bg-slate-700 hover:bg-slate-700/50"
               onClick={() => {
-                setCurrentPage("home");
+                goBack();
               }}
             >
               <FaChevronLeft className="text-osOrange text-white" />
@@ -58,6 +54,5 @@ const Resources = () => {
       </div>
     </>
   );
-};
 
 export default Resources;

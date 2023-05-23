@@ -1,16 +1,18 @@
-import { useContext } from "react";
-import { HiArrowTopRightOnSquare, HiPencil, HiSquare3Stack3D, HiUserCircle } from "react-icons/hi2";
-import { RouteContext } from "../App";
+import { HiArrowTopRightOnSquare, HiPencil, HiUserCircle, HiSquare3Stack3D } from "react-icons/hi2";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { useAuth } from "../hooks/useAuth";
 import { useOpensaucedUserCheck } from "../hooks/useOpensaucedUserCheck";
+import { Profile } from "./profile";
+import { goTo } from "react-chrome-extension-router";
+import AIPRDescription from "./aiprdescription";
+import Resources from "./resources";
 
 const Home = () => {
-  const { setCurrentPage } = useContext(RouteContext);
   const { user } = useAuth();
   const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
 
   return (
+  <div className="p-4 bg-slate-800">
     <div className="grid grid-cols-1 divide-y divide-white/40 divider-y-center-2 min-w-[320px] text-white">
       <header className="flex justify-between">
         <img
@@ -23,7 +25,7 @@ const Home = () => {
           <button
             className="flex gap-1 items-center hover:text-orange text-white no-underline"
             onClick={() => {
-              setCurrentPage("profile", { userName: user.user_name });
+              goTo(Profile, { username: user.user_name });
             }}
           >
             {user.user_name}
@@ -64,7 +66,7 @@ const Home = () => {
           <button
             className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
             onClick={() => {
-              setCurrentPage("aiprdescription");
+              goTo(AIPRDescription);
             }}
           >
             <HiPencil />
@@ -75,7 +77,7 @@ const Home = () => {
             <button
               className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
               onClick={() => {
-                setCurrentPage("profile", { userName: checkedUser });
+                goTo(Profile, { username: checkedUser });
               }}
             >
               <HiUserCircle />
@@ -91,7 +93,7 @@ const Home = () => {
           <button
             className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
             onClick={() => {
-              setCurrentPage("resources");
+              goTo(Resources);
             }}
           >
             <HiSquare3Stack3D />
@@ -100,6 +102,7 @@ const Home = () => {
         </div>
       </main>
     </div>
+  </div>
   );
 };
 

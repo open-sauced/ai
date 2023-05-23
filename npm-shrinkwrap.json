@@ -1,18 +1,19 @@
 {
   "name": "opensauced-browser-extension",
-  "version": "1.1.0",
+  "version": "1.1.1-beta.1",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
       "name": "opensauced-browser-extension",
-      "version": "1.1.0",
+      "version": "1.1.1-beta.1",
       "dependencies": {
         "@types/chrome": "^0.0.231",
         "@types/node-emoji": "^1.8.2",
         "gpt-tokenizer": "^1.0.5",
         "node-emoji": "^1.11.0",
         "react": "^18.0.0",
+        "react-chrome-extension-router": "^1.4.0",
         "react-dom": "^18.0.0",
         "react-hot-toast": "^2.4.1",
         "react-icons": "^4.8.0"
@@ -4408,6 +4409,14 @@
       },
       "engines": {
         "node": ">=0.10.0"
+      }
+    },
+    "node_modules/react-chrome-extension-router": {
+      "version": "1.4.0",
+      "resolved": "https://registry.npmjs.org/react-chrome-extension-router/-/react-chrome-extension-router-1.4.0.tgz",
+      "integrity": "sha512-ngf7DMVGIcr0w8Fp3Eo6nufi3L1mQqLz1xLfvzD1YBPI8zLSKAS9PP3pUS+vp7oeE62ZKxcFJiUC6OFKuBQ6Cg==",
+      "peerDependencies": {
+        "react": ">=16"
       }
     },
     "node_modules/react-dom": {

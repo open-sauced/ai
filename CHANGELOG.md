@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+### [1.1.1-beta.1](https://github.com/open-sauced/ai/compare/v1.1.0...v1.1.1-beta.1) (2023-05-22)
+
+
+### 🧑‍💻 Code Refactoring
+
+* improved-extension-navigation ([#99](https://github.com/open-sauced/ai/issues/99)) ([5b2f5c1](https://github.com/open-sauced/ai/commit/5b2f5c18e6103b4297d925aa487b5900a954e495))
+
 ## [1.1.0](https://github.com/open-sauced/ai/compare/v1.0.0...v1.1.0) (2023-05-20)
 
 
