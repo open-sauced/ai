@@ -15,6 +15,7 @@
   "dependencies": {
     "@types/chrome": "^0.0.231",
     "@types/node-emoji": "^1.8.2",
+    "date-fns": "^2.30.0",
     "gpt-tokenizer": "^1.0.5",
     "node-emoji": "^1.11.0",
     "react": "^18.0.0",
