@@ -34,7 +34,6 @@ export const isGithubProfilePage = (url: string) => {
   return githubProfilePattern.test(url);
 };
 
-
 export const isGithubRepoPage = (url: string) => {
   const githubRepoPattern = /github\.com\/[^/]+\/[^/]+$/;
 
@@ -47,6 +46,12 @@ export const isPullRequestCreatePage = (url: string) => {
   return githubPullRequestPattern.test(url);
 };
 
+export const isPullRequestFilesChangedPage = (url: string) => {
+  const githubPullRequestFilesChangedPattern = /github\.com\/[\w.-]+\/[^/]+\/pull\/\d+\/files/;
+
+  return githubPullRequestFilesChangedPattern.test(url);
+};
+
 export const getPullRequestAPIURL = (url: string) => {
   const apiURL = url.replace(/github\.com/, "api.github.com/repos");
 
@@ -54,10 +59,10 @@ export const getPullRequestAPIURL = (url: string) => {
     return apiURL.replace("pull", "pulls");
   }
 
-    if (url.match(/compare\/.*\.\.\./)) {
- return apiURL;
-}
-    const baseBranch = document.getElementsByClassName(GITHUB_PR_BASE_BRANCH_SELECTOR)[1].textContent;
+  if (url.match(/compare\/.*\.\.\./)) {
+    return apiURL;
+  }
+  const baseBranch = document.getElementsByClassName(GITHUB_PR_BASE_BRANCH_SELECTOR)[1].textContent;
 
-    return apiURL.replace(/compare\//, `compare/${baseBranch}...`);
+  return apiURL.replace(/compare\//, `compare/${baseBranch}...`);
 };

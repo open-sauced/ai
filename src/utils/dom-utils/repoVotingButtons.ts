@@ -8,12 +8,11 @@ import {
 } from "../fetchOpenSaucedApiData";
 
 const injectRepoVotingButtons = async (ownerName: string, repoName: string) => {
-  if (!(await isLoggedIn())) {
+
+  if(document.getElementById("repo-voting-button") || !(await isLoggedIn()) || !(await repoExistsOnOpenSauced(ownerName, repoName))) {
     return;
   }
-  if (!(await repoExistsOnOpenSauced(ownerName, repoName))) {
-    return;
-  }
+
   const repoActions = document.querySelector(GITHUB_REPO_ACTIONS_SELECTOR);
 
   if (!repoActions) {
@@ -27,14 +26,8 @@ const injectRepoVotingButtons = async (ownerName: string, repoName: string) => {
   const userVotedRepo = await checkUserVotedRepo(userToken, repoName);
 
   if (userVotedRepo) {
-    if (repoActions.lastChild?.isEqualNode(repoUnvoteButton)) {
-      return;
-    }
     repoActions.appendChild(repoUnvoteButton);
   } else {
-    if (repoActions.lastChild?.isEqualNode(voteRepoButton)) {
-      return;
-    }
     repoActions.appendChild(voteRepoButton);
   }
 };

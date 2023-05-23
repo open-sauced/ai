@@ -2,7 +2,7 @@ import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { SUPABASE_LOGIN_URL } from "../constants";
 
 const Start = () => (
-    <div>
+    <div className="p-4 bg-slate-800">
       <img
         alt="Open Sauced Logo"
         src={OpenSaucedLogo}
