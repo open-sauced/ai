@@ -6,11 +6,8 @@ import { isLoggedIn } from "../checkAuthentication";
 import { isPublicRepository } from "../fetchGithubAPIData";
 
 const injectAddPRToHighlightsButton = async () => {
-  if (!(await isLoggedIn())) {
-    return;
-  }
 
-  if (!(await isPublicRepository(window.location.href))) {
+  if (document.getElementById("add-pr-to-highlights-button") || !(await isLoggedIn()) || !(await isPublicRepository(window.location.href))) {
     return;
   }
     
@@ -19,16 +16,11 @@ const injectAddPRToHighlightsButton = async () => {
     )[0];
   const addPRToHighlightsButton = AddPRToHighlightsButton();
 
-  if (
-      !commentFormatRow.lastElementChild?.previousElementSibling?.isEqualNode(
-        addPRToHighlightsButton,
-      )
-    ) {
-      commentFormatRow.insertBefore(
-        addPRToHighlightsButton,
-        commentFormatRow.lastElementChild,
-      );
-    }
+  commentFormatRow.insertBefore(
+    addPRToHighlightsButton,
+    commentFormatRow.lastElementChild,
+  );
+
 };
 
 export default injectAddPRToHighlightsButton;

@@ -10,6 +10,7 @@ import { getAuthToken, isLoggedIn } from "../../../utils/checkAuthentication";
 
 export const DescriptionGeneratorButton = () => {
   const descriptionGeneratorButton = createHtmlElement("a", {
+    id: "ai-description-button",
     innerHTML: `<span id="ai-description-gen" class="toolbar-item btn-octicon">
     <img class="octicon octicon-heading" height="16px" width="16px" id="ai-description-button-logo" src=${chrome.runtime.getURL(openSaucedLogoIcon)}>
     </span>
