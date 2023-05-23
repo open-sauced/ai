@@ -48,7 +48,7 @@ const Home = () => {
             target="_blank"
           >
             <HiArrowTopRightOnSquare />
-            Go to Highlights feed
+            Highlights feed
           </a>
 
           <a
@@ -58,7 +58,7 @@ const Home = () => {
             target="_blank"
           >
             <HiArrowTopRightOnSquare />
-            Go to Dashboard
+            Dashboard
           </a>
 
           <button
@@ -68,7 +68,7 @@ const Home = () => {
             }}
           >
             <HiPencil />
-            AI PR Description
+            AI Content Configuration
           </button>
 
           {currentTabIsOpensaucedUser && (
