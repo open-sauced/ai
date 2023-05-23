@@ -30,7 +30,7 @@ const Start = () => (
         className="bg-orange no-underline border-none rounded-md text-white font-bold py-2 px-4 cursor-pointer
           bg-gradient-to-r from-[#e67e22] to-[#d35400]"
       >
-        Login!
+        Login
       </a>
     </div>
   );
