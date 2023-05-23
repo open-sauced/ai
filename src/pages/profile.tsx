@@ -5,9 +5,10 @@ import { AiOutlineReload } from "react-icons/ai";
 import { SiC, SiCplusplus, SiCsharp, SiGoland, SiJavascript, SiPhp, SiPython, SiReact, SiRuby, SiRust, SiTypescript } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
-import { getUserData, getUserPRData, getUserHighlightsData } from "../utils/fetchOpenSaucedApiData";
+import { getUserData, getUserPRData, getUserHighlightsData, getContributorPullRequestVelocity } from "../utils/fetchOpenSaucedApiData";
 import { emojify } from "node-emoji";
 import { goBack } from "react-chrome-extension-router";
+import { getRelativeDays } from "../utils/dateUtils";
 
 const interestIcon = {
   python: <SiPython />,
@@ -28,18 +29,20 @@ const interestIcon = {
 
 type InterestIconKeys = keyof typeof interestIcon;
 
-export const Profile = ({ username }: {username: string}) => {
+export const Profile = ({ username }: { username: string }) => {
   const [user, setUser] = useState<null | { id: string, user_name: string, bio: string, created_at: string, linkedin_url: string, twitter_username: string, blog: string, interests: string, open_issues: number }>(null);
   const [userPR, setUserPR] = useState<null | { meta: { itemCount: number } }>(null);
   const [userHighlights, setUserHighlights] = useState<null | { meta: { itemCount: number } }>(null);
+  const [userPRVelocity, setUserPRVelocity] = useState<number>(0);
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const [userData, userPRData, userHighlightsData] = await Promise.all([getUserData(username), getUserPRData(username), getUserHighlightsData(username)]);
+      const [userData, userPRData, userHighlightsData, userPRVelocity] = await Promise.all([getUserData(username), getUserPRData(username), getUserHighlightsData(username), getContributorPullRequestVelocity(username)]);
 
       setUser(userData);
       setUserPR(userPRData);
       setUserHighlights(userHighlightsData);
+      setUserPRVelocity(userPRVelocity);
     };
 
     void fetchUserData();
@@ -163,7 +166,9 @@ export const Profile = ({ username }: {username: string}) => {
           <div className="flex flex-col items-center justify-center p-2 text-xs">
             <p>Avg PRs Velocity</p>
 
-            <p className="font-medium text-5xl">-</p>
+            <p className="font-medium text-5xl">
+              {getRelativeDays(userPRVelocity)}
+            </p>
           </div>
 
           <div className="flex flex-col items-center justify-center p-2 text-xs">
