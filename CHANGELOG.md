@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.2.0-beta.3](https://github.com/open-sauced/ai/compare/v1.2.0-beta.2...v1.2.0-beta.3) (2023-05-23)
+
+
+### 🍕 Features
+
+* generate code suggestions via AI ([#90](https://github.com/open-sauced/ai/issues/90)) ([14eede1](https://github.com/open-sauced/ai/commit/14eede1b5e1912aba04e17daf2a022497510c16b)), closes [#104](https://github.com/open-sauced/ai/issues/104)
+
 ## [1.2.0-beta.2](https://github.com/open-sauced/ai/compare/v1.2.0-beta.1...v1.2.0-beta.2) (2023-05-23)
 
 
