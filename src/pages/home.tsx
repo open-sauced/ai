@@ -68,7 +68,7 @@ const Home = () => {
             }}
           >
             <HiPencil />
-            AI Content Configuration
+            AI Configuration
           </button>
 
           {currentTabIsOpensaucedUser && (
