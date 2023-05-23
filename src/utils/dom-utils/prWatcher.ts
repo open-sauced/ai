@@ -12,11 +12,12 @@ const prEditWatch = (callback: () => void, delayInMs = 0) => {
 };
 
 export const prReviewWatch = (callback: (node: HTMLElement) => void, delayInMs = 0) => {
+    const githubCommentSelector = "inline-comment-form-container";
     const observer = new MutationObserver((mutationList: MutationRecord[], observer: MutationObserver) => {
         mutationList.forEach(mutation => {
-            if (Array.from((mutation.target as HTMLElement).classList).includes("inline-comments")) {
+            if (Array.from((mutation.target as HTMLElement).classList).includes(githubCommentSelector)) {
                 setTimeout(() => {
-                    const commentNodes = document.getElementsByClassName("inline-comments");
+                    const commentNodes = document.getElementsByClassName(githubCommentSelector);
 
                     Array.from(commentNodes).forEach(node => {
                         callback(node as HTMLElement);
