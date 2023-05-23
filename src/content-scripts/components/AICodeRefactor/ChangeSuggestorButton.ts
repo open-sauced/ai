@@ -14,6 +14,7 @@ export const ChangeSuggestorButton = (commentNode: HTMLElement) => {
       </span>
       <tool-tip for="ai-change-gen" class="sr-only" role="tooltip">Get Refactor Suggestions</tool-tip>`,
       onclick: async () => handleSubmit(commentNode),
+      id: "os-ai-change-gen",
     });
 
     return changeSuggestorButton;

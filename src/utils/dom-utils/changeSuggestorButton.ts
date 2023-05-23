@@ -10,7 +10,7 @@ const injectChangeSuggestorButton = async (commentNode: HTMLElement) => {
     const suggestChangesIcon = commentNode.getElementsByClassName(GITHUB_REVIEW_SUGGESTION_SELECTOR)[0];
     const changeSuggestorButton = ChangeSuggestorButton(commentNode);
 
-    if (suggestChangesIcon.firstChild?.isEqualNode(changeSuggestorButton)) {
+    if (suggestChangesIcon.querySelector("#os-ai-change-gen")) {
         return;
     }
     suggestChangesIcon.insertBefore(changeSuggestorButton, suggestChangesIcon.firstChild);
