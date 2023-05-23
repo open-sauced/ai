@@ -17,6 +17,10 @@
   </a>
 </p>
 
+![pr description demo](https://opensauced.ai/pr-description.gif)
+
+Leverage AI generate pull request descriptions based on the diff & commit messages. It works! [Install the Chrome Extension](https://bit.ly/opensaucedai) to get started.
+
 ## Documentation
 
 The documentation for the project can be found [here](https://docs.opensauced.pizza/chrome-extension/introduction-to-the-chrome-extension/).
