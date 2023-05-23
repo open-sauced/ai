@@ -1,11 +1,16 @@
-import { HiArrowTopRightOnSquare, HiPencil, HiUserCircle, HiSquare3Stack3D } from "react-icons/hi2";
+import {
+  HiArrowTopRightOnSquare,
+  HiPencil,
+  HiSquare3Stack3D,
+  HiUserCircle,
+} from "react-icons/hi2";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { useAuth } from "../hooks/useAuth";
 import { useOpensaucedUserCheck } from "../hooks/useOpensaucedUserCheck";
 import { Profile } from "./profile";
 import { goTo } from "react-chrome-extension-router";
 import AIPRDescription from "./aiprdescription";
-import Resources from "./resources";
+import Help from "./help";
 
 const Home = () => {
   const { user } = useAuth();
@@ -89,18 +94,20 @@ const Home = () => {
               &apos;s profile
             </button>
           )}
+        </div>
+      </main>
 
+        <footer className="tools flex gap-2">
           <button
-            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-fit rounded-sm font-medium text-sm"
             onClick={() => {
-              goTo(Resources);
+              goTo(Help);
             }}
           >
             <HiSquare3Stack3D />
-            Resources
+            Help
           </button>
-        </div>
-      </main>
+        </footer>
     </div>
   </div>
   );
