@@ -34,10 +34,6 @@ const injectOpenSaucedInviteButton = (username: string) => {
 
   const userBio = document.querySelector(GITHUB_PROFILE_MENU_SELECTOR);
 
-
-  if (userBio?.lastChild?.isEqualNode(inviteToOpenSaucedButton)) {
-    return;
-  }
   userBio?.append(inviteToOpenSaucedButton);
   document.body.appendChild(inviteToOpenSaucedModal);
 };

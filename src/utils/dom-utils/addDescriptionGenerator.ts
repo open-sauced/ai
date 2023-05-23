@@ -11,9 +11,6 @@ const injectDescriptionGeneratorButton = async () => {
     const commentFormatRow = document.getElementsByClassName(selector)[0];
     const addGeneratorButton = DescriptionGeneratorButton();
 
-    if (commentFormatRow.firstChild?.isEqualNode(addGeneratorButton)) {
-      return;
-    }
     commentFormatRow.insertBefore(addGeneratorButton, commentFormatRow.firstChild);
 };
 

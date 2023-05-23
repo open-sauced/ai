@@ -28,16 +28,10 @@ const injectAddPRToHighlightsButton = async () => {
     )[0];
     const addPRToHighlightsButton = AddPRToHighlightsButton();
 
-    if (
-      !commentFormatRow.lastElementChild?.previousElementSibling?.isEqualNode(
-        addPRToHighlightsButton,
-      )
-    ) {
-      commentFormatRow.insertBefore(
+    commentFormatRow.insertBefore(
         addPRToHighlightsButton,
         commentFormatRow.lastElementChild,
       );
-    }
   }
 };
 

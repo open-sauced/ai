@@ -15,7 +15,16 @@ import domUpdateWatch from "../utils/dom-utils/domUpdateWatcher";
 import injectDescriptionGeneratorButton from "../utils/dom-utils/addDescriptionGenerator";
 import prEditWatch from "../utils/dom-utils/prEditWatcher";
 
+let navigationHistory = new Set<string>();
+
 const processGithubPage = async () => {
+
+  domUpdateWatch(processGithubPage, 50);
+
+  const location = window.location.href.split('?')[0];
+  if (navigationHistory.has(location)) return;
+  navigationHistory.add(location);
+  
   if (prefersDarkMode(document.cookie)) {
     document.documentElement.classList.add("dark");
   }
@@ -41,8 +50,7 @@ const processGithubPage = async () => {
 
     await injectRepoVotingButtons(ownerName, repoName);
   }
-
-  domUpdateWatch(processGithubPage, 50);
+  
 };
 
 void processGithubPage();
