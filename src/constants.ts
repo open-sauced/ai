@@ -26,6 +26,7 @@ export const GITHUB_PR_BASE_BRANCH_SELECTOR = "css-truncate css-truncate-target"
 
 // External Links
 export const EXTERNAL_RESOURCES = [
-    { link: "https://github.com/orgs/open-sauced/discussions", key: "Discussions" },
+    { link: "https://docs.opensauced.pizza/chrome-extension/introduction-to-the-chrome-extension/", key: "Docs" },
     { link: "https://github.com/open-sauced/ai/issues", key: "Issues" },
+    { link: "https://github.com/orgs/open-sauced/discussions", key: "Discussions" },
 ];
