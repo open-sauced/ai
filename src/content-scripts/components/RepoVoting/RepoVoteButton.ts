@@ -6,6 +6,7 @@ import { InsightsSelectDropdown } from "../InsightsSelectDropdown/InsightsSelect
 
 export const VoteRepoButton = (ownerName: string, repoName: string) => {
   const voteRepoButton = createHtmlElement("li", {
+    id: "repo-voting-button",
     className:
       "text-white text-center hover:shadow-button bg-gradient-to-r from-[#e67e22] to-[#d35400] btn btn-sm",
     innerHTML: `

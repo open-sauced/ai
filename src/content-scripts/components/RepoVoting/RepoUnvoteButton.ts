@@ -1,12 +1,12 @@
 import "../../content-scripts.css";
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 import { getAuthToken } from "../../../utils/checkAuthentication";
-import { VoteRepoButton } from "./RepoVoteButton";
 import { voteOrUnvoteRepo } from "../../../utils/fetchOpenSaucedApiData";
 import { InsightsSelectDropdown } from "../InsightsSelectDropdown/InsightsSelectDropdown";
 
 export const RepoUnvoteButton = (ownerName: string, repoName: string) => {
   const repoUnvoteButton = createHtmlElement("li", {
+    id: "repo-voting-button",
     className:
       "text-white text-center hover:shadow-button bg-gradient-to-r from-[#e67e22] to-[#d35400] btn btn-sm",
     innerHTML: `

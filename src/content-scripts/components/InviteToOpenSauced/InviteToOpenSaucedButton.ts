@@ -4,6 +4,7 @@ import { createHtmlElement } from "../../../utils/createHtmlElement";
 
 export const InviteToOpenSaucedButton = () => {
   const inviteToOpenSaucedButton = createHtmlElement("a", {
+    id: "invite-to-opensauced-button",
     className:
       "inline-block mt-4 text-black bg-gh-white dark:bg-gh-gray dark:text-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline",
     innerHTML: `<img

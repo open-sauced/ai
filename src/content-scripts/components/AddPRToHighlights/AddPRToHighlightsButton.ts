@@ -3,6 +3,7 @@ import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
 
 export const AddPRToHighlightsButton = () => {
   const addPRToHighlightsButton = createHtmlElement("a", {
+    id: "add-pr-to-highlights-button",
     className: "relative cursor-pointer",
     innerHTML: `<img class="mr-1 mt-1" height="16px" width="16px" src=${chrome.runtime.getURL(
       openSaucedLogoIcon,
