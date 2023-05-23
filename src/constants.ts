@@ -23,3 +23,10 @@ export const GITHUB_PR_COMMENT_EDITOR_SELECTOR = "flex-nowrap d-inline-block mr-
 export const GITHUB_REPO_ACTIONS_SELECTOR = ".pagehead-actions";
 export const GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR = "pull_request[body]";
 export const GITHUB_PR_BASE_BRANCH_SELECTOR = "css-truncate css-truncate-target";
+
+// External Links
+export const EXTERNAL_RESOURCES = [
+    { link: "https://docs.opensauced.pizza/chrome-extension/introduction-to-the-chrome-extension/", key: "Docs" },
+    { link: "https://github.com/open-sauced/ai/issues", key: "Issues" },
+    { link: "https://github.com/orgs/open-sauced/discussions", key: "Discussions" },
+];
