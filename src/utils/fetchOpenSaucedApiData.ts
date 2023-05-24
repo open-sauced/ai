@@ -177,32 +177,3 @@ export const updateInsight = async (userToken: string, repoId: string, checked: 
 
   return response.status === 200;
 };
-
-export const getContributorPullRequestVelocity = async (
-  userName: string,
-  forceRefresh: boolean = false,
-) =>
-  cachedFetch(`${OPEN_SAUCED_USERS_ENDPOINT}/${userName}/prs`, {
-    expireInSeconds: 2 * 60 * 60,
-    forceRefresh,
-    headers: { Accept: "application/json" },
-  })
-    .then(async resp => {
-      if (!resp?.ok) {
-        console.log("error getting user info");
-      }
-      return resp?.json();
-    })
-    .then(({ data }) => {
-      const mergedPRs = data.filter(prState => prState.state.toLowerCase() === "merged");
-
-      const totalDays = mergedPRs.reduce((total, pr) => {
-        const daysBetween = differenceInDays(new Date(pr.closed_at), new Date(pr.created_at));
-
-        return (total += daysBetween);
-      }, 0);
-
-      const averageVelocity: number = mergedPRs.length > 0 ? Math.round(totalDays / mergedPRs.length) : 0;
-
-      return averageVelocity;
-    });
