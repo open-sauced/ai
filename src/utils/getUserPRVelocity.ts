@@ -1,4 +1,5 @@
 import { differenceInDays } from "date-fns";
+import { IUserPR } from "../ts/types";
 
 export const getUserPRVelocity = ((prDetails: IUserPR[]) => {
     const mergedPRs = prDetails.filter((prState: IUserPR) => prState.state.toLowerCase() === "merged");

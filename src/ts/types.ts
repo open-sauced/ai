@@ -1,4 +1,4 @@
-interface IUserPR {
+export interface IUserPR {
   readonly title: string;
   readonly author_login: string;
   readonly state: string;
