@@ -57,7 +57,9 @@ const processGithubPage = async () => {
 void processGithubPage();
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-if (msg.text === "getAiHighlights") {
-    sendResponse("test");
+if (msg.type === "get_highlight") {
+    const title = document.querySelector(".gh-header-title")?.innerText;
+
+    sendResponse(title);
   }
 });
