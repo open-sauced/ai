@@ -5,10 +5,11 @@ import { AiOutlineReload } from "react-icons/ai";
 import { SiC, SiCplusplus, SiCsharp, SiGoland, SiJavascript, SiPhp, SiPython, SiReact, SiRuby, SiRust, SiTypescript } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
-import { getUserData, getUserPRData, getUserHighlightsData, getContributorPullRequestVelocity } from "../utils/fetchOpenSaucedApiData";
+import { getUserData, getUserPRData, getUserHighlightsData } from "../utils/fetchOpenSaucedApiData";
 import { emojify } from "node-emoji";
 import { goBack } from "react-chrome-extension-router";
 import { getRelativeDays } from "../utils/dateUtils";
+import { getUserPRVelocity } from "../utils/getUserPRVelocity";
 
 const interestIcon = {
   python: <SiPython />,
@@ -37,12 +38,12 @@ export const Profile = ({ username }: { username: string }) => {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const [userData, userPRData, userHighlightsData, userPRVelocity] = await Promise.all([getUserData(username), getUserPRData(username), getUserHighlightsData(username), getContributorPullRequestVelocity(username)]);
+      const [userData, userPRData, userHighlightsData] = await Promise.all([getUserData(username), getUserPRData(username), getUserHighlightsData(username)]);
 
       setUser(userData);
       setUserPR(userPRData);
       setUserHighlights(userHighlightsData);
-      setUserPRVelocity(userPRVelocity);
+      setUserPRVelocity(getUserPRVelocity(userPRData?.data || []));
     };
 
     void fetchUserData();
