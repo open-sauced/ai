@@ -16,5 +16,3 @@ The source code for the extension is located in the `src` directory. The `src` d
 For example, the `background.ts` script uses a web worker to check for authentication cookies in the background, so that the user can be logged in to the extension without having to enter any information directly in the extension popup.
 - `App.tsx`: contains the main React component that is rendered in the extension popup. This component is wrapped in a `RouteContext` context provider, which is used to conditionally render the appropriate page based on the current URL. The first authentication check is also done here.
 - `constants.ts`: contains constants that are used throughout the extension, such as the API endpoints, GitHub URLs and classes, etc.
-
-<!-- TODO: document why we need two content-scripts.css files here. -->
