@@ -16,6 +16,7 @@ export const OPEN_SAUCED_AI_CODE_REFACTOR_ENDPOINT = "https://api.opensauced.piz
 // GitHub constants/selectors
 export const GITHUB_PROFILE_MENU_SELECTOR = ".p-nickname.vcard-username.d-block";
 export const GITHUB_PROFILE_EDIT_MENU_SELECTOR = "button.js-profile-editable-edit-button";
+export const GITHUB_PROFILE_USER_PROFILE_BIO_SELECTOR = ".p-note.user-profile-bio.mb-3.js-user-profile-bio.f4"
 export const GITHUB_PR_COMMENT_HEADER_SELECTOR = "timeline-comment-header clearfix d-flex";
 export const GITHUB_NEW_PR_COMMENT_EDITOR_SELECTOR = "flex-nowrap d-none d-md-inline-block mr-md-0 mr-3";
 export const GITHUB_PR_COMMENT_EDITOR_SELECTOR = "flex-nowrap d-inline-block mr-3";
