@@ -16,7 +16,9 @@ const PostOnHighlight = () => {
     const generateAiDescription = () => {
         enableSendButton(false);
         chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-            chrome.tabs.sendMessage(tabs[0].id ?? 0, { type: "get_ai_description" }, console.log);
+            chrome.tabs.sendMessage(tabs[0].id ?? 0, { type: "get_ai_description" }, () => {
+                enableSendButton(true);
+            });
         });
     };
 
@@ -63,55 +65,57 @@ const PostOnHighlight = () => {
     }, []);
 
     return (
-        <div className="grid grid-cols-1 divide-y divider-y-center-2 min-w-[320px]">
-            <Toaster />
+        <div className="p-4 bg-slate-800">
+            <div className="grid grid-cols-1 divide-y divider-y-center-2 min-w-[320px]">
+                <Toaster />
 
-            <header className="flex justify-between">
-                <div className="flex items-center gap-2">
-                    <button
-                        className="rounded-full p-2 bg-slate-700 hover:bg-slate-700/50"
-                        onClick={() => {
-                            goBack();
-                        }}
-                    >
-                        <FaChevronLeft className="text-osOrange text-white" />
-                    </button>
+                <header className="flex justify-between">
+                    <div className="flex items-center gap-2">
+                        <button
+                            className="rounded-full p-2 bg-slate-700 hover:bg-slate-700/50"
+                            onClick={() => {
+                                goBack();
+                            }}
+                        >
+                            <FaChevronLeft className="text-osOrange text-white" />
+                        </button>
 
-                    <img
-                        alt="OpenSauced logo"
-                        className="w-[100%]"
-                        src={OpenSaucedLogo}
+                        <img
+                            alt="OpenSauced logo"
+                            className="w-[100%]"
+                            src={OpenSaucedLogo}
+                        />
+                    </div>
+                </header>
+
+                <main className="text-white">
+
+                    <input
+                        className="p-1.5 rounded-md mb-2 w-full text-black"
+                        maxLength={50}
+                        placeholder="Your title here"
+                        type="text"
+                        value={highlightTitle}
+                        onChange={e => setHighlightTitle(e.target.value)}
                     />
-                </div>
-            </header>
 
-            <main className="text-white">
+                    <textarea
+                        className="p-1.5 rounded-md mb-2 w-full text-black"
+                        placeholder="Your text here"
+                        rows={5}
+                        value={highlightContent}
+                        onChange={e => setHighlightContent(e.target.value)}
+                    />
 
-                <input
-                    className="p-1.5 rounded-md mb-2 w-full text-black"
-                    maxLength={50}
-                    placeholder="Your title here"
-                    type="text"
-                    value={highlightTitle}
-                    onChange={e => setHighlightTitle(e.target.value)}
-                />
-
-                <textarea
-                    className="p-1.5 rounded-md mb-2 w-full text-black"
-                    placeholder="Your text here"
-                    rows={5}
-                    value={highlightContent}
-                    onChange={e => setHighlightContent(e.target.value)}
-                />
-
-                <button
-                    className="inline-block disabled:bg-gray-500 text-black bg-gh-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline"
-                    disabled={!isSendButtonEnabled}
-                    onClick={postHighlight}
-                >
+                    <button
+                        className="inline-block disabled:bg-gray-500 text-black bg-gh-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline"
+                        disabled={!isSendButtonEnabled}
+                        onClick={postHighlight}
+                    >
                     Post
-                </button>
-            </main>
+                    </button>
+                </main>
+            </div>
         </div>
     );
 };
