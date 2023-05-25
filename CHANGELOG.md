@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.3.0-beta.1](https://github.com/open-sauced/ai/compare/v1.2.0...v1.3.0-beta.1) (2023-05-25)
+
+
+### 🍕 Features
+
+* adds test and lint to build ([#127](https://github.com/open-sauced/ai/issues/127)) ([6f1cfc7](https://github.com/open-sauced/ai/commit/6f1cfc7435548b3f5cffb83dfa675612603a2869))
+
 ## [1.2.0](https://github.com/open-sauced/ai/compare/v1.1.0...v1.2.0) (2023-05-25)
 
 
