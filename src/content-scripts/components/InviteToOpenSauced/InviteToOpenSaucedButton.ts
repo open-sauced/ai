@@ -3,11 +3,11 @@ import "../../content-scripts.css";
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 
 export const InviteToOpenSaucedButton = () => {
-  const inviteToOpenSaucedButton = createHtmlElement("a", {
-    id: "invite-to-opensauced-button",
-    className:
+    const inviteToOpenSaucedButton = createHtmlElement("a", {
+        id: "invite-to-opensauced-button",
+        className:
       "inline-block mt-4 text-black bg-gh-white dark:bg-gh-gray dark:text-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline",
-    innerHTML: `<img
+        innerHTML: `<img
           class="mx-2 inline-block align-top"
           src="${chrome.runtime.getURL(logoIcon)}"
           alt="OpenSauced Logo"
@@ -16,7 +16,7 @@ export const InviteToOpenSaucedButton = () => {
         />
         <span>Invite to OpenSauced</span>
         `,
-  });
+    });
 
-  return inviteToOpenSaucedButton;
+    return inviteToOpenSaucedButton;
 };

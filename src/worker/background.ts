@@ -4,10 +4,10 @@ import { setDefaultDescriptionConfig } from "../utils/aiprdescription/descriptio
 
 chrome.cookies.onChanged.addListener(changeInfo => {
     if (
-      changeInfo.cookie.name === SUPABASE_AUTH_COOKIE_NAME ||
+        changeInfo.cookie.name === SUPABASE_AUTH_COOKIE_NAME ||
       changeInfo.cookie.domain === OPEN_SAUCED_INSIGHTS_DOMAIN
     ) {
-      checkAuthentication();
+        checkAuthentication();
     }
 });
 
