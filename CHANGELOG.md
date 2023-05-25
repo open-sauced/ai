@@ -5,6 +5,69 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.2.0-beta.7](https://github.com/open-sauced/ai/compare/v1.2.0-beta.6...v1.2.0-beta.7) (2023-05-25)
+
+
+### 🍕 Features
+
+* add PR velocity to profile page ([#111](https://github.com/open-sauced/ai/issues/111)) ([ba7fad6](https://github.com/open-sauced/ai/commit/ba7fad6ce96d04d15fc7c0ca2b5ffc52e50f9125))
+
+## [1.2.0-beta.6](https://github.com/open-sauced/ai/compare/v1.2.0-beta.5...v1.2.0-beta.6) (2023-05-25)
+
+
+### 🐛 Bug Fixes
+
+* bump manifest version on main only ([#124](https://github.com/open-sauced/ai/issues/124)) ([e4a86e4](https://github.com/open-sauced/ai/commit/e4a86e49f209051092ceef8930061277886afeca))
+
+## [1.2.0-beta.5](https://github.com/open-sauced/ai/compare/v1.2.0-beta.4...v1.2.0-beta.5) (2023-05-25)
+
+
+### 📝 Documentation
+
+* dev docs ([#83](https://github.com/open-sauced/ai/issues/83)) ([4eff6eb](https://github.com/open-sauced/ai/commit/4eff6eb58498dd9b0f1ff5a8311d4e1c05a56ca9))
+
+## [1.2.0-beta.4](https://github.com/open-sauced/ai/compare/v1.2.0-beta.3...v1.2.0-beta.4) (2023-05-25)
+
+
+### 🍕 Features
+
+* Manifest.json version bump ([#120](https://github.com/open-sauced/ai/issues/120)) ([488046b](https://github.com/open-sauced/ai/commit/488046b2eca3b605c38b354e265dc8ed16f637c5))
+
+## [1.2.0-beta.3](https://github.com/open-sauced/ai/compare/v1.2.0-beta.2...v1.2.0-beta.3) (2023-05-23)
+
+
+### 🍕 Features
+
+* generate code suggestions via AI ([#90](https://github.com/open-sauced/ai/issues/90)) ([14eede1](https://github.com/open-sauced/ai/commit/14eede1b5e1912aba04e17daf2a022497510c16b)), closes [#104](https://github.com/open-sauced/ai/issues/104)
+
+## [1.2.0-beta.2](https://github.com/open-sauced/ai/compare/v1.2.0-beta.1...v1.2.0-beta.2) (2023-05-23)
+
+
+### 🐛 Bug Fixes
+
+* duplicate-button-injections using guards ([#110](https://github.com/open-sauced/ai/issues/110)) ([3978766](https://github.com/open-sauced/ai/commit/39787668594b558ac8cb206ad894de94df767c81))
+
+## [1.2.0-beta.1](https://github.com/open-sauced/ai/compare/v1.1.1-beta.2...v1.2.0-beta.1) (2023-05-23)
+
+
+### 🍕 Features
+
+* Resources page to link users to open-sauced feedback/discussions ([#100](https://github.com/open-sauced/ai/issues/100)) ([3d607ae](https://github.com/open-sauced/ai/commit/3d607aeeb86d663064fb8b857ea829950ddb1082))
+
+### [1.1.1-beta.2](https://github.com/open-sauced/ai/compare/v1.1.1-beta.1...v1.1.1-beta.2) (2023-05-23)
+
+
+### 🐛 Bug Fixes
+
+* adds demo to readme ([c27e614](https://github.com/open-sauced/ai/commit/c27e61432be557c4f7e54ba684e69206e35560f4))
+
+### [1.1.1-beta.1](https://github.com/open-sauced/ai/compare/v1.1.0...v1.1.1-beta.1) (2023-05-22)
+
+
+### 🧑‍💻 Code Refactoring
+
+* improved-extension-navigation ([#99](https://github.com/open-sauced/ai/issues/99)) ([5b2f5c1](https://github.com/open-sauced/ai/commit/5b2f5c18e6103b4297d925aa487b5900a954e495))
+
 ## [1.1.0](https://github.com/open-sauced/ai/compare/v1.0.0...v1.1.0) (2023-05-20)
 
 

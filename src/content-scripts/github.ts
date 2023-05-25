@@ -4,16 +4,18 @@ import {
   isGithubPullRequestPage,
   isGithubRepoPage,
   isPullRequestCreatePage,
+  isPullRequestFilesChangedPage,
 } from "../utils/urlMatchers";
 import { isOpenSaucedUser } from "../utils/fetchOpenSaucedApiData";
 import injectViewOnOpenSauced from "../utils/dom-utils/viewOnOpenSauced";
 import injectInviteToOpenSauced from "../utils/dom-utils/inviteToOpenSauced";
 import { prefersDarkMode } from "../utils/colorPreference";
 import injectAddPRToHighlightsButton from "../utils/dom-utils/addPRToHighlights";
-import injectRepoVotingButtons from "../utils/dom-utils/repoVotingButtons";
+// import injectRepoVotingButtons from "../utils/dom-utils/repoVotingButtons";
 import domUpdateWatch from "../utils/dom-utils/domUpdateWatcher";
 import injectDescriptionGeneratorButton from "../utils/dom-utils/addDescriptionGenerator";
-import prEditWatch from "../utils/dom-utils/prEditWatcher";
+import injectChangeSuggestorButton from "../utils/dom-utils/changeSuggestorButton";
+import prEditWatch, { prReviewWatch } from "../utils/dom-utils/prWatcher";
 
 const processGithubPage = async () => {
   if (prefersDarkMode(document.cookie)) {
@@ -21,6 +23,8 @@ const processGithubPage = async () => {
   }
   if (isPullRequestCreatePage(window.location.href)) {
     void injectDescriptionGeneratorButton();
+  } else if (isPullRequestFilesChangedPage(window.location.href)) {
+    prReviewWatch(injectChangeSuggestorButton, 500);
   } else if (isGithubPullRequestPage(window.location.href)) {
     prEditWatch(injectDescriptionGeneratorButton);
     void injectAddPRToHighlightsButton();
@@ -35,12 +39,16 @@ const processGithubPage = async () => {
     } else {
       injectInviteToOpenSauced(username);
     }
+  }
+
+  /* commenting out repo voting because it's not ready yet // issue #106
   } else if (isGithubRepoPage(window.location.href)) {
     const ownerName = getGithubUsername(window.location.href) ?? "";
     const repoName = window.location.href.split("/").pop() ?? "";
 
     await injectRepoVotingButtons(ownerName, repoName);
   }
+  */
 
   domUpdateWatch(processGithubPage, 50);
 };

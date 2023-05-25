@@ -10,6 +10,7 @@ import { getAuthToken, isLoggedIn } from "../../../utils/checkAuthentication";
 
 export const DescriptionGeneratorButton = () => {
   const descriptionGeneratorButton = createHtmlElement("a", {
+    id: "ai-description-button",
     innerHTML: `<span id="ai-description-gen" class="toolbar-item btn-octicon">
     <img class="octicon octicon-heading" height="16px" width="16px" id="ai-description-button-logo" src=${chrome.runtime.getURL(openSaucedLogoIcon)}>
     </span>
@@ -42,9 +43,10 @@ const handleSubmit = async () => {
 }
     logo.classList.toggle("animate-spin");
     const [diff, commitMessages] = await getDescriptionContext(url, descriptionConfig.config.source);
-    if(!diff && !commitMessages) {
+
+    if (!diff && !commitMessages) {
       logo.classList.toggle("animate-spin");
-      return alert(`No input context was generated.`)
+      return alert(`No input context was generated.`);
     }
     if (isOutOfContextBounds([diff, commitMessages], descriptionConfig.config.maxInputLength)) {
       logo.classList.toggle("animate-spin");

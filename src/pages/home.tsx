@@ -1,44 +1,47 @@
-import { useContext } from "react";
-import { HiArrowTopRightOnSquare, HiPencil, HiUserCircle } from "react-icons/hi2";
-import { RouteContext } from "../App";
+import {
+  HiArrowTopRightOnSquare,
+  HiOutlineQuestionMarkCircle,
+  HiPencil,
+  HiUserCircle,
+} from "react-icons/hi2";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { useAuth } from "../hooks/useAuth";
 import { useOpensaucedUserCheck } from "../hooks/useOpensaucedUserCheck";
+import { Profile } from "./profile";
+import { goTo } from "react-chrome-extension-router";
+import AIPRDescription from "./aiprdescription";
+import Help from "./help";
 
 const Home = () => {
-  const { setCurrentPage } = useContext(RouteContext);
   const { user } = useAuth();
   const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
 
   return (
-    <div className="grid grid-cols-1 divide-y divide-white/40 divider-y-center-2 min-w-[320px] text-white">
-      <header className="flex justify-between">
-        <img
-          alt="OpenSauced logo"
-          className="w-[45%]"
-          src={OpenSaucedLogo}
-        />
+    <div className="p-4 bg-slate-800">
+      <div className="grid grid-cols-1 divide-y divide-white/40 divider-y-center-2 min-w-[320px] text-white">
+        <header className="flex justify-between">
+          <img alt="OpenSauced logo" className="w-[45%]" src={OpenSaucedLogo} />
 
-        {user && (
-          <button
-            className="flex gap-1 items-center hover:text-orange text-white no-underline"
-            onClick={() => {
-              setCurrentPage("profile", { userName: user.user_name });
-            }}
-          >
-            {user.user_name}
+          {user && (
+            <button
+              className="flex gap-1 items-center hover:text-orange text-white no-underline"
+              onClick={() => {
+                goTo(Profile, { username: user.user_name });
+              }}
+            >
+              {user.user_name}
 
-            <img
-              alt="User avatar"
-              className="rounded-full w-6 aspect-square border border-orange"
-              src={`https://github.com/${user.user_name}.png`}
-            />
-          </button>
-        )}
-      </header>
+              <img
+                alt="User avatar"
+                className="rounded-full w-6 aspect-square border border-orange"
+                src={`https://github.com/${user.user_name}.png`}
+              />
+            </button>
+          )}
+        </header>
 
-      <main className="main-content">
-        <h3 className="text font-medium text-base leading-10">Tools:</h3>
+        <main className="main-content">
+          <h3 className="text font-medium text-base leading-10">Tools:</h3>
 
         <div className="tools flex flex-col gap-2">
           <a
@@ -48,7 +51,7 @@ const Home = () => {
             target="_blank"
           >
             <HiArrowTopRightOnSquare />
-            Go to Highlights feed
+            Highlights feed
           </a>
 
           <a
@@ -58,37 +61,46 @@ const Home = () => {
             target="_blank"
           >
             <HiArrowTopRightOnSquare />
-            Go to Dashboard
+            Dashboard
           </a>
 
           <button
             className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
             onClick={() => {
-              setCurrentPage("aiprdescription");
+              goTo(AIPRDescription);
             }}
           >
             <HiPencil />
-            AI PR Description
+            AI Configuration
           </button>
 
           {currentTabIsOpensaucedUser && (
-            <button
-              className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-              onClick={() => {
-                setCurrentPage("profile", { userName: checkedUser });
-              }}
-            >
-              <HiUserCircle />
-              View
-
-{" "}
-
-{checkedUser}
-              &apos;s profile
-            </button>
-          )}
+              <button
+                className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+                onClick={() => {
+                  goTo(Profile, { username: checkedUser });
+                }}
+              >
+                <HiUserCircle />
+                View {checkedUser}
+                &apos;s profile
+              </button>
+            )}
         </div>
-      </main>
+        </main>
+
+        <footer className="tools flex gap-2">
+          <button
+            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-fit rounded-sm font-medium text-sm"
+            onClick={() => {
+              goTo(Help);
+            }}
+          >
+            <HiOutlineQuestionMarkCircle />
+            Help
+          </button>
+        </footer>
+      </div>
     </div>
   );
 };
