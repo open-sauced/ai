@@ -21,24 +21,24 @@ const Home = () => {
             <div className="grid grid-cols-1 divide-y divide-white/40 divider-y-center-2 min-w-[320px] text-white">
                 <header className="flex justify-between">
                     <img
-                      alt="OpenSauced logo"
-                      className="w-[45%]"
-                      src={OpenSaucedLogo}
+                        alt="OpenSauced logo"
+                        className="w-[45%]"
+                        src={OpenSaucedLogo}
                     />
 
                     {user && (
                         <button
-                          className="flex gap-1 items-center hover:text-orange text-white no-underline"
-                          onClick={() => {
+                            className="flex gap-1 items-center hover:text-orange text-white no-underline"
+                            onClick={() => {
                                 goTo(Profile, { username: user.user_name });
                             }}
                         >
                             {user.user_name}
 
                             <img
-                              alt="User avatar"
-                              className="rounded-full w-6 aspect-square border border-orange"
-                              src={`https://github.com/${user.user_name}.png`}
+                                alt="User avatar"
+                                className="rounded-full w-6 aspect-square border border-orange"
+                                src={`https://github.com/${user.user_name}.png`}
                             />
                         </button>
                     )}
@@ -49,28 +49,28 @@ const Home = () => {
 
                     <div className="tools flex flex-col gap-2">
                         <a
-                          className="flex items-center bg-slate-700 hover:bg-slate-700/70 text-white hover:text-orange no-underline gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                          href="https://insights.opensauced.pizza/feed"
-                          rel="noreferrer"
-                          target="_blank"
+                            className="flex items-center bg-slate-700 hover:bg-slate-700/70 text-white hover:text-orange no-underline gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+                            href="https://insights.opensauced.pizza/feed"
+                            rel="noreferrer"
+                            target="_blank"
                         >
                             <HiArrowTopRightOnSquare />
               Highlights feed
                         </a>
 
                         <a
-                          className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                          href="https://insights.opensauced.pizza"
-                          rel="noreferrer"
-                          target="_blank"
+                            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+                            href="https://insights.opensauced.pizza"
+                            rel="noreferrer"
+                            target="_blank"
                         >
                             <HiArrowTopRightOnSquare />
               Dashboard
                         </a>
 
                         <button
-                          className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                          onClick={() => {
+                            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+                            onClick={() => {
                                 goTo(AIPRDescription);
                             }}
                         >
@@ -80,8 +80,8 @@ const Home = () => {
 
                         {currentTabIsOpensaucedUser && (
                             <button
-                              className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                              onClick={() => {
+                                className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+                                onClick={() => {
                                     goTo(Profile, { username: checkedUser });
                                 }}
                             >
@@ -99,8 +99,8 @@ const Home = () => {
 
                 <footer className="tools flex gap-2">
                     <button
-                      className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-fit rounded-sm font-medium text-sm"
-                      onClick={() => {
+                        className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-fit rounded-sm font-medium text-sm"
+                        onClick={() => {
                             goTo(Help);
                         }}
                     >

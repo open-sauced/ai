@@ -56,8 +56,8 @@ export const Profile = ({ username }: { username: string }) => {
                 <header className="flex justify-between">
                     <div className="flex items-center gap-2">
                         <button
-                          className="rounded-full p-2 bg-slate-700 hover:bg-slate-700/50"
-                          onClick={() => {
+                            className="rounded-full p-2 bg-slate-700 hover:bg-slate-700/50"
+                            onClick={() => {
                                 goBack();
                             }}
                         >
@@ -65,16 +65,16 @@ export const Profile = ({ username }: { username: string }) => {
                         </button>
 
                         <img
-                          alt="OpenSauced logo"
-                          className="w-[100%]"
-                          src={OpenSaucedLogo}
+                            alt="OpenSauced logo"
+                            className="w-[100%]"
+                            src={OpenSaucedLogo}
                         />
                     </div>
 
                     <button
-                      className="hover:text-orange text-lg"
-                      title="Refresh user data"
-                      onClick={async () => {
+                        className="hover:text-orange text-lg"
+                        title="Refresh user data"
+                        onClick={async () => {
                             const [userData, userPRData] = await Promise.all([getUserData(username), getUserPRData(username)]);
 
                             setUser(userData);
@@ -88,63 +88,65 @@ export const Profile = ({ username }: { username: string }) => {
                 <main>
                     <div className="flex flex-col items-center gap-1 mb-4">
                         <a
-                          className="flex flex-col items-center hover:text-orange hover:scale-105"
-                          href={`https://insights.opensauced.pizza/user/${username}`}
-                          rel="noopener noreferrer"
-                          target="_blank"
+                            className="flex flex-col items-center hover:text-orange hover:scale-105"
+                            href={`https://insights.opensauced.pizza/user/${username}`}
+                            rel="noopener noreferrer"
+                            target="_blank"
                         >
                             <img
-                              alt="User avatar"
-                              className="rounded-full w-14 aspect-square p-1 bg-slate-700"
-                              src={`https://github.com/${username}.png`}
+                                alt="User avatar"
+                                className="rounded-full w-14 aspect-square p-1 bg-slate-700"
+                                src={`https://github.com/${username}.png`}
                             />
 
                             <p className="font-medium">
-            @
+                                @
                                 {username}
                             </p>
                         </a>
 
                         {(user?.linkedin_url || user?.twitter_username) &&
-            <div className="social flex gap-0.5">
-                {user.linkedin_url &&
-                <a
-                  className="rounded-sm border bg-slate-700 hover:bg-slate-700/50 hover:text-cyan-400 p-1"
-                  href={user.linkedin_url}
-                  rel="noreferrer"
-                  target="_blank"
-                  title={user.linkedin_url}
-                >
-                    <RiLinkedinFill className="text-lg" />
-                </a>}
+                            <div className="social flex gap-0.5">
+                                {user.linkedin_url &&
+                                    <a
+                                        className="rounded-sm border bg-slate-700 hover:bg-slate-700/50 hover:text-cyan-400 p-1"
+                                        href={user.linkedin_url}
+                                        rel="noreferrer"
+                                        target="_blank"
+                                        title={user.linkedin_url}
+                                    >
+                                        <RiLinkedinFill className="text-lg" />
+                                    </a>}
 
-                {user.twitter_username &&
-                <a
-                  className="rounded-sm border bg-slate-700 hover:bg-slate-700/50 hover:text-cyan-400 p-1"
-                  href={`https://twitter.com/${user.twitter_username}`}
-                  rel="noreferrer"
-                  target="_blank"
-                  title={`https://twitter.com/${user.twitter_username}`}
-                >
-                    <RiTwitterFill className="text-lg" />
-                </a>}
-            </div>}
+                                {user.twitter_username &&
+                                    <a
+                                        className="rounded-sm border bg-slate-700 hover:bg-slate-700/50 hover:text-cyan-400 p-1"
+                                        href={`https://twitter.com/${user.twitter_username}`}
+                                        rel="noreferrer"
+                                        target="_blank"
+                                        title={`https://twitter.com/${user.twitter_username}`}
+                                    >
+                                        <RiTwitterFill className="text-lg" />
+                                    </a>}
+                            </div>}
 
-                        {user?.bio && <span>
-                            {emojify(user.bio)}
-                                      </span>}
+                        {user?.bio && (
+                            <span>
+                                {emojify(user.bio)}
+                            </span>
+                        )}
 
                         {user?.blog &&
-            <a
-              className="flex text-orange items-center gap-0.5"
-              href={user.blog}
-              rel="noreferrer"
-              target="_blank"
-            >
-                <RiLinkM />
+                            <a
+                                className="flex text-orange items-center gap-0.5"
+                                href={user.blog}
+                                rel="noreferrer"
+                                target="_blank"
+                            >
+                                <RiLinkM />
 
-                {user.blog}
-            </a>}
+                                {user.blog}
+                            </a>}
                     </div>
 
                     <div className="grid grid-cols-2 text-white bg-osOrange -mx-4 mb-4 p-4 py-8">
@@ -183,17 +185,17 @@ export const Profile = ({ username }: { username: string }) => {
                         <h2 className="font-medium text-lg mb-2">Current Interest</h2>
 
                         <div
-                          className="flex gap-1.5"
-                          style={{ flexWrap: "wrap" }}
+                            className="flex gap-1.5"
+                            style={{ flexWrap: "wrap" }}
                         >
                             {user?.interests.split(",").map(interest => (
                                 <a
-                                  key={interest}
-                                  className="flex gap-1 items-center p-1.5 px-4 rounded-full bg-slate-700 hover:bg-slate-700/50"
-                                  href={`https://insights.opensauced.pizza/${interest}/dashboard/filter/recent`}
-                                  rel="noreferrer"
-                                  target="_blank"
-                                  title={`https://insights.opensauced.pizza/${interest}/dashboard/filter/recent`}
+                                    key={interest}
+                                    className="flex gap-1 items-center p-1.5 px-4 rounded-full bg-slate-700 hover:bg-slate-700/50"
+                                    href={`https://insights.opensauced.pizza/${interest}/dashboard/filter/recent`}
+                                    rel="noreferrer"
+                                    target="_blank"
+                                    title={`https://insights.opensauced.pizza/${interest}/dashboard/filter/recent`}
                                 >
                                     {interestIcon[interest as InterestIconKeys]}
 

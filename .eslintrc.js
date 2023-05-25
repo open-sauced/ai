@@ -342,13 +342,7 @@ module.exports = {
 		"react/jsx-equals-spacing": ["error", "never"],
 		"react/jsx-first-prop-new-line": ["error", "multiline-multiprop"],
 		"react/jsx-fragments": ["error", "syntax"],
-		"react/jsx-indent-props": [
-			"error",
-			{
-				indentMode: 2,
-				ignoreTernaryOperators: true,
-			},
-		],
+		"react/jsx-indent-props": "off",
 		"react/jsx-max-props-per-line": [
 			"error",
 			{

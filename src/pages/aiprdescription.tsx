@@ -64,8 +64,8 @@ const AIPRDescription = () => {
                     <header className="flex justify-between">
                         <div className="flex items-center gap-2">
                             <button
-                              className="rounded-full p-2 bg-slate-700 hover:bg-slate-700/50"
-                              onClick={() => {
+                                className="rounded-full p-2 bg-slate-700 hover:bg-slate-700/50"
+                                onClick={() => {
                                     goBack();
                                 }}
                             >
@@ -73,17 +73,17 @@ const AIPRDescription = () => {
                             </button>
 
                             <img
-                              alt="OpenSauced logo"
-                              className="w-[100%]"
-                              src={OpenSaucedLogo}
+                                alt="OpenSauced logo"
+                                className="w-[100%]"
+                                src={OpenSaucedLogo}
                             />
                         </div>
 
                         <button
-                          title="Toggle AI PR Description"
-                          className={`text-lg ${formDisabled ? "text-gray-400" : "text-orange"
+                            title="Toggle AI PR Description"
+                            className={`text-lg ${formDisabled ? "text-gray-400" : "text-orange"
                             }`}
-                          onClick={() => {
+                            onClick={() => {
                                 setFormDisabled(!formDisabled);
                                 dispatch({ type: "TOGGLE_ENABLED", value: config });
                                 void toggleAIPRDescriptionEnabled();
@@ -100,8 +100,8 @@ const AIPRDescription = () => {
 
                     <main className="text-white">
                         <form
-                          ref={setRefFromKey("form")}
-                          onSubmit={handleFormSubmit}
+                            ref={setRefFromKey("form")}
+                            onSubmit={handleFormSubmit}
                         >
                             <fieldset disabled={formDisabled}>
                                 <h1 className="text-2xl text-white font-bold my-2">
@@ -119,15 +119,15 @@ const AIPRDescription = () => {
                                         </p>
 
                                         <input
-                                          ref={setRefFromKey("length")}
-                                          className="text-black p-1.5 rounded-md mb-1 w-half accent-orange"
-                                          id="length"
-                                          max="600"
-                                          min="100"
-                                          name="length"
-                                          type="range"
-                                          value={config.config.length}
-                                          onChange={e => dispatch({ type: "SET_LENGTH", value: parseInt(e.target.value) })}
+                                            ref={setRefFromKey("length")}
+                                            className="text-black p-1.5 rounded-md mb-1 w-half accent-orange"
+                                            id="length"
+                                            max="600"
+                                            min="100"
+                                            name="length"
+                                            type="range"
+                                            value={config.config.length}
+                                            onChange={e => dispatch({ type: "SET_LENGTH", value: parseInt(e.target.value) })}
                                         />
                                     </div>
 
@@ -141,15 +141,15 @@ const AIPRDescription = () => {
                                         </p>
 
                                         <input
-                                          ref={setRefFromKey("temperature")}
-                                          className="text-black p-1.5 rounded-md mb-2 w-half accent-orange"
-                                          id="temparature"
-                                          max="10"
-                                          min="0"
-                                          name="length"
-                                          type="range"
-                                          value={config.config.temperature}
-                                          onChange={e => dispatch({ type: "SET_TEMPERATURE", value: parseInt(e.target.value) })}
+                                            ref={setRefFromKey("temperature")}
+                                            className="text-black p-1.5 rounded-md mb-2 w-half accent-orange"
+                                            id="temparature"
+                                            max="10"
+                                            min="0"
+                                            name="length"
+                                            type="range"
+                                            value={config.config.temperature}
+                                            onChange={e => dispatch({ type: "SET_TEMPERATURE", value: parseInt(e.target.value) })}
                                         />
                                     </div>
 
@@ -163,15 +163,15 @@ const AIPRDescription = () => {
                                         </p>
 
                                         <input
-                                          ref={setRefFromKey("maxInputLength")}
-                                          className="text-black p-1.5 rounded-md w-half accent-orange"
-                                          id="inputlength"
-                                          max="3900"
-                                          min="200"
-                                          name="inputlength"
-                                          type="range"
-                                          value={config.config.maxInputLength}
-                                          onChange={e => dispatch({ type: "SET_MAX_INPUT_LENGTH", value: parseInt(e.target.value) })}
+                                            ref={setRefFromKey("maxInputLength")}
+                                            className="text-black p-1.5 rounded-md w-half accent-orange"
+                                            id="inputlength"
+                                            max="3900"
+                                            min="200"
+                                            name="inputlength"
+                                            type="range"
+                                            value={config.config.maxInputLength}
+                                            onChange={e => dispatch({ type: "SET_MAX_INPUT_LENGTH", value: parseInt(e.target.value) })}
                                         />
                                     </div>
 
@@ -179,17 +179,17 @@ const AIPRDescription = () => {
                                         <p>Description Language</p>
 
                                         <select
-                                          ref={setRefFromKey("language")}
-                                          className="text-black mt-2 p-1.5 rounded-md mb-2 w-[80%]"
-                                          id="descriptionlanguage"
-                                          name="descriptionlanguage"
-                                          value={config.config.language}
-                                          onChange={e => dispatch({ type: "SET_LANGUAGE", value: e.target.value })}
+                                            ref={setRefFromKey("language")}
+                                            className="text-black mt-2 p-1.5 rounded-md mb-2 w-[80%]"
+                                            id="descriptionlanguage"
+                                            name="descriptionlanguage"
+                                            value={config.config.language}
+                                            onChange={e => dispatch({ type: "SET_LANGUAGE", value: e.target.value })}
                                         >
                                             {languages.map(language => (
                                                 <option
-                                                  key={language}
-                                                  value={language}
+                                                    key={language}
+                                                    value={language}
                                                 >
                                                     {language.charAt(0).toUpperCase() + language.slice(1)}
                                                 </option>
@@ -201,17 +201,17 @@ const AIPRDescription = () => {
                                         <p>Description Tone</p>
 
                                         <select
-                                          ref={setRefFromKey("tone")}
-                                          className="text-black mt-2 p-1.5 rounded-md mb-2 w-[80%]"
-                                          id="tone"
-                                          name="tone"
-                                          value={config.config.tone}
-                                          onChange={e => dispatch({ type: "SET_TONE", value: e.target.value })}
+                                            ref={setRefFromKey("tone")}
+                                            className="text-black mt-2 p-1.5 rounded-md mb-2 w-[80%]"
+                                            id="tone"
+                                            name="tone"
+                                            value={config.config.tone}
+                                            onChange={e => dispatch({ type: "SET_TONE", value: e.target.value })}
                                         >
                                             {tones.map(tone => (
                                                 <option
-                                                  key={tone}
-                                                  value={tone}
+                                                    key={tone}
+                                                    value={tone}
                                                 >
                                                     {tone.charAt(0).toUpperCase() + tone.slice(1)}
                                                 </option>
@@ -223,17 +223,17 @@ const AIPRDescription = () => {
                                         <p>Description Source</p>
 
                                         <select
-                                          ref={setRefFromKey("source")}
-                                          className="text-black mt-2 p-1.5 rounded-md mb-2 w-[80%]"
-                                          id="source"
-                                          name="source"
-                                          value={config.config.source}
-                                          onChange={e => dispatch({ type: "SET_SOURCE", value: e.target.value })}
+                                            ref={setRefFromKey("source")}
+                                            className="text-black mt-2 p-1.5 rounded-md mb-2 w-[80%]"
+                                            id="source"
+                                            name="source"
+                                            value={config.config.source}
+                                            onChange={e => dispatch({ type: "SET_SOURCE", value: e.target.value })}
                                         >
                                             {sources.map(source => (
                                                 <option
-                                                  key={source}
-                                                  value={source}
+                                                    key={source}
+                                                    value={source}
                                                 >
                                                     {source.charAt(0).toUpperCase() + source.slice(1)}
                                                 </option>
@@ -243,9 +243,9 @@ const AIPRDescription = () => {
                                 </div>
 
                                 <input
-                                  className="inline-block disabled:bg-gray-500 text-black bg-gh-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline"
-                                  type="submit"
-                                  value="Save"
+                                    className="inline-block disabled:bg-gray-500 text-black bg-gh-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline"
+                                    type="submit"
+                                    value="Save"
                                 />
                             </fieldset>
                         </form>
