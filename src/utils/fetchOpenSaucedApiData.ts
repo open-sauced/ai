@@ -1,5 +1,11 @@
+import differenceInDays from "date-fns/differenceInDays";
 import { cachedFetch } from "./cache";
-import { OPEN_SAUCED_USERS_ENDPOINT, OPEN_SAUCED_SESSION_ENDPOINT, OPEN_SAUCED_REPOS_ENDPOINT, OPEN_SAUCED_USER_INSIGHTS_ENDPOINT } from "../constants";
+import {
+  OPEN_SAUCED_USERS_ENDPOINT,
+  OPEN_SAUCED_SESSION_ENDPOINT,
+  OPEN_SAUCED_REPOS_ENDPOINT,
+  OPEN_SAUCED_USER_INSIGHTS_ENDPOINT,
+} from "../constants";
 import { IInsight } from "../ts/InsightDto";
 
 export const isOpenSaucedUser = async (username: string) => {
