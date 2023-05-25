@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.2.0-beta.5](https://github.com/open-sauced/ai/compare/v1.2.0-beta.4...v1.2.0-beta.5) (2023-05-25)
+
+
+### 📝 Documentation
+
+* dev docs ([#83](https://github.com/open-sauced/ai/issues/83)) ([4eff6eb](https://github.com/open-sauced/ai/commit/4eff6eb58498dd9b0f1ff5a8311d4e1c05a56ca9))
+
 ## [1.2.0-beta.4](https://github.com/open-sauced/ai/compare/v1.2.0-beta.3...v1.2.0-beta.4) (2023-05-25)
 
 
