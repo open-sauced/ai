@@ -58,16 +58,16 @@ const processGithubPage = async () => {
 void processGithubPage();
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  switch (msg.type) {
-    case "get_highlight": {
-      const title = document.querySelector(".gh-header-title")?.innerText;
+    switch (msg.type) {
+        case "get_highlight": {
+            const title = document.querySelector(".gh-header-title")?.innerText;
 
-      sendResponse(title);
-      break;
-    }
-    case "get_ai_description": {
-      sendResponse(getAiDescription());
-      break;
-    }
+            sendResponse(title);
+            break;
+        }
+        case "get_ai_description": {
+            sendResponse(getAiDescription());
+            break;
+        }
     }
 });

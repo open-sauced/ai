@@ -1,10 +1,10 @@
 import { cachedFetch } from "./cache";
 import {
-  OPEN_SAUCED_USERS_ENDPOINT,
-  OPEN_SAUCED_SESSION_ENDPOINT,
-  OPEN_SAUCED_REPOS_ENDPOINT,
-  OPEN_SAUCED_USER_INSIGHTS_ENDPOINT,
-  OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT,
+    OPEN_SAUCED_USERS_ENDPOINT,
+    OPEN_SAUCED_SESSION_ENDPOINT,
+    OPEN_SAUCED_REPOS_ENDPOINT,
+    OPEN_SAUCED_USER_INSIGHTS_ENDPOINT,
+    OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT,
 } from "../constants";
 import { IInsight } from "../ts/InsightDto";
 
@@ -179,16 +179,16 @@ export const updateInsight = async (userToken: string, repoId: string, checked: 
 };
 
 export const cerateHighlight = async (userToken: string, url: string, title: string, highlight: string, shipped_at?: string) => fetch(OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT, {
-      headers: {
+    headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: `Bearer ${userToken}`,
-      },
-      method: "POST",
-      body: JSON.stringify({
+    },
+    method: "POST",
+    body: JSON.stringify({
         url,
         title,
         shipped_at,
         highlight,
-      }),
-    });
+    }),
+});
