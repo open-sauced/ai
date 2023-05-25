@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { RouteContext } from "../App";
@@ -15,6 +15,13 @@ const PostOnHighlight = () => {
   const [highlightContent, setHighlightContent] = useState("");
   const [isSendButtonEnabled, enableSendButton] = useState(true);
 
+  const generateAiDescription = () => {
+    enableSendButton(false);
+    chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
+      chrome.tabs.sendMessage(tabs[0].id ?? 0, { type: "get_ai_description" }, console.log);
+    });
+  };
+
 
   // post highlight function
   const postHighlight = () => {
@@ -30,17 +37,17 @@ const PostOnHighlight = () => {
         }
         return (
           <span>
-          check the highlight at:
-          <a
-            href={`https://insights.opensauced.pizza/user/${user.user_name}/highlights`}
-            rel="noreferrer"
-            target="_blank"
-          >
-{" "}
-your account
-          </a>
+            check the highlight at:
+            <a
+              href={`https://insights.opensauced.pizza/user/${user.user_name}/highlights`}
+              rel="noreferrer"
+              target="_blank"
+            >
+              {" "}
+              your account
+            </a>
           </span>
-          );
+        );
       },
       error: e => {
         enableSendButton(true);
@@ -49,13 +56,13 @@ your account
     }).catch(console.error);
   };
 
-
-  chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-    setPageURL(tabs[0]?.url ?? "");
-
-    chrome.tabs.sendMessage(tabs[0].id ?? 0, { type: "get_highlight" }, setHighlightTitle);
-  });
-
+  useEffect(() => {
+    chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
+      setPageURL(tabs[0]?.url ?? "");
+      generateAiDescription();
+      chrome.tabs.sendMessage(tabs[0].id ?? 0, { type: "get_highlight" }, setHighlightTitle);
+    });
+  }, []);
 
   return (
     <div className="grid grid-cols-1 divide-y divider-y-center-2 min-w-[320px]">

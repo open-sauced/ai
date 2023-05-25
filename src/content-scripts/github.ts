@@ -16,6 +16,7 @@ import domUpdateWatch from "../utils/dom-utils/domUpdateWatcher";
 import injectDescriptionGeneratorButton from "../utils/dom-utils/addDescriptionGenerator";
 import injectChangeSuggestorButton from "../utils/dom-utils/changeSuggestorButton";
 import prEditWatch, { prReviewWatch } from "../utils/dom-utils/prWatcher";
+import { getAiDescription } from "./components/GenerateAIDescription/DescriptionGeneratorButton";
 
 const processGithubPage = async () => {
     if (prefersDarkMode(document.cookie)) {
@@ -57,9 +58,16 @@ const processGithubPage = async () => {
 void processGithubPage();
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-if (msg.type === "get_highlight") {
-    const title = document.querySelector(".gh-header-title")?.innerText;
+  switch (msg.type) {
+    case "get_highlight": {
+      const title = document.querySelector(".gh-header-title")?.innerText;
 
-    sendResponse(title);
-  }
+      sendResponse(title);
+      break;
+    }
+    case "get_ai_description": {
+      sendResponse(getAiDescription());
+      break;
+    }
+    }
 });
