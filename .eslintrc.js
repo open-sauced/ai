@@ -170,6 +170,7 @@ module.exports = {
 		  applyDefaultIgnorePatterns: false,
 		},
 	  ],
+	  "linebreak-style": ["error", "unix"],
 	  "lines-around-comment": [
 		"error",
 		{

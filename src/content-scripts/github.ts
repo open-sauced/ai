@@ -2,7 +2,6 @@ import {
   getGithubUsername,
   isGithubProfilePage,
   isGithubPullRequestPage,
-  isGithubRepoPage,
   isPullRequestCreatePage,
   isPullRequestFilesChangedPage,
 } from "../utils/urlMatchers";
