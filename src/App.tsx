@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import Start from "./pages/start";
-import Home from "./pages/home";
-import Loading from "./pages/loading";
+import Start from "./popup/pages/start";
+import Home from "./popup/pages/home";
+import Loading from "./popup/pages/loading";
 import { useAuth } from "./hooks/useAuth";
 import { goTo } from "react-chrome-extension-router";
 

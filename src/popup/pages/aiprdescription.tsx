@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
-import OpenSaucedLogo from "../assets/opensauced-logo.svg";
+import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
 import { ImSwitch } from "react-icons/im";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -12,9 +12,9 @@ import {
   setAIDescriptionConfig,
   getDefaultDescriptionConfig,
   toggleAIPRDescriptionEnabled,
-} from "../utils/aiprdescription/descriptionconfig";
-import { useRefs } from "../hooks/useRefs";
-import { configurationReducer } from "../utils/aiprdescription/configurationReducer";
+} from "../../utils/aiprdescription/descriptionconfig";
+import { useRefs } from "../../hooks/useRefs";
+import { configurationReducer } from "../../utils/aiprdescription/configurationReducer";
 import { goBack } from "react-chrome-extension-router";
 
 const AIPRDescription = () => {
@@ -58,6 +58,7 @@ const AIPRDescription = () => {
 
   <>
     <Toaster />
+
     <div className="p-4 bg-slate-800">
       <div className="grid grid-cols-1 divide-y divider-y-center-2 min-w-[320px]">
         <header className="flex justify-between">

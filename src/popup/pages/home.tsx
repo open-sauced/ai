@@ -4,13 +4,15 @@ import {
   HiPencil,
   HiUserCircle,
 } from "react-icons/hi2";
-import OpenSaucedLogo from "../assets/opensauced-logo.svg";
-import { useAuth } from "../hooks/useAuth";
-import { useOpensaucedUserCheck } from "../hooks/useOpensaucedUserCheck";
+import { FiSettings } from "react-icons/fi";
+import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
+import { useAuth } from "../../hooks/useAuth";
+import { useOpensaucedUserCheck } from "../../hooks/useOpensaucedUserCheck";
 import { Profile } from "./profile";
 import { goTo } from "react-chrome-extension-router";
 import AIPRDescription from "./aiprdescription";
 import Help from "./help";
+import Settings from "./settings";
 
 const Home = () => {
   const { user } = useAuth();
@@ -20,7 +22,11 @@ const Home = () => {
     <div className="p-4 bg-slate-800">
       <div className="grid grid-cols-1 divide-y divide-white/40 divider-y-center-2 min-w-[320px] text-white">
         <header className="flex justify-between">
-          <img alt="OpenSauced logo" className="w-[45%]" src={OpenSaucedLogo} />
+          <img
+            alt="OpenSauced logo"
+            className="w-[45%]"
+            src={OpenSaucedLogo}
+          />
 
           {user && (
             <button
@@ -82,7 +88,11 @@ const Home = () => {
                 }}
               >
                 <HiUserCircle />
-                View {checkedUser}
+                View
+
+{" "}
+
+{checkedUser}
                 &apos;s profile
               </button>
             )}
@@ -98,6 +108,16 @@ const Home = () => {
           >
             <HiOutlineQuestionMarkCircle />
             Help
+          </button>
+
+          <button
+            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-fit rounded-sm font-medium text-sm"
+            onClick={() => {
+              goTo(Settings);
+            }}
+          >
+            <FiSettings />
+            Settings
           </button>
         </footer>
       </div>

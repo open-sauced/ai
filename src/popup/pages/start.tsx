@@ -1,5 +1,5 @@
-import OpenSaucedLogo from "../assets/opensauced-logo.svg";
-import { SUPABASE_LOGIN_URL } from "../constants";
+import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
+import { SUPABASE_LOGIN_URL } from "../../constants";
 
 const Start = () => (
     <div className="p-4 bg-slate-800">
