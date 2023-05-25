@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.2.0-beta.6](https://github.com/open-sauced/ai/compare/v1.2.0-beta.5...v1.2.0-beta.6) (2023-05-25)
+
+
+### 🐛 Bug Fixes
+
+* bump manifest version on main only ([#124](https://github.com/open-sauced/ai/issues/124)) ([e4a86e4](https://github.com/open-sauced/ai/commit/e4a86e49f209051092ceef8930061277886afeca))
+
 ## [1.2.0-beta.5](https://github.com/open-sauced/ai/compare/v1.2.0-beta.4...v1.2.0-beta.5) (2023-05-25)
 
 
