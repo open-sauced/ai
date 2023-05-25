@@ -76,3 +76,42 @@ const handleSubmit = async () => {
         }
     }
 };
+
+export const getAiDescription = async () => {
+  const url = getPullRequestAPIURL(window.location.href);
+  const descriptionConfig = await getAIDescriptionConfig();
+
+  if (!descriptionConfig) {
+    throw new Error("Configuration file is empty!");
+  }
+
+  if (!descriptionConfig.enabled) {
+    throw new Error("AI PR description is disabled!");
+  }
+
+  const [diff, commitMessages] = await getDescriptionContext(url, descriptionConfig.config.source);
+
+  if (!diff && !commitMessages) {
+    throw new Error(`No input context was generated.`);
+  }
+  if (isOutOfContextBounds([diff, commitMessages], descriptionConfig.config.maxInputLength)) {
+    throw new Error(`Max input length exceeded. Try setting the description source to commit-messages.`);
+  }
+  const token = await getAuthToken();
+  const descriptionStream = await generateDescription(
+    token,
+    descriptionConfig.config.language,
+    descriptionConfig.config.length,
+    descriptionConfig.config.temperature / 10,
+    descriptionConfig.config.tone,
+    diff,
+    commitMessages,
+  );
+
+  if (!descriptionStream) {
+    throw new Error("No description was generated!");
+  }
+
+  return descriptionStream;
+};
+
