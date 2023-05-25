@@ -21,13 +21,13 @@ export const getPRDiff = async (url: string) => {
 };
 
 export const getPRCommitMessages = async (url: string) => {
-    const response = await fetch(url);
+    const response = await fetch(`${url}/commits`);
     const data = await response.json();
 
-    if (!Array.isArray(data.commits)) {
+    if (!Array.isArray(data)) {
         return undefined;
     }
-    const commitMessages: string[] = (data.commits as Commit[]).map((commit: Commit): string => commit.commit.message);
+    const commitMessages: string[] = (data as Commit[]).map((commit: Commit): string => commit.commit.message);
 
     return commitMessages;
 };
