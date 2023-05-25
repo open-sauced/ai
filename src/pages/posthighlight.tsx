@@ -1,9 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { RouteContext } from "../App";
 import { useAuth } from "../hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
+import { cerateHighlight } from "../utils/fetchOpenSaucedApiData";
 
 
 const PostOnHighlight = () => {
@@ -18,20 +19,7 @@ const PostOnHighlight = () => {
   // post highlight function
   const postHighlight = () => {
     enableSendButton(false);
-    const postHighlightAPI = fetch("https://api.opensauced.pizza/v1/user/highlights", {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${authToken}`,
-      },
-      method: "POST",
-      body: JSON.stringify({
-        url: pageURL,
-        title: highlightTitle,
-        highlight: highlightContent,
-      }),
-
-    });
+    const postHighlightAPI = cerateHighlight((authToken ?? ""), pageURL, highlightTitle, highlightContent);
 
     toast.promise(postHighlightAPI, {
       loading: "Loading ...",

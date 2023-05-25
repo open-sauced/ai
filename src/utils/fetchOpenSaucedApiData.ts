@@ -178,8 +178,7 @@ export const updateInsight = async (userToken: string, repoId: string, checked: 
     return response.status === 200;
 };
 
-export const cerateHighlight = async (userToken: string, url: string, title: string, highlight: string, shipped_at?: string) => {
-    const response = await fetch(OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT, {
+export const cerateHighlight = async (userToken: string, url: string, title: string, highlight: string, shipped_at?: string) => fetch(OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -193,6 +192,3 @@ export const cerateHighlight = async (userToken: string, url: string, title: str
         highlight,
       }),
     });
-
-    return response.status === 200;
-};
