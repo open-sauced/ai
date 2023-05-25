@@ -74,7 +74,7 @@ jobs:
 
       - name: "🚀 release"
         id: semantic-release
-        uses: open-sauced/release@v2.1.0
+        uses: open-sauced/release@v2.1.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
