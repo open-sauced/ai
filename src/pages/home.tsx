@@ -1,8 +1,8 @@
 import {
-  HiArrowTopRightOnSquare,
-  HiOutlineQuestionMarkCircle,
-  HiPencil,
-  HiUserCircle,
+    HiArrowTopRightOnSquare,
+    HiOutlineQuestionMarkCircle,
+    HiPencil,
+    HiUserCircle,
 } from "react-icons/hi2";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { useAuth } from "../hooks/useAuth";
@@ -13,104 +13,104 @@ import AIPRDescription from "./aiprdescription";
 import Help from "./help";
 
 const Home = () => {
-  const { user } = useAuth();
-  const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
+    const { user } = useAuth();
+    const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
 
-  return (
-    <div className="p-4 bg-slate-800">
-      <div className="grid grid-cols-1 divide-y divide-white/40 divider-y-center-2 min-w-[320px] text-white">
-        <header className="flex justify-between">
-          <img
-            alt="OpenSauced logo"
-            className="w-[45%]"
-            src={OpenSaucedLogo}
-          />
+    return (
+        <div className="p-4 bg-slate-800">
+            <div className="grid grid-cols-1 divide-y divide-white/40 divider-y-center-2 min-w-[320px] text-white">
+                <header className="flex justify-between">
+                    <img
+                      alt="OpenSauced logo"
+                      className="w-[45%]"
+                      src={OpenSaucedLogo}
+                    />
 
-          {user && (
-            <button
-              className="flex gap-1 items-center hover:text-orange text-white no-underline"
-              onClick={() => {
-                goTo(Profile, { username: user.user_name });
-              }}
-            >
-              {user.user_name}
+                    {user && (
+                        <button
+                          className="flex gap-1 items-center hover:text-orange text-white no-underline"
+                          onClick={() => {
+                                goTo(Profile, { username: user.user_name });
+                            }}
+                        >
+                            {user.user_name}
 
-              <img
-                alt="User avatar"
-                className="rounded-full w-6 aspect-square border border-orange"
-                src={`https://github.com/${user.user_name}.png`}
-              />
-            </button>
-          )}
-        </header>
+                            <img
+                              alt="User avatar"
+                              className="rounded-full w-6 aspect-square border border-orange"
+                              src={`https://github.com/${user.user_name}.png`}
+                            />
+                        </button>
+                    )}
+                </header>
 
-        <main className="main-content">
-          <h3 className="text font-medium text-base leading-10">Tools:</h3>
+                <main className="main-content">
+                    <h3 className="text font-medium text-base leading-10">Tools:</h3>
 
-          <div className="tools flex flex-col gap-2">
-            <a
-              className="flex items-center bg-slate-700 hover:bg-slate-700/70 text-white hover:text-orange no-underline gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-              href="https://insights.opensauced.pizza/feed"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <HiArrowTopRightOnSquare />
+                    <div className="tools flex flex-col gap-2">
+                        <a
+                          className="flex items-center bg-slate-700 hover:bg-slate-700/70 text-white hover:text-orange no-underline gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+                          href="https://insights.opensauced.pizza/feed"
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                            <HiArrowTopRightOnSquare />
               Highlights feed
-            </a>
+                        </a>
 
-            <a
-              className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-              href="https://insights.opensauced.pizza"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <HiArrowTopRightOnSquare />
+                        <a
+                          className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+                          href="https://insights.opensauced.pizza"
+                          rel="noreferrer"
+                          target="_blank"
+                        >
+                            <HiArrowTopRightOnSquare />
               Dashboard
-            </a>
+                        </a>
 
-            <button
-              className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-              onClick={() => {
-                goTo(AIPRDescription);
-              }}
-            >
-              <HiPencil />
+                        <button
+                          className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+                          onClick={() => {
+                                goTo(AIPRDescription);
+                            }}
+                        >
+                            <HiPencil />
               AI Configuration
-            </button>
+                        </button>
 
-            {currentTabIsOpensaucedUser && (
-              <button
-                className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                onClick={() => {
-                  goTo(Profile, { username: checkedUser });
-                }}
-              >
-                <HiUserCircle />
+                        {currentTabIsOpensaucedUser && (
+                            <button
+                              className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+                              onClick={() => {
+                                    goTo(Profile, { username: checkedUser });
+                                }}
+                            >
+                                <HiUserCircle />
 
                 View
-                {" "}
+                                {" "}
 
-                {checkedUser}
+                                {checkedUser}
                 &apos;s profile
-              </button>
-            )}
-          </div>
-        </main>
+                            </button>
+                        )}
+                    </div>
+                </main>
 
-        <footer className="tools flex gap-2">
-          <button
-            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-fit rounded-sm font-medium text-sm"
-            onClick={() => {
-              goTo(Help);
-            }}
-          >
-            <HiOutlineQuestionMarkCircle />
+                <footer className="tools flex gap-2">
+                    <button
+                      className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-fit rounded-sm font-medium text-sm"
+                      onClick={() => {
+                            goTo(Help);
+                        }}
+                    >
+                        <HiOutlineQuestionMarkCircle />
             Help
-          </button>
-        </footer>
-      </div>
-    </div>
-  );
+                    </button>
+                </footer>
+            </div>
+        </div>
+    );
 };
 
 export default Home;

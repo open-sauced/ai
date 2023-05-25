@@ -4,42 +4,42 @@ import { InviteToOpenSaucedModal } from "../../content-scripts/components/Invite
 import { getTwitterUsername, getLinkedInUsername } from "../urlMatchers";
 
 const injectOpenSaucedInviteButton = (username: string) => {
-  if (document.getElementById("invite-to-opensauced-button")) {
-    return;
-  }
+    if (document.getElementById("invite-to-opensauced-button")) {
+        return;
+    }
 
-  const emailAddress = document
-    .querySelector(`a[href^="mailto:"]`)
-    ?.getAttribute("href")
-    ?.replace("mailto:", "");
-  const twitterUrl = document
-    .querySelector(`a[href*="twitter.com"]`)
-    ?.getAttribute("href");
-  const linkedInUrl = document
-    .querySelector(`a[href*="linkedin.com"]`)
-    ?.getAttribute("href");
+    const emailAddress = document
+        .querySelector(`a[href^="mailto:"]`)
+        ?.getAttribute("href")
+        ?.replace("mailto:", "");
+    const twitterUrl = document
+        .querySelector(`a[href*="twitter.com"]`)
+        ?.getAttribute("href");
+    const linkedInUrl = document
+        .querySelector(`a[href*="linkedin.com"]`)
+        ?.getAttribute("href");
 
-  if (!(emailAddress || twitterUrl || linkedInUrl)) {
-    return;
-  }
+    if (!(emailAddress || twitterUrl || linkedInUrl)) {
+        return;
+    }
 
-  const twitterUsername = twitterUrl && getTwitterUsername(twitterUrl);
-  const linkedInUsername = linkedInUrl && getLinkedInUsername(linkedInUrl);
-  const inviteToOpenSaucedButton = InviteToOpenSaucedButton();
-  const inviteToOpenSaucedModal = InviteToOpenSaucedModal(
-    username,
-    {
-      emailAddress,
-      twitterUsername,
-      linkedInUsername,
-    },
-    inviteToOpenSaucedButton,
-  );
+    const twitterUsername = twitterUrl && getTwitterUsername(twitterUrl);
+    const linkedInUsername = linkedInUrl && getLinkedInUsername(linkedInUrl);
+    const inviteToOpenSaucedButton = InviteToOpenSaucedButton();
+    const inviteToOpenSaucedModal = InviteToOpenSaucedModal(
+        username,
+        {
+            emailAddress,
+            twitterUsername,
+            linkedInUsername,
+        },
+        inviteToOpenSaucedButton,
+    );
 
-  const userBio = document.querySelector(GITHUB_PROFILE_MENU_SELECTOR);
+    const userBio = document.querySelector(GITHUB_PROFILE_MENU_SELECTOR);
 
-  userBio?.append(inviteToOpenSaucedButton);
-  document.body.appendChild(inviteToOpenSaucedModal);
+    userBio?.append(inviteToOpenSaucedButton);
+    document.body.appendChild(inviteToOpenSaucedModal);
 };
 
 export default injectOpenSaucedInviteButton;

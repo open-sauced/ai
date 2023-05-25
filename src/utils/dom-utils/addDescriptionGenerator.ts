@@ -5,7 +5,7 @@ import { isPublicRepository } from "../fetchGithubAPIData";
 
 const injectDescriptionGeneratorButton = async () => {
     if (document.getElementById("ai-description-button") || !(await isPublicRepository(window.location.href))) {
-    return;
+        return;
     }
 
     const selector = isGithubPullRequestPage(window.location.href) ? GITHUB_PR_COMMENT_EDITOR_SELECTOR : GITHUB_NEW_PR_COMMENT_EDITOR_SELECTOR;

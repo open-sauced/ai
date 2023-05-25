@@ -2,12 +2,12 @@ import { createHtmlElement } from "../../../utils/createHtmlElement";
 import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
 
 export const AddPRToHighlightsButton = () => {
-  const addPRToHighlightsButton = createHtmlElement("a", {
-    id: "add-pr-to-highlights-button",
-    className: "relative cursor-pointer",
-    innerHTML: `<img class="mr-1 mt-1" height="16px" width="16px" src=${chrome.runtime.getURL(
-      openSaucedLogoIcon,
-    )}>
+    const addPRToHighlightsButton = createHtmlElement("a", {
+        id: "add-pr-to-highlights-button",
+        className: "relative cursor-pointer",
+        innerHTML: `<img class="mr-1 mt-1" height="16px" width="16px" src=${chrome.runtime.getURL(
+            openSaucedLogoIcon,
+        )}>
     <details-menu id="details-menu-os" class="dropdown-menu hidden dropdown-menu-sw color-fg-default w-48 mt-2">
     <a href="https://insights.opensauced.pizza/feed?prurl=${encodeURIComponent(window.location.href)}" class="dropdown-item" target="_blank">
       <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-plus">
@@ -15,28 +15,28 @@ export const AddPRToHighlightsButton = () => {
       </svg> Add PR to Highlights
     </a>
   </details-menu>`,
-    onclick: () => {
-      const menu = document.getElementById("details-menu-os");
+        onclick: () => {
+            const menu = document.getElementById("details-menu-os");
 
-      if (!menu) {
- return;
-}
-      menu.classList.toggle("hidden");
-    },
-  });
+            if (!menu) {
+                return;
+            }
+            menu.classList.toggle("hidden");
+        },
+    });
 
-  addPRToHighlightsButton.addEventListener("click", e => {
-    e.stopPropagation();
-  });
+    addPRToHighlightsButton.addEventListener("click", e => {
+        e.stopPropagation();
+    });
 
-  document.addEventListener("click", () => {
-    const menu = document.getElementById("details-menu-os");
+    document.addEventListener("click", () => {
+        const menu = document.getElementById("details-menu-os");
 
-    if (!menu) {
- return;
-}
-    menu.classList.add("hidden");
-  });
+        if (!menu) {
+            return;
+        }
+        menu.classList.add("hidden");
+    });
 
-  return addPRToHighlightsButton;
+    return addPRToHighlightsButton;
 };

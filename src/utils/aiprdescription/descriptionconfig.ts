@@ -15,56 +15,56 @@ export type DescriptionLanguage =
   | "korean";
 
 export interface DescriptionConfig {
-  enabled: boolean;
-  config: {
-    length: number;
-    maxInputLength: number;
-    temperature: number;
-    language: DescriptionLanguage;
-    tone: DescriptionTone;
-    source: DescriptionSource;
-  };
-  [key: string]: any;
+    enabled: boolean;
+    config: {
+        length: number;
+        maxInputLength: number;
+        temperature: number;
+        language: DescriptionLanguage;
+        tone: DescriptionTone;
+        source: DescriptionSource;
+    };
+    [key: string]: any;
 }
 
 export const getAIDescriptionConfig = async (): Promise<
-  DescriptionConfig | undefined
+DescriptionConfig | undefined
 > => {
-  const response: DescriptionConfig | undefined = (
-    await chrome.storage.local.get(AI_PR_DESCRIPTION_CONFIG_KEY)
-  )[AI_PR_DESCRIPTION_CONFIG_KEY];
+    const response: DescriptionConfig | undefined = (
+        await chrome.storage.local.get(AI_PR_DESCRIPTION_CONFIG_KEY)
+    )[AI_PR_DESCRIPTION_CONFIG_KEY];
 
-  return response;
+    return response;
 };
 
 export const setAIDescriptionConfig = async (data: DescriptionConfig): Promise<void> => {
-  await chrome.storage.local.set({ [AI_PR_DESCRIPTION_CONFIG_KEY]: data });
+    await chrome.storage.local.set({ [AI_PR_DESCRIPTION_CONFIG_KEY]: data });
 };
 
 export const getDefaultDescriptionConfig = (): DescriptionConfig => ({
-  enabled: true,
-  config: {
-    length: 500,
-    maxInputLength: 3900,
-    temperature: 7,
-    language: "english",
-    tone: "informative",
-    source: "diff",
-  },
+    enabled: true,
+    config: {
+        length: 500,
+        maxInputLength: 3900,
+        temperature: 7,
+        language: "english",
+        tone: "informative",
+        source: "diff",
+    },
 });
 
 export const setDefaultDescriptionConfig = () => {
-  const defaultConfig = getDefaultDescriptionConfig();
+    const defaultConfig = getDefaultDescriptionConfig();
 
-  void setAIDescriptionConfig(defaultConfig);
+    void setAIDescriptionConfig(defaultConfig);
 };
 
 export const toggleAIPRDescriptionEnabled = async () => {
-  const config = await getAIDescriptionConfig();
+    const config = await getAIDescriptionConfig();
 
-  if (typeof config?.enabled === "undefined") {
- return;
-}
-  config.enabled = !config.enabled;
-  await setAIDescriptionConfig(config);
+    if (typeof config?.enabled === "undefined") {
+        return;
+    }
+    config.enabled = !config.enabled;
+    await setAIDescriptionConfig(config);
 };
