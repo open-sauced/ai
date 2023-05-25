@@ -1,5 +1,5 @@
 // This function is used to insert text at the cursor position in the text area
-export const insertTextAtCursor = async (textArea: HTMLTextAreaElement, text: string) => {
+export const insertTextAtCursor = (textArea: HTMLTextAreaElement, text: string) => {
   let length = 0;
   const typewriter = setInterval(() => {
     textArea.setRangeText(text[length++], textArea.selectionStart, textArea.selectionEnd, "end");
@@ -8,10 +8,9 @@ export const insertTextAtCursor = async (textArea: HTMLTextAreaElement, text: st
       textArea.setRangeText("\n\n_Generated using [OpenSauced](https://opensauced.ai/)._", textArea.selectionStart, textArea.selectionEnd, "end");
     }
   }, 10);
-  
 };
 
-export const insertAtCursorFromStream = async (textArea: HTMLTextAreaElement, stream: ReadableStream<Uint8Array>) => {
+export const insertAtCursorFromStream = (textArea: HTMLTextAreaElement, stream: ReadableStream<Uint8Array>) => {
   const reader = stream.getReader();
   const decoder = new TextDecoder("utf-8");
 

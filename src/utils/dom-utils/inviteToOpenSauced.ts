@@ -4,11 +4,10 @@ import { InviteToOpenSaucedModal } from "../../content-scripts/components/Invite
 import { getTwitterUsername, getLinkedInUsername } from "../urlMatchers";
 
 const injectOpenSaucedInviteButton = (username: string) => {
-
   if (document.getElementById("invite-to-opensauced-button")) {
     return;
   }
-  
+
   const emailAddress = document
     .querySelector(`a[href^="mailto:"]`)
     ?.getAttribute("href")

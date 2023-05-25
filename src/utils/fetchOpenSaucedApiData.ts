@@ -1,4 +1,3 @@
-import differenceInDays from "date-fns/differenceInDays";
 import { cachedFetch } from "./cache";
 import {
   OPEN_SAUCED_USERS_ENDPOINT,

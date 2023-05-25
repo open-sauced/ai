@@ -61,10 +61,10 @@ export const setDefaultDescriptionConfig = () => {
 
 export const toggleAIPRDescriptionEnabled = async () => {
   const config = await getAIDescriptionConfig();
-  
-  if (typeof config?.enabled === "undefined") return;
+
+  if (typeof config?.enabled === "undefined") {
+ return;
+}
   config.enabled = !config.enabled;
   await setAIDescriptionConfig(config);
-  
-  return;
-}
+};

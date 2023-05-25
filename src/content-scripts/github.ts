@@ -11,6 +11,7 @@ import injectViewOnOpenSauced from "../utils/dom-utils/viewOnOpenSauced";
 import injectInviteToOpenSauced from "../utils/dom-utils/inviteToOpenSauced";
 import { prefersDarkMode } from "../utils/colorPreference";
 import injectAddPRToHighlightsButton from "../utils/dom-utils/addPRToHighlights";
+
 // import injectRepoVotingButtons from "../utils/dom-utils/repoVotingButtons";
 import domUpdateWatch from "../utils/dom-utils/domUpdateWatcher";
 import injectDescriptionGeneratorButton from "../utils/dom-utils/addDescriptionGenerator";
@@ -41,14 +42,15 @@ const processGithubPage = async () => {
     }
   }
 
-  /* commenting out repo voting because it's not ready yet // issue #106
-  } else if (isGithubRepoPage(window.location.href)) {
-    const ownerName = getGithubUsername(window.location.href) ?? "";
-    const repoName = window.location.href.split("/").pop() ?? "";
-
-    await injectRepoVotingButtons(ownerName, repoName);
-  }
-  */
+  /*
+   * commenting out repo voting because it's not ready yet // issue #106
+   * } else if (isGithubRepoPage(window.location.href)) {
+   * const ownerName = getGithubUsername(window.location.href) ?? "";
+   * const repoName = window.location.href.split("/").pop() ?? "";
+   *
+   * await injectRepoVotingButtons(ownerName, repoName);
+   * }
+   */
 
   domUpdateWatch(processGithubPage, 50);
 };

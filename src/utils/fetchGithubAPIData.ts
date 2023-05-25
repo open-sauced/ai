@@ -25,9 +25,9 @@ export const getPRCommitMessages = async (url: string) => {
   const data = await response.json();
 
   if (!Array.isArray(data.commits)) {
- return undefined;
-}
-  const commitMessages: string[] = data.commits?.map((commit: Commit) => commit.commit.message);
+    return undefined;
+  }
+  const commitMessages: string[] = (data.commits as Commit[]).map((commit: Commit): string => commit.commit.message);
 
   return commitMessages;
 };
@@ -36,12 +36,12 @@ export const getDescriptionContext = async (url: string, source: DescriptionSour
   let promises: [Promise<string | undefined>, Promise<string[] | undefined>] = [Promise.resolve(undefined), Promise.resolve(undefined)];
 
   if (source === "diff") {
- promises = [getPRDiff(url), Promise.resolve(undefined)];
-} else if (source === "commitMessage") {
- promises = [Promise.resolve(undefined), getPRCommitMessages(url)];
-} else {
- promises = [getPRDiff(url), getPRCommitMessages(url)];
-}
+    promises = [getPRDiff(url), Promise.resolve(undefined)];
+  } else if (source === "commitMessage") {
+    promises = [Promise.resolve(undefined), getPRCommitMessages(url)];
+  } else {
+    promises = [getPRDiff(url), getPRCommitMessages(url)];
+  }
   const response = await Promise.all(promises);
 
   return response;
@@ -51,11 +51,11 @@ export const isOutOfContextBounds = (context: DescriptionContext, limit: number)
   let text = "";
 
   if (context[0]) {
- text += context[0];
-}
+    text += context[0];
+  }
   if (context[1]) {
- text += context[1].join("");
-}
+    text += context[1].join("");
+  }
 
   return isWithinTokenLimit(text, limit) === false;
 };
@@ -67,8 +67,8 @@ export const isPublicRepository = async (url: string): Promise<boolean> => {
     )?.groups ?? {};
 
     if (!username || !repoName) {
- return false;
-}
+      return false;
+    }
     const response = await fetch(`https://api.github.com/repos/${username}/${repoName}`);
     const data = await response.json();
 

@@ -20,7 +20,11 @@ const Home = () => {
     <div className="p-4 bg-slate-800">
       <div className="grid grid-cols-1 divide-y divide-white/40 divider-y-center-2 min-w-[320px] text-white">
         <header className="flex justify-between">
-          <img alt="OpenSauced logo" className="w-[45%]" src={OpenSaucedLogo} />
+          <img
+            alt="OpenSauced logo"
+            className="w-[45%]"
+            src={OpenSaucedLogo}
+          />
 
           {user && (
             <button
@@ -43,38 +47,38 @@ const Home = () => {
         <main className="main-content">
           <h3 className="text font-medium text-base leading-10">Tools:</h3>
 
-        <div className="tools flex flex-col gap-2">
-          <a
-            className="flex items-center bg-slate-700 hover:bg-slate-700/70 text-white hover:text-orange no-underline gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-            href="https://insights.opensauced.pizza/feed"
-            rel="noreferrer"
-            target="_blank"
-          >
-            <HiArrowTopRightOnSquare />
-            Highlights feed
-          </a>
+          <div className="tools flex flex-col gap-2">
+            <a
+              className="flex items-center bg-slate-700 hover:bg-slate-700/70 text-white hover:text-orange no-underline gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+              href="https://insights.opensauced.pizza/feed"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <HiArrowTopRightOnSquare />
+              Highlights feed
+            </a>
 
-          <a
-            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-            href="https://insights.opensauced.pizza"
-            rel="noreferrer"
-            target="_blank"
-          >
-            <HiArrowTopRightOnSquare />
-            Dashboard
-          </a>
+            <a
+              className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+              href="https://insights.opensauced.pizza"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <HiArrowTopRightOnSquare />
+              Dashboard
+            </a>
 
-          <button
-            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-            onClick={() => {
-              goTo(AIPRDescription);
-            }}
-          >
-            <HiPencil />
-            AI Configuration
-          </button>
+            <button
+              className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+              onClick={() => {
+                goTo(AIPRDescription);
+              }}
+            >
+              <HiPencil />
+              AI Configuration
+            </button>
 
-          {currentTabIsOpensaucedUser && (
+            {currentTabIsOpensaucedUser && (
               <button
                 className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
                 onClick={() => {
@@ -82,11 +86,15 @@ const Home = () => {
                 }}
               >
                 <HiUserCircle />
-                View {checkedUser}
+
+                View
+                {" "}
+
+                {checkedUser}
                 &apos;s profile
               </button>
             )}
-        </div>
+          </div>
         </main>
 
         <footer className="tools flex gap-2">

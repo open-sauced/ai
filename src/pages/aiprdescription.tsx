@@ -40,9 +40,9 @@ const AIPRDescription = () => {
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const length = parseInt(refs.length?.getAttribute("value")!);
-    const temperature = Number(Number(refs.temperature?.getAttribute("value")!));
-    const maxInputLength = parseInt(refs.maxInputLength?.getAttribute("value")!);
+    const length = parseInt(refs.length?.getAttribute("value") ?? "0");
+    const temperature = Number(Number(refs.temperature?.getAttribute("value") ?? "0"));
+    const maxInputLength = parseInt(refs.maxInputLength?.getAttribute("value") ?? "0");
     const language = (refs.language as HTMLSelectElement).value as DescriptionLanguage;
     const source = (refs.source as HTMLSelectElement).value as DescriptionSource;
     const tone = (refs.tone as HTMLSelectElement).value as DescriptionTone;
@@ -58,6 +58,7 @@ const AIPRDescription = () => {
 
   <>
     <Toaster />
+
     <div className="p-4 bg-slate-800">
       <div className="grid grid-cols-1 divide-y divider-y-center-2 min-w-[320px]">
         <header className="flex justify-between">

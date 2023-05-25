@@ -28,6 +28,7 @@ export const VoteRepoButton = (ownerName: string, repoName: string) => {
 
     if (voted) {
       const { RepoUnvoteButton } = await import("./RepoUnvoteButton");
+
       voteRepoButton.replaceWith(RepoUnvoteButton(ownerName, repoName));
     } else {
       console.log("Something went wrong");

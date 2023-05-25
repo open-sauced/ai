@@ -69,7 +69,7 @@ const handleSubmit = async () => {
     }
     const textArea = document.getElementsByName(GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR)[0] as HTMLTextAreaElement;
 
-    void insertTextAtCursor(textArea, descriptionStream);
+    insertTextAtCursor(textArea, descriptionStream);
   } catch (error: unknown) {
     if (error instanceof Error) {
  console.error("Description generation error:", error.message);
