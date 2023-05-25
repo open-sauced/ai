@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.2.0-beta.7](https://github.com/open-sauced/ai/compare/v1.2.0-beta.6...v1.2.0-beta.7) (2023-05-25)
+
+
+### 🍕 Features
+
+* add PR velocity to profile page ([#111](https://github.com/open-sauced/ai/issues/111)) ([ba7fad6](https://github.com/open-sauced/ai/commit/ba7fad6ce96d04d15fc7c0ca2b5ffc52e50f9125))
+
 ## [1.2.0-beta.6](https://github.com/open-sauced/ai/compare/v1.2.0-beta.5...v1.2.0-beta.6) (2023-05-25)
 
 
