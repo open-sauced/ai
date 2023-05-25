@@ -1,22 +1,26 @@
 {
   "name": "opensauced-browser-extension",
-  "version": "1.1.0-beta.3",
+  "version": "1.2.0-beta.3",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
       "name": "opensauced-browser-extension",
-      "version": "1.1.0-beta.3",
+      "version": "1.2.0-beta.3",
       "dependencies": {
         "@types/chrome": "^0.0.231",
         "@types/node-emoji": "^1.8.2",
+        "gpt-tokenizer": "^1.0.5",
         "node-emoji": "^1.11.0",
         "react": "^18.0.0",
+        "react-chrome-extension-router": "^1.4.0",
         "react-dom": "^18.0.0",
+        "react-hot-toast": "^2.4.1",
         "react-icons": "^4.8.0"
       },
       "devDependencies": {
         "@crxjs/vite-plugin": "^1.0.14",
+        "@types/node": "^20.1.4",
         "@types/react": "^18.0.0",
         "@types/react-dom": "^18.0.0",
         "@typescript-eslint/eslint-plugin": "^5.59.1",
@@ -773,6 +777,12 @@
       "version": "0.0.29",
       "resolved": "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz",
       "integrity": "sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==",
+      "dev": true
+    },
+    "node_modules/@types/node": {
+      "version": "20.1.4",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-20.1.4.tgz",
+      "integrity": "sha512-At4pvmIOki8yuwLtd7BNHl3CiWNbtclUbNtScGx4OHfBd4/oWoJC8KRCIxXwkdndzhxOsPXihrsOoydxBjlE9Q==",
       "dev": true
     },
     "node_modules/@types/node-emoji": {
@@ -1756,7 +1766,6 @@
       "version": "3.1.2",
       "resolved": "https://registry.npmjs.org/csstype/-/csstype-3.1.2.tgz",
       "integrity": "sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==",
-      "dev": true,
       "license": "MIT"
     },
     "node_modules/damerau-levenshtein": {
@@ -2948,6 +2957,14 @@
         "url": "https://github.com/sponsors/sindresorhus"
       }
     },
+    "node_modules/goober": {
+      "version": "2.1.13",
+      "resolved": "https://registry.npmjs.org/goober/-/goober-2.1.13.tgz",
+      "integrity": "sha512-jFj3BQeleOoy7t93E9rZ2de+ScC4lQICLwiAQmKMg9F6roKGaLSHoCDYKkWlSafg138jejvq/mTdvmnwDQgqoQ==",
+      "peerDependencies": {
+        "csstype": "^3.0.10"
+      }
+    },
     "node_modules/gopd": {
       "version": "1.0.1",
       "resolved": "https://registry.npmjs.org/gopd/-/gopd-1.0.1.tgz",
@@ -2959,6 +2976,11 @@
       "funding": {
         "url": "https://github.com/sponsors/ljharb"
       }
+    },
+    "node_modules/gpt-tokenizer": {
+      "version": "1.0.5",
+      "resolved": "https://registry.npmjs.org/gpt-tokenizer/-/gpt-tokenizer-1.0.5.tgz",
+      "integrity": "sha512-uLq42+uNAJENy1AcVJ3VIIA5BimrcDG8AhbohUro2wYF9nYPq92AlGWe299NqC9pBIY3r+oqwYse0OtIWkJAwg=="
     },
     "node_modules/graceful-fs": {
       "version": "4.2.11",
@@ -4389,6 +4411,14 @@
         "node": ">=0.10.0"
       }
     },
+    "node_modules/react-chrome-extension-router": {
+      "version": "1.4.0",
+      "resolved": "https://registry.npmjs.org/react-chrome-extension-router/-/react-chrome-extension-router-1.4.0.tgz",
+      "integrity": "sha512-ngf7DMVGIcr0w8Fp3Eo6nufi3L1mQqLz1xLfvzD1YBPI8zLSKAS9PP3pUS+vp7oeE62ZKxcFJiUC6OFKuBQ6Cg==",
+      "peerDependencies": {
+        "react": ">=16"
+      }
+    },
     "node_modules/react-dom": {
       "version": "18.2.0",
       "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz",
@@ -4400,6 +4430,21 @@
       },
       "peerDependencies": {
         "react": "^18.2.0"
+      }
+    },
+    "node_modules/react-hot-toast": {
+      "version": "2.4.1",
+      "resolved": "https://registry.npmjs.org/react-hot-toast/-/react-hot-toast-2.4.1.tgz",
+      "integrity": "sha512-j8z+cQbWIM5LY37pR6uZR6D4LfseplqnuAO4co4u8917hBUvXlEqyP1ZzqVLcqoyUesZZv/ImreoCeHVDpE5pQ==",
+      "dependencies": {
+        "goober": "^2.1.10"
+      },
+      "engines": {
+        "node": ">=10"
+      },
+      "peerDependencies": {
+        "react": ">=16",
+        "react-dom": ">=16"
       }
     },
     "node_modules/react-icons": {

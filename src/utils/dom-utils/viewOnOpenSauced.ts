@@ -5,15 +5,17 @@ import {
 import { ViewOnOpenSaucedButton } from "../../content-scripts/components/ViewOnOpenSaucedButton/ViewOnOpenSaucedButton";
 
 const injectViewOnOpenSaucedButton = (username: string) => {
+
+  if (document.getElementById("view-on-opensauced-button")) {
+    return;
+  }
+  
   const viewOnOpenSaucedButton = ViewOnOpenSaucedButton(username);
 
   const userBio = document.querySelector(
     `${GITHUB_PROFILE_MENU_SELECTOR}, ${GITHUB_PROFILE_EDIT_MENU_SELECTOR}`,
   );
 
-  if (userBio?.lastChild?.isEqualNode(viewOnOpenSaucedButton)) {
- return;
-}
   userBio?.append(viewOnOpenSaucedButton);
 };
 

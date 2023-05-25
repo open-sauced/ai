@@ -25,7 +25,6 @@ export const DescriptionGeneratorButton = () => {
 const handleSubmit = async () => {
   try {
     if (!(await isLoggedIn())) {
-      console.log("hellele");
       return window.open(SUPABASE_LOGIN_URL, "_blank");
     }
     const logo = document.getElementById("ai-description-button-logo");

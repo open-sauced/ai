@@ -1,7 +1,7 @@
 <div align="center">
   <br>
   <img alt="Open Sauced" src="https://i.ibb.co/7jPXt0Z/logo1-92f1a87f.png" width="300px">
-  <h1>🍕 Open Sauced Browser Extension(s) 🍕</h1>
+  <h1>🍕 OpenSauced.ai 🍕</h1>
 </div>
 <p align="center">
   <img src="https://img.shields.io/github/languages/code-size/open-sauced/browser-extensions" alt="GitHub code size in bytes">

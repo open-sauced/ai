@@ -4,6 +4,11 @@ import { InviteToOpenSaucedModal } from "../../content-scripts/components/Invite
 import { getTwitterUsername, getLinkedInUsername } from "../urlMatchers";
 
 const injectOpenSaucedInviteButton = (username: string) => {
+
+  if (document.getElementById("invite-to-opensauced-button")) {
+    return;
+  }
+  
   const emailAddress = document
     .querySelector(`a[href^="mailto:"]`)
     ?.getAttribute("href")
@@ -34,10 +39,6 @@ const injectOpenSaucedInviteButton = (username: string) => {
 
   const userBio = document.querySelector(GITHUB_PROFILE_MENU_SELECTOR);
 
-
-  if (userBio?.lastChild?.isEqualNode(inviteToOpenSaucedButton)) {
-    return;
-  }
   userBio?.append(inviteToOpenSaucedButton);
   document.body.appendChild(inviteToOpenSaucedModal);
 };

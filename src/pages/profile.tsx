@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaBrain, FaChevronLeft, FaRobot } from "react-icons/fa";
 import { RiLinkedinFill, RiLinkM, RiTwitterFill } from "react-icons/ri";
 import { AiOutlineReload } from "react-icons/ai";
@@ -6,8 +6,8 @@ import { SiC, SiCplusplus, SiCsharp, SiGoland, SiJavascript, SiPhp, SiPython, Si
 import { DiJava } from "react-icons/di";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { getUserData, getUserPRData, getUserHighlightsData } from "../utils/fetchOpenSaucedApiData";
-import { RouteContext } from "../App";
 import { emojify } from "node-emoji";
+import { goBack } from "react-chrome-extension-router";
 
 const interestIcon = {
   python: <SiPython />,
@@ -28,15 +28,14 @@ const interestIcon = {
 
 type InterestIconKeys = keyof typeof interestIcon;
 
-export const Profile = () => {
-  const { page, setCurrentPage } = useContext(RouteContext);
+export const Profile = ({ username }: {username: string}) => {
   const [user, setUser] = useState<null | { id: string, user_name: string, bio: string, created_at: string, linkedin_url: string, twitter_username: string, blog: string, interests: string, open_issues: number }>(null);
   const [userPR, setUserPR] = useState<null | { meta: { itemCount: number } }>(null);
   const [userHighlights, setUserHighlights] = useState<null | { meta: { itemCount: number } }>(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const [userData, userPRData, userHighlightsData] = await Promise.all([getUserData(page.props.userName), getUserPRData(page.props.userName), getUserHighlightsData(page.props.userName)]);
+      const [userData, userPRData, userHighlightsData] = await Promise.all([getUserData(username), getUserPRData(username), getUserHighlightsData(username)]);
 
       setUser(userData);
       setUserPR(userPRData);
@@ -48,13 +47,14 @@ export const Profile = () => {
 
 
   return (
+  <div className="p-4 bg-slate-800">
     <div className="grid grid-cols-1 divide-y divider-y-center-2 min-w-[320px] text-white">
       <header className="flex justify-between">
         <div className="flex items-center gap-2">
           <button
             className="rounded-full p-2 bg-slate-700 hover:bg-slate-700/50"
             onClick={() => {
-              setCurrentPage("home");
+              goBack();
             }}
           >
             <FaChevronLeft className="text-osOrange" />
@@ -71,7 +71,7 @@ export const Profile = () => {
           className="hover:text-orange text-lg"
           title="Refresh user data"
           onClick={async () => {
-            const [userData, userPRData] = await Promise.all([getUserData(page.props.userName), getUserPRData(page.props.userName)]);
+            const [userData, userPRData] = await Promise.all([getUserData(username), getUserPRData(username)]);
 
             setUser(userData);
             setUserPR(userPRData);
@@ -85,18 +85,19 @@ export const Profile = () => {
         <div className="flex flex-col items-center gap-1 mb-4">
           <a
             className="flex flex-col items-center hover:text-orange hover:scale-105"
-            href={`https://insights.opensauced.pizza/user/${page.props.userName}`}
+            href={`https://insights.opensauced.pizza/user/${username}`}
             rel="noopener noreferrer"
             target="_blank"
           >
           <img
             alt="User avatar"
             className="rounded-full w-14 aspect-square p-1 bg-slate-700"
-            src={`https://github.com/${page.props.userName}.png`}
+            src={`https://github.com/${username}.png`}
           />
 
           <p className="font-medium">
-            @{page.props.userName}
+            @
+{username}
           </p>
           </a>
 
@@ -197,5 +198,6 @@ export const Profile = () => {
         </div>
       </main>
     </div>
+  </div>
   );
 };

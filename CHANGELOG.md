@@ -1,9 +1,100 @@
+# 📦 open-sauced/ai changelog
+
+[![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
+
+> All notable changes to this project will be documented in this file
+
+## [1.2.0-beta.3](https://github.com/open-sauced/ai/compare/v1.2.0-beta.2...v1.2.0-beta.3) (2023-05-23)
+
+
+### 🍕 Features
+
+* generate code suggestions via AI ([#90](https://github.com/open-sauced/ai/issues/90)) ([14eede1](https://github.com/open-sauced/ai/commit/14eede1b5e1912aba04e17daf2a022497510c16b)), closes [#104](https://github.com/open-sauced/ai/issues/104)
+
+## [1.2.0-beta.2](https://github.com/open-sauced/ai/compare/v1.2.0-beta.1...v1.2.0-beta.2) (2023-05-23)
+
+
+### 🐛 Bug Fixes
+
+* duplicate-button-injections using guards ([#110](https://github.com/open-sauced/ai/issues/110)) ([3978766](https://github.com/open-sauced/ai/commit/39787668594b558ac8cb206ad894de94df767c81))
+
+## [1.2.0-beta.1](https://github.com/open-sauced/ai/compare/v1.1.1-beta.2...v1.2.0-beta.1) (2023-05-23)
+
+
+### 🍕 Features
+
+* Resources page to link users to open-sauced feedback/discussions ([#100](https://github.com/open-sauced/ai/issues/100)) ([3d607ae](https://github.com/open-sauced/ai/commit/3d607aeeb86d663064fb8b857ea829950ddb1082))
+
+### [1.1.1-beta.2](https://github.com/open-sauced/ai/compare/v1.1.1-beta.1...v1.1.1-beta.2) (2023-05-23)
+
+
+### 🐛 Bug Fixes
+
+* adds demo to readme ([c27e614](https://github.com/open-sauced/ai/commit/c27e61432be557c4f7e54ba684e69206e35560f4))
+
+### [1.1.1-beta.1](https://github.com/open-sauced/ai/compare/v1.1.0...v1.1.1-beta.1) (2023-05-22)
+
+
+### 🧑‍💻 Code Refactoring
+
+* improved-extension-navigation ([#99](https://github.com/open-sauced/ai/issues/99)) ([5b2f5c1](https://github.com/open-sauced/ai/commit/5b2f5c18e6103b4297d925aa487b5900a954e495))
+
+## [1.1.0](https://github.com/open-sauced/ai/compare/v1.0.0...v1.1.0) (2023-05-20)
+
+
+### 📝 Documentation
+
+* how we create extension releases ([#81](https://github.com/open-sauced/ai/issues/81)) ([10b1c48](https://github.com/open-sauced/ai/commit/10b1c48b799bfa412525e6c7da5a0f8268da6b16))
+
+
+### 🐛 Bug Fixes
+
+* add extra line and italics ([#93](https://github.com/open-sauced/ai/issues/93)) ([2cbd790](https://github.com/open-sauced/ai/commit/2cbd790345b7412224915c8175f2d273cd537294))
+* update name in README ([dba4734](https://github.com/open-sauced/ai/commit/dba473404d24e421bf748e691291109e2fe267ac))
+
+
+### 🍕 Features
+
+* add/remove repos to/from insights. ([#77](https://github.com/open-sauced/ai/issues/77)) ([8e4a6ed](https://github.com/open-sauced/ai/commit/8e4a6ed61efd8c52812d42e216b05baacd006dea))
+* OpenSauced AI PR description  ([#79](https://github.com/open-sauced/ai/issues/79)) ([0e38777](https://github.com/open-sauced/ai/commit/0e387771a60c17417bb0c8806f2684eae4c69c42))
+* replace open issues count with highlights count ([#76](https://github.com/open-sauced/ai/issues/76)) ([0fb8149](https://github.com/open-sauced/ai/commit/0fb814901fd575d3f1434740f8f8140fc6ff1aae))
+* Updated to the new AI PR description endpoint ([#94](https://github.com/open-sauced/ai/issues/94)) ([cf8f64c](https://github.com/open-sauced/ai/commit/cf8f64cf4860ce96903234989920ec25bced2b76))
+
+## [1.1.0-beta.7](https://github.com/open-sauced/ai/compare/v1.1.0-beta.6...v1.1.0-beta.7) (2023-05-19)
+
+
+### 🍕 Features
+
+* Updated to the new AI PR description endpoint ([#94](https://github.com/open-sauced/ai/issues/94)) ([cf8f64c](https://github.com/open-sauced/ai/commit/cf8f64cf4860ce96903234989920ec25bced2b76))
+
+## [1.1.0-beta.6](https://github.com/open-sauced/ai/compare/v1.1.0-beta.5...v1.1.0-beta.6) (2023-05-18)
+
+
+### 🐛 Bug Fixes
+
+* add extra line and italics ([#93](https://github.com/open-sauced/ai/issues/93)) ([2cbd790](https://github.com/open-sauced/ai/commit/2cbd790345b7412224915c8175f2d273cd537294))
+
 # 📦 open-sauced/browser-extensions changelog
 
 [![conventional commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 [![semantic versioning](https://img.shields.io/badge/semantic%20versioning-2.0.0-green.svg)](https://semver.org)
 
 > All notable changes to this project will be documented in this file
+
+## [1.1.0-beta.5](https://github.com/open-sauced/browser-extensions/compare/v1.1.0-beta.4...v1.1.0-beta.5) (2023-05-18)
+
+
+### 🐛 Bug Fixes
+
+* update name in README ([dba4734](https://github.com/open-sauced/browser-extensions/commit/dba473404d24e421bf748e691291109e2fe267ac))
+
+## [1.1.0-beta.4](https://github.com/open-sauced/browser-extensions/compare/v1.1.0-beta.3...v1.1.0-beta.4) (2023-05-18)
+
+
+### 🍕 Features
+
+* OpenSauced AI PR description  ([#79](https://github.com/open-sauced/browser-extensions/issues/79)) ([0e38777](https://github.com/open-sauced/browser-extensions/commit/0e387771a60c17417bb0c8806f2684eae4c69c42))
 
 ## [1.1.0-beta.3](https://github.com/open-sauced/browser-extensions/compare/v1.1.0-beta.2...v1.1.0-beta.3) (2023-05-17)
 
