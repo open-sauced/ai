@@ -1,5 +1,5 @@
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
-import { SUPABASE_LOGIN_URL } from "../constants";
+import { optLogIn } from "../utils/checkAuthentication";
 
 const Start = () => (
     <div className="p-4 bg-slate-800">
@@ -23,15 +23,13 @@ const Start = () => (
         browser extension.
         </p>
 
-        <a
-            href={SUPABASE_LOGIN_URL}
-            rel="noopener noreferrer"
-            target="_blank"
+        <button
             className="bg-orange no-underline border-none rounded-md text-white font-bold py-2 px-4 cursor-pointer
           bg-gradient-to-r from-[#e67e22] to-[#d35400]"
+            onClick={optLogIn}
         >
         Login
-        </a>
+        </button>
     </div>
 );
 

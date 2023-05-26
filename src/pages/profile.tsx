@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { FaBrain, FaChevronLeft, FaRobot } from "react-icons/fa";
 import { RiLinkedinFill, RiLinkM, RiTwitterFill } from "react-icons/ri";
-import { AiOutlineReload } from "react-icons/ai";
 import { SiC, SiCplusplus, SiCsharp, SiGoland, SiJavascript, SiPhp, SiPython, SiReact, SiRuby, SiRust, SiTypescript } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { getUserData, getUserPRData, getUserHighlightsData } from "../utils/fetchOpenSaucedApiData";
 import { emojify } from "node-emoji";
-import { goBack } from "react-chrome-extension-router";
+import { goBack, goTo } from "react-chrome-extension-router";
 import { getRelativeDays } from "../utils/dateUtils";
 import { getUserPRVelocity } from "../utils/getUserPRVelocity";
+import { BiExit } from "react-icons/bi";
+import Start from "./start";
+import { optLogOut } from "../utils/checkAuthentication";
 
 const interestIcon = {
     python: <SiPython />,
@@ -72,16 +74,14 @@ export const Profile = ({ username }: { username: string }) => {
                     </div>
 
                     <button
-                        className="hover:text-orange text-lg"
-                        title="Refresh user data"
-                        onClick={async () => {
-                            const [userData, userPRData] = await Promise.all([getUserData(username), getUserPRData(username)]);
-
-                            setUser(userData);
-                            setUserPR(userPRData);
+                        className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-red-600 text-white gap-1 p-1.5 px-2 w-fit rounded-md font-medium text-sm"
+                        onClick={() => {
+                            optLogOut();
+                            goTo(Start);
                         }}
                     >
-                        <AiOutlineReload />
+                        <BiExit />
+            Log Out
                     </button>
                 </header>
 

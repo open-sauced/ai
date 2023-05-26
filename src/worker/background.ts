@@ -7,7 +7,7 @@ chrome.cookies.onChanged.addListener(changeInfo => {
         changeInfo.cookie.name === SUPABASE_AUTH_COOKIE_NAME ||
       changeInfo.cookie.domain === OPEN_SAUCED_INSIGHTS_DOMAIN
     ) {
-        checkAuthentication();
+        void checkAuthentication();
     }
 });
 
