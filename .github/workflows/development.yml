@@ -11,3 +11,8 @@ on:
 jobs:
   test:
     uses: open-sauced/hot/.github/workflows/development.yml@main
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+        - name: "📦 run build"
+          run: npm run build
