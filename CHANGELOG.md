@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.3.0-beta.2](https://github.com/open-sauced/ai/compare/v1.3.0-beta.1...v1.3.0-beta.2) (2023-05-26)
+
+
+### 🍕 Features
+
+* Logout from the extension ([#138](https://github.com/open-sauced/ai/issues/138)) ([1f62f0e](https://github.com/open-sauced/ai/commit/1f62f0eae2b5a2a8ff73f4c2e99ab31a9ff0684c))
+
 ## [1.3.0-beta.1](https://github.com/open-sauced/ai/compare/v1.2.0...v1.3.0-beta.1) (2023-05-25)
 
 
