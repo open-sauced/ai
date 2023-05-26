@@ -2,6 +2,7 @@
 export const SUPABASE_LOGIN_URL = "https://ibcwmlhcimymasokhgvn.supabase.co/auth/v1/authorize?provider=github&redirect_to=https://insights.opensauced.pizza/";
 export const SUPABASE_AUTH_COOKIE_NAME = "supabase-auth-token";
 export const OPEN_SAUCED_AUTH_TOKEN_KEY = "os-access-token";
+export const OPEN_SAUCED_OPTED_LOG_OUT_KEY = "opted-log-out";
 export const OPEN_SAUCED_INSIGHTS_DOMAIN = "insights.opensauced.pizza";
 export const AI_PR_DESCRIPTION_CONFIG_KEY = "ai-pr-description-config";
 

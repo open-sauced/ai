@@ -122,7 +122,7 @@ const AIPRDescription = () => {
                                             ref={setRefFromKey("length")}
                                             className="text-black p-1.5 rounded-md mb-1 w-half accent-orange"
                                             id="length"
-                                            max="600"
+                                            max="500"
                                             min="100"
                                             name="length"
                                             type="range"
