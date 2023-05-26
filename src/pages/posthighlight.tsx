@@ -16,7 +16,7 @@ const PostOnHighlight = () => {
     const generateAiDescription = () => {
         enableSendButton(false);
         chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-            chrome.tabs.sendMessage(tabs[0].id ?? 0, { type: "get_ai_description" }, (response) => {
+            chrome.tabs.sendMessage(tabs[0].id ?? 0, { type: "get_ai_description" }, response => {
                 setHighlightContent(response);
                 enableSendButton(true);
             });

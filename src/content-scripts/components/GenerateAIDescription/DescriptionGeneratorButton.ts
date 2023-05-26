@@ -33,7 +33,7 @@ const handleSubmit = async () => {
         if (!logo) {
             return;
         }
-        logo.classList.toggle("animate-spin");        
+        logo.classList.toggle("animate-spin");
         const descriptionStream = await getAiDescription();
 
         logo.classList.toggle("animate-spin");
@@ -42,11 +42,10 @@ const handleSubmit = async () => {
 
         insertTextAtCursor(textArea, descriptionStream);
     } catch (error: unknown) {
-
         logo.classList.toggle("animate-spin");
-        
+
         if (error instanceof Error) {
-            alert(error.message); 
+            alert(error.message);
             console.error("Description generation error:", error.message);
         }
     }
