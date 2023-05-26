@@ -66,10 +66,15 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             break;
         }
         case "get_ai_description": {
-            (async () => {
+            const asyncRequest = async () => {
                 const aiText = await getAiDescription();
+
                 sendResponse(aiText);
-              })();
+            };
+
+            asyncRequest().catch(e => {
+                console.error(e);
+            });
             return true;
         }
     }
