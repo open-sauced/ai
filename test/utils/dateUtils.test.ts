@@ -1,4 +1,4 @@
-import { assert, expect, test } from 'vitest'
+import { expect, test } from 'vitest'
 import { getRelativeDays } from '../../src/utils/dateUtils'
 
 
