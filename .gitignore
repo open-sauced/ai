@@ -1,3 +1,6 @@
+# vitest coverage directory
+coverage
+
 # Logs
 logs
 *.log
