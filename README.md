@@ -38,11 +38,22 @@ To install the project dependencies:
 npm ci
 ```
 
+
 To run a local instance of the project:
+
+### On development environment
 
 ```shell
 npm run dev
 ```
+
+### On Production environment 
+
+```shell
+npm run build
+npm run preview
+```
+
 
 ## Installing the local build on a Chromium based browser:
 After running the above commands,
