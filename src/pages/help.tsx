@@ -28,9 +28,14 @@ const Help = () => (
                         className="w-[100%]"
                         src={OpenSaucedLogo}
                     />
+
+
                 </div>
 
-                {version}
+                <div className="flex justify-center flex-col">
+                    {version}
+                </div>
+
             </header>
 
             <main className="main-content text-white">
