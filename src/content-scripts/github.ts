@@ -60,7 +60,7 @@ void processGithubPage();
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     switch (msg.type) {
         case "get_highlight": {
-            const title = (document.querySelector(".js-issue-title markdown-title") as HTMLHeadingElement)?.innerText;
+            const title = (document.querySelector(".js-issue-title.markdown-title") as HTMLHeadingElement)?.innerText;
 
             sendResponse(title);
             break;
