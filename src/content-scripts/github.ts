@@ -72,7 +72,8 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
                 sendResponse(aiText);
             };
 
-            asyncRequest().catch(e => {
+            asyncRequest().catch((e: Error | undefined) => {
+                sendResponse(e?.toString());
                 console.error(e);
             });
             return true;
