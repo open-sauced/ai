@@ -14,9 +14,12 @@ const PostOnHighlight = () => {
     const [isSendButtonEnabled, enableSendButton] = useState(true);
 
     const generateAiDescription = () => {
+        const toastId = toast.loading("doing AI magic...");
+
         enableSendButton(false);
         chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
             chrome.tabs.sendMessage(tabs[0].id ?? 0, { type: "get_ai_description" }, response => {
+                toast.dismiss(toastId);
                 setHighlightContent(response);
                 enableSendButton(true);
             });
@@ -38,14 +41,14 @@ const PostOnHighlight = () => {
                 }
                 return (
                     <span>
-            check the highlight at:
+                        check the highlight at:
                         <a
                             href={`https://insights.opensauced.pizza/user/${user.user_name}/highlights`}
                             rel="noreferrer"
                             target="_blank"
                         >
                             {" "}
-              your account
+                            your account
                         </a>
                     </span>
                 );
@@ -113,7 +116,7 @@ const PostOnHighlight = () => {
                         disabled={!isSendButtonEnabled}
                         onClick={postHighlight}
                     >
-                    Post
+                        Post
                     </button>
                 </main>
             </div>
