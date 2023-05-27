@@ -5,34 +5,42 @@ import {
     OPEN_SAUCED_INSIGHTS_DOMAIN,
     SUPABASE_LOGIN_URL,
 } from "../constants";
-import { checkTokenValidity } from "./fetchOpenSaucedApiData";
-import setAccessTokenInChromeStorage from "../utils/setAccessToken";
 
-export const checkAuthentication = async () => {
+export const checkAuthentication = async (
+    hasOptedLogOut: () => Promise<boolean>,
+    getCookie: (
+        details: chrome.cookies.Details,
+        callback: (cookie: chrome.cookies.Cookie | null) => void
+    ) => void,
+    checkTokenValidity: (authCookie: any) => Promise<boolean>,
+    setAccessTokenInChromeStorage: (authCookie: any) => void,
+    removeAuthTokenFromStorage: () => void,
+    logError: (error: string) => void,
+) => {
     if (await hasOptedLogOut()) {
-        return chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY);
+        return removeAuthTokenFromStorage();
     }
 
-    chrome.cookies.get(
+    getCookie(
         {
             name: SUPABASE_AUTH_COOKIE_NAME,
             url: `https://${OPEN_SAUCED_INSIGHTS_DOMAIN}`,
         },
         async cookie => {
             if (!cookie) {
-                return chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY);
+                return removeAuthTokenFromStorage();
             }
             try {
                 const authCookie = JSON.parse(decodeURIComponent(cookie.value))[0];
                 const isValidToken = await checkTokenValidity(authCookie);
 
                 if (!isValidToken) {
-                    return chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY);
+                    return removeAuthTokenFromStorage();
                 }
-                void setAccessTokenInChromeStorage(authCookie);
+                setAccessTokenInChromeStorage(authCookie);
             } catch (error) {
-                void chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY);
-                console.error("Error processing cookie:", error);
+                removeAuthTokenFromStorage();
+                logError(error as string);
             }
         },
     );
@@ -55,5 +63,6 @@ export const optLogIn = () => {
     window.open(SUPABASE_LOGIN_URL, "_blank");
 };
 
-const hasOptedLogOut = async (): Promise<boolean> => (await chrome.storage.local.get(OPEN_SAUCED_OPTED_LOG_OUT_KEY))[OPEN_SAUCED_OPTED_LOG_OUT_KEY] === true;
+export const hasOptedLogOut = async (): Promise<boolean> => (await chrome.storage.local.get(OPEN_SAUCED_OPTED_LOG_OUT_KEY))[OPEN_SAUCED_OPTED_LOG_OUT_KEY] === true;
 
+export const removeAuthTokenFromStorage = async (): Promise<void> => chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY);
