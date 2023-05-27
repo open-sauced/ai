@@ -23,7 +23,7 @@ export const DescriptionGeneratorButton = () => {
 };
 
 const handleSubmit = async () => {
-    const logo = document.getElementById("ai-description-button-logo") ?? false;
+    const logo = document.getElementById("ai-description-button-logo") ?? null;
 
     try {
         if (!(await isLoggedIn())) {
@@ -42,7 +42,7 @@ const handleSubmit = async () => {
 
         insertTextAtCursor(textArea, descriptionStream);
     } catch (error: unknown) {
-        logo.classList.toggle("animate-spin");
+        logo?.classList.toggle("animate-spin");
 
         if (error instanceof Error) {
             alert(error.message);
