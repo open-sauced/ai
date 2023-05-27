@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.3.1-beta.2](https://github.com/open-sauced/ai/compare/v1.3.1-beta.1...v1.3.1-beta.2) (2023-05-27)
+
+
+### ✅ Tests
+
+* add tests for utils/urlMatchers.ts ([#143](https://github.com/open-sauced/ai/issues/143)) ([26702e6](https://github.com/open-sauced/ai/commit/26702e689641138a791f3c8cb935ddc99540a19e))
+
 ## [1.3.1-beta.1](https://github.com/open-sauced/ai/compare/v1.3.0...v1.3.1-beta.1) (2023-05-27)
 
 
