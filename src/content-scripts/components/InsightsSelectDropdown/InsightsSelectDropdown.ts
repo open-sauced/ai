@@ -29,7 +29,7 @@ export const InsightsSelectDropdown = async (ownerName: string, repoName: string
             </button>
           </footer>
         `,
-      });
+    });
 
     const userToken = await getAuthToken();
     const userInsightsData = await getUserInsightsData(userToken);
@@ -39,7 +39,7 @@ export const InsightsSelectDropdown = async (ownerName: string, repoName: string
 
     const closeButton = insightsDropdown.querySelector(
         ".SelectMenu-closeButton",
-        )!;
+    )!;
 
     closeButton.addEventListener("click", () => {
         insightsDropdown.classList.add("hidden");
@@ -47,7 +47,7 @@ export const InsightsSelectDropdown = async (ownerName: string, repoName: string
 
     const insightsList = insightsDropdown.querySelector(
         ".SelectMenu-list",
-        )!;
+    )!;
 
     userInsights.forEach((insight: IInsight) => {
         const insightLabel = createHtmlElement("div", {
@@ -64,7 +64,7 @@ export const InsightsSelectDropdown = async (ownerName: string, repoName: string
 
         const insightCheckbox = insightLabel.querySelector(
             "input",
-            )!;
+        )!;
 
         if (insight.repos.some((repo: any) => repo.repo_id === currentRepoData.id)) {
             insightCheckbox.setAttribute("checked", "true");
@@ -101,15 +101,15 @@ export const InsightsSelectDropdown = async (ownerName: string, repoName: string
 
     const addInsightBtn = insightsDropdown.querySelector(
         ".user-lists-menu-action",
-      )!;
+    )!;
 
     addInsightBtn.addEventListener("click", () => {
-    window.open(
+        window.open(
             "https://insights.opensauced.pizza/hub/insights/new",
             "_blank",
         );
     });
 
     return insightsDropdown;
-    };
+};
 

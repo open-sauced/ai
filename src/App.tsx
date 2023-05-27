@@ -6,20 +6,20 @@ import { useAuth } from "./hooks/useAuth";
 import { goTo } from "react-chrome-extension-router";
 
 const App = () => {
-  const { isTokenValid } = useAuth();
+    const { isTokenValid } = useAuth();
 
 
-  useEffect(() => {
-    if (isTokenValid) {
-      goTo(Home);
-    } else {
-      goTo(Start);
-    }
-  }, [isTokenValid]);
+    useEffect(() => {
+        if (isTokenValid) {
+            goTo(Home);
+        } else {
+            goTo(Start);
+        }
+    }, [isTokenValid]);
 
-  return (
-      <Loading />
-  );
+    return (
+        <Loading />
+    );
 };
 
 export default App;
