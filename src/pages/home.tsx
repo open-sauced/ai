@@ -13,6 +13,8 @@ import AIPRDescription from "./aiprdescription";
 import Help from "./help";
 
 const Home = () => {
+    const { version } = config;
+
     const { user } = useAuth();
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
 
@@ -25,6 +27,8 @@ const Home = () => {
                         className="w-[45%]"
                         src={OpenSaucedLogo}
                     />
+
+                    {version}
 
                     {user && (
                         <button
@@ -55,7 +59,7 @@ const Home = () => {
                             target="_blank"
                         >
                             <HiArrowTopRightOnSquare />
-              Highlights feed
+                            Highlights feed
                         </a>
 
                         <a
@@ -65,7 +69,7 @@ const Home = () => {
                             target="_blank"
                         >
                             <HiArrowTopRightOnSquare />
-              Dashboard
+                            Dashboard
                         </a>
 
                         <button
@@ -75,7 +79,7 @@ const Home = () => {
                             }}
                         >
                             <HiPencil />
-              AI Configuration
+                            AI Configuration
                         </button>
 
                         {currentTabIsOpensaucedUser && (
@@ -86,12 +90,12 @@ const Home = () => {
                                 }}
                             >
                                 <HiUserCircle />
+                                View
 
-                View
                                 {" "}
 
                                 {checkedUser}
-                &apos;s profile
+                                &apos;s profile
                             </button>
                         )}
                     </div>
@@ -105,7 +109,7 @@ const Home = () => {
                         }}
                     >
                         <HiOutlineQuestionMarkCircle />
-            Help
+                        Help
                     </button>
                 </footer>
             </div>
