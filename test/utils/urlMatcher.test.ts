@@ -49,7 +49,7 @@ test('isGithubPullRequestPage', () => {
   expect(isGithubPullRequestPage('https://www.github.com/username/repo/pull/123/')).toBe(true)
   expect(isGithubPullRequestPage('www.github.com/username/repo/pull/123')).toBe(true)
   expect(isGithubPullRequestPage('github.com/username/repo/pull/123/')).toBe(true)
-  expect(isGithubPullRequestPage('abcd')).toBe(false)
+  expect(isGithubPullRequestPage('https://google.com/')).toBe(false)
 })
 
 test('isGithubProfilePage', () => {
