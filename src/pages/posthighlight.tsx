@@ -43,7 +43,7 @@ const PostOnHighlight = () => {
                     <span>
                         check the highlight at:
                         <a
-                            href={`https://insights.opensauced.pizza/user/${user.user_name}/highlights`}
+                            href={`https://insights.opensauced.pizza/user/${user?.user_name}/highlights`}
                             rel="noreferrer"
                             target="_blank"
                         >

@@ -23,7 +23,7 @@ export const DescriptionGeneratorButton = () => {
 };
 
 const handleSubmit = async () => {
-    const logo = document.getElementById("ai-description-button-logo");
+    const logo = document.getElementById("ai-description-button-logo") ?? false;
 
     try {
         if (!(await isLoggedIn())) {
