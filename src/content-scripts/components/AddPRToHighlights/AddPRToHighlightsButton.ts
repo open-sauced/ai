@@ -1,8 +1,6 @@
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
-import {
-    OPEN_SAUCED_INSIGHTS_DOMAIN
-} from "../../../constants";
+import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../../constants";
 
 export const AddPRToHighlightsButton = () => {
     const addPRToHighlightsButton = createHtmlElement("a", {

@@ -3,7 +3,7 @@ import { createHtmlElement } from "../../../utils/createHtmlElement";
 import { getAuthToken } from "../../../utils/checkAuthentication";
 import { getUserInsightsData, getRepoData, updateInsight } from "../../../utils/fetchOpenSaucedApiData";
 import { IInsight } from "../../../ts/InsightDto";
-import {OPEN_SAUCED_INSIGHTS_DOMAIN} from "../../../constants";
+import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../../constants";
 
 export const InsightsSelectDropdown = async (ownerName: string, repoName: string) => {
     const insightsDropdown = createHtmlElement("div", {

@@ -12,7 +12,7 @@ import { getUserPRVelocity } from "../utils/getUserPRVelocity";
 import { BiExit } from "react-icons/bi";
 import Start from "./start";
 import { optLogOut } from "../utils/checkAuthentication";
-import {OPEN_SAUCED_INSIGHTS_DOMAIN} from "../constants";
+import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../constants";
 
 const interestIcon = {
     python: <SiPython />,

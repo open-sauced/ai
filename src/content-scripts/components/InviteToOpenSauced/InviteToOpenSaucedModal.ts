@@ -3,7 +3,7 @@ import { createHtmlElement } from "../../../utils/createHtmlElement";
 import emailSocialIcon from "../../../assets/mail-icon.svg";
 import twitterSocialIcon from "../../../assets/twitter-icon.svg";
 import linkedInSocailIcon from "../../../assets/linkedin-icon.svg";
-import {OPEN_SAUCED_INSIGHTS_DOMAIN} from "../../../constants";
+import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../../constants";
 
 interface Socials {
     emailAddress?: string | null;

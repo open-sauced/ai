@@ -11,7 +11,7 @@ import { Profile } from "./profile";
 import { goTo } from "react-chrome-extension-router";
 import AIPRDescription from "./aiprdescription";
 import Help from "./help";
-import {OPEN_SAUCED_INSIGHTS_DOMAIN } from "../constants";
+import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../constants";
 
 const Home = () => {
     const { user } = useAuth();
