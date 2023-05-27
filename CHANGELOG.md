@@ -5,6 +5,24 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.3.0](https://github.com/open-sauced/ai/compare/v1.2.0...v1.3.0) (2023-05-27)
+
+
+### 🍕 Features
+
+* adds test and lint to build ([#127](https://github.com/open-sauced/ai/issues/127)) ([6f1cfc7](https://github.com/open-sauced/ai/commit/6f1cfc7435548b3f5cffb83dfa675612603a2869))
+* Logout from the extension ([#138](https://github.com/open-sauced/ai/issues/138)) ([1f62f0e](https://github.com/open-sauced/ai/commit/1f62f0eae2b5a2a8ff73f4c2e99ab31a9ff0684c))
+
+
+### ✅ Tests
+
+* setup tests ([#139](https://github.com/open-sauced/ai/issues/139)) ([8d61ab0](https://github.com/open-sauced/ai/commit/8d61ab068e77687700bf25596ee853ab1a3a26ee))
+
+
+### 🐛 Bug Fixes
+
+* run builds on PRs ([a755e38](https://github.com/open-sauced/ai/commit/a755e38ffdd8533c8cbba66d2d662faeae4cad64))
+
 ## [1.3.0-beta.4](https://github.com/open-sauced/ai/compare/v1.3.0-beta.3...v1.3.0-beta.4) (2023-05-26)
 
 
