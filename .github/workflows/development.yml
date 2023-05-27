@@ -14,5 +14,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps: 
-        - name: "📦 run build"
-          run: npm run build
+      - name: "☁️ checkout repository"
+        uses: actions/checkout@v2
+
+      - name: "🔧 setup node"
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 18
+
+      - name: "🔧 install npm@latest"
+        run: npm i -g npm@latest
+
+      - name: "📦 install dependencies"
+        uses: bahmutov/npm-install@v1
+
+      - name: "📦 run build"
+        run: npm run build
