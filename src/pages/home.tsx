@@ -11,6 +11,7 @@ import { Profile } from "./profile";
 import { goTo } from "react-chrome-extension-router";
 import AIPRDescription from "./aiprdescription";
 import Help from "./help";
+import {OPEN_SAUCED_INSIGHTS_DOMAIN } from "../constants";
 
 const Home = () => {
     const { user } = useAuth();
@@ -50,7 +51,7 @@ const Home = () => {
                     <div className="tools flex flex-col gap-2">
                         <a
                             className="flex items-center bg-slate-700 hover:bg-slate-700/70 text-white hover:text-orange no-underline gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                            href="https://insights.opensauced.pizza/feed"
+                            href={`https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed`}
                             rel="noreferrer"
                             target="_blank"
                         >
@@ -60,7 +61,7 @@ const Home = () => {
 
                         <a
                             className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                            href="https://insights.opensauced.pizza"
+                            href={`https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed`}
                             rel="noreferrer"
                             target="_blank"
                         >
