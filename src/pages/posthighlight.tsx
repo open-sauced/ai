@@ -63,7 +63,6 @@ const PostOnHighlight = () => {
     useEffect(() => {
         chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
             setPageURL(tabs[0]?.url ?? "");
-            generateAiDescription();
             chrome.tabs.sendMessage(tabs[0].id ?? 0, { type: "get_highlight" }, setHighlightTitle);
         });
     }, []);
@@ -111,13 +110,23 @@ const PostOnHighlight = () => {
                         onChange={e => setHighlightContent(e.target.value)}
                     />
 
-                    <button
-                        className="inline-block disabled:bg-gray-500 text-black bg-gh-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline"
-                        disabled={!isSendButtonEnabled}
-                        onClick={postHighlight}
-                    >
+                    <div className="flex justify-evenly">
+                        <button
+                            className="inline-block disabled:bg-gray-500 text-black bg-gh-white rounded-md p-2 text-sm font-semibold text-center select-none w-5/12 border hover:shadow-button hover:no-underline"
+                            disabled={!isSendButtonEnabled}
+                            onClick={() => generateAiDescription()}
+                        >
+                        Generate AI text
+                        </button>
+
+                        <button
+                            className="inline-block disabled:bg-gray-500 text-black bg-gh-white rounded-md p-2 text-sm font-semibold text-center select-none w-5/12 border hover:shadow-button hover:no-underline"
+                            disabled={!isSendButtonEnabled}
+                            onClick={postHighlight}
+                        >
                         Post
-                    </button>
+                        </button>
+                    </div>
                 </main>
             </div>
         </div>
