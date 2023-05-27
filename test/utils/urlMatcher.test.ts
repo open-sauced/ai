@@ -20,7 +20,7 @@ test('getGithubUsername', () => {
     expect(getGithubUsername('https://www.github.com/username/repo/pulls')).toBe('username')
     expect(getGithubUsername('www.github.com/123')).toBe('123')
     expect(getGithubUsername('github.com/123/')).toBe('123')
-    expect(getGithubUsername('abcd')).toBe(undefined)
+    expect(getGithubUsername('https://google.com/')).toBe(undefined)
 })
 
 test('getLinkedInUsername', () => {
@@ -49,7 +49,7 @@ test('isGithubPullRequestPage', () => {
   expect(isGithubPullRequestPage('https://www.github.com/username/repo/pull/123/')).toBe(true)
   expect(isGithubPullRequestPage('www.github.com/username/repo/pull/123')).toBe(true)
   expect(isGithubPullRequestPage('github.com/username/repo/pull/123/')).toBe(true)
-  expect(isGithubPullRequestPage('abcd')).toBe(false)
+  expect(isGithubPullRequestPage('https://google.com/')).toBe(false)
 })
 
 test('isGithubProfilePage', () => {
@@ -60,7 +60,7 @@ test('isGithubProfilePage', () => {
   expect(isGithubProfilePage('www.github.com/username')).toBe(true)
   expect(isGithubProfilePage('github.com/username')).toBe(true)
   expect(isGithubProfilePage('github.com/username/')).toBe(false)
-  expect(isGithubProfilePage('abcd')).toBe(false)
+  expect(isGithubProfilePage('https://google.com/')).toBe(false)
 })
 
 test('isGithubRepoPage', () => {
@@ -68,20 +68,20 @@ test('isGithubRepoPage', () => {
   expect(isGithubRepoPage('https://www.github.com/username/')).toBe(false)
   expect(isGithubRepoPage('https://www.github.com/username/repo')).toBe(true)
   expect(isGithubRepoPage('https://www.github.com/username/repo/')).toBe(false)
-  expect(isGithubRepoPage('https://www.github.com/username/repo/abcd')).toBe(false)
+  expect(isGithubRepoPage('https://www.github.com/username/repo/https://google.com/')).toBe(false)
   expect(isGithubRepoPage('www.github.com/username/repo')).toBe(true)
   expect(isGithubRepoPage('github.com/username/repo')).toBe(true)
-  expect(isGithubRepoPage('abcd')).toBe(false)
+  expect(isGithubRepoPage('https://google.com/')).toBe(false)
 })
 
 test('isPullRequestCreatePage', () => {
   expect(isPullRequestCreatePage('https://www.github.com/')).toBe(false)
   expect(isPullRequestCreatePage('https://github.com/username/repo/compare/')).toBe(false)
-  expect(isPullRequestCreatePage('https://github.com/username/repo/compare/abcd')).toBe(true)
-  expect(isPullRequestCreatePage('https://github.com/username/repo/compare/abcd/')).toBe(true)
-  expect(isPullRequestCreatePage('www.github.com/username/repo/compare/abcd/')).toBe(true)
-  expect(isPullRequestCreatePage('github.com/username/repo/compare/abcd/')).toBe(true)
-  expect(isPullRequestCreatePage('abcd')).toBe(false)
+  expect(isPullRequestCreatePage('https://github.com/username/repo/compare/https://google.com/')).toBe(true)
+  expect(isPullRequestCreatePage('https://github.com/username/repo/compare/https://google.com//')).toBe(true)
+  expect(isPullRequestCreatePage('www.github.com/username/repo/compare/https://google.com//')).toBe(true)
+  expect(isPullRequestCreatePage('github.com/username/repo/compare/https://google.com//')).toBe(true)
+  expect(isPullRequestCreatePage('https://google.com/')).toBe(false)
 })
 
 test('isPullRequestFilesChangedPage', () => {
@@ -91,5 +91,5 @@ test('isPullRequestFilesChangedPage', () => {
   expect(isPullRequestFilesChangedPage('www.github.com/username/repo/pull/123/files')).toBe(true)
   expect(isPullRequestFilesChangedPage('github.com/username/repo/pull/123/files/')).toBe(true)
   expect(isPullRequestFilesChangedPage('github.com/username/repo/pull/123/fil')).toBe(false)
-  expect(isPullRequestFilesChangedPage('abcd')).toBe(false)
+  expect(isPullRequestFilesChangedPage('https://google.com/')).toBe(false)
 })
