@@ -13,8 +13,6 @@ import AIPRDescription from "./aiprdescription";
 import Help from "./help";
 
 const Home = () => {
-    const { version } = config;
-
     const { user } = useAuth();
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
 
@@ -28,7 +26,6 @@ const Home = () => {
                         src={OpenSaucedLogo}
                     />
 
-                    {version}
 
                     {user && (
                         <button

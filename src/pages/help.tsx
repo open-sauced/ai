@@ -7,6 +7,7 @@ import {
 } from "react-icons/hi2";
 import { goBack } from "react-chrome-extension-router";
 import { VscIssues } from "react-icons/vsc";
+const { version } = config;
 
 const Help = () => (
     <div className="p-4 bg-slate-800">
@@ -28,6 +29,8 @@ const Help = () => (
                         src={OpenSaucedLogo}
                     />
                 </div>
+
+                {version}
             </header>
 
             <main className="main-content text-white">
