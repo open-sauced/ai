@@ -1,5 +1,3 @@
-
-import fetch from "node-fetch";
 import { describe, it, expect } from "vitest"
 
 import {
