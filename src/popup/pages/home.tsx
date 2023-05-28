@@ -109,6 +109,16 @@ const Home = () => {
                         <HiOutlineQuestionMarkCircle />
             Help
                     </button>
+
+                    <button
+                        className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-fit rounded-sm font-medium text-sm"
+                        onClick={() => {
+                            goTo(Settings);
+                        }}
+                    >
+                        <FiSettings />
+            Settings
+                    </button>
                 </footer>
             </div>
         </div>
