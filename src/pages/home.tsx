@@ -26,6 +26,7 @@ const Home = () => {
                         src={OpenSaucedLogo}
                     />
 
+
                     {user && (
                         <button
                             className="flex gap-1 items-center hover:text-orange text-white no-underline"
@@ -55,7 +56,7 @@ const Home = () => {
                             target="_blank"
                         >
                             <HiArrowTopRightOnSquare />
-              Highlights feed
+                            Highlights feed
                         </a>
 
                         <a
@@ -65,7 +66,7 @@ const Home = () => {
                             target="_blank"
                         >
                             <HiArrowTopRightOnSquare />
-              Dashboard
+                            Dashboard
                         </a>
 
                         <button
@@ -75,7 +76,7 @@ const Home = () => {
                             }}
                         >
                             <HiPencil />
-              AI Configuration
+                            AI Configuration
                         </button>
 
                         {currentTabIsOpensaucedUser && (
@@ -86,12 +87,12 @@ const Home = () => {
                                 }}
                             >
                                 <HiUserCircle />
+                                View
 
-                View
                                 {" "}
 
                                 {checkedUser}
-                &apos;s profile
+                                &apos;s profile
                             </button>
                         )}
                     </div>
@@ -105,7 +106,7 @@ const Home = () => {
                         }}
                     >
                         <HiOutlineQuestionMarkCircle />
-            Help
+                        Help
                     </button>
                 </footer>
             </div>
