@@ -5,6 +5,60 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.3.1-beta.2](https://github.com/open-sauced/ai/compare/v1.3.1-beta.1...v1.3.1-beta.2) (2023-05-27)
+
+
+### ✅ Tests
+
+* add tests for utils/urlMatchers.ts ([#143](https://github.com/open-sauced/ai/issues/143)) ([26702e6](https://github.com/open-sauced/ai/commit/26702e689641138a791f3c8cb935ddc99540a19e))
+
+## [1.3.1-beta.1](https://github.com/open-sauced/ai/compare/v1.3.0...v1.3.1-beta.1) (2023-05-27)
+
+
+### 🐛 Bug Fixes
+
+* remove auto-take message from triage.yml ([258a828](https://github.com/open-sauced/ai/commit/258a8284d294d01b4228ca17d3b4d591692a890b))
+* rename triage.yml ([3b9a14b](https://github.com/open-sauced/ai/commit/3b9a14bab991c739b9e57b1d0d829100695f47fb))
+
+## [1.3.0](https://github.com/open-sauced/ai/compare/v1.2.0...v1.3.0) (2023-05-27)
+
+
+### 🍕 Features
+
+* adds test and lint to build ([#127](https://github.com/open-sauced/ai/issues/127)) ([6f1cfc7](https://github.com/open-sauced/ai/commit/6f1cfc7435548b3f5cffb83dfa675612603a2869))
+* Logout from the extension ([#138](https://github.com/open-sauced/ai/issues/138)) ([1f62f0e](https://github.com/open-sauced/ai/commit/1f62f0eae2b5a2a8ff73f4c2e99ab31a9ff0684c))
+
+
+### ✅ Tests
+
+* setup tests ([#139](https://github.com/open-sauced/ai/issues/139)) ([8d61ab0](https://github.com/open-sauced/ai/commit/8d61ab068e77687700bf25596ee853ab1a3a26ee))
+
+
+### 🐛 Bug Fixes
+
+* run builds on PRs ([a755e38](https://github.com/open-sauced/ai/commit/a755e38ffdd8533c8cbba66d2d662faeae4cad64))
+
+## [1.3.0-beta.4](https://github.com/open-sauced/ai/compare/v1.3.0-beta.3...v1.3.0-beta.4) (2023-05-26)
+
+
+### 🐛 Bug Fixes
+
+* run builds on PRs ([a755e38](https://github.com/open-sauced/ai/commit/a755e38ffdd8533c8cbba66d2d662faeae4cad64))
+
+## [1.3.0-beta.3](https://github.com/open-sauced/ai/compare/v1.3.0-beta.2...v1.3.0-beta.3) (2023-05-26)
+
+
+### ✅ Tests
+
+* setup tests ([#139](https://github.com/open-sauced/ai/issues/139)) ([8d61ab0](https://github.com/open-sauced/ai/commit/8d61ab068e77687700bf25596ee853ab1a3a26ee))
+
+## [1.3.0-beta.2](https://github.com/open-sauced/ai/compare/v1.3.0-beta.1...v1.3.0-beta.2) (2023-05-26)
+
+
+### 🍕 Features
+
+* Logout from the extension ([#138](https://github.com/open-sauced/ai/issues/138)) ([1f62f0e](https://github.com/open-sauced/ai/commit/1f62f0eae2b5a2a8ff73f4c2e99ab31a9ff0684c))
+
 ## [1.3.0-beta.1](https://github.com/open-sauced/ai/compare/v1.2.0...v1.3.0-beta.1) (2023-05-25)
 
 
