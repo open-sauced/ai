@@ -1,7 +1,7 @@
 // OpenSauced constants
 export const OPEN_SAUCED_INSIGHTS_DOMAIN = import.meta.env.VITE_OPEN_SAUCED_INSIGHTS_DOMAIN;
 export const OPEN_SAUCED_API_ENDPOINT = import.meta.env.VITE_OPEN_SAUCED_API_ENDPOINT;
-export const SUPABASE_LOGIN_URL = `https://${import.meta.env.VITE_SUPABASE_LOGIN_URL}.supabase.co/auth/v1/authorize?provider=github&redirect_to=https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/`;
+export const SUPABASE_LOGIN_URL = `https://${import.meta.env.VITE_OPEN_SAUCED_SUPABASE_ID}.supabase.co/auth/v1/authorize?provider=github&redirect_to=https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/`;
 
 
 export const SUPABASE_AUTH_COOKIE_NAME = "supabase-auth-token";
