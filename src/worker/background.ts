@@ -4,19 +4,24 @@ import { setDefaultDescriptionConfig } from "../utils/aiprdescription/descriptio
 import { checkTokenValidity } from "../utils/fetchOpenSaucedApiData";
 import setAccessTokenInChromeStorage from "../utils/setAccessToken";
 
+
+const checkUserAuthentication = () => {
+    void checkAuthentication(hasOptedLogOut, chrome.cookies.get, checkTokenValidity, setAccessTokenInChromeStorage, removeAuthTokenFromStorage, console.error);
+};
+
 chrome.cookies.onChanged.addListener(changeInfo => {
     if (
         changeInfo.cookie.name === SUPABASE_AUTH_COOKIE_NAME ||
       changeInfo.cookie.domain === OPEN_SAUCED_INSIGHTS_DOMAIN
     ) {
-        void checkAuthentication(hasOptedLogOut, chrome.cookies.get, checkTokenValidity, setAccessTokenInChromeStorage, removeAuthTokenFromStorage, console.error);
+        checkUserAuthentication();
     }
 });
 
 chrome.runtime.onInstalled.addListener(() => {
-    void checkAuthentication(hasOptedLogOut, chrome.cookies.get, checkTokenValidity, setAccessTokenInChromeStorage, removeAuthTokenFromStorage, console.error);
+    checkUserAuthentication();
 });
 chrome.runtime.onInstalled.addListener(setDefaultDescriptionConfig);
 chrome.runtime.onStartup.addListener(() => {
-    void checkAuthentication(hasOptedLogOut, chrome.cookies.get, checkTokenValidity, setAccessTokenInChromeStorage, removeAuthTokenFromStorage, console.error);
+    checkUserAuthentication();
 });
