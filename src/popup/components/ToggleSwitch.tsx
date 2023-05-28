@@ -3,9 +3,6 @@ import { useEffect, useState } from "react";
 const Toggle = ({ settingName, settingLabel, enabledSetting }: { settingName: string; enabledSetting: boolean; settingLabel: string }) => {
     const [enabled, setEnabled] = useState(enabledSetting);
 
-    console.log("enabled", enabled);
-
-
     const changeSetting = async (value: boolean) => {
         const settingsConfig = await chrome.storage.sync.get("osSettingsConfig");
 
