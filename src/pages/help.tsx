@@ -32,7 +32,13 @@ const Help = () => (
                 </div>
 
                 <div className="flex justify-center flex-col">
-                    {version}
+                    <a
+                        href={`https://github.com/open-sauced/ai/releases/tag/v${version}`}
+                        rel="noreferrer"
+                        target="_blank"
+                    >
+                        {version}
+                    </a>
                 </div>
 
             </header>
