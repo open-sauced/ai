@@ -23,56 +23,69 @@ export const DescriptionGeneratorButton = () => {
 };
 
 const handleSubmit = async () => {
+    const logo = document.getElementById("ai-description-button-logo") ?? null;
+
     try {
         if (!(await isLoggedIn())) {
             return window.open(SUPABASE_LOGIN_URL, "_blank");
         }
-        const logo = document.getElementById("ai-description-button-logo");
 
         if (!logo) {
             return;
         }
-        const url = getPullRequestAPIURL(window.location.href);
-        const descriptionConfig = await getAIDescriptionConfig();
-
-        if (!descriptionConfig) {
-            return;
-        }
-        if (!descriptionConfig.enabled) {
-            return alert("AI PR description is disabled!");
-        }
         logo.classList.toggle("animate-spin");
-        const [diff, commitMessages] = await getDescriptionContext(url, descriptionConfig.config.source);
-
-        if (!diff && !commitMessages) {
-            logo.classList.toggle("animate-spin");
-            return alert(`No input context was generated.`);
-        }
-        if (isOutOfContextBounds([diff, commitMessages], descriptionConfig.config.maxInputLength)) {
-            logo.classList.toggle("animate-spin");
-            return alert(`Max input length exceeded. Try setting the description source to commit-messages.`);
-        }
-        const token = await getAuthToken();
-        const descriptionStream = await generateDescription(
-            token,
-            descriptionConfig.config.language,
-            descriptionConfig.config.length,
-            descriptionConfig.config.temperature / 10,
-            descriptionConfig.config.tone,
-            diff,
-            commitMessages,
-        );
+        const descriptionStream = await getAiDescription();
 
         logo.classList.toggle("animate-spin");
-        if (!descriptionStream) {
-            return console.error("No description was generated!");
-        }
+
         const textArea = document.getElementsByName(GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR)[0] as HTMLTextAreaElement;
 
         insertTextAtCursor(textArea, descriptionStream);
     } catch (error: unknown) {
+        logo?.classList.toggle("animate-spin");
+
         if (error instanceof Error) {
+            alert(error.message);
             console.error("Description generation error:", error.message);
         }
     }
 };
+
+export const getAiDescription = async () => {
+    const url = getPullRequestAPIURL(window.location.href);
+    const descriptionConfig = await getAIDescriptionConfig();
+
+    if (!descriptionConfig) {
+        throw new Error("Configuration file is empty!");
+    }
+
+    if (!descriptionConfig.enabled) {
+        throw new Error("AI PR description is disabled!");
+    }
+
+    const [diff, commitMessages] = await getDescriptionContext(url, descriptionConfig.config.source);
+
+    if (!diff && !commitMessages) {
+        throw new Error(`No input context was generated.`);
+    }
+    if (isOutOfContextBounds([diff, commitMessages], descriptionConfig.config.maxInputLength)) {
+        throw new Error(`Max input length exceeded. Try setting the description source to commit-messages.`);
+    }
+    const token = await getAuthToken();
+    const descriptionStream = await generateDescription(
+        token,
+        descriptionConfig.config.language,
+        descriptionConfig.config.length,
+        descriptionConfig.config.temperature / 10,
+        descriptionConfig.config.tone,
+        diff,
+        commitMessages,
+    );
+
+    if (!descriptionStream) {
+        throw new Error("No description was generated!");
+    }
+
+    return descriptionStream;
+};
+

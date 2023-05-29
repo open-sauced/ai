@@ -7,11 +7,13 @@ export const OPEN_SAUCED_INSIGHTS_DOMAIN = "insights.opensauced.pizza";
 export const AI_PR_DESCRIPTION_CONFIG_KEY = "ai-pr-description-config";
 
 // API endpoints
-export const OPEN_SAUCED_USERS_ENDPOINT = "https://api.opensauced.pizza/v1/users";
-export const OPEN_SAUCED_REPOS_ENDPOINT = "https://api.opensauced.pizza/v1/repos";
-export const OPEN_SAUCED_SESSION_ENDPOINT = "https://api.opensauced.pizza/v1/auth/session";
-export const OPEN_SAUCED_USER_INSIGHTS_ENDPOINT = "https://api.opensauced.pizza/v1/user/insights";
-export const OPEN_SAUCED_AI_PR_DESCRIPTION_ENDPOINT = "https://api.opensauced.pizza/v1/prs/description/generate";
+export const OPEN_SAUCED_API_ENDPOINT = "https://api.opensauced.pizza/v1";
+export const OPEN_SAUCED_USERS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/users`;
+export const OPEN_SAUCED_REPOS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/repos`;
+export const OPEN_SAUCED_SESSION_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/auth/session`;
+export const OPEN_SAUCED_USER_INSIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/user/insights`;
+export const OPEN_SAUCED_AI_PR_DESCRIPTION_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/description/generate`;
+export const OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/user/highlights`;
 export const OPEN_SAUCED_AI_CODE_REFACTOR_ENDPOINT = "https://api.opensauced.pizza/v1/prs/suggestion/generate";
 
 // GitHub constants/selectors
