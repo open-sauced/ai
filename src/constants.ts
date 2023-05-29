@@ -9,7 +9,7 @@ export const OPEN_SAUCED_AUTH_TOKEN_KEY = "os-access-token";
 export const OPEN_SAUCED_OPTED_LOG_OUT_KEY = "opted-log-out";
 export const AI_PR_DESCRIPTION_CONFIG_KEY = "ai-pr-description-config";
 
-// API endpoints
+
 export const OPEN_SAUCED_USERS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/users`;
 export const OPEN_SAUCED_REPOS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/repos`;
 export const OPEN_SAUCED_SESSION_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/auth/session`;
@@ -17,6 +17,7 @@ export const OPEN_SAUCED_USER_INSIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/u
 export const OPEN_SAUCED_AI_PR_DESCRIPTION_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/description/generate`;
 export const OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/user/highlights`;
 export const OPEN_SAUCED_AI_CODE_REFACTOR_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/suggestion/generate`;
+
 
 // GitHub constants/selectors
 export const GITHUB_PROFILE_MENU_SELECTOR = ".p-nickname.vcard-username.d-block";

@@ -10,6 +10,9 @@ import { useOpensaucedUserCheck } from "../hooks/useOpensaucedUserCheck";
 import { Profile } from "./profile";
 import { goTo } from "react-chrome-extension-router";
 import AIPRDescription from "./aiprdescription";
+import PostOnHighlight from "./posthighlight";
+
+
 import Help from "./help";
 import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../constants";
 
@@ -26,6 +29,7 @@ const Home = () => {
                         className="w-[45%]"
                         src={OpenSaucedLogo}
                     />
+
 
                     {user && (
                         <button
@@ -56,7 +60,7 @@ const Home = () => {
                             target="_blank"
                         >
                             <HiArrowTopRightOnSquare />
-              Highlights feed
+                            Highlights feed
                         </a>
 
                         <a
@@ -66,7 +70,7 @@ const Home = () => {
                             target="_blank"
                         >
                             <HiArrowTopRightOnSquare />
-              Dashboard
+                            Dashboard
                         </a>
 
                         <button
@@ -76,7 +80,17 @@ const Home = () => {
                             }}
                         >
                             <HiPencil />
-              AI Configuration
+                            AI Configuration
+                        </button>
+
+                        <button
+                            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+                            onClick={() => {
+                                goTo(PostOnHighlight);
+                            }}
+                        >
+                            <HiPencil />
+              Post Highlight
                         </button>
 
                         {currentTabIsOpensaucedUser && (
@@ -87,12 +101,12 @@ const Home = () => {
                                 }}
                             >
                                 <HiUserCircle />
+                                View
 
-                View
                                 {" "}
 
                                 {checkedUser}
-                &apos;s profile
+                                &apos;s profile
                             </button>
                         )}
                     </div>
@@ -106,7 +120,7 @@ const Home = () => {
                         }}
                     >
                         <HiOutlineQuestionMarkCircle />
-            Help
+                        Help
                     </button>
                 </footer>
             </div>
