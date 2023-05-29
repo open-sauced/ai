@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.3.1-beta.3](https://github.com/open-sauced/ai/compare/v1.3.1-beta.2...v1.3.1-beta.3) (2023-05-29)
+
+
+### ✅ Tests
+
+* add tests for checkAuth.ts ([#149](https://github.com/open-sauced/ai/issues/149)) ([3a79fac](https://github.com/open-sauced/ai/commit/3a79facf2196537b4cfc0ce763ed74934c7b268f))
+
 ## [1.3.1-beta.2](https://github.com/open-sauced/ai/compare/v1.3.1-beta.1...v1.3.1-beta.2) (2023-05-27)
 
 
