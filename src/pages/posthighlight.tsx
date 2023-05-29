@@ -14,7 +14,7 @@ const PostOnHighlight = () => {
     const [isSendButtonEnabled, enableSendButton] = useState(true);
 
     const generateAiDescription = () => {
-        const toastId = toast.loading("doing AI magic...");
+        const toastId = toast.loading("Generating summary...");
 
         enableSendButton(false);
         chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
@@ -96,7 +96,7 @@ const PostOnHighlight = () => {
                     <input
                         className="p-1.5 rounded-md mb-2 w-full text-black"
                         maxLength={50}
-                        placeholder="Your title here"
+                        placeholder="An amazing title here"
                         type="text"
                         value={highlightTitle}
                         onChange={e => setHighlightTitle(e.target.value)}
@@ -104,7 +104,7 @@ const PostOnHighlight = () => {
 
                     <textarea
                         className="p-1.5 rounded-md mb-2 w-full text-black"
-                        placeholder="Your text here"
+                        placeholder="Summarize this pull request"
                         rows={5}
                         value={highlightContent}
                         onChange={e => setHighlightContent(e.target.value)}
@@ -116,7 +116,7 @@ const PostOnHighlight = () => {
                             disabled={!isSendButtonEnabled}
                             onClick={() => generateAiDescription()}
                         >
-                        Generate AI text
+                        Generate Summary
                         </button>
 
                         <button
