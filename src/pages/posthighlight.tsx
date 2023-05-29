@@ -116,7 +116,7 @@ const PostOnHighlight = () => {
                             disabled={!isSendButtonEnabled}
                             onClick={() => generateAiDescription()}
                         >
-                        Generate Summary
+                       Summarize
                         </button>
 
                         <button
