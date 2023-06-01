@@ -15,7 +15,6 @@ export type DescriptionLanguage =
   | "korean";
 
 export interface DescriptionConfig {
-    enabled: boolean;
     config: {
         length: number;
         maxInputLength: number;
@@ -42,7 +41,6 @@ export const setAIDescriptionConfig = async (data: DescriptionConfig): Promise<v
 };
 
 export const getDefaultDescriptionConfig = (): DescriptionConfig => ({
-    enabled: true,
     config: {
         length: 500,
         maxInputLength: 3900,
@@ -57,14 +55,4 @@ export const setDefaultDescriptionConfig = () => {
     const defaultConfig = getDefaultDescriptionConfig();
 
     void setAIDescriptionConfig(defaultConfig);
-};
-
-export const toggleAIPRDescriptionEnabled = async () => {
-    const config = await getAIDescriptionConfig();
-
-    if (typeof config?.enabled === "undefined") {
-        return;
-    }
-    config.enabled = !config.enabled;
-    await setAIDescriptionConfig(config);
 };

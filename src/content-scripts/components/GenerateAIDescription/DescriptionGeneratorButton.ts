@@ -38,9 +38,6 @@ const handleSubmit = async () => {
         if (!descriptionConfig) {
             return;
         }
-        if (!descriptionConfig.enabled) {
-            return alert("AI PR description is disabled!");
-        }
         logo.classList.toggle("animate-spin");
         const [diff, commitMessages] = await getDescriptionContext(url, descriptionConfig.config.source);
 

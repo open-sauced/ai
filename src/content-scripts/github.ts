@@ -26,7 +26,7 @@ const processGithubPage = async () => {
     } else if (isPullRequestFilesChangedPage(window.location.href)) {
         prReviewWatch(injectChangeSuggestorButton, 500);
     } else if (isGithubPullRequestPage(window.location.href)) {
-        prEditWatch(injectDescriptionGeneratorButton);
+        prEditWatch(injectDescriptionGeneratorButton, 500);
         void injectAddPRToHighlightsButton();
     } else if (isGithubProfilePage(window.location.href)) {
         const username = getGithubUsername(window.location.href);
