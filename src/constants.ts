@@ -17,7 +17,7 @@ export const OPEN_SAUCED_USER_INSIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/u
 export const OPEN_SAUCED_AI_PR_DESCRIPTION_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/description/generate`;
 export const OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/user/highlights`;
 export const OPEN_SAUCED_AI_CODE_REFACTOR_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/suggestion/generate`;
-
+export const OPEN_SAUCED_HIGHLIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/highlights/list`;
 
 // GitHub constants/selectors
 export const GITHUB_PROFILE_MENU_SELECTOR = ".p-nickname.vcard-username.d-block";
