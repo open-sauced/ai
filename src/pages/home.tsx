@@ -1,4 +1,6 @@
 import {
+    HiArrowLeft,
+    HiArrowRight,
     HiArrowTopRightOnSquare,
     HiOutlineQuestionMarkCircle,
     HiPencil,
@@ -27,16 +29,17 @@ interface Highlight {
 const Home = () => {
     const { user } = useAuth();
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
-    const [highlight, setHighlight] = useState<Highlight | null>(null);
+    const [highlights, setHighlights] = useState<Highlight[]>([]);
+    const [currentPage, setCurrentPage] = useState(0);
 
 
     useEffect(() => {
         const fetchHighlights = async () => {
             try {
                 const userHighlightsData = await getHighlights();
-                const highlights = userHighlightsData.data[0];
+                const highlights = userHighlightsData.data;
 
-                setHighlight(highlights);
+                setHighlights(highlights);
             } catch (error) {
                 console.log(error);
             }
@@ -44,6 +47,14 @@ const Home = () => {
 
         void fetchHighlights();
     }, []);
+
+    const handlePrevious = () => {
+        setCurrentPage(prevPage => prevPage - 1);
+    };
+
+    const handleNext = () => {
+        setCurrentPage(prevPage => prevPage + 1);
+    };
 
     return (
         <div className="p-4 bg-slate-800">
@@ -81,26 +92,47 @@ const Home = () => {
                         <h3 className="text-base font-medium">
                             <a
                                 className="text-blue-500 hover:text-blue-700 underline cursor-pointer"
-                                href={highlight?.url}
+                                href={highlights[currentPage]?.url}
                             >
-                                {highlight?.title}
+                                {highlights[currentPage]?.title}
                             </a>
                         </h3>
+
 
                         <div className="flex items-center">
                             <div className="mr-2">Author:</div>
 
                             <a
                                 className="text-blue-500 hover:text-blue-700 underline cursor-pointer"
-                                href={`https://insights.opensauced.pizza/user/${highlight?.name}`}
+                                href={`https://insights.opensauced.pizza/user/${highlights[currentPage]?.name}`}
                             >
-                                {highlight?.name}
+                                {highlights[currentPage]?.name}
                             </a>
                         </div>
 
                         <p className="py-2">
-                            {highlight?.highlight}
+                            {highlights[currentPage]?.highlight}
                         </p>
+
+                        <div className="flex justify-center">
+                            <div className="flex justify-center mt-4">
+                                <button
+                                    className="px-4 py-2 rounded-md bg-blue-500 text-white disabled:opacity-50"
+                                    disabled={currentPage === 0}
+                                    onClick={handlePrevious}
+                                >
+                                    <HiArrowLeft />
+                                </button>
+
+                                <button
+                                    className="px-4 py-2 rounded-md bg-blue-500 text-white disabled:opacity-50 ml-4"
+                                    disabled={currentPage === highlights.length - 1}
+                                    onClick={handleNext}
+                                >
+                                    <HiArrowRight />
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     <h3 className="text font-medium text-base leading-10">Tools:</h3>
