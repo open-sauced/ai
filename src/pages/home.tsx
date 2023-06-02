@@ -16,11 +16,19 @@ import { getHighlights } from "../utils/fetchOpenSaucedApiData";
 
 import Help from "./help";
 import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../constants";
+interface Highlight {
+    highlight: string;
+    title: string;
+    name: string;
+    url: string;
+}
+
 
 const Home = () => {
     const { user } = useAuth();
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
-    const [highlight, setHighlight] = useState(null);
+    const [highlight, setHighlight] = useState<Highlight | null>(null);
+
 
     useEffect(() => {
         const fetchHighlights = async () => {
