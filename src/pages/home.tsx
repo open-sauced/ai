@@ -31,6 +31,7 @@ const Home = () => {
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
     const [highlights, setHighlights] = useState<Highlight[]>([]);
     const [currentPage, setCurrentPage] = useState(0);
+    const [currentName, setCurrentName] = useState<string>("");
 
 
     useEffect(() => {
@@ -55,6 +56,16 @@ const Home = () => {
     const handleNext = () => {
         setCurrentPage(prevPage => prevPage + 1);
     };
+
+    const formatNameForLink = (name: string): string => name.replace(/\s/g, "");
+
+    useEffect(() => {
+        // Update the current name when the highlight changes
+        if (highlights[currentPage]?.name) {
+            setCurrentName(formatNameForLink(highlights[currentPage].name));
+        }
+    }, [highlights, currentPage]);
+
 
     return (
         <div className="p-4 bg-slate-800">
@@ -88,56 +99,60 @@ const Home = () => {
                 <main className="main-content">
                     <h3 className="text font-medium text-base leading-10">Latest Highlight:</h3>
 
-                    <div className="border border-white/40 rounded-sm p-3 mt-2">
-                        <h3 className="text-base font-medium">
-                            <a
-                                className="text-blue-500 hover:text-blue-700 underline cursor-pointer"
-                                href={highlights[currentPage]?.url}
-                                rel="noopener noreferrer"
-                                target="_blank"
-                            >
-                                {highlights[currentPage]?.title}
-                            </a>
-                        </h3>
+                    {highlights.length > 0 && (
 
-
-                        <div className="flex items-center">
-                            <div className="mr-2">Author:</div>
-
-                            <a
-                                className="text-blue-500 hover:text-blue-700 underline cursor-pointer"
-                                href={`https://insights.opensauced.pizza/user/${highlights[currentPage]?.name}`}
-                                rel="noopener noreferrer"
-                                target="_blank"
-                            >
-                                {highlights[currentPage]?.name}
-                            </a>
-                        </div>
-
-                        <p className="py-2">
-                            {highlights[currentPage]?.highlight}
-                        </p>
-
-                        <div className="flex justify-center">
-                            <div className="flex justify-center mt-4">
-                                <button
-                                    className="px-4 py-2 rounded-md bg-blue-500 text-white disabled:opacity-50"
-                                    disabled={currentPage === 0}
-                                    onClick={handlePrevious}
+                        <div className="border border-white/40 rounded-sm p-3 mt-2">
+                            <h3 className="text-base font-medium">
+                                <a
+                                    className="text-blue-500 hover:text-blue-700 underline cursor-pointer"
+                                    href={highlights[currentPage]?.url}
+                                    rel="noopener noreferrer"
+                                    target="_blank"
                                 >
-                                    <HiArrowLeft />
-                                </button>
+                                    {highlights[currentPage]?.title}
+                                </a>
+                            </h3>
 
-                                <button
-                                    className="px-4 py-2 rounded-md bg-blue-500 text-white disabled:opacity-50 ml-4"
-                                    disabled={currentPage === highlights.length - 1}
-                                    onClick={handleNext}
+
+                            <div className="flex items-center">
+                                <div className="mr-2">Author:</div>
+
+                                <a
+                                    className="text-blue-500 hover:text-blue-700 underline cursor-pointer"
+                                    href={`https://insights.opensauced.pizza/user/${formatNameForLink(highlights[currentPage]?.name)}`}
+                                    rel="noopener noreferrer"
+                                    target="_blank"
+
+
                                 >
-                                    <HiArrowRight />
-                                </button>
+                                    {highlights[currentPage]?.name}
+                                </a>
                             </div>
-                        </div>
-                    </div>
+
+                            <p className="py-2">
+                                {highlights[currentPage]?.highlight}
+                            </p>
+
+                            <div className="flex justify-center">
+                                <div className="flex justify-center mt-4">
+                                    <button
+                                        className="px-4 py-2 rounded-md bg-blue-500 text-white disabled:opacity-50"
+                                        disabled={currentPage === 0}
+                                        onClick={handlePrevious}
+                                    >
+                                        <HiArrowLeft />
+                                    </button>
+
+                                    <button
+                                        className="px-4 py-2 rounded-md bg-blue-500 text-white disabled:opacity-50 ml-4"
+                                        disabled={currentPage === highlights.length - 1}
+                                        onClick={handleNext}
+                                    >
+                                        <HiArrowRight />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>)}
 
                     <h3 className="text font-medium text-base leading-10">Tools:</h3>
 
