@@ -4,6 +4,7 @@ import {
     HiPencil,
     HiUserCircle,
 } from "react-icons/hi2";
+import { useEffect, useState } from "react";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { useAuth } from "../hooks/useAuth";
 import { useOpensaucedUserCheck } from "../hooks/useOpensaucedUserCheck";
@@ -11,7 +12,7 @@ import { Profile } from "./profile";
 import { goTo } from "react-chrome-extension-router";
 import AIPRDescription from "./aiprdescription";
 import PostOnHighlight from "./posthighlight";
-
+import { getHighlights } from "../utils/fetchOpenSaucedApiData";
 
 import Help from "./help";
 import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../constants";
@@ -19,6 +20,22 @@ import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../constants";
 const Home = () => {
     const { user } = useAuth();
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
+    const [highlight, setHighlight] = useState(null);
+
+    useEffect(() => {
+        const fetchHighlights = async () => {
+            try {
+                const userHighlightsData = await getHighlights();
+                const highlights = userHighlightsData.data[0];
+
+                setHighlight(highlights);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        void fetchHighlights();
+    }, []);
 
     return (
         <div className="p-4 bg-slate-800">
@@ -50,6 +67,18 @@ const Home = () => {
                 </header>
 
                 <main className="main-content">
+                    <h3 className="text font-medium text-base leading-10">Latest Highlight:</h3>
+
+                    <div className="border border-white/40 rounded-sm p-3 mt-2">
+                        <h3 className="text-base font-medium">
+                            {highlight?.title}
+                        </h3>
+
+                        <p>
+                            {highlight?.highlight}
+                        </p>
+                    </div>
+
                     <h3 className="text font-medium text-base leading-10">Tools:</h3>
 
                     <div className="tools flex flex-col gap-2">
