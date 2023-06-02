@@ -93,6 +93,8 @@ const Home = () => {
                             <a
                                 className="text-blue-500 hover:text-blue-700 underline cursor-pointer"
                                 href={highlights[currentPage]?.url}
+                                rel="noopener noreferrer"
+                                target="_blank"
                             >
                                 {highlights[currentPage]?.title}
                             </a>
@@ -105,6 +107,8 @@ const Home = () => {
                             <a
                                 className="text-blue-500 hover:text-blue-700 underline cursor-pointer"
                                 href={`https://insights.opensauced.pizza/user/${highlights[currentPage]?.name}`}
+                                rel="noopener noreferrer"
+                                target="_blank"
                             >
                                 {highlights[currentPage]?.name}
                             </a>
