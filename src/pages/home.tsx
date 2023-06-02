@@ -87,6 +87,17 @@ const Home = () => {
                             </a>
                         </h3>
 
+                        <div className="flex items-center">
+                            <div className="mr-2">Author:</div>
+
+                            <a
+                                className="text-blue-500 hover:text-blue-700 underline cursor-pointer"
+                                href={`https://insights.opensauced.pizza/user/${highlight?.name}`}
+                            >
+                                {highlight?.name}
+                            </a>
+                        </div>
+
                         <p className="py-2">
                             {highlight?.highlight}
                         </p>
