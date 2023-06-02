@@ -79,10 +79,15 @@ const Home = () => {
 
                     <div className="border border-white/40 rounded-sm p-3 mt-2">
                         <h3 className="text-base font-medium">
-                            {highlight?.title}
+                            <a
+                                className="text-blue-500 hover:text-blue-700 underline cursor-pointer"
+                                href={highlight?.url}
+                            >
+                                {highlight?.title}
+                            </a>
                         </h3>
 
-                        <p>
+                        <p className="py-2">
                             {highlight?.highlight}
                         </p>
                     </div>
