@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.3.1-beta.5](https://github.com/open-sauced/ai/compare/v1.3.1-beta.4...v1.3.1-beta.5) (2023-06-03)
+
+
+### 🐛 Bug Fixes
+
+* undefined config during build ([#158](https://github.com/open-sauced/ai/issues/158)) ([c986086](https://github.com/open-sauced/ai/commit/c986086f0b819746bd330fe17e3c94537633e6f4))
+
 ## [1.3.1-beta.4](https://github.com/open-sauced/ai/compare/v1.3.1-beta.3...v1.3.1-beta.4) (2023-05-29)
 
 
