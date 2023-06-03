@@ -23,6 +23,7 @@ interface Highlight {
     title: string;
     name: string;
     url: string;
+    login: string;
 }
 
 
@@ -57,15 +58,12 @@ const Home = () => {
         setCurrentPage(prevPage => prevPage + 1);
     };
 
-    const formatNameForLink = (name: string): string => name.replace(/\s/g, "");
-
     useEffect(() => {
         // Update the current name when the highlight changes
-        if (highlights[currentPage]?.name) {
-            setCurrentName(formatNameForLink(highlights[currentPage].name));
+        if (highlights[currentPage]?.login) {
+            setCurrentName(highlights[currentPage].login);
         }
     }, [highlights, currentPage]);
-
 
     return (
         <div className="p-4 bg-slate-800">
@@ -119,13 +117,13 @@ const Home = () => {
 
                                 <a
                                     className="text-blue-500 hover:text-blue-700 underline cursor-pointer"
-                                    href={`https://insights.opensauced.pizza/user/${formatNameForLink(highlights[currentPage]?.name)}`}
+                                    href={`https://insights.opensauced.pizza/user/${highlights[currentPage]?.login}`}
                                     rel="noopener noreferrer"
                                     target="_blank"
 
 
                                 >
-                                    {highlights[currentPage]?.name}
+                                    {highlights[currentPage]?.login}
                                 </a>
                             </div>
 
