@@ -5,8 +5,5 @@ import manifest from "./manifest.json" assert { type: "json" };
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), crx({ manifest })],
-  define: {
-    'config.version': JSON.stringify(process.env.npm_package_version),
-}
+  plugins: [react(), crx({ manifest })]
 });
