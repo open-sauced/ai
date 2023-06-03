@@ -31,7 +31,6 @@ const Home = () => {
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
     const [highlights, setHighlights] = useState<Highlight[]>([]);
     const [currentPage, setCurrentPage] = useState(0);
-    const [currentName, setCurrentName] = useState<string>("");
 
 
     useEffect(() => {
