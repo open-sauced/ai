@@ -43,7 +43,7 @@ const PostOnHighlight = () => {
                 return (
                     <span>
                         <a
-                            href={`${OPEN_SAUCED_INSIGHTS_DOMAIN}/user/${user?.user_name}/highlights`}
+                            href={`https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/user/${user?.user_name}/highlights`}
                             rel="noreferrer"
                             target="_blank"
                         >
