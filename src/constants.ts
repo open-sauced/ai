@@ -1,18 +1,23 @@
 // OpenSauced constants
-export const SUPABASE_LOGIN_URL = "https://ibcwmlhcimymasokhgvn.supabase.co/auth/v1/authorize?provider=github&redirect_to=https://insights.opensauced.pizza/";
+export const OPEN_SAUCED_INSIGHTS_DOMAIN = import.meta.env.VITE_OPEN_SAUCED_INSIGHTS_DOMAIN;
+export const OPEN_SAUCED_API_ENDPOINT = import.meta.env.VITE_OPEN_SAUCED_API_ENDPOINT;
+export const SUPABASE_LOGIN_URL = `https://${import.meta.env.VITE_OPEN_SAUCED_SUPABASE_ID}.supabase.co/auth/v1/authorize?provider=github&redirect_to=https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/`;
+
+
 export const SUPABASE_AUTH_COOKIE_NAME = "supabase-auth-token";
 export const OPEN_SAUCED_AUTH_TOKEN_KEY = "os-access-token";
 export const OPEN_SAUCED_OPTED_LOG_OUT_KEY = "opted-log-out";
-export const OPEN_SAUCED_INSIGHTS_DOMAIN = "insights.opensauced.pizza";
 export const AI_PR_DESCRIPTION_CONFIG_KEY = "ai-pr-description-config";
 
-// API endpoints
-export const OPEN_SAUCED_USERS_ENDPOINT = "https://api.opensauced.pizza/v1/users";
-export const OPEN_SAUCED_REPOS_ENDPOINT = "https://api.opensauced.pizza/v1/repos";
-export const OPEN_SAUCED_SESSION_ENDPOINT = "https://api.opensauced.pizza/v1/auth/session";
-export const OPEN_SAUCED_USER_INSIGHTS_ENDPOINT = "https://api.opensauced.pizza/v1/user/insights";
-export const OPEN_SAUCED_AI_PR_DESCRIPTION_ENDPOINT = "https://api.opensauced.pizza/v1/prs/description/generate";
-export const OPEN_SAUCED_AI_CODE_REFACTOR_ENDPOINT = "https://api.opensauced.pizza/v1/prs/suggestion/generate";
+
+export const OPEN_SAUCED_USERS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/users`;
+export const OPEN_SAUCED_REPOS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/repos`;
+export const OPEN_SAUCED_SESSION_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/auth/session`;
+export const OPEN_SAUCED_USER_INSIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/user/insights`;
+export const OPEN_SAUCED_AI_PR_DESCRIPTION_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/description/generate`;
+export const OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/user/highlights`;
+export const OPEN_SAUCED_AI_CODE_REFACTOR_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/suggestion/generate`;
+export const OPEN_SAUCED_HIGHLIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/highlights/list`;
 
 // GitHub constants/selectors
 export const GITHUB_PROFILE_MENU_SELECTOR = ".p-nickname.vcard-username.d-block";

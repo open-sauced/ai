@@ -4,6 +4,8 @@ import {
     OPEN_SAUCED_SESSION_ENDPOINT,
     OPEN_SAUCED_REPOS_ENDPOINT,
     OPEN_SAUCED_USER_INSIGHTS_ENDPOINT,
+    OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT,
+    OPEN_SAUCED_HIGHLIGHTS_ENDPOINT,
 } from "../constants";
 import { IInsight } from "../ts/InsightDto";
 
@@ -176,3 +178,26 @@ export const updateInsight = async (userToken: string, repoId: string, checked: 
 
     return response.status === 200;
 };
+export const getHighlights = async () => {
+    const response = await fetch(
+        `${OPEN_SAUCED_HIGHLIGHTS_ENDPOINT}`,
+        { method: "GET" },
+    );
+
+    return response.json();
+};
+
+export const cerateHighlight = async (userToken: string, url: string, title: string, highlight: string, shipped_at?: string) => fetch(OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT, {
+    headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userToken}`,
+    },
+    method: "POST",
+    body: JSON.stringify({
+        url,
+        title,
+        shipped_at,
+        highlight,
+    }),
+});

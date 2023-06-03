@@ -5,6 +5,56 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.4.0-beta.2](https://github.com/open-sauced/ai/compare/v1.4.0-beta.1...v1.4.0-beta.2) (2023-06-03)
+
+
+### 🍕 Features
+
+* uses username on highlight instead of full name ([#162](https://github.com/open-sauced/ai/issues/162)) ([801fe5a](https://github.com/open-sauced/ai/commit/801fe5a2fdfa69268b46bc9bdf7ef00ffadf5fdb))
+
+## [1.4.0-beta.1](https://github.com/open-sauced/ai/compare/v1.3.1-beta.5...v1.4.0-beta.1) (2023-06-03)
+
+
+### 🍕 Features
+
+* latest highlights ([#154](https://github.com/open-sauced/ai/issues/154)) ([0ccd0e7](https://github.com/open-sauced/ai/commit/0ccd0e778c7d290e9ab2c9fbe97fc3c04f3be878))
+
+## [1.3.1-beta.5](https://github.com/open-sauced/ai/compare/v1.3.1-beta.4...v1.3.1-beta.5) (2023-06-03)
+
+
+### 🐛 Bug Fixes
+
+* undefined config during build ([#158](https://github.com/open-sauced/ai/issues/158)) ([c986086](https://github.com/open-sauced/ai/commit/c986086f0b819746bd330fe17e3c94537633e6f4))
+
+## [1.3.1-beta.4](https://github.com/open-sauced/ai/compare/v1.3.1-beta.3...v1.3.1-beta.4) (2023-05-29)
+
+
+### 🐛 Bug Fixes
+
+* Post a highlight ([#101](https://github.com/open-sauced/ai/issues/101)) ([e3b7051](https://github.com/open-sauced/ai/commit/e3b7051826f016bbd64c8d0b6a37ae2c48865879))
+
+## [1.3.1-beta.3](https://github.com/open-sauced/ai/compare/v1.3.1-beta.2...v1.3.1-beta.3) (2023-05-29)
+
+
+### ✅ Tests
+
+* add tests for checkAuth.ts ([#149](https://github.com/open-sauced/ai/issues/149)) ([3a79fac](https://github.com/open-sauced/ai/commit/3a79facf2196537b4cfc0ce763ed74934c7b268f))
+
+## [1.3.1-beta.2](https://github.com/open-sauced/ai/compare/v1.3.1-beta.1...v1.3.1-beta.2) (2023-05-27)
+
+
+### ✅ Tests
+
+* add tests for utils/urlMatchers.ts ([#143](https://github.com/open-sauced/ai/issues/143)) ([26702e6](https://github.com/open-sauced/ai/commit/26702e689641138a791f3c8cb935ddc99540a19e))
+
+## [1.3.1-beta.1](https://github.com/open-sauced/ai/compare/v1.3.0...v1.3.1-beta.1) (2023-05-27)
+
+
+### 🐛 Bug Fixes
+
+* remove auto-take message from triage.yml ([258a828](https://github.com/open-sauced/ai/commit/258a8284d294d01b4228ca17d3b4d591692a890b))
+* rename triage.yml ([3b9a14b](https://github.com/open-sauced/ai/commit/3b9a14bab991c739b9e57b1d0d829100695f47fb))
+
 ## [1.3.0](https://github.com/open-sauced/ai/compare/v1.2.0...v1.3.0) (2023-05-27)
 
 

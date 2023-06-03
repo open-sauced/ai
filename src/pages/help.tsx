@@ -7,6 +7,7 @@ import {
 } from "react-icons/hi2";
 import { goBack } from "react-chrome-extension-router";
 import { VscIssues } from "react-icons/vsc";
+import { version } from "../../package.json";
 
 const Help = () => (
     <div className="p-4 bg-slate-800">
@@ -27,7 +28,19 @@ const Help = () => (
                         className="w-[100%]"
                         src={OpenSaucedLogo}
                     />
+
                 </div>
+
+                <div className="flex justify-center flex-col">
+                    <a
+                        href={`https://github.com/open-sauced/ai/releases/tag/v${version}`}
+                        rel="noreferrer"
+                        target="_blank"
+                    >
+                        {version}
+                    </a>
+                </div>
+
             </header>
 
             <main className="main-content text-white">
