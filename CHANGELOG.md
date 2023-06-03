@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.4.0-beta.2](https://github.com/open-sauced/ai/compare/v1.4.0-beta.1...v1.4.0-beta.2) (2023-06-03)
+
+
+### 🍕 Features
+
+* uses username on highlight instead of full name ([#162](https://github.com/open-sauced/ai/issues/162)) ([801fe5a](https://github.com/open-sauced/ai/commit/801fe5a2fdfa69268b46bc9bdf7ef00ffadf5fdb))
+
 ## [1.4.0-beta.1](https://github.com/open-sauced/ai/compare/v1.3.1-beta.5...v1.4.0-beta.1) (2023-06-03)
 
 
