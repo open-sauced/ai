@@ -52,7 +52,7 @@ const handleSubmit = async () => {
 };
 
 export const getAiDescription = async () => {
-    const url = getPullRequestAPIURL(window.location.href);
+    const url = getPullRequestAPIURL(window.location.hostname + window.location.pathname);
     const descriptionConfig = await getAIDescriptionConfig();
 
     if (!descriptionConfig) {
