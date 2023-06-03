@@ -58,12 +58,10 @@ const Home = () => {
         setCurrentPage(prevPage => prevPage + 1);
     };
 
-    const formatNameForLink = (name: string): string => name.replace(/\s/g, "");
-
     useEffect(() => {
         // Update the current name when the highlight changes
         if (highlights[currentPage]?.login) {
-            setCurrentName(formatNameForLink(highlights[currentPage].login));
+            setCurrentName(highlights[currentPage].login);
         }
     }, [highlights, currentPage]);
 
@@ -119,7 +117,7 @@ const Home = () => {
 
                                 <a
                                     className="text-blue-500 hover:text-blue-700 underline cursor-pointer"
-                                    href={`https://insights.opensauced.pizza/user/${formatNameForLink(highlights[currentPage]?.login)}`}
+                                    href={`https://insights.opensauced.pizza/user/${highlights[currentPage]?.login}`}
                                     rel="noopener noreferrer"
                                     target="_blank"
 
