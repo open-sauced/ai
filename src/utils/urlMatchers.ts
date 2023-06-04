@@ -1,5 +1,3 @@
-import { GITHUB_PR_BASE_BRANCH_SELECTOR } from "../constants";
-
 export const getGithubUsername = (url: string) => {
     const match = url.match(/github\.com\/([\w.-]+)/);
 
@@ -52,17 +50,24 @@ export const isPullRequestFilesChangedPage = (url: string) => {
     return githubPullRequestFilesChangedPattern.test(url);
 };
 
-export const getPullRequestAPIURL = (url: string) => {
+export const getPullRequestAPIURL = async (url: string) => {
     const apiURL = url.replace(/github\.com/, "api.github.com/repos");
 
     if (isGithubPullRequestPage(url)) {
         return apiURL.replace("pull", "pulls");
     }
 
+    // New pull request create page
     if (url.match(/compare\/.*\.\.\./)) {
         return apiURL;
     }
-    const baseBranch = document.getElementsByClassName(GITHUB_PR_BASE_BRANCH_SELECTOR)[1].textContent;
 
-    return apiURL.replace(/compare\//, `compare/${baseBranch}...`);
+    // The HEAD branch name is not present in the URL, get the default branch
+    const { username, repoName } = url.match(
+        /^https?:\/\/(www\.)?github.com\/(?<username>[\w.-]+)\/?(?<repoName>[\w.-]+)?/,
+    )?.groups ?? {};
+    const response = await fetch(`https://api.github.com/repos/${username}/${repoName}`);
+    const { default_branch } = await response.json();
+
+    return apiURL.replace(/compare\//, `compare/${default_branch}...`);
 };

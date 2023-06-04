@@ -3,35 +3,34 @@ import { FaChevronLeft } from "react-icons/fa";
 import OpenSaucedLogo from "../assets/opensauced-logo.svg";
 import { useAuth } from "../hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
-import { cerateHighlight } from "../utils/fetchOpenSaucedApiData";
 import { goBack } from "react-chrome-extension-router";
 import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../constants";
+import { getAiDescription } from "../content-scripts/components/GenerateAIDescription/DescriptionGeneratorButton";
+import { createHighlight } from "../utils/fetchOpenSaucedApiData";
 
-const PostOnHighlight = () => {
+const PostOnHighlight = ({ prUrl, prTitle }: { prUrl: string, prTitle: string }) => {
     const { authToken, user } = useAuth();
     const [pageURL, setPageURL] = useState("");
     const [highlightTitle, setHighlightTitle] = useState("");
     const [highlightContent, setHighlightContent] = useState("");
     const [isSendButtonEnabled, enableSendButton] = useState(true);
 
-    const generateAiDescription = () => {
+    const generateAiDescription = async () => {
         const toastId = toast.loading("Generating summary...");
 
         enableSendButton(false);
-        chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-            chrome.tabs.sendMessage(tabs[0].id ?? 0, { type: "get_ai_description" }, response => {
-                toast.dismiss(toastId);
-                setHighlightContent(response);
-                enableSendButton(true);
-            });
-        });
+        const description = await getAiDescription(prUrl);
+
+        toast.dismiss(toastId);
+        setHighlightContent(description);
+        enableSendButton(true);
     };
 
 
     // post highlight function
     const postHighlight = () => {
         enableSendButton(false);
-        const postHighlightAPI = cerateHighlight((authToken ?? ""), pageURL, highlightTitle, highlightContent);
+        const postHighlightAPI = createHighlight((authToken ?? ""), pageURL, highlightTitle, highlightContent);
 
         toast.promise(postHighlightAPI, {
             loading: "Loading ...",
@@ -60,10 +59,8 @@ const PostOnHighlight = () => {
     };
 
     useEffect(() => {
-        chrome.tabs.query({ currentWindow: true, active: true }, tabs => {
-            setPageURL(tabs[0]?.url ?? "");
-            chrome.tabs.sendMessage(tabs[0].id ?? 0, { type: "get_highlight" }, setHighlightTitle);
-        });
+        setPageURL(prUrl);
+        setHighlightTitle(prTitle);
     }, []);
 
     return (
@@ -114,7 +111,7 @@ const PostOnHighlight = () => {
                         <button
                             className="inline-block disabled:bg-gray-500 text-black bg-gh-white rounded-md p-2 text-sm font-semibold text-center select-none w-5/12 border hover:shadow-button hover:no-underline"
                             disabled={!isSendButtonEnabled}
-                            onClick={() => generateAiDescription()}
+                            onClick={generateAiDescription}
                         >
                             Summarize
                         </button>
