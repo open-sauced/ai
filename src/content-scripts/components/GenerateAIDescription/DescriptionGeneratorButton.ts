@@ -23,26 +23,30 @@ export const DescriptionGeneratorButton = () => {
 };
 
 const handleSubmit = async () => {
-    const logo = document.getElementById("ai-description-button-logo") ?? null;
+    const logo = document.getElementById("ai-description-button-logo");
+    const button = document.getElementById("ai-description-button");
 
     try {
         if (!(await isLoggedIn())) {
             return window.open(SUPABASE_LOGIN_URL, "_blank");
         }
 
-        if (!logo) {
+        if (!logo || !button) {
             return;
         }
         logo.classList.toggle("animate-spin");
+        button.classList.toggle("pointer-events-none");
         const descriptionStream = await getAiDescription();
 
         logo.classList.toggle("animate-spin");
+        button.classList.toggle("pointer-events-none");
 
         const textArea = document.getElementsByName(GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR)[0] as HTMLTextAreaElement;
 
         insertTextAtCursor(textArea, descriptionStream);
     } catch (error: unknown) {
         logo?.classList.toggle("animate-spin");
+        button?.classList.toggle("pointer-events-none");
 
         if (error instanceof Error) {
             alert(error.message);
@@ -52,7 +56,9 @@ const handleSubmit = async () => {
 };
 
 export const getAiDescription = async () => {
-    const url = getPullRequestAPIURL(window.location.href);
+    const { protocol, hostname, pathname } = window.location;
+    const url = getPullRequestAPIURL(`${protocol}//${hostname}${pathname}`);
+
     const descriptionConfig = await getAIDescriptionConfig();
 
     if (!descriptionConfig) {
@@ -88,4 +94,5 @@ export const getAiDescription = async () => {
 
     return descriptionStream;
 };
+
 

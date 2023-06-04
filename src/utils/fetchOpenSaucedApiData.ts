@@ -8,6 +8,7 @@ import {
     OPEN_SAUCED_HIGHLIGHTS_ENDPOINT,
 } from "../constants";
 import { IInsight } from "../ts/InsightDto";
+import { Highlights } from "../ts/types";
 
 export const isOpenSaucedUser = async (username: string) => {
     try {
@@ -178,12 +179,18 @@ export const updateInsight = async (userToken: string, repoId: string, checked: 
 
     return response.status === 200;
 };
-export const getHighlights = async () => {
-    const response = await fetch(
+export const getHighlights = async (): Promise<Highlights | undefined> => {
+    const response = await cachedFetch(
         `${OPEN_SAUCED_HIGHLIGHTS_ENDPOINT}`,
-        { method: "GET" },
+        {
+            method: "GET",
+            expireInSeconds: 300,
+        },
     );
 
+    if (!response) {
+        return;
+    }
     return response.json();
 };
 
