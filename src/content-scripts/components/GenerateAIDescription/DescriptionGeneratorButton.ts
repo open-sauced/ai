@@ -16,7 +16,6 @@ export const DescriptionGeneratorButton = () => {
     </span>
     <tool-tip for="ai-description-gen">Generate PR description</tool-tip>`,
         onclick: handleSubmit,
-
     });
 
     return descriptionGeneratorButton;

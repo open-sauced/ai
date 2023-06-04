@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Toggle = ({ settingName, settingLabel, enabledSetting }: { settingName: string; enabledSetting: boolean; settingLabel: string }) => {
     const [enabled, setEnabled] = useState(enabledSetting);
@@ -20,7 +20,7 @@ const Toggle = ({ settingName, settingLabel, enabledSetting }: { settingName: st
     };
 
     return (
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mt-3">
             <span className="text-sm font-medium text-gray-400">
                 {settingLabel}
             </span>

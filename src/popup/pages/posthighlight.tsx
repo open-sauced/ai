@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
-import OpenSaucedLogo from "../assets/opensauced-logo.svg";
-import { useAuth } from "../hooks/useAuth";
+import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
+import { useAuth } from "../../hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
-import { cerateHighlight } from "../utils/fetchOpenSaucedApiData";
+import { cerateHighlight } from "../../utils/fetchOpenSaucedApiData";
 import { goBack } from "react-chrome-extension-router";
 
 const PostOnHighlight = () => {

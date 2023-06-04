@@ -7,7 +7,7 @@ import {
 } from "react-icons/hi2";
 import { goBack } from "react-chrome-extension-router";
 import { VscIssues } from "react-icons/vsc";
-import { version } from "../../package.json";
+import { version } from "../../../package.json";
 
 const Help = () => (
     <div className="p-4 bg-slate-800">
