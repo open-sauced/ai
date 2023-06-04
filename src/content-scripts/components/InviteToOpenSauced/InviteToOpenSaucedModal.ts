@@ -3,6 +3,7 @@ import { createHtmlElement } from "../../../utils/createHtmlElement";
 import emailSocialIcon from "../../../assets/mail-icon.svg";
 import twitterSocialIcon from "../../../assets/twitter-icon.svg";
 import linkedInSocailIcon from "../../../assets/linkedin-icon.svg";
+import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../../constants";
 
 interface Socials {
     emailAddress?: string | null;
@@ -76,7 +77,7 @@ export const InviteToOpenSaucedModal = (
         className:
       "mt-2 min-w-[33%] relative top-60 mx-auto p-4 border w-96 rounded-md shadow-button border-solid border-orange bg-slate-800",
         innerHTML: `
-    <h3 class="text-2xl leading-6 font-bold text-white">Invite ${username} to <a href="https://insights.opensauced.pizza/start"><span class="hover:text-orange hover:underline">OpenSauced!</span></a></h3>
+    <h3 class="text-2xl leading-6 font-bold text-white">Invite ${username} to <a href="https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/start"><span class="hover:text-orange hover:underline">OpenSauced!</span></a></h3>
     <div class="mt-2">
        <p class="text-md text-white">
           Use the links below to invite them.
