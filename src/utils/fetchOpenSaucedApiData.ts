@@ -194,7 +194,7 @@ export const getHighlights = async (): Promise<Highlights | undefined> => {
     return response.json();
 };
 
-export const cerateHighlight = async (userToken: string, url: string, title: string, highlight: string, shipped_at?: string) => fetch(OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT, {
+export const createHighlight = async (userToken: string, url: string, title: string, highlight: string, shipped_at?: string) => fetch(OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT, {
     headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

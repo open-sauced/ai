@@ -1,4 +1,4 @@
-import { assert, expect, test } from 'vitest'
+import { expect, test } from 'vitest';
 import {
     getGithubUsername,
     getLinkedInUsername,
@@ -92,4 +92,14 @@ test('isPullRequestFilesChangedPage', () => {
   expect(isPullRequestFilesChangedPage('github.com/username/repo/pull/123/files/')).toBe(true)
   expect(isPullRequestFilesChangedPage('github.com/username/repo/pull/123/fil')).toBe(false)
   expect(isPullRequestFilesChangedPage('https://google.com/')).toBe(false)
+})
+
+test('getPullRequestAPIURL', async () => {
+  expect(await getPullRequestAPIURL('https://github.com/open-sauced/ai/pull/164')).toBe('https://api.github.com/repos/open-sauced/ai/pulls/164')
+  expect(await getPullRequestAPIURL('https://github.com/open-sauced/ai/pull/163')).toBe('https://api.github.com/repos/open-sauced/ai/pulls/163')
+  expect(await getPullRequestAPIURL('https://github.com/open-sauced/ai/compare/some-branch')).toBe('https://api.github.com/repos/open-sauced/ai/compare/beta...some-branch')
+  expect(await getPullRequestAPIURL('https://github.com/tailwindlabs/tailwindcss/compare/some-branch')).toBe('https://api.github.com/repos/tailwindlabs/tailwindcss/compare/master...some-branch')
+  expect(await getPullRequestAPIURL('https://github.com/open-sauced/ai/compare/beta...some-branch')).toBe('https://api.github.com/repos/open-sauced/ai/compare/beta...some-branch')
+  expect(await getPullRequestAPIURL('https://github.com/tailwindlabs/tailwindcss/compare/master...some-branch')).toBe('https://api.github.com/repos/tailwindlabs/tailwindcss/compare/master...some-branch')
+  
 })

@@ -24,7 +24,7 @@ import { useIsGithubPRPageCheck } from "../hooks/useGithubPRPageCheck";
 const Home = () => {
     const { user } = useAuth();
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
-    const isGithubPRPage = useIsGithubPRPageCheck();
+    const { isGithubPRPage, prUrl, prTitle } = useIsGithubPRPageCheck();
     const [highlights, setHighlights] = useState<Highlight[]>([]);
     const [currentPage, setCurrentPage] = useState(0);
 
@@ -179,7 +179,7 @@ const Home = () => {
                             <button
                                 className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
                                 onClick={() => {
-                                    goTo(PostOnHighlight);
+                                    goTo(PostOnHighlight, { prUrl, prTitle });
                                 }}
                             >
                                 <HiPencil />
