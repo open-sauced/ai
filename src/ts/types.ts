@@ -17,3 +17,33 @@ export interface IUserPR {
     readonly changed_files: number;
     readonly repo_id: number;
 }
+
+export interface Highlights {
+    data: Highlight[];
+    meta: HighlightsMeta;
+}
+
+export interface Highlight {
+    id: number;
+    user_id: number;
+    url: string;
+    title: string;
+    highlight: string;
+    pinned: boolean;
+    created_at: string;
+    updated_at: string;
+    deleted_at: string;
+    shipped_at: string;
+    full_name: string;
+    name: string;
+    login: string;
+}
+
+interface HighlightsMeta {
+    page: number;
+    limit: number;
+    itemCount: number;
+    pageCount: number;
+    hasPreviousPage: boolean;
+    hasNextPage: boolean;
+}

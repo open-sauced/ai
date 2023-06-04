@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.4.1-beta.1](https://github.com/open-sauced/ai/compare/v1.4.0...v1.4.1-beta.1) (2023-06-04)
+
+
+### 🐛 Bug Fixes
+
+* highlight redirection, multiple AI generation, draft commit messages ([#163](https://github.com/open-sauced/ai/issues/163)) ([03b91ab](https://github.com/open-sauced/ai/commit/03b91ab3b73f37e2c916b3cf6c079f2e4b58879c))
+
 ## [1.4.0](https://github.com/open-sauced/ai/compare/v1.3.0...v1.4.0) (2023-06-03)
 
 

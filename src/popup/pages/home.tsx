@@ -17,30 +17,25 @@ import PostOnHighlight from "./posthighlight";
 import { getHighlights } from "../../utils/fetchOpenSaucedApiData";
 
 import Help from "./help";
-import Settings from "./settings";
-import { useEffect, useState } from "react";
 import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../constants";
-interface Highlight {
-    highlight: string;
-    title: string;
-    name: string;
-    url: string;
-    login: string;
-}
-
+import type { Highlight } from "../../ts/types";
+import { useEffect, useState } from "react";
+import Settings from "./settings";
 
 const Home = () => {
     const { user } = useAuth();
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
     const [highlights, setHighlights] = useState<Highlight[]>([]);
     const [currentPage, setCurrentPage] = useState(0);
-    const [currentName, setCurrentName] = useState<string>("");
-
 
     useEffect(() => {
         const fetchHighlights = async () => {
             try {
                 const userHighlightsData = await getHighlights();
+
+                if (!userHighlightsData) {
+                    return;
+                }
                 const highlights = userHighlightsData.data;
 
                 setHighlights(highlights);
@@ -59,13 +54,6 @@ const Home = () => {
     const handleNext = () => {
         setCurrentPage(prevPage => prevPage + 1);
     };
-
-    useEffect(() => {
-        // Update the current name when the highlight changes
-        if (highlights[currentPage]?.login) {
-            setCurrentName(highlights[currentPage].login);
-        }
-    }, [highlights, currentPage]);
 
     return (
         <div className="p-4 bg-slate-800">

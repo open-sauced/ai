@@ -21,13 +21,15 @@ export const ChangeSuggestorButton = (commentNode: HTMLElement) => {
 };
 
 const handleSubmit = async (commentNode: HTMLElement) => {
+    const logo = document.getElementById("ai-description-button-logo");
+    const button = document.getElementById("os-ai-change-gen");
+
     try {
         if (!(await isLoggedIn())) {
             return window.open(SUPABASE_LOGIN_URL, "_blank");
         }
-        const logo = document.getElementById("ai-description-button-logo");
 
-        if (!logo) {
+        if (!logo || !button) {
             return;
         }
 
@@ -38,6 +40,7 @@ const handleSubmit = async (commentNode: HTMLElement) => {
         }
 
         logo.classList.toggle("animate-spin");
+        button.classList.toggle("pointer-events-none");
 
         const selectedLines = document.querySelectorAll(".code-review.selected-line");
         let selectedCode = Array.from(selectedLines).map(line => line.textContent)
@@ -66,6 +69,7 @@ const handleSubmit = async (commentNode: HTMLElement) => {
         );
 
         logo.classList.toggle("animate-spin");
+        button.classList.toggle("pointer-events-none");
         if (!suggestionStream) {
             return console.error("No description was generated!");
         }
@@ -73,6 +77,9 @@ const handleSubmit = async (commentNode: HTMLElement) => {
 
         insertTextAtCursor(textArea as HTMLTextAreaElement, suggestionStream);
     } catch (error: unknown) {
+        logo?.classList.toggle("animate-spin");
+        button?.classList.toggle("pointer-events-none");
+
         if (error instanceof Error) {
             console.error("Description generation error:", error.message);
         }
