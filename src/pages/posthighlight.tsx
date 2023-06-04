@@ -68,8 +68,9 @@ const PostOnHighlight = () => {
 
     return (
         <div className="p-4 bg-slate-800">
+            <Toaster />
+
             <div className="grid grid-cols-1 divide-y divider-y-center-2 min-w-[320px]">
-                <Toaster />
 
                 <header className="flex justify-between">
                     <div className="flex items-center gap-2">
@@ -115,7 +116,7 @@ const PostOnHighlight = () => {
                             disabled={!isSendButtonEnabled}
                             onClick={() => generateAiDescription()}
                         >
-                       Summarize
+                            Summarize
                         </button>
 
                         <button
@@ -123,7 +124,7 @@ const PostOnHighlight = () => {
                             disabled={!isSendButtonEnabled}
                             onClick={postHighlight}
                         >
-                        Post
+                            Post
                         </button>
                     </div>
                 </main>
