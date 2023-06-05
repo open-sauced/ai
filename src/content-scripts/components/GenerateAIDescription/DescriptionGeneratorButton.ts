@@ -16,7 +16,6 @@ export const DescriptionGeneratorButton = () => {
     </span>
     <tool-tip for="ai-description-gen">Generate PR description</tool-tip>`,
         onclick: handleSubmit,
-
     });
 
     return descriptionGeneratorButton;
@@ -34,6 +33,13 @@ const handleSubmit = async () => {
         if (!logo || !button) {
             return;
         }
+
+        const descriptionConfig = await getAIDescriptionConfig();
+
+        if (!descriptionConfig) {
+            return;
+        }
+
         logo.classList.toggle("animate-spin");
         button.classList.toggle("pointer-events-none");
 

@@ -3,16 +3,16 @@ import { FaBrain, FaChevronLeft, FaRobot } from "react-icons/fa";
 import { RiLinkedinFill, RiLinkM, RiTwitterFill } from "react-icons/ri";
 import { SiC, SiCplusplus, SiCsharp, SiGoland, SiJavascript, SiPhp, SiPython, SiReact, SiRuby, SiRust, SiTypescript } from "react-icons/si";
 import { DiJava } from "react-icons/di";
-import OpenSaucedLogo from "../assets/opensauced-logo.svg";
-import { getUserData, getUserPRData, getUserHighlightsData } from "../utils/fetchOpenSaucedApiData";
+import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
+import { getUserData, getUserPRData, getUserHighlightsData } from "../../utils/fetchOpenSaucedApiData";
 import { emojify } from "node-emoji";
 import { goBack, goTo } from "react-chrome-extension-router";
-import { getRelativeDays } from "../utils/dateUtils";
-import { getUserPRVelocity } from "../utils/getUserPRVelocity";
+import { getRelativeDays } from "../../utils/dateUtils";
+import { getUserPRVelocity } from "../../utils/getUserPRVelocity";
 import { BiExit } from "react-icons/bi";
 import Start from "./start";
-import { optLogOut } from "../utils/checkAuthentication";
-import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../constants";
+import { optLogOut } from "../../utils/checkAuthentication";
+import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../constants";
 
 const interestIcon = {
     python: <SiPython />,

@@ -6,20 +6,22 @@ import {
     HiPencil,
     HiUserCircle,
 } from "react-icons/hi2";
-import { useEffect, useState } from "react";
-import OpenSaucedLogo from "../assets/opensauced-logo.svg";
-import { useAuth } from "../hooks/useAuth";
-import { useOpensaucedUserCheck } from "../hooks/useOpensaucedUserCheck";
+import { FiSettings } from "react-icons/fi";
+import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
+import { useAuth } from "../../hooks/useAuth";
+import { useOpensaucedUserCheck } from "../../hooks/useOpensaucedUserCheck";
 import { Profile } from "./profile";
 import { goTo } from "react-chrome-extension-router";
 import AIPRDescription from "./aiprdescription";
 import PostOnHighlight from "./posthighlight";
-import { getHighlights } from "../utils/fetchOpenSaucedApiData";
+import { getHighlights } from "../../utils/fetchOpenSaucedApiData";
 
 import Help from "./help";
-import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../constants";
-import type { Highlight } from "../ts/types";
-import { useIsGithubPRPageCheck } from "../hooks/useGithubPRPageCheck";
+import { useEffect, useState } from "react";
+import Settings from "./settings";
+import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../constants";
+import type { Highlight } from "../../ts/types";
+import { useIsGithubPRPageCheck } from "../../hooks/useGithubPRPageCheck";
 
 const Home = () => {
     const { user } = useAuth();
@@ -214,6 +216,16 @@ const Home = () => {
                     >
                         <HiOutlineQuestionMarkCircle />
                         Help
+                    </button>
+
+                    <button
+                        className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-fit rounded-sm font-medium text-sm"
+                        onClick={() => {
+                            goTo(Settings);
+                        }}
+                    >
+                        <FiSettings />
+            Settings
                     </button>
                 </footer>
             </div>

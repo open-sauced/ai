@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
-import OpenSaucedLogo from "../assets/opensauced-logo.svg";
+import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
 import { ImSwitch } from "react-icons/im";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -11,10 +11,9 @@ import {
     DescriptionLanguage,
     setAIDescriptionConfig,
     getDefaultDescriptionConfig,
-    toggleAIPRDescriptionEnabled,
-} from "../utils/aiprdescription/descriptionconfig";
-import { useRefs } from "../hooks/useRefs";
-import { configurationReducer } from "../utils/aiprdescription/configurationReducer";
+} from "../../utils/aiprdescription/descriptionconfig";
+import { useRefs } from "../../hooks/useRefs";
+import { configurationReducer } from "../../utils/aiprdescription/configurationReducer";
 import { goBack } from "react-chrome-extension-router";
 
 const AIPRDescription = () => {
@@ -24,7 +23,6 @@ const AIPRDescription = () => {
     const tones: DescriptionTone[] = ["exciting", "persuasive", "informative", "humorous", "formal"];
     const sources: DescriptionSource[] = ["diff", "commitMessage", "both"];
     const languages: DescriptionLanguage[] = ["english", "spanish", "french", "german", "italian", "portuguese", "dutch", "russian", "chinese", "korean"];
-    const [formDisabled, setFormDisabled] = useState<boolean>(true);
 
 
     useEffect(() => {
@@ -32,7 +30,6 @@ const AIPRDescription = () => {
             const configData = await getAIDescriptionConfig();
 
             dispatch({ type: "SET", value: configData });
-            setFormDisabled(!configData?.enabled);
         };
 
         void descriptionConfig();
@@ -47,10 +44,7 @@ const AIPRDescription = () => {
         const source = (refs.source as HTMLSelectElement).value as DescriptionSource;
         const tone = (refs.tone as HTMLSelectElement).value as DescriptionTone;
 
-        void setAIDescriptionConfig({
-            enabled: true,
-            config: { length, temperature, maxInputLength, language, source, tone },
-        });
+        void setAIDescriptionConfig({ config: { length, temperature, maxInputLength, language, source, tone } });
         toast.success("Configuration updated!");
     };
 
@@ -78,24 +72,6 @@ const AIPRDescription = () => {
                                 src={OpenSaucedLogo}
                             />
                         </div>
-
-                        <button
-                            title="Toggle AI PR Description"
-                            className={`text-lg ${formDisabled ? "text-gray-400" : "text-orange"
-                            }`}
-                            onClick={() => {
-                                setFormDisabled(!formDisabled);
-                                dispatch({ type: "TOGGLE_ENABLED", value: config });
-                                void toggleAIPRDescriptionEnabled();
-                                if (formDisabled) {
-                                    toast.success("AI PR Description enabled!");
-                                } else {
-                                    toast.error("AI PR Description disabled!");
-                                }
-                            }}
-                        >
-                            <ImSwitch />
-                        </button>
                     </header>
 
                     <main className="text-white">
@@ -103,7 +79,7 @@ const AIPRDescription = () => {
                             ref={setRefFromKey("form")}
                             onSubmit={handleFormSubmit}
                         >
-                            <fieldset disabled={formDisabled}>
+                            <fieldset>
                                 <h1 className="text-2xl text-white font-bold my-2">
                 OpenSauced AI
                                 </h1>

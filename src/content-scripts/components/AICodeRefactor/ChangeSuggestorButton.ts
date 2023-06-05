@@ -38,9 +38,6 @@ const handleSubmit = async (commentNode: HTMLElement) => {
         if (!descriptionConfig) {
             return;
         }
-        if (!descriptionConfig.enabled) {
-            return alert("AI PR description is disabled!");
-        }
 
         logo.classList.toggle("animate-spin");
         button.classList.toggle("pointer-events-none");

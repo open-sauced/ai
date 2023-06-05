@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
-import OpenSaucedLogo from "../assets/opensauced-logo.svg";
-import { useAuth } from "../hooks/useAuth";
+import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
+import { useAuth } from "../../hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
+import { createHighlight } from "../../utils/fetchOpenSaucedApiData";
 import { goBack } from "react-chrome-extension-router";
-import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../constants";
-import { getAiDescription } from "../content-scripts/components/GenerateAIDescription/DescriptionGeneratorButton";
-import { createHighlight } from "../utils/fetchOpenSaucedApiData";
+import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../constants";
+import { getAiDescription } from "../../content-scripts/components/GenerateAIDescription/DescriptionGeneratorButton";
 
 const PostOnHighlight = ({ prUrl, prTitle }: { prUrl: string, prTitle: string }) => {
     const { authToken, user } = useAuth();
