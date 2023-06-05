@@ -5,7 +5,7 @@ import { useAuth } from "../../hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
 import { cerateHighlight } from "../../utils/fetchOpenSaucedApiData";
 import { goBack } from "react-chrome-extension-router";
-import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../constants";
+import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../constants";
 
 const PostOnHighlight = () => {
     const { authToken, user } = useAuth();
