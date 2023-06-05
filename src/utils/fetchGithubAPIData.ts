@@ -21,15 +21,22 @@ export const getPRDiff = async (url: string) => {
 };
 
 export const getPRCommitMessages = async (url: string) => {
-    const response = await fetch(`${url}/commits`);
+    /*
+     * The URL can either be
+     * https://api.github.com/repos/username/repo-name/compare/<HEAD_BRANCH>...<NEW_BRANCH>
+     * OR
+     * https://api.github.com/repos/username/repo-name/pulls/<PR_NUMBER>
+     */
+
+    const commitsUrl = url.includes("pulls") ? `${url}/commits` : url;
+    const response = await fetch(commitsUrl);
     const data = await response.json();
 
-    if (!Array.isArray(data)) {
-        return undefined;
+    if (Array.isArray(data?.commits)) {
+        return (data.commits as Commit[]).map((commit: Commit): string => commit.commit.message);
     }
-    const commitMessages: string[] = (data as Commit[]).map((commit: Commit): string => commit.commit.message);
 
-    return commitMessages;
+    return (data as Commit[]).map((commit: Commit): string => commit.commit.message);
 };
 
 export const getDescriptionContext = async (url: string, source: DescriptionSource): DescriptionContextPromise => {

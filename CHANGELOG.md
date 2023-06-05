@@ -5,6 +5,20 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.4.1-beta.3](https://github.com/open-sauced/ai/compare/v1.4.1-beta.2...v1.4.1-beta.3) (2023-06-04)
+
+
+### 🧑‍💻 Code Refactoring
+
+* removed post highlight message passing  ([#165](https://github.com/open-sauced/ai/issues/165)) ([bad2112](https://github.com/open-sauced/ai/commit/bad211295a593f59530999d886ac99cc7f398da2))
+
+## [1.4.1-beta.2](https://github.com/open-sauced/ai/compare/v1.4.1-beta.1...v1.4.1-beta.2) (2023-06-04)
+
+
+### 🐛 Bug Fixes
+
+* post-highlight-page-check ([#164](https://github.com/open-sauced/ai/issues/164)) ([ed98eb2](https://github.com/open-sauced/ai/commit/ed98eb2c865819adba1cf4a82716c4834c977d0a))
+
 ## [1.4.1-beta.1](https://github.com/open-sauced/ai/compare/v1.4.0...v1.4.1-beta.1) (2023-06-04)
 
 

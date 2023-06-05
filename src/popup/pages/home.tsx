@@ -17,14 +17,16 @@ import PostOnHighlight from "./posthighlight";
 import { getHighlights } from "../../utils/fetchOpenSaucedApiData";
 
 import Help from "./help";
-import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../constants";
-import type { Highlight } from "../../ts/types";
 import { useEffect, useState } from "react";
 import Settings from "./settings";
+import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../constants";
+import type { Highlight } from "../../ts/types";
+import { useIsGithubPRPageCheck } from "../../hooks/useGithubPRPageCheck";
 
 const Home = () => {
     const { user } = useAuth();
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
+    const { isGithubPRPage, prUrl, prTitle } = useIsGithubPRPageCheck();
     const [highlights, setHighlights] = useState<Highlight[]>([]);
     const [currentPage, setCurrentPage] = useState(0);
 
@@ -175,15 +177,16 @@ const Home = () => {
                             AI Configuration
                         </button>
 
-                        <button
-                            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                            onClick={() => {
-                                goTo(PostOnHighlight);
-                            }}
-                        >
-                            <HiPencil />
-              Post Highlight
-                        </button>
+                        {isGithubPRPage && (
+                            <button
+                                className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+                                onClick={() => {
+                                    goTo(PostOnHighlight, { prUrl, prTitle });
+                                }}
+                            >
+                                <HiPencil />
+                                Post Highlight
+                            </button>)}
 
                         {currentTabIsOpensaucedUser && (
                             <button
