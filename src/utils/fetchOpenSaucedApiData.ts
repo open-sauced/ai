@@ -8,6 +8,7 @@ import {
     OPEN_SAUCED_HIGHLIGHTS_ENDPOINT,
 } from "../constants";
 import { IInsight } from "../ts/InsightDto";
+import { Highlights } from "../ts/types";
 
 export const isOpenSaucedUser = async (username: string) => {
     try {
@@ -178,16 +179,22 @@ export const updateInsight = async (userToken: string, repoId: string, checked: 
 
     return response.status === 200;
 };
-export const getHighlights = async () => {
-    const response = await fetch(
+export const getHighlights = async (): Promise<Highlights | undefined> => {
+    const response = await cachedFetch(
         `${OPEN_SAUCED_HIGHLIGHTS_ENDPOINT}`,
-        { method: "GET" },
+        {
+            method: "GET",
+            expireInSeconds: 300,
+        },
     );
 
+    if (!response) {
+        return;
+    }
     return response.json();
 };
 
-export const cerateHighlight = async (userToken: string, url: string, title: string, highlight: string, shipped_at?: string) => fetch(OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT, {
+export const createHighlight = async (userToken: string, url: string, title: string, highlight: string, shipped_at?: string) => fetch(OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT, {
     headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

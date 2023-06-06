@@ -1,5 +1,5 @@
-import OpenSaucedLogo from "../assets/opensauced-logo.svg";
-import { optLogIn } from "../utils/checkAuthentication";
+import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
+import { optLogIn } from "../../utils/checkAuthentication";
 
 const Start = () => (
     <div className="p-4 bg-slate-800">
