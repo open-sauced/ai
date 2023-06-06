@@ -5,6 +5,25 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.5.0](https://github.com/open-sauced/ai/compare/v1.4.0...v1.5.0) (2023-06-06)
+
+
+### 🧑‍💻 Code Refactoring
+
+* removed post highlight message passing  ([#165](https://github.com/open-sauced/ai/issues/165)) ([bad2112](https://github.com/open-sauced/ai/commit/bad211295a593f59530999d886ac99cc7f398da2))
+
+
+### 🍕 Features
+
+* extension settings ([#132](https://github.com/open-sauced/ai/issues/132)) ([722cbbe](https://github.com/open-sauced/ai/commit/722cbbecd1843c088b065e91d363e83f71909e4e))
+
+
+### 🐛 Bug Fixes
+
+* highlight redirection, multiple AI generation, draft commit messages ([#163](https://github.com/open-sauced/ai/issues/163)) ([03b91ab](https://github.com/open-sauced/ai/commit/03b91ab3b73f37e2c916b3cf6c079f2e4b58879c))
+* post-highlight-page-check ([#164](https://github.com/open-sauced/ai/issues/164)) ([ed98eb2](https://github.com/open-sauced/ai/commit/ed98eb2c865819adba1cf4a82716c4834c977d0a))
+* remove configuration enabled check from AI button ([#170](https://github.com/open-sauced/ai/issues/170)) ([cedca79](https://github.com/open-sauced/ai/commit/cedca79650f5f2dd9d4196ce6d6048097315f6c9))
+
 ## [1.5.0-beta.2](https://github.com/open-sauced/ai/compare/v1.5.0-beta.1...v1.5.0-beta.2) (2023-06-06)
 
 
