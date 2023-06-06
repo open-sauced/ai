@@ -73,10 +73,6 @@ export const getAiDescription = async (prUrl: string) => {
         throw new Error("Configuration file is empty!");
     }
 
-    if (!descriptionConfig.enabled) {
-        throw new Error("AI PR description is disabled!");
-    }
-
     const [diff, commitMessages] = await getDescriptionContext(prApiUrl, descriptionConfig.config.source);
 
     if (!diff && !commitMessages) {
