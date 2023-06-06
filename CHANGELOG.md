@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.5.0-beta.2](https://github.com/open-sauced/ai/compare/v1.5.0-beta.1...v1.5.0-beta.2) (2023-06-06)
+
+
+### 🐛 Bug Fixes
+
+* remove configuration enabled check from AI button ([#170](https://github.com/open-sauced/ai/issues/170)) ([cedca79](https://github.com/open-sauced/ai/commit/cedca79650f5f2dd9d4196ce6d6048097315f6c9))
+
 ## [1.5.0-beta.1](https://github.com/open-sauced/ai/compare/v1.4.1-beta.3...v1.5.0-beta.1) (2023-06-05)
 
 
