@@ -177,6 +177,35 @@ const Home = () => {
                             AI Configuration
                         </button>
 
+                        <button
+                            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+                            onClick={() => {
+                                debugger;
+                                chrome.tabs.create(
+                                    { url: "https://www.linkedin.com/in/me/edit/forms/project/new/", active: false },
+                                    tab => {
+                                        debugger;
+                                        if (tab) {
+                                            chrome.scripting
+                                                .executeScript({
+                                                    target: { tabId: tab.id! },
+                                                    files: ["src/content-scripts/linkedin.ts.js"],
+
+                                                    // func:   () => { return document.querySelector('[id*=single-line-text-form-component-profileEditFormElement-PROJECT-profileProject-]').onload(e => console.log("Form loaded"));},
+                                                })
+                                                .then(() => console.log("script injected"));
+
+                                            console.log(tab);
+                                        }
+                                    },
+
+                                );
+                            }}
+                        >
+                            <HiPencil />
+                                Share LinkedIn Project.
+                        </button>
+
                         {isGithubPRPage && (
                             <button
                                 className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"

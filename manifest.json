@@ -5,8 +5,8 @@
   "action": { "default_popup": "index.html" },
   "content_scripts": [
     {
-      "js": ["src/content-scripts/github.ts"],
-      "matches": ["https://github.com/*"],
+      "js": ["src/content-scripts/github.ts", "src/content-scripts/linkedin.ts"],
+      "matches": ["https://github.com/*", "https://www.linkedin.com/*"],
       "run": "document_end"
     }
   ],
@@ -20,6 +20,6 @@
     "48": "src/assets/os-icons/os-icon-48.png",
     "128": "src/assets/os-icons/os-icon-128.png"
   },
-  "host_permissions": ["https://github.com/*", "https://*.insights.opensauced.pizza/*"],
-  "permissions": ["storage", "tabs", "cookies"]
+  "host_permissions": ["https://github.com/*", "https://*.insights.opensauced.pizza/*" , "https://www.linkedin.com/*"],
+  "permissions": ["scripting", "storage", "tabs", "cookies"]
 }
