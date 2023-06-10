@@ -15,7 +15,8 @@
         "react-chrome-extension-router": "^1.4.0",
         "react-dom": "^18.0.0",
         "react-hot-toast": "^2.4.1",
-        "react-icons": "^4.8.0"
+        "react-icons": "^4.8.0",
+        "swiper": "^9.3.2"
       },
       "devDependencies": {
         "@crxjs/vite-plugin": "^1.0.14",
@@ -5995,6 +5996,11 @@
       "deprecated": "Please use @jridgewell/sourcemap-codec instead",
       "dev": true
     },
+    "node_modules/ssr-window": {
+      "version": "4.0.2",
+      "resolved": "https://registry.npmjs.org/ssr-window/-/ssr-window-4.0.2.tgz",
+      "integrity": "sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ=="
+    },
     "node_modules/stackback": {
       "version": "0.0.2",
       "resolved": "https://registry.npmjs.org/stackback/-/stackback-0.0.2.tgz",
@@ -6203,6 +6209,27 @@
       },
       "funding": {
         "url": "https://github.com/sponsors/ljharb"
+      }
+    },
+    "node_modules/swiper": {
+      "version": "9.3.2",
+      "resolved": "https://registry.npmjs.org/swiper/-/swiper-9.3.2.tgz",
+      "integrity": "sha512-Kj9Z4kXRmJR3YT/Wj+XLWj8P6IcRt+WG38uL8M3/Wny7+6sV0TlP9vnE1X+Co9c7VzNooojWGnFa+Wf/9+CUMA==",
+      "funding": [
+        {
+          "type": "patreon",
+          "url": "https://www.patreon.com/swiperjs"
+        },
+        {
+          "type": "open_collective",
+          "url": "http://opencollective.com/swiper"
+        }
+      ],
+      "dependencies": {
+        "ssr-window": "^4.0.2"
+      },
+      "engines": {
+        "node": ">= 4.7.0"
       }
     },
     "node_modules/tailwindcss": {
