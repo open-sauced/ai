@@ -181,30 +181,36 @@ const Home = () => {
                         <button
                             className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
                             onClick={() => {
-                                function printScreen () {
-                                    console.log("printScreen");
-                                };
+                                function populateDataToLinkedIn(data: any) {
+                                    console.log("INJECTED SCRIPT BY OPEN SAUCED");
+                                    const inputFields = document.querySelectorAll(".artdeco-text-input--input");
 
-                                chrome.tabs.create(
-                                    { url: "https://www.linkedin.com/in/me/edit/forms/project/new/", active: false },
-                                    tab => {
-                                        chrome.scripting
-                                            .executeScript({
-                                                target: { tabId: tab.id! },
-                                                func: printScreen,
-                                                files: ["src/content-scripts/linkedin.ts.js"],
-                                            })
-                                            .then(() => console.log("script injected"))
-                                            .catch(err => console.log(err));
+                                    inputFields[0].value = data.name;
+                                    inputFields[1].value = data.description;
+                                }
+                                fetch("https://api.github.com/repos/open-sauced/open-sauced").then(async res => res.json())
+                                    .then(data => {
+                                        console.log(data);
+                                        return chrome.tabs.create(
+                                            { url: "https://www.linkedin.com/in/me/edit/forms/project/new/", active: true },
+                                            tab => {
+                                                chrome.scripting
+                                                    .executeScript({
+                                                        target: { tabId: tab.id! },
+                                                        func: populateDataToLinkedIn,
+                                                        args: [data],
+                                                    })
+                                                    .then(() => console.log("script injected"))
+                                                    .catch(err => console.log(err));
+                                            },
 
-                                        console.log(tab);
-                                    },
-
-                                );
+                                        );
+                                    })
+                                    .catch(err => console.log(err));
                             }}
                         >
                             <HiPencil />
-                                Share LinkedIn Project.
+                            Share LinkedIn Project.
                         </button>
 
                         {isGithubPRPage && (
