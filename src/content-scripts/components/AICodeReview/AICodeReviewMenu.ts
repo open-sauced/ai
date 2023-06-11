@@ -29,7 +29,7 @@ export const AICodeReviewMenu = (items: HTMLLIElement[]) => {
           <span class="color-fg-muted text-small pl-1">OpenSauced.ai</span>
        </div>
        <div class="Label Label--success">AI</div>
-       <a class="ml-1 color-fg-muted d-block" target="_blank" href="https://github.com/open-sauced/discussions">
+       <a class="ml-1 color-fg-muted d-block" target="_blank" href="https://github.com/orgs/open-sauced/discussions">
        Give feedback
        </a>
     </header>
