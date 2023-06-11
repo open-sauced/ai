@@ -4,10 +4,10 @@ import { generateCodeExplanation, generateCodeSuggestion, generateCodeTest } fro
 import {
     AICodeReviewMenu,
     AICodeReviewMenuItem,
-} from "../AICodeReviewMenu/AICodeReviewMenu";
+} from "./AICodeReviewMenu";
 
 
-export const ChangeSuggestorButton = (commentNode: HTMLElement) => {
+export const AICodeReviewButton = (commentNode: HTMLElement) => {
     const changeSuggestorButton = createHtmlElement("a", {
         innerHTML: `<span id="ai-change-gen" class="toolbar-item btn-octicon">
       <img class="octicon octicon-heading" height="16px" width="16px" id="ai-description-button-logo" src=${chrome.runtime.getURL(
