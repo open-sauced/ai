@@ -8,7 +8,7 @@ interface GitHubPageInfo {
 }
 
 export const usGetGitHubPageInfo = () => {
-    const [GithubPRPage, setGithubPRPage] = useState<GitHubPageInfo>({ prUrl: "", prTitle: "", type: "unknown"});
+    const [GithubPRPage, setGithubPRPage] = useState<GitHubPageInfo>({ prUrl: "", prTitle: "", type: "unknown" });
 
     useEffect(() => {
         chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
