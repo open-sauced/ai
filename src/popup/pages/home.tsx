@@ -22,6 +22,7 @@ import Settings from "./settings";
 import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../constants";
 import type { Highlight } from "../../ts/types";
 import { useIsGithubPRPageCheck } from "../../hooks/useGithubPRPageCheck";
+import { get } from "http";
 
 const Home = () => {
     const { user } = useAuth();
@@ -180,23 +181,23 @@ const Home = () => {
                         <button
                             className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
                             onClick={() => {
-                                debugger;
+                                function printScreen () {
+                                    console.log("printScreen");
+                                };
+
                                 chrome.tabs.create(
                                     { url: "https://www.linkedin.com/in/me/edit/forms/project/new/", active: false },
                                     tab => {
-                                        debugger;
-                                        if (tab) {
-                                            chrome.scripting
-                                                .executeScript({
-                                                    target: { tabId: tab.id! },
-                                                    files: ["src/content-scripts/linkedin.ts.js"],
+                                        chrome.scripting
+                                            .executeScript({
+                                                target: { tabId: tab.id! },
+                                                func: printScreen,
+                                                files: ["src/content-scripts/linkedin.ts.js"],
+                                            })
+                                            .then(() => console.log("script injected"))
+                                            .catch(err => console.log(err));
 
-                                                    // func:   () => { return document.querySelector('[id*=single-line-text-form-component-profileEditFormElement-PROJECT-profileProject-]').onload(e => console.log("Form loaded"));},
-                                                })
-                                                .then(() => console.log("script injected"));
-
-                                            console.log(tab);
-                                        }
+                                        console.log(tab);
                                     },
 
                                 );
