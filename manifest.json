@@ -5,8 +5,8 @@
   "action": { "default_popup": "index.html" },
   "content_scripts": [
     {
-      "js": ["src/content-scripts/github.ts", "src/content-scripts/linkedin.ts"],
-      "matches": ["https://github.com/*", "https://www.linkedin.com/*"],
+      "js": ["src/content-scripts/github.ts"],
+      "matches": ["https://github.com/*"],
       "run": "document_end"
     }
   ],
