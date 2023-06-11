@@ -15,19 +15,20 @@ import { goTo } from "react-chrome-extension-router";
 import AIPRDescription from "./aiprdescription";
 import PostOnHighlight from "./posthighlight";
 import { getHighlights } from "../../utils/fetchOpenSaucedApiData";
+import { getRepoAPIURL } from "../../utils/urlMatchers";
+
 
 import Help from "./help";
 import { useEffect, useState } from "react";
 import Settings from "./settings";
 import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../constants";
 import type { Highlight } from "../../ts/types";
-import { useIsGithubPRPageCheck } from "../../hooks/useGithubPRPageCheck";
-import { get } from "http";
+import { usGetGitHubPageInfo } from "../../hooks/useGetGitHubPageInfo";
 
 const Home = () => {
     const { user } = useAuth();
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
-    const { isGithubPRPage, prUrl, prTitle } = useIsGithubPRPageCheck();
+    const { prUrl: pageURL, prTitle, type: GitHubPageType } = usGetGitHubPageInfo();
     const [highlights, setHighlights] = useState<Highlight[]>([]);
     const [currentPage, setCurrentPage] = useState(0);
 
@@ -178,46 +179,48 @@ const Home = () => {
                             AI Configuration
                         </button>
 
-                        <button
-                            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                            onClick={() => {
-                                function populateDataToLinkedIn(data: any) {
-                                    console.log("INJECTED SCRIPT BY OPEN SAUCED");
-                                    const inputFields = document.querySelectorAll(".artdeco-text-input--input");
-
-                                    inputFields[0].value = data.name;
-                                    inputFields[1].value = data.description;
-                                }
-                                fetch("https://api.github.com/repos/open-sauced/open-sauced").then(async res => res.json())
-                                    .then(data => {
-                                        console.log(data);
-                                        return chrome.tabs.create(
-                                            { url: "https://www.linkedin.com/in/me/edit/forms/project/new/", active: true },
-                                            tab => {
-                                                chrome.scripting
-                                                    .executeScript({
-                                                        target: { tabId: tab.id! },
-                                                        func: populateDataToLinkedIn,
-                                                        args: [data],
-                                                    })
-                                                    .then(() => console.log("script injected"))
-                                                    .catch(err => console.log(err));
-                                            },
-
-                                        );
-                                    })
-                                    .catch(err => console.log(err));
-                            }}
-                        >
-                            <HiPencil />
-                            Share LinkedIn Project.
-                        </button>
-
-                        {isGithubPRPage && (
+                        {GitHubPageType === "REPO" && (
                             <button
                                 className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
                                 onClick={() => {
-                                    goTo(PostOnHighlight, { prUrl, prTitle });
+                                    function populateDataToLinkedIn (data: any) {
+                                        console.log("INJECTED SCRIPT BY OPEN SAUCED");
+                                        const inputFields: NodeListOf<HTMLInputElement> = document.querySelectorAll(".artdeco-text-input--input");
+
+                                        inputFields[0].value = data.name;
+                                        inputFields[1].value = data.description;
+                                    }
+                                    fetch(getRepoAPIURL(pageURL)).then(async res => res.json())
+                                        .then(data => {
+                                            console.log(data);
+                                            return chrome.tabs.create(
+                                                { url: "https://www.linkedin.com/in/me/edit/forms/project/new/", active: true },
+                                                tab => {
+                                                    chrome.scripting
+                                                        .executeScript({
+                                                            target: { tabId: tab.id! },
+                                                            func: populateDataToLinkedIn,
+                                                            args: [data],
+                                                        })
+                                                        .then(() => console.log("script injected"))
+                                                        .catch(err => console.log(err));
+                                                },
+
+                                            );
+                                        })
+                                        .catch(err => console.log(err));
+                                }}
+                            >
+                                <HiPencil />
+                            Share LinkedIn Project.
+                            </button>
+                        )}
+
+                        {GitHubPageType === "PR" && (
+                            <button
+                                className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+                                onClick={() => {
+                                    goTo(PostOnHighlight, { pageURL, prTitle });
                                 }}
                             >
                                 <HiPencil />
@@ -261,7 +264,7 @@ const Home = () => {
                         }}
                     >
                         <FiSettings />
-            Settings
+                        Settings
                     </button>
                 </footer>
             </div>
