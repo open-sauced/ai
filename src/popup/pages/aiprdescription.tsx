@@ -1,7 +1,6 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
-import { ImSwitch } from "react-icons/im";
 import toast, { Toaster } from "react-hot-toast";
 
 import {

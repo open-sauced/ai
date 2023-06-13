@@ -7,7 +7,7 @@ import {
 import { FiSettings } from "react-icons/fi";
 import { Navigation, Pagination, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css/bundle";
+import "swiper/swiper-bundle.min.css";
 import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
 import { useAuth } from "../../hooks/useAuth";
 import { useOpensaucedUserCheck } from "../../hooks/useOpensaucedUserCheck";
