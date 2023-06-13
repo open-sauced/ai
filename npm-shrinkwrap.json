@@ -1,12 +1,12 @@
 {
   "name": "opensauced-browser-extension",
-  "version": "1.5.0",
+  "version": "1.6.0-beta.1",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
       "name": "opensauced-browser-extension",
-      "version": "1.5.0",
+      "version": "1.6.0-beta.1",
       "dependencies": {
         "date-fns": "^2.30.0",
         "gpt-tokenizer": "^1.0.5",
@@ -15,7 +15,8 @@
         "react-chrome-extension-router": "^1.4.0",
         "react-dom": "^18.0.0",
         "react-hot-toast": "^2.4.1",
-        "react-icons": "^4.8.0"
+        "react-icons": "^4.8.0",
+        "swiper": "^9.4.0"
       },
       "devDependencies": {
         "@crxjs/vite-plugin": "^1.0.14",
@@ -5995,6 +5996,11 @@
       "deprecated": "Please use @jridgewell/sourcemap-codec instead",
       "dev": true
     },
+    "node_modules/ssr-window": {
+      "version": "4.0.2",
+      "resolved": "https://registry.npmjs.org/ssr-window/-/ssr-window-4.0.2.tgz",
+      "integrity": "sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ=="
+    },
     "node_modules/stackback": {
       "version": "0.0.2",
       "resolved": "https://registry.npmjs.org/stackback/-/stackback-0.0.2.tgz",
@@ -6203,6 +6209,27 @@
       },
       "funding": {
         "url": "https://github.com/sponsors/ljharb"
+      }
+    },
+    "node_modules/swiper": {
+      "version": "9.4.0",
+      "resolved": "https://registry.npmjs.org/swiper/-/swiper-9.4.0.tgz",
+      "integrity": "sha512-AKame5qkFnNKCJ8Bfn3YuOi/LoUuAESVdCv/BJH5fKgdAUFRtImZXV3gdYlYovXbasJDV6hHNWdQvdzPB6aebw==",
+      "funding": [
+        {
+          "type": "patreon",
+          "url": "https://www.patreon.com/swiperjs"
+        },
+        {
+          "type": "open_collective",
+          "url": "http://opencollective.com/swiper"
+        }
+      ],
+      "dependencies": {
+        "ssr-window": "^4.0.2"
+      },
+      "engines": {
+        "node": ">= 4.7.0"
       }
     },
     "node_modules/tailwindcss": {
