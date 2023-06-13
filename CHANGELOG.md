@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.6.0](https://github.com/open-sauced/ai/compare/v1.5.0...v1.6.0) (2023-06-13)
+
+
+### 🍕 Features
+
+* carousel design for the highlights feed ([#173](https://github.com/open-sauced/ai/issues/173)) ([0392654](https://github.com/open-sauced/ai/commit/03926540cc0ae2203d00bda69d65a40e147e1d46))
+
 ## [1.6.0-beta.1](https://github.com/open-sauced/ai/compare/v1.5.0...v1.6.0-beta.1) (2023-06-13)
 
 
