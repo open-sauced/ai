@@ -22,7 +22,7 @@ export const AICodeReviewButton = (commentNode: HTMLElement) => {
     });
 
     const refactorCode = AICodeReviewMenuItem(
-        "Refactor Code!",
+        "Refactor Code",
         "Generate a code refactor",
         generateCodeSuggestion,
         commentNode,
