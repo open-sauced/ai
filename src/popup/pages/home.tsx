@@ -184,9 +184,17 @@ const Home = () => {
                                 className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
                                 onClick={() => {
                                     function populateDataToLinkedIn (data: any) {
-                                        console.log("INJECTED SCRIPT BY OPEN SAUCED");
                                         const inputFields: NodeListOf<HTMLInputElement> = document.querySelectorAll(".artdeco-text-input--input");
 
+                                        if (inputFields.length === 0) {
+                                            // set timeout to wait for the page to load
+                                            setTimeout(() => {
+                                                populateDataToLinkedIn(data);
+                                            }, 500);
+
+                                            return;
+                                        }
+                                        console.log(inputFields);
                                         inputFields[0].value = data.name;
                                         inputFields[1].value = data.description;
                                     }
@@ -212,7 +220,7 @@ const Home = () => {
                                 }}
                             >
                                 <HiPencil />
-                            Share LinkedIn Project.
+                                Share LinkedIn Project.
                             </button>
                         )}
 
