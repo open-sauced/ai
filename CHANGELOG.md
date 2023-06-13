@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.6.1-beta.1](https://github.com/open-sauced/ai/compare/v1.6.0...v1.6.1-beta.1) (2023-06-13)
+
+
+### 🐛 Bug Fixes
+
+* update email invite message ([c1008e5](https://github.com/open-sauced/ai/commit/c1008e5f94f82cc87f9f3691bdd8d664b6a6f684))
+
 ## [1.6.0](https://github.com/open-sauced/ai/compare/v1.5.0...v1.6.0) (2023-06-13)
 
 
