@@ -10,8 +10,8 @@ import {
     DescriptionLanguage,
     setAIDescriptionConfig,
     getDefaultDescriptionConfig,
-} from "../../utils/aiprdescription/descriptionconfig";
-import { configurationReducer } from "../../utils/aiprdescription/configurationReducer";
+} from "../../utils/ai-utils/descriptionconfig";
+import { configurationReducer } from "../../utils/ai-utils/configurationReducer";
 import { goBack } from "react-chrome-extension-router";
 
 const AIPRDescription = () => {

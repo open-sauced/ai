@@ -1,6 +1,6 @@
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
-import { generateCodeExplanation, generateCodeSuggestion, generateCodeTest } from "../../../utils/aiprdescription/openai";
+import { generateCodeExplanation, generateCodeSuggestion, generateCodeTest } from "../../../utils/ai-utils/openai";
 import {
     AICodeReviewMenu,
     AICodeReviewMenuItem,

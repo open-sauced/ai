@@ -2,11 +2,11 @@ import {
     SUPABASE_LOGIN_URL,
     GITHUB_PR_SUGGESTION_TEXT_AREA_SELECTOR,
 } from "../../../constants";
-import { insertTextAtCursor } from "../../../utils/aiprdescription/cursorPositionInsert";
+import { insertTextAtCursor } from "../../../utils/ai-utils/cursorPositionInsert";
 import {
     DescriptionConfig,
     getAIDescriptionConfig,
-} from "../../../utils/aiprdescription/descriptionconfig";
+} from "../../../utils/ai-utils/descriptionconfig";
 import { getAuthToken, isLoggedIn } from "../../../utils/checkAuthentication";
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 import { isOutOfContextBounds } from "../../../utils/fetchGithubAPIData";
