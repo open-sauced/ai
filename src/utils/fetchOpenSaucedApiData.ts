@@ -181,7 +181,7 @@ export const updateInsight = async (userToken: string, repoId: string, checked: 
 };
 export const getHighlights = async (): Promise<Highlights | undefined> => {
     const response = await cachedFetch(
-        `${OPEN_SAUCED_HIGHLIGHTS_ENDPOINT}`,
+        `${OPEN_SAUCED_HIGHLIGHTS_ENDPOINT}?limit=10`,
         {
             method: "GET",
             expireInSeconds: 300,

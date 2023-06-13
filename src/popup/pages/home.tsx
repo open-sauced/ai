@@ -5,8 +5,9 @@ import {
     HiUserCircle,
 } from "react-icons/hi2";
 import { FiSettings } from "react-icons/fi";
+import { Navigation, Pagination, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import "swiper/css/bundle";
 import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
 import { useAuth } from "../../hooks/useAuth";
 import { useOpensaucedUserCheck } from "../../hooks/useOpensaucedUserCheck";
@@ -79,10 +80,21 @@ const Home = () => {
                 </header>
 
                 <main className="main-content">
-                    <h3 className="text font-medium text-base leading-10">Latest Highlight:</h3>
+                    <a
+                        className="flex items-center text-white hover:text-orange no-underline gap-2 w-full font-medium text-lg leading-10"
+                        href={`https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed`}
+                        rel="noreferrer"
+                        target="_blank"
+                    >
+                            Highlights feed
+                        <HiArrowTopRightOnSquare />
+                    </a>
 
                     {highlights.length > 0 && (
                         <Swiper
+                            navigation
+                            modules={[Navigation, Pagination, A11y]}
+                            pagination={{ clickable: true }}
                             slidesPerView={1}
                             spaceBetween={50}
                         >
@@ -102,16 +114,6 @@ const Home = () => {
                     <h3 className="text font-medium text-base leading-10">Tools:</h3>
 
                     <div className="tools flex flex-col gap-2">
-                        <a
-                            className="flex items-center bg-slate-700 hover:bg-slate-700/70 text-white hover:text-orange no-underline gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                            href={`https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed`}
-                            rel="noreferrer"
-                            target="_blank"
-                        >
-                            <HiArrowTopRightOnSquare />
-                            Highlights feed
-                        </a>
-
                         <a
                             className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
                             href={`https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed`}

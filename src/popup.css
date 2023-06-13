@@ -21,3 +21,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+:root {
+  --swiper-theme-color: hsla(19, 100%, 50%, 1);
+  --swiper-pagination-top: 5px;
+  --swiper-pagination-bullet-inactive-color: rgb(255, 159, 115);
+  --swiper-pagination-bullet-size: 6px;
+  --swiper-navigation-size: 18px;
+  --swiper-navigation-sides-offset:5px;
+}
+
+.swiper-pagination{
+  position: relative;
+}
