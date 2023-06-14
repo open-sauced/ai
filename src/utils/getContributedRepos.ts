@@ -7,7 +7,7 @@ interface PRResponse {
     };
 }
 
-export const countUniqueFullNames = (response: PRResponse | null) => {
+export const countUniqueRepos = (response: PRResponse | null) => {
     if (!response?.data) {
         return 0;
     }
