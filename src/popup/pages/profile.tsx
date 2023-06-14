@@ -49,7 +49,7 @@ export const Profile = ({ username }: { username: string }) => {
     }
 
     function countUniqueFullNames (response: PRResponse | null): number {
-        if (!response || !response.data) {
+        if (!response?.data) {
             return 0;
         }
 
