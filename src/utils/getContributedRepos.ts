@@ -13,7 +13,7 @@ export const countUniqueRepos = (response: PRResponse | null) => {
     }
 
     const { data } = response;
-    const uniqueFullNames = (new Set<string>);
+    const uniqueRepos = (new Set<string>);
 
     // eslint-disable-next-line no-loops/no-loops
     for (const obj of data) {
