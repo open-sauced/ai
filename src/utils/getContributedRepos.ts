@@ -17,7 +17,7 @@ export const countUniqueRepos = (response: PRResponse | null) => {
 
     // eslint-disable-next-line no-loops/no-loops
     for (const obj of data) {
-        uniqueFullNames.add(obj.full_name);
+        uniqueRepos.add(obj.full_name);
     }
 
     return uniqueRepos.size;
