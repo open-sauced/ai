@@ -35,9 +35,33 @@ type InterestIconKeys = keyof typeof interestIcon;
 
 export const Profile = ({ username }: { username: string }) => {
     const [user, setUser] = useState<null | { id: string, user_name: string, bio: string, created_at: string, linkedin_url: string, twitter_username: string, blog: string, interests: string, open_issues: number }>(null);
-    const [userPR, setUserPR] = useState<null | { meta: { itemCount: number } }>(null);
+    const [userPR, setUserPR] = useState<null | { data: [{ full_name: string }]; meta: { itemCount: number } }>(null);
     const [userHighlights, setUserHighlights] = useState<null | { meta: { itemCount: number } }>(null);
     const [userPRVelocity, setUserPRVelocity] = useState<number>(0);
+
+    interface PRResponse {
+        data: [{
+            full_name: string;
+        }]
+        meta: {
+            itemCount: number;
+        };
+    }
+
+    function countUniqueFullNames(response: PRResponse | null): number {
+        if (!response || !response.data) {
+            return 0;
+        }
+
+        const { data } = response;
+        const uniqueFullNames = new Set<string>();
+
+        for (const obj of data) {
+            uniqueFullNames.add(obj.full_name);
+        }
+
+        return uniqueFullNames.size;
+    }
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -82,7 +106,7 @@ export const Profile = ({ username }: { username: string }) => {
                         }}
                     >
                         <BiExit />
-            Log Out
+                        Log Out
                     </button>
                 </header>
 
@@ -178,7 +202,9 @@ export const Profile = ({ username }: { username: string }) => {
                         <div className="flex flex-col items-center justify-center p-2 text-xs">
                             <p>Contributed Repos</p>
 
-                            <p className="font-medium text-5xl">-</p>
+                            <p className="font-medium text-5xl">
+                                {countUniqueFullNames(userPR)}
+                            </p>
                         </div>
                     </div>
 
