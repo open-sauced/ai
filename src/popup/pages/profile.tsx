@@ -48,14 +48,15 @@ export const Profile = ({ username }: { username: string }) => {
         };
     }
 
-    function countUniqueFullNames(response: PRResponse | null): number {
+    function countUniqueFullNames (response: PRResponse | null): number {
         if (!response || !response.data) {
             return 0;
         }
 
         const { data } = response;
-        const uniqueFullNames = new Set<string>();
+        const uniqueFullNames = (new Set<string>);
 
+        // eslint-disable-next-line no-loops/no-loops
         for (const obj of data) {
             uniqueFullNames.add(obj.full_name);
         }
