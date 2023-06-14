@@ -8,6 +8,7 @@ import { getUserData, getUserPRData, getUserHighlightsData } from "../../utils/f
 import { emojify } from "node-emoji";
 import { goBack, goTo } from "react-chrome-extension-router";
 import { getRelativeDays } from "../../utils/dateUtils";
+import { countUniqueRepos, PRResponse } from "../../utils/getContributedRepos";
 import { getUserPRVelocity } from "../../utils/getUserPRVelocity";
 import { BiExit } from "react-icons/bi";
 import Start from "./start";
@@ -35,7 +36,7 @@ type InterestIconKeys = keyof typeof interestIcon;
 
 export const Profile = ({ username }: { username: string }) => {
     const [user, setUser] = useState<null | { id: string, user_name: string, bio: string, created_at: string, linkedin_url: string, twitter_username: string, blog: string, interests: string, open_issues: number }>(null);
-    const [userPR, setUserPR] = useState<null | { meta: { itemCount: number } }>(null);
+    const [userPR, setUserPR] = useState<PRResponse | null>(null);
     const [userHighlights, setUserHighlights] = useState<null | { meta: { itemCount: number } }>(null);
     const [userPRVelocity, setUserPRVelocity] = useState<number>(0);
 
@@ -82,7 +83,7 @@ export const Profile = ({ username }: { username: string }) => {
                         }}
                     >
                         <BiExit />
-            Log Out
+                        Log Out
                     </button>
                 </header>
 
@@ -178,7 +179,9 @@ export const Profile = ({ username }: { username: string }) => {
                         <div className="flex flex-col items-center justify-center p-2 text-xs">
                             <p>Contributed Repos</p>
 
-                            <p className="font-medium text-5xl">-</p>
+                            <p className="font-medium text-5xl">
+                                {countUniqueRepos(userPR)}
+                            </p>
                         </div>
                     </div>
 
