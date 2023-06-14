@@ -1,24 +1,19 @@
-interface PRResponse {
-    data: [{
+export interface PRResponse {
+    data: {
         full_name: string;
-    }]
+    }[]
     meta: {
         itemCount: number;
     };
 }
 
-export const countUniqueRepos = (response: PRResponse | null) => {
+export const countUniqueRepos = (response: PRResponse | null):number => {
     if (!response?.data) {
         return 0;
     }
 
     const { data } = response;
-    const uniqueRepos = (new Set<string>);
-
-    // eslint-disable-next-line no-loops/no-loops
-    for (const obj of data) {
-        uniqueRepos.add(obj.full_name);
-    }
+    const uniqueRepos = new Set(data.map(obj => obj.full_name));
 
     return uniqueRepos.size;
 }
