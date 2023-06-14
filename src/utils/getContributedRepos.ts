@@ -20,5 +20,5 @@ export const countUniqueRepos = (response: PRResponse | null) => {
         uniqueFullNames.add(obj.full_name);
     }
 
-    return uniqueFullNames.size;
+    return uniqueRepos.size;
 }
