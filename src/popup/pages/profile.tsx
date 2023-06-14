@@ -7,7 +7,7 @@ import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
 import { getUserData, getUserPRData, getUserHighlightsData } from "../../utils/fetchOpenSaucedApiData";
 import { emojify } from "node-emoji";
 import { goBack, goTo } from "react-chrome-extension-router";
-import { getRelativeDays } from "../../utils/dateUtils";
+import { getRelativeDays, countUniqueFullNames } from "../../utils/dateUtils";
 import { getUserPRVelocity } from "../../utils/getUserPRVelocity";
 import { BiExit } from "react-icons/bi";
 import Start from "./start";
@@ -38,31 +38,6 @@ export const Profile = ({ username }: { username: string }) => {
     const [userPR, setUserPR] = useState<null | { data: [{ full_name: string }]; meta: { itemCount: number } }>(null);
     const [userHighlights, setUserHighlights] = useState<null | { meta: { itemCount: number } }>(null);
     const [userPRVelocity, setUserPRVelocity] = useState<number>(0);
-
-    interface PRResponse {
-        data: [{
-            full_name: string;
-        }]
-        meta: {
-            itemCount: number;
-        };
-    }
-
-    function countUniqueFullNames (response: PRResponse | null): number {
-        if (!response?.data) {
-            return 0;
-        }
-
-        const { data } = response;
-        const uniqueFullNames = (new Set<string>);
-
-        // eslint-disable-next-line no-loops/no-loops
-        for (const obj of data) {
-            uniqueFullNames.add(obj.full_name);
-        }
-
-        return uniqueFullNames.size;
-    }
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -204,6 +179,7 @@ export const Profile = ({ username }: { username: string }) => {
                             <p>Contributed Repos</p>
 
                             <p className="font-medium text-5xl">
+                                {/* eslint-disable-next-line @typescript-eslint/no-unsafe-call*/}
                                 {countUniqueFullNames(userPR)}
                             </p>
                         </div>
