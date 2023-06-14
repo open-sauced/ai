@@ -8,7 +8,7 @@ import { getUserData, getUserPRData, getUserHighlightsData } from "../../utils/f
 import { emojify } from "node-emoji";
 import { goBack, goTo } from "react-chrome-extension-router";
 import { getRelativeDays } from "../../utils/dateUtils";
-import { countUniqueFullNames } from "../../utils/getContributedRepos";
+import { countUniqueRepos} from "../../utils/getContributedRepos";
 import { getUserPRVelocity } from "../../utils/getUserPRVelocity";
 import { BiExit } from "react-icons/bi";
 import Start from "./start";
