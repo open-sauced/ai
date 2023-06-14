@@ -181,7 +181,7 @@ export const Profile = ({ username }: { username: string }) => {
 
                             <p className="font-medium text-5xl">
                                 {/* eslint-disable-next-line @typescript-eslint/no-unsafe-call*/}
-                                {countUniqueFullNames(userPR)}
+                                {countUniqueRepos(userPR)}
                             </p>
                         </div>
                     </div>
