@@ -16,4 +16,4 @@ export const countUniqueRepos = (response: PRResponse | null):number => {
     const uniqueRepos = new Set(data.map(obj => obj.full_name));
 
     return uniqueRepos.size;
-}
+};
