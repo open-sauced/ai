@@ -1,6 +1,6 @@
 import { checkAuthentication, hasOptedLogOut, removeAuthTokenFromStorage } from "../utils/checkAuthentication";
 import { SUPABASE_AUTH_COOKIE_NAME, OPEN_SAUCED_INSIGHTS_DOMAIN } from "../constants";
-import { setDefaultDescriptionConfig } from "../utils/aiprdescription/descriptionconfig";
+import { setDefaultDescriptionConfig } from "../utils/ai-utils/descriptionconfig";
 import { checkTokenValidity } from "../utils/fetchOpenSaucedApiData";
 import setAccessTokenInChromeStorage from "../utils/setAccessToken";
 

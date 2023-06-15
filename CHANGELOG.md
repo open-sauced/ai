@@ -5,6 +5,33 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.7.0](https://github.com/open-sauced/ai/compare/v1.6.0...v1.7.0) (2023-06-15)
+
+
+### 🐛 Bug Fixes
+
+* update email invite message ([c1008e5](https://github.com/open-sauced/ai/commit/c1008e5f94f82cc87f9f3691bdd8d664b6a6f684))
+
+
+### 🍕 Features
+
+* Added Contributed Repos to profile page ([#181](https://github.com/open-sauced/ai/issues/181)) ([4901f7b](https://github.com/open-sauced/ai/commit/4901f7b322b87e27ed755be598c2975d6329f067))
+* AI PR review menu ([#174](https://github.com/open-sauced/ai/issues/174)) ([ef52439](https://github.com/open-sauced/ai/commit/ef5243921ced600cec4ed0270c76ecdf9885ab0b))
+
+## [1.7.0-beta.2](https://github.com/open-sauced/ai/compare/v1.7.0-beta.1...v1.7.0-beta.2) (2023-06-15)
+
+
+### 🍕 Features
+
+* AI PR review menu ([#174](https://github.com/open-sauced/ai/issues/174)) ([ef52439](https://github.com/open-sauced/ai/commit/ef5243921ced600cec4ed0270c76ecdf9885ab0b))
+
+## [1.7.0-beta.1](https://github.com/open-sauced/ai/compare/v1.6.1-beta.1...v1.7.0-beta.1) (2023-06-14)
+
+
+### 🍕 Features
+
+* Added Contributed Repos to profile page ([#181](https://github.com/open-sauced/ai/issues/181)) ([4901f7b](https://github.com/open-sauced/ai/commit/4901f7b322b87e27ed755be598c2975d6329f067))
+
 ## [1.6.1-beta.1](https://github.com/open-sauced/ai/compare/v1.6.0...v1.6.1-beta.1) (2023-06-13)
 
 

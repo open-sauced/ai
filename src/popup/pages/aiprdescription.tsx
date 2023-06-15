@@ -10,14 +10,12 @@ import {
     DescriptionLanguage,
     setAIDescriptionConfig,
     getDefaultDescriptionConfig,
-} from "../../utils/aiprdescription/descriptionconfig";
-import { useRefs } from "../../hooks/useRefs";
-import { configurationReducer } from "../../utils/aiprdescription/configurationReducer";
+} from "../../utils/ai-utils/descriptionconfig";
+import { configurationReducer } from "../../utils/ai-utils/configurationReducer";
 import { goBack } from "react-chrome-extension-router";
 
 const AIPRDescription = () => {
     const [config, dispatch] = useReducer(configurationReducer, getDefaultDescriptionConfig());
-    const { refs, setRefFromKey } = useRefs();
 
     const tones: DescriptionTone[] = ["exciting", "persuasive", "informative", "humorous", "formal"];
     const sources: DescriptionSource[] = ["diff", "commitMessage", "both"];
@@ -36,14 +34,7 @@ const AIPRDescription = () => {
 
     const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const length = parseInt(refs.length?.getAttribute("value") ?? "0");
-        const temperature = Number(Number(refs.temperature?.getAttribute("value") ?? "0"));
-        const maxInputLength = parseInt(refs.maxInputLength?.getAttribute("value") ?? "0");
-        const language = (refs.language as HTMLSelectElement).value as DescriptionLanguage;
-        const source = (refs.source as HTMLSelectElement).value as DescriptionSource;
-        const tone = (refs.tone as HTMLSelectElement).value as DescriptionTone;
-
-        void setAIDescriptionConfig({ config: { length, temperature, maxInputLength, language, source, tone } });
+        void setAIDescriptionConfig(config);
         toast.success("Configuration updated!");
     };
 
@@ -75,7 +66,6 @@ const AIPRDescription = () => {
 
                     <main className="text-white">
                         <form
-                            ref={setRefFromKey("form")}
                             onSubmit={handleFormSubmit}
                         >
                             <fieldset>
@@ -94,7 +84,6 @@ const AIPRDescription = () => {
                                         </p>
 
                                         <input
-                                            ref={setRefFromKey("length")}
                                             className="text-black p-1.5 rounded-md mb-1 w-half accent-orange"
                                             id="length"
                                             max="500"
@@ -116,7 +105,6 @@ const AIPRDescription = () => {
                                         </p>
 
                                         <input
-                                            ref={setRefFromKey("temperature")}
                                             className="text-black p-1.5 rounded-md mb-2 w-half accent-orange"
                                             id="temparature"
                                             max="10"
@@ -138,7 +126,6 @@ const AIPRDescription = () => {
                                         </p>
 
                                         <input
-                                            ref={setRefFromKey("maxInputLength")}
                                             className="text-black p-1.5 rounded-md w-half accent-orange"
                                             id="inputlength"
                                             max="3900"
@@ -154,7 +141,6 @@ const AIPRDescription = () => {
                                         <p>Description Language</p>
 
                                         <select
-                                            ref={setRefFromKey("language")}
                                             className="text-black mt-2 p-1.5 rounded-md mb-2 w-[80%]"
                                             id="descriptionlanguage"
                                             name="descriptionlanguage"
@@ -176,7 +162,6 @@ const AIPRDescription = () => {
                                         <p>Description Tone</p>
 
                                         <select
-                                            ref={setRefFromKey("tone")}
                                             className="text-black mt-2 p-1.5 rounded-md mb-2 w-[80%]"
                                             id="tone"
                                             name="tone"
@@ -198,7 +183,6 @@ const AIPRDescription = () => {
                                         <p>Description Source</p>
 
                                         <select
-                                            ref={setRefFromKey("source")}
                                             className="text-black mt-2 p-1.5 rounded-md mb-2 w-[80%]"
                                             id="source"
                                             name="source"
