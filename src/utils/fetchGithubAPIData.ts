@@ -1,4 +1,4 @@
-import { DescriptionSource } from "./aiprdescription/descriptionconfig";
+import { DescriptionSource } from "./ai-utils/descriptionconfig";
 import { isWithinTokenLimit } from "gpt-tokenizer";
 
 type DescriptionContextPromise = Promise<[string | undefined, string[] | undefined]>;

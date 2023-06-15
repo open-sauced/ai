@@ -17,6 +17,8 @@ export const OPEN_SAUCED_USER_INSIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/u
 export const OPEN_SAUCED_AI_PR_DESCRIPTION_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/description/generate`;
 export const OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/user/highlights`;
 export const OPEN_SAUCED_AI_CODE_REFACTOR_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/suggestion/generate`;
+export const OPEN_SAUCED_AI_CODE_EXPLANATION_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/explanation/generate`;
+export const OPEN_SAUCED_AI_CODE_TEST_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/test/generate`;
 export const OPEN_SAUCED_HIGHLIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/highlights/list`;
 
 // GitHub constants/selectors

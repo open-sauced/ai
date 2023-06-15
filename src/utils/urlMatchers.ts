@@ -21,7 +21,7 @@ export const getTwitterUsername = (url: string) => {
 };
 
 export const isGithubPullRequestPage = (url: string) => {
-    const githubPullRequestPattern = /github\.com\/[\w.-]+\/[^/]+\/pull\/\d+/;
+    const githubPullRequestPattern = /github\.com\/[\w.-]+\/[^/]+\/pull\/\d+(\/)?$/;
 
     return githubPullRequestPattern.test(url);
 };
