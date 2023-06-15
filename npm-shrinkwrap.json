@@ -1,12 +1,12 @@
 {
   "name": "opensauced-browser-extension",
-  "version": "1.6.0",
+  "version": "1.7.0-beta.2",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
       "name": "opensauced-browser-extension",
-      "version": "1.6.0",
+      "version": "1.7.0-beta.2",
       "dependencies": {
         "date-fns": "^2.30.0",
         "gpt-tokenizer": "^1.0.5",
@@ -6600,11 +6600,10 @@
       }
     },
     "node_modules/vite": {
-      "version": "2.9.15",
-      "resolved": "https://registry.npmjs.org/vite/-/vite-2.9.15.tgz",
-      "integrity": "sha512-fzMt2jK4vQ3yK56te3Kqpkaeq9DkcZfBbzHwYpobasvgYmP2SoAr6Aic05CsB4CzCZbsDv4sujX3pkEGhLabVQ==",
+      "version": "2.9.16",
+      "resolved": "https://registry.npmjs.org/vite/-/vite-2.9.16.tgz",
+      "integrity": "sha512-X+6q8KPyeuBvTQV8AVSnKDvXoBMnTx8zxh54sOwmmuOdxkjMmEJXH2UEchA+vTMps1xw9vL64uwJOWryULg7nA==",
       "dev": true,
-      "license": "MIT",
       "dependencies": {
         "esbuild": "^0.14.27",
         "postcss": "^8.4.13",
