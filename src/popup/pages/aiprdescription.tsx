@@ -43,7 +43,7 @@ const AIPRDescription = () => {
         <>
             <Toaster />
 
-            <div className="p-4 bg-slate-800">
+            <div className="bg-slate-800">
                 <div className="grid grid-cols-1 divide-y divider-y-center-2 min-w-[320px]">
                     <header className="flex justify-between">
                         <div className="flex items-center gap-2">
@@ -69,9 +69,9 @@ const AIPRDescription = () => {
                             onSubmit={handleFormSubmit}
                         >
                             <fieldset>
-                                <h1 className="text-2xl text-white font-bold my-2">
-                OpenSauced AI
-                                </h1>
+                                <h3 className="text font-medium text-base leading-10">
+                AI Configuration:
+                                </h3>
 
                                 <div className="grid grid-cols-2 -mx-4 mb-4 text-gray-300 text-sm">
                                     <div className="flex flex-col items-center justify-center">
@@ -202,9 +202,9 @@ const AIPRDescription = () => {
                                 </div>
 
                                 <input
-                                    className="inline-block disabled:bg-gray-500 text-black bg-gh-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline"
+                                    className="inline-block disabled:bg-gray-500 text-black bg-gh-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline cursor-pointer"
                                     type="submit"
-                                    value="Save"
+                                    value="Save AI Config"
                                 />
                             </fieldset>
                         </form>
