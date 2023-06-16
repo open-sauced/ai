@@ -15,7 +15,7 @@ import { Profile } from "./profile";
 import { goTo } from "react-chrome-extension-router";
 import AIPRDescription from "./aiprdescription";
 import PostOnHighlight from "./posthighlight";
-import { getHighlights } from "../../utils/fetchOpenSaucedApiData";
+import { getEmojis, getHighlights } from "../../utils/fetchOpenSaucedApiData";
 
 import Help from "./help";
 import { useEffect, useState } from "react";
@@ -30,6 +30,7 @@ const Home = () => {
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
     const { isGithubPRPage, prUrl, prTitle } = useIsGithubPRPageCheck();
     const [highlights, setHighlights] = useState<Highlight[]>([]);
+    const [emojis, setEmojis] = useState<Record<string, string>[]>([]);
 
     useEffect(() => {
         const fetchHighlights = async () => {
@@ -47,7 +48,23 @@ const Home = () => {
             }
         };
 
+        const fetchEmojis = async () => {
+            try {
+                const emojiResponse = await getEmojis();
+                const emojis = emojiResponse.data;
+
+                if (!emojis) {
+                    return;
+                }
+
+                setEmojis(emojis);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
         void fetchHighlights();
+        void fetchEmojis();
     }, []);
 
     return (
@@ -90,7 +107,7 @@ const Home = () => {
                         <HiArrowTopRightOnSquare />
                     </a>
 
-                    {highlights.length > 0 && (
+                    {highlights.length > 0 && emojis.length > 0 && (
                         <Swiper
                             navigation
                             modules={[Navigation, Pagination, A11y]}
@@ -102,6 +119,7 @@ const Home = () => {
                                 highlights.map((highlight, index) => (
                                     <SwiperSlide key={index}>
                                         <HighlightSlide
+                                            emojis={emojis}
                                             highlight={highlight}
                                         />
                                     </SwiperSlide>

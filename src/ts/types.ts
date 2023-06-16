@@ -23,8 +23,13 @@ export interface Highlights {
     meta: HighlightsMeta;
 }
 
+export interface GeneralAPIResponse {
+    data: Record<string, string>[];
+    meta: Record<string, string>;
+}
+
 export interface Highlight {
-    id: number;
+    id: string;
     user_id: number;
     url: string;
     title: string;
