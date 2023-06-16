@@ -20,7 +20,7 @@ const Toggle = ({ settingName, settingLabel, enabledSetting }: { settingName: st
     };
 
     return (
-        <div className="flex items-center justify-between mt-3">
+        <div className="flex items-center justify-between mb-3">
             <span className="text-sm font-medium text-gray-400">
                 {settingLabel}
             </span>

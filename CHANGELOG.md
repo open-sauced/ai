@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.7.1-beta.1](https://github.com/open-sauced/ai/compare/v1.7.0...v1.7.1-beta.1) (2023-06-16)
+
+
+### 🧑‍💻 Code Refactoring
+
+* move ai config to settings ([#183](https://github.com/open-sauced/ai/issues/183)) ([c31bd61](https://github.com/open-sauced/ai/commit/c31bd61d77878465c359455294865007ff07e7c0))
+
 ## [1.7.0](https://github.com/open-sauced/ai/compare/v1.6.0...v1.7.0) (2023-06-15)
 
 

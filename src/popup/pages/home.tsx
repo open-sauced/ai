@@ -13,7 +13,6 @@ import { useAuth } from "../../hooks/useAuth";
 import { useOpensaucedUserCheck } from "../../hooks/useOpensaucedUserCheck";
 import { Profile } from "./profile";
 import { goTo } from "react-chrome-extension-router";
-import AIPRDescription from "./aiprdescription";
 import PostOnHighlight from "./posthighlight";
 import { getHighlights } from "../../utils/fetchOpenSaucedApiData";
 
@@ -123,15 +122,6 @@ const Home = () => {
                     <h3 className="text font-medium text-base leading-10">Tools:</h3>
 
                     <div className="tools flex flex-col gap-2">
-                        <button
-                            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                            onClick={() => {
-                                goTo(AIPRDescription);
-                            }}
-                        >
-                            <HiPencil />
-                            AI Configuration
-                        </button>
 
                         {isGithubPRPage && (
                             <button
