@@ -55,8 +55,17 @@ const Home = () => {
                 <header className="flex justify-between">
                     <img
                         alt="OpenSauced logo"
-                        className="w-[45%]"
+                        className="w-[45%] cursor-pointer hover:opacity-80 transition-opacity duration-300 ease-in-out"
+                        role="presentation"
                         src={OpenSaucedLogo}
+                        onClick={() => {
+                            window.open(`https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed`, "_blank");
+                        }}
+                        onKeyDown={e => {
+                            if (e.key === "Enter") {
+                                window.open(`https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed`, "_blank");
+                            }
+                        }}
                     />
 
 
@@ -113,15 +122,6 @@ const Home = () => {
                     <h3 className="text font-medium text-base leading-10">Tools:</h3>
 
                     <div className="tools flex flex-col gap-2">
-                        <a
-                            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                            href={`https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed`}
-                            rel="noreferrer"
-                            target="_blank"
-                        >
-                            <HiArrowTopRightOnSquare />
-                            Dashboard
-                        </a>
 
                         {isGithubPRPage && (
                             <button
