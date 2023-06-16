@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.7.1-beta.2](https://github.com/open-sauced/ai/compare/v1.7.1-beta.1...v1.7.1-beta.2) (2023-06-16)
+
+
+### 🧑‍💻 Code Refactoring
+
+* remove link to dashboard ([#185](https://github.com/open-sauced/ai/issues/185)) ([25b0017](https://github.com/open-sauced/ai/commit/25b0017ea538e20934ce7b0f751e7903a5d5276b))
+
 ## [1.7.1-beta.1](https://github.com/open-sauced/ai/compare/v1.7.0...v1.7.1-beta.1) (2023-06-16)
 
 
