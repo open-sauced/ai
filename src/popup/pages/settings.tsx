@@ -9,7 +9,7 @@ export type SettingsConfig = Record<string, boolean | undefined>;
 
 const settingLabels: Record<string, string> = {
     aiPrDescription: "AI PR Description",
-    codeRefactor: "Code Refactor",
+    codeRefactor: "AI Code Review",
 };
 
 const Settings = () => {
