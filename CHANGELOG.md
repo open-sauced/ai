@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.8.0-beta.1](https://github.com/open-sauced/ai/compare/v1.7.1-beta.2...v1.8.0-beta.1) (2023-06-17)
+
+
+### 🍕 Features
+
+* show highlight reactions ([#186](https://github.com/open-sauced/ai/issues/186)) ([6707b0b](https://github.com/open-sauced/ai/commit/6707b0bf3abe67f9b9a26821c8ae4c8eeafb6d07))
+
 ## [1.7.1-beta.2](https://github.com/open-sauced/ai/compare/v1.7.1-beta.1...v1.7.1-beta.2) (2023-06-16)
 
 
