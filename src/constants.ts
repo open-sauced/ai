@@ -1,4 +1,3 @@
-/* eslint-disable*/
 const EnvironmentConstants = {
   OpenSaucedDomain: import.meta.env.VITE_OPEN_SAUCED_INSIGHTS_DOMAIN,
   OpenSaucedApiEndpoint: import.meta.env.VITE_OPEN_SAUCED_API_ENDPOINT,
@@ -8,7 +7,7 @@ const EnvironmentConstants = {
 export const {
   OpenSaucedDomain: OPEN_SAUCED_INSIGHTS_DOMAIN,
   OpenSaucedApiEndpoint: OPEN_SAUCED_API_ENDPOINT,
-  SupabaseLogin: SUPABASE,
+  SupabaseLogin: SUPABASE_ID,
 } = EnvironmentConstants;
 
 const SELECTORS = {
@@ -30,7 +29,7 @@ export const {
   OPEN_SAUCED_OPTED_LOG_OUT_KEY: "opted-log-out",
   AI_PR_DESCRIPTION_CONFIG_KEY: "ai-pr-description-config",
 };
-//OpenSauced Endpoints
+
 export const OpenSaucedEndpoints = {
   USERS: "/users",
   REPOS: "/repos",
@@ -44,36 +43,30 @@ export const OpenSaucedEndpoints = {
   HIGHLIGHTS: "/highlights/list",
 };
 
-//Forming and Exporting OpenSauced Enpoints
-export const getApiEndpoints = () => {
-  const OpenSaucedUrls: Record<string, string> = {};
-
-  Object.keys(OpenSaucedEndpoints).forEach((key) => {
-    const endpointKey = `${SELECTORS.OpenSauced.SelectorName}_${key}_ENDPOINT`;
-    const endpointValue =
-      EnvironmentConstants.OpenSaucedApiEndpoint +
-      OpenSaucedEndpoints[key as keyof typeof OpenSaucedEndpoints];
-
-    OpenSaucedUrls[endpointKey] = endpointValue;
-  });
-  return OpenSaucedUrls;
+export const {
+  openSaucedUsersEndpoint: OPEN_SAUCED_USERS_ENDPOINT,
+  openSaucedReposEndpoint: OPEN_SAUCED_REPOS_ENDPOINT,
+  openSaucedSessionEndpoint: OPEN_SAUCED_SESSION_ENDPOINT,
+  openSaucedUserInsightsEndpoint: OPEN_SAUCED_USER_INSIGHTS_ENDPOINT,
+  openSaucedAiPrDescriptionEndpoint: OPEN_SAUCED_AI_PR_DESCRIPTION_ENDPOINT,
+  openSaucedUserHighlightsEndpoint: OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT,
+  openSaucedAiCodeRefactorEndpoint: OPEN_SAUCED_AI_CODE_REFACTOR_ENDPOINT,
+  openSaucedAiCodeExplanationEndpoint: OPEN_SAUCED_AI_CODE_EXPLANATION_ENDPOINT,
+  openSaucedAiCodeTestEndpoint: OPEN_SAUCED_AI_CODE_TEST_ENDPOINT,
+  openSaucedHighlightsEndpoint: OPEN_SAUCED_HIGHLIGHTS_ENDPOINT,
+} = {
+  openSaucedUsersEndpoint: `${EnvironmentConstants.OpenSaucedApiEndpoint}${OpenSaucedEndpoints.REPOS}`,
+  openSaucedReposEndpoint: `${EnvironmentConstants.OpenSaucedApiEndpoint}${OpenSaucedEndpoints.USERS}`,
+  openSaucedSessionEndpoint: `${EnvironmentConstants.OpenSaucedApiEndpoint}${OpenSaucedEndpoints.SESSION}`,
+  openSaucedUserInsightsEndpoint: `${EnvironmentConstants.OpenSaucedApiEndpoint}${OpenSaucedEndpoints.USER_INSIGHTS}`,
+  openSaucedAiPrDescriptionEndpoint: `${EnvironmentConstants.OpenSaucedApiEndpoint}${OpenSaucedEndpoints.AI_PR_DESCRIPTION}`,
+  openSaucedUserHighlightsEndpoint: `${EnvironmentConstants.OpenSaucedApiEndpoint}${OpenSaucedEndpoints.USER_HIGHLIGHTS}`,
+  openSaucedAiCodeRefactorEndpoint: `${EnvironmentConstants.OpenSaucedApiEndpoint}${OpenSaucedEndpoints.AI_CODE_REFACTOR}`,
+  openSaucedAiCodeExplanationEndpoint: `${EnvironmentConstants.OpenSaucedApiEndpoint}${OpenSaucedEndpoints.AI_CODE_EXPLANATION}`,
+  openSaucedAiCodeTestEndpoint: `${EnvironmentConstants.OpenSaucedApiEndpoint}${OpenSaucedEndpoints.AI_CODE_TEST}`,
+  openSaucedHighlightsEndpoint: `${EnvironmentConstants.OpenSaucedApiEndpoint}${OpenSaucedEndpoints.HIGHLIGHTS}`,
 };
 
-const OpenSaucedUrls = getApiEndpoints();
-
-export const {
-  OPEN_SAUCED_USERS_ENDPOINT,
-  OPEN_SAUCED_REPOS_ENDPOINT,
-  OPEN_SAUCED_SESSION_ENDPOINT,
-  OPEN_SAUCED_USER_INSIGHTS_ENDPOINT,
-  OPEN_SAUCED_AI_PR_DESCRIPTION_ENDPOINT,
-  OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT,
-  OPEN_SAUCED_AI_CODE_REFACTOR_ENDPOINT,
-  OPEN_SAUCED_AI_CODE_EXPLANATION_ENDPOINT,
-  OPEN_SAUCED_AI_CODE_TEST_ENDPOINT,
-  OPEN_SAUCED_HIGHLIGHTS_ENDPOINT,
-} = OpenSaucedUrls;
-//Github Selectors
 export const GithubSelectors = {
   PROFILE_MENU: ".p-nickname.vcard-username.d-block",
   PROFILE_EDIT_MENU: "button.js-profile-editable-edit-button",
@@ -88,45 +81,42 @@ export const GithubSelectors = {
   PR_SUGGESTION_TEXT_AREA: "[name='comment[body]']",
   PR_BASE_BRANCH: "css-truncate css-truncate-target",
 };
-//Forming and expoting Github Selectors
-export const getGithubSelectors = () => {
-  const GithubSelectorsResult: Record<string, string> = {};
-
-  for (const key in GithubSelectors) {
-    const endpointKey = `${SELECTORS.Github.SelectorName}_${key}_ENDPOINT`;
-    const endpointValue = GithubSelectors[key as keyof typeof GithubSelectors];
-
-    GithubSelectorsResult[endpointKey] = endpointValue;
-  }
-
-  return GithubSelectorsResult;
-};
-
-const selectors = getGithubSelectors();
 
 export const {
-  GITHUB_PROFILE_MENU_SELECTOR,
-  GITHUB_PROFILE_EDIT_MENU_SELECTOR,
-  GITHUB_PROFILE_USER_PROFILE_BIO_SELECTOR,
-  GITHUB_PR_COMMENT_HEADER_SELECTOR,
-  GITHUB_NEW_PR_COMMENT_EDITOR_SELECTOR,
-  GITHUB_PR_COMMENT_EDITOR_SELECTOR,
-  GITHUB_REVIEW_SUGGESTION_SELECTOR,
-  GITHUB_REPO_ACTIONS_SELECTOR,
-  GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR,
-  GITHUB_PR_SUGGESTION_TEXT_AREA_SELECTOR,
-  GITHUB_PR_BASE_BRANCH_SELECTOR,
-} = selectors;
+  githubProfileMenuSelector: GITHUB_PROFILE_MENU_SELECTOR,
+  githubProfileEditMenuSelector: GITHUB_PROFILE_EDIT_MENU_SELECTOR,
+  githubProfileUserProfileBioSelector: GITHUB_PROFILE_USER_PROFILE_BIO_SELECTOR,
+  githubPrCommentHeaderSelector: GITHUB_PR_COMMENT_HEADER_SELECTOR,
+  githubNewPrCommentEditorSelector: GITHUB_NEW_PR_COMMENT_EDITOR_SELECTOR,
+  githubPrCommentEditorSelector: GITHUB_PR_COMMENT_EDITOR_SELECTOR,
+  githubReviewSuggestionSelector: GITHUB_REVIEW_SUGGESTION_SELECTOR,
+  githubRepoActionsSelector: GITHUB_REPO_ACTIONS_SELECTOR,
+  githubPrCommentTextAreaSelector: GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR,
+  githubPrSuggestionTextAreaSelector: GITHUB_PR_SUGGESTION_TEXT_AREA_SELECTOR,
+  githubPrBaseBranchSelector: GITHUB_PR_BASE_BRANCH_SELECTOR,
+} = {
+  githubProfileMenuSelector: `${SELECTORS.Github.SelectorName}_${GithubSelectors.PROFILE_MENU}_SELECTOR`,
+  githubProfileEditMenuSelector: `${SELECTORS.Github.SelectorName}_${GithubSelectors.PROFILE_EDIT_MENU}_SELECTOR`,
+  githubProfileUserProfileBioSelector: `${SELECTORS.Github.SelectorName}_${GithubSelectors.PROFILE_USER_PROFILE_BIO}_SELECTOR`,
+  githubPrCommentHeaderSelector: `${SELECTORS.Github.SelectorName}_${GithubSelectors.PR_COMMENT_HEADER}_SELECTOR`,
+  githubNewPrCommentEditorSelector: `${SELECTORS.Github.SelectorName}_${GithubSelectors.NEW_PR_COMMENT_EDITOR}_SELECTOR`,
+  githubPrCommentEditorSelector: `${SELECTORS.Github.SelectorName}_${GithubSelectors.PR_COMMENT_EDITOR}_SELECTOR`,
+  githubReviewSuggestionSelector: `${SELECTORS.Github.SelectorName}_${GithubSelectors.REVIEW_SUGGESTION}_SELECTOR`,
+  githubRepoActionsSelector: `${SELECTORS.Github.SelectorName}_${GithubSelectors.REPO_ACTIONS}_SELECTOR`,
+  githubPrCommentTextAreaSelector: `${SELECTORS.Github.SelectorName}_${GithubSelectors.PR_COMMENT_TEXT_AREA}_SELECTOR`,
+  githubPrSuggestionTextAreaSelector: `${SELECTORS.Github.SelectorName}_${GithubSelectors.PR_SUGGESTION_TEXT_AREA}_SELECTOR`,
+  githubPrBaseBranchSelector: `${SELECTORS.Github.SelectorName}_${GithubSelectors.PR_BASE_BRANCH}_SELECTOR`,
+};
 
 // External resources
 export const EXTERNAL_RESOURCES = [
   {
     link: "https://docs.opensauced.pizza/chrome-extension/introduction-to-the-chrome-extension/",
-    name: "Docs",
+    key: "Docs",
   },
   { link: "https://github.com/open-sauced/ai/issues", name: "Issues" },
   {
     link: "https://github.com/orgs/open-sauced/discussions",
-    name: "Discussions",
+    key: "Discussions",
   },
 ];
