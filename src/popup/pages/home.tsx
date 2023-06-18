@@ -6,6 +6,7 @@ import {
     HiPencil,
     HiUserCircle,
 } from "react-icons/hi2";
+import { IoLogoLinkedin } from "react-icons/io5";
 import { FiSettings } from "react-icons/fi";
 import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
 import { useAuth } from "../../hooks/useAuth";
@@ -219,7 +220,7 @@ const Home = () => {
                                         .catch(err => console.log(err));
                                 }}
                             >
-                                <HiPencil />
+                                <IoLogoLinkedin />
                                 Share LinkedIn Project.
                             </button>
                         )}
