@@ -17,7 +17,6 @@ import { goTo } from "react-chrome-extension-router";
 import PostOnHighlight from "./posthighlight";
 import { getRepoAPIURL } from "../../utils/urlMatchers";
 import { getEmojis, getHighlights } from "../../utils/fetchOpenSaucedApiData";
-
 import Help from "./help";
 import { useEffect, useState } from "react";
 import Settings from "./settings";
