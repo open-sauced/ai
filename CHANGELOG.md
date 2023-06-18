@@ -5,6 +5,19 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.8.0](https://github.com/open-sauced/ai/compare/v1.7.0...v1.8.0) (2023-06-18)
+
+
+### 🧑‍💻 Code Refactoring
+
+* move ai config to settings ([#183](https://github.com/open-sauced/ai/issues/183)) ([c31bd61](https://github.com/open-sauced/ai/commit/c31bd61d77878465c359455294865007ff07e7c0))
+* remove link to dashboard ([#185](https://github.com/open-sauced/ai/issues/185)) ([25b0017](https://github.com/open-sauced/ai/commit/25b0017ea538e20934ce7b0f751e7903a5d5276b))
+
+
+### 🍕 Features
+
+* show highlight reactions ([#186](https://github.com/open-sauced/ai/issues/186)) ([6707b0b](https://github.com/open-sauced/ai/commit/6707b0bf3abe67f9b9a26821c8ae4c8eeafb6d07))
+
 ## [1.8.0-beta.1](https://github.com/open-sauced/ai/compare/v1.7.1-beta.2...v1.8.0-beta.1) (2023-06-17)
 
 
