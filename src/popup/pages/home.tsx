@@ -13,9 +13,8 @@ import { useAuth } from "../../hooks/useAuth";
 import { useOpensaucedUserCheck } from "../../hooks/useOpensaucedUserCheck";
 import { Profile } from "./profile";
 import { goTo } from "react-chrome-extension-router";
-import AIPRDescription from "./aiprdescription";
 import PostOnHighlight from "./posthighlight";
-import { getHighlights } from "../../utils/fetchOpenSaucedApiData";
+import { getEmojis, getHighlights } from "../../utils/fetchOpenSaucedApiData";
 
 import Help from "./help";
 import { useEffect, useState } from "react";
@@ -30,6 +29,7 @@ const Home = () => {
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
     const { isGithubPRPage, prUrl, prTitle } = useIsGithubPRPageCheck();
     const [highlights, setHighlights] = useState<Highlight[]>([]);
+    const [emojis, setEmojis] = useState<Record<string, string>[]>([]);
 
     useEffect(() => {
         const fetchHighlights = async () => {
@@ -47,7 +47,23 @@ const Home = () => {
             }
         };
 
+        const fetchEmojis = async () => {
+            try {
+                const emojiResponse = await getEmojis();
+                const emojis = emojiResponse.data;
+
+                if (!emojis) {
+                    return;
+                }
+
+                setEmojis(emojis);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
         void fetchHighlights();
+        void fetchEmojis();
     }, []);
 
     return (
@@ -56,8 +72,17 @@ const Home = () => {
                 <header className="flex justify-between">
                     <img
                         alt="OpenSauced logo"
-                        className="w-[45%]"
+                        className="w-[45%] cursor-pointer hover:opacity-80 transition-opacity duration-300 ease-in-out"
+                        role="presentation"
                         src={OpenSaucedLogo}
+                        onClick={() => {
+                            window.open(`https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed`, "_blank");
+                        }}
+                        onKeyDown={e => {
+                            if (e.key === "Enter") {
+                                window.open(`https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed`, "_blank");
+                            }
+                        }}
                     />
 
 
@@ -90,7 +115,7 @@ const Home = () => {
                         <HiArrowTopRightOnSquare />
                     </a>
 
-                    {highlights.length > 0 && (
+                    {highlights.length > 0 && emojis.length > 0 && (
                         <Swiper
                             navigation
                             modules={[Navigation, Pagination, A11y]}
@@ -102,6 +127,7 @@ const Home = () => {
                                 highlights.map((highlight, index) => (
                                     <SwiperSlide key={index}>
                                         <HighlightSlide
+                                            emojis={emojis}
                                             highlight={highlight}
                                         />
                                     </SwiperSlide>
@@ -114,25 +140,6 @@ const Home = () => {
                     <h3 className="text font-medium text-base leading-10">Tools:</h3>
 
                     <div className="tools flex flex-col gap-2">
-                        <a
-                            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                            href={`https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed`}
-                            rel="noreferrer"
-                            target="_blank"
-                        >
-                            <HiArrowTopRightOnSquare />
-                            Dashboard
-                        </a>
-
-                        <button
-                            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                            onClick={() => {
-                                goTo(AIPRDescription);
-                            }}
-                        >
-                            <HiPencil />
-                            AI Configuration
-                        </button>
 
                         {isGithubPRPage && (
                             <button
