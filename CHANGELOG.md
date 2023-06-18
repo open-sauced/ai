@@ -5,6 +5,107 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.8.0](https://github.com/open-sauced/ai/compare/v1.7.0...v1.8.0) (2023-06-18)
+
+
+### 🧑‍💻 Code Refactoring
+
+* move ai config to settings ([#183](https://github.com/open-sauced/ai/issues/183)) ([c31bd61](https://github.com/open-sauced/ai/commit/c31bd61d77878465c359455294865007ff07e7c0))
+* remove link to dashboard ([#185](https://github.com/open-sauced/ai/issues/185)) ([25b0017](https://github.com/open-sauced/ai/commit/25b0017ea538e20934ce7b0f751e7903a5d5276b))
+
+
+### 🍕 Features
+
+* show highlight reactions ([#186](https://github.com/open-sauced/ai/issues/186)) ([6707b0b](https://github.com/open-sauced/ai/commit/6707b0bf3abe67f9b9a26821c8ae4c8eeafb6d07))
+
+## [1.8.0-beta.1](https://github.com/open-sauced/ai/compare/v1.7.1-beta.2...v1.8.0-beta.1) (2023-06-17)
+
+
+### 🍕 Features
+
+* show highlight reactions ([#186](https://github.com/open-sauced/ai/issues/186)) ([6707b0b](https://github.com/open-sauced/ai/commit/6707b0bf3abe67f9b9a26821c8ae4c8eeafb6d07))
+
+## [1.7.1-beta.2](https://github.com/open-sauced/ai/compare/v1.7.1-beta.1...v1.7.1-beta.2) (2023-06-16)
+
+
+### 🧑‍💻 Code Refactoring
+
+* remove link to dashboard ([#185](https://github.com/open-sauced/ai/issues/185)) ([25b0017](https://github.com/open-sauced/ai/commit/25b0017ea538e20934ce7b0f751e7903a5d5276b))
+
+## [1.7.1-beta.1](https://github.com/open-sauced/ai/compare/v1.7.0...v1.7.1-beta.1) (2023-06-16)
+
+
+### 🧑‍💻 Code Refactoring
+
+* move ai config to settings ([#183](https://github.com/open-sauced/ai/issues/183)) ([c31bd61](https://github.com/open-sauced/ai/commit/c31bd61d77878465c359455294865007ff07e7c0))
+
+## [1.7.0](https://github.com/open-sauced/ai/compare/v1.6.0...v1.7.0) (2023-06-15)
+
+
+### 🐛 Bug Fixes
+
+* update email invite message ([c1008e5](https://github.com/open-sauced/ai/commit/c1008e5f94f82cc87f9f3691bdd8d664b6a6f684))
+
+
+### 🍕 Features
+
+* Added Contributed Repos to profile page ([#181](https://github.com/open-sauced/ai/issues/181)) ([4901f7b](https://github.com/open-sauced/ai/commit/4901f7b322b87e27ed755be598c2975d6329f067))
+* AI PR review menu ([#174](https://github.com/open-sauced/ai/issues/174)) ([ef52439](https://github.com/open-sauced/ai/commit/ef5243921ced600cec4ed0270c76ecdf9885ab0b))
+
+## [1.7.0-beta.2](https://github.com/open-sauced/ai/compare/v1.7.0-beta.1...v1.7.0-beta.2) (2023-06-15)
+
+
+### 🍕 Features
+
+* AI PR review menu ([#174](https://github.com/open-sauced/ai/issues/174)) ([ef52439](https://github.com/open-sauced/ai/commit/ef5243921ced600cec4ed0270c76ecdf9885ab0b))
+
+## [1.7.0-beta.1](https://github.com/open-sauced/ai/compare/v1.6.1-beta.1...v1.7.0-beta.1) (2023-06-14)
+
+
+### 🍕 Features
+
+* Added Contributed Repos to profile page ([#181](https://github.com/open-sauced/ai/issues/181)) ([4901f7b](https://github.com/open-sauced/ai/commit/4901f7b322b87e27ed755be598c2975d6329f067))
+
+## [1.6.1-beta.1](https://github.com/open-sauced/ai/compare/v1.6.0...v1.6.1-beta.1) (2023-06-13)
+
+
+### 🐛 Bug Fixes
+
+* update email invite message ([c1008e5](https://github.com/open-sauced/ai/commit/c1008e5f94f82cc87f9f3691bdd8d664b6a6f684))
+
+## [1.6.0](https://github.com/open-sauced/ai/compare/v1.5.0...v1.6.0) (2023-06-13)
+
+
+### 🍕 Features
+
+* carousel design for the highlights feed ([#173](https://github.com/open-sauced/ai/issues/173)) ([0392654](https://github.com/open-sauced/ai/commit/03926540cc0ae2203d00bda69d65a40e147e1d46))
+
+## [1.6.0-beta.1](https://github.com/open-sauced/ai/compare/v1.5.0...v1.6.0-beta.1) (2023-06-13)
+
+
+### 🍕 Features
+
+* carousel design for the highlights feed ([#173](https://github.com/open-sauced/ai/issues/173)) ([0392654](https://github.com/open-sauced/ai/commit/03926540cc0ae2203d00bda69d65a40e147e1d46))
+
+## [1.5.0](https://github.com/open-sauced/ai/compare/v1.4.0...v1.5.0) (2023-06-06)
+
+
+### 🧑‍💻 Code Refactoring
+
+* removed post highlight message passing  ([#165](https://github.com/open-sauced/ai/issues/165)) ([bad2112](https://github.com/open-sauced/ai/commit/bad211295a593f59530999d886ac99cc7f398da2))
+
+
+### 🍕 Features
+
+* extension settings ([#132](https://github.com/open-sauced/ai/issues/132)) ([722cbbe](https://github.com/open-sauced/ai/commit/722cbbecd1843c088b065e91d363e83f71909e4e))
+
+
+### 🐛 Bug Fixes
+
+* highlight redirection, multiple AI generation, draft commit messages ([#163](https://github.com/open-sauced/ai/issues/163)) ([03b91ab](https://github.com/open-sauced/ai/commit/03b91ab3b73f37e2c916b3cf6c079f2e4b58879c))
+* post-highlight-page-check ([#164](https://github.com/open-sauced/ai/issues/164)) ([ed98eb2](https://github.com/open-sauced/ai/commit/ed98eb2c865819adba1cf4a82716c4834c977d0a))
+* remove configuration enabled check from AI button ([#170](https://github.com/open-sauced/ai/issues/170)) ([cedca79](https://github.com/open-sauced/ai/commit/cedca79650f5f2dd9d4196ce6d6048097315f6c9))
+
 ## [1.5.0-beta.2](https://github.com/open-sauced/ai/compare/v1.5.0-beta.1...v1.5.0-beta.2) (2023-06-06)
 
 

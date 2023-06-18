@@ -1,7 +1,6 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
-import { ImSwitch } from "react-icons/im";
 import toast, { Toaster } from "react-hot-toast";
 
 import {
@@ -11,14 +10,12 @@ import {
     DescriptionLanguage,
     setAIDescriptionConfig,
     getDefaultDescriptionConfig,
-} from "../../utils/aiprdescription/descriptionconfig";
-import { useRefs } from "../../hooks/useRefs";
-import { configurationReducer } from "../../utils/aiprdescription/configurationReducer";
+} from "../../utils/ai-utils/descriptionconfig";
+import { configurationReducer } from "../../utils/ai-utils/configurationReducer";
 import { goBack } from "react-chrome-extension-router";
 
 const AIPRDescription = () => {
     const [config, dispatch] = useReducer(configurationReducer, getDefaultDescriptionConfig());
-    const { refs, setRefFromKey } = useRefs();
 
     const tones: DescriptionTone[] = ["exciting", "persuasive", "informative", "humorous", "formal"];
     const sources: DescriptionSource[] = ["diff", "commitMessage", "both"];
@@ -37,14 +34,7 @@ const AIPRDescription = () => {
 
     const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const length = parseInt(refs.length?.getAttribute("value") ?? "0");
-        const temperature = Number(Number(refs.temperature?.getAttribute("value") ?? "0"));
-        const maxInputLength = parseInt(refs.maxInputLength?.getAttribute("value") ?? "0");
-        const language = (refs.language as HTMLSelectElement).value as DescriptionLanguage;
-        const source = (refs.source as HTMLSelectElement).value as DescriptionSource;
-        const tone = (refs.tone as HTMLSelectElement).value as DescriptionTone;
-
-        void setAIDescriptionConfig({ config: { length, temperature, maxInputLength, language, source, tone } });
+        void setAIDescriptionConfig(config);
         toast.success("Configuration updated!");
     };
 
@@ -53,7 +43,7 @@ const AIPRDescription = () => {
         <>
             <Toaster />
 
-            <div className="p-4 bg-slate-800">
+            <div className="bg-slate-800">
                 <div className="grid grid-cols-1 divide-y divider-y-center-2 min-w-[320px]">
                     <header className="flex justify-between">
                         <div className="flex items-center gap-2">
@@ -76,13 +66,12 @@ const AIPRDescription = () => {
 
                     <main className="text-white">
                         <form
-                            ref={setRefFromKey("form")}
                             onSubmit={handleFormSubmit}
                         >
                             <fieldset>
-                                <h1 className="text-2xl text-white font-bold my-2">
-                OpenSauced AI
-                                </h1>
+                                <h3 className="text font-medium text-base leading-10">
+                AI Configuration:
+                                </h3>
 
                                 <div className="grid grid-cols-2 -mx-4 mb-4 text-gray-300 text-sm">
                                     <div className="flex flex-col items-center justify-center">
@@ -95,7 +84,6 @@ const AIPRDescription = () => {
                                         </p>
 
                                         <input
-                                            ref={setRefFromKey("length")}
                                             className="text-black p-1.5 rounded-md mb-1 w-half accent-orange"
                                             id="length"
                                             max="500"
@@ -117,7 +105,6 @@ const AIPRDescription = () => {
                                         </p>
 
                                         <input
-                                            ref={setRefFromKey("temperature")}
                                             className="text-black p-1.5 rounded-md mb-2 w-half accent-orange"
                                             id="temparature"
                                             max="10"
@@ -139,7 +126,6 @@ const AIPRDescription = () => {
                                         </p>
 
                                         <input
-                                            ref={setRefFromKey("maxInputLength")}
                                             className="text-black p-1.5 rounded-md w-half accent-orange"
                                             id="inputlength"
                                             max="3900"
@@ -155,7 +141,6 @@ const AIPRDescription = () => {
                                         <p>Description Language</p>
 
                                         <select
-                                            ref={setRefFromKey("language")}
                                             className="text-black mt-2 p-1.5 rounded-md mb-2 w-[80%]"
                                             id="descriptionlanguage"
                                             name="descriptionlanguage"
@@ -177,7 +162,6 @@ const AIPRDescription = () => {
                                         <p>Description Tone</p>
 
                                         <select
-                                            ref={setRefFromKey("tone")}
                                             className="text-black mt-2 p-1.5 rounded-md mb-2 w-[80%]"
                                             id="tone"
                                             name="tone"
@@ -199,7 +183,6 @@ const AIPRDescription = () => {
                                         <p>Description Source</p>
 
                                         <select
-                                            ref={setRefFromKey("source")}
                                             className="text-black mt-2 p-1.5 rounded-md mb-2 w-[80%]"
                                             id="source"
                                             name="source"
@@ -219,9 +202,9 @@ const AIPRDescription = () => {
                                 </div>
 
                                 <input
-                                    className="inline-block disabled:bg-gray-500 text-black bg-gh-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline"
+                                    className="inline-block disabled:bg-gray-500 text-black bg-gh-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline cursor-pointer"
                                     type="submit"
-                                    value="Save"
+                                    value="Save AI Config"
                                 />
                             </fieldset>
                         </form>

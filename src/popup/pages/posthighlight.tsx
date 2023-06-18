@@ -15,15 +15,23 @@ const PostOnHighlight = ({ prUrl, prTitle }: { prUrl: string, prTitle: string })
     const [highlightContent, setHighlightContent] = useState("");
     const [isSendButtonEnabled, enableSendButton] = useState(true);
 
-    const generateAiDescription = async () => {
-        const toastId = toast.loading("Generating summary...");
-
+    const generateAiDescription = () => {
         enableSendButton(false);
-        const description = await getAiDescription(prUrl);
+        const description = getAiDescription(prUrl);
 
-        toast.dismiss(toastId);
-        setHighlightContent(description);
-        enableSendButton(true);
+        toast.promise(description, {
+            loading: "Generating summary...",
+            success: data => {
+                enableSendButton(true);
+                setHighlightContent(data);
+
+                return "Successfully Generated Summary";
+            },
+            error: e => {
+                enableSendButton(true);
+                return `Uh oh, there was an error! ${e.message}`;
+            },
+        }).catch(console.error);
     };
 
 
