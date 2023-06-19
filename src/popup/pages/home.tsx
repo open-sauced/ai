@@ -182,7 +182,7 @@ const Home = () => {
                                 }}
                             >
                                 <IoLogoLinkedin />
-                                Share LinkedIn Project.
+                                Add to LinkedIn Projects.
                             </button>
                         )}
 
