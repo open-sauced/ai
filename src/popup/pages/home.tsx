@@ -163,7 +163,6 @@ const Home = () => {
                                     }
                                     fetch(getRepoAPIURL(pageURL)).then(async res => res.json())
                                         .then(data => {
-                                            console.log(data);
                                             return chrome.tabs.create(
                                                 { url: "https://www.linkedin.com/in/me/edit/forms/project/new/", active: true },
                                                 tab => {
