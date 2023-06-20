@@ -162,22 +162,20 @@ const Home = () => {
                                         inputFields[1].value = data.description;
                                     }
                                     fetch(getRepoAPIURL(pageURL)).then(async res => res.json())
-                                        .then(data => {
-                                            return chrome.tabs.create(
-                                                { url: "https://www.linkedin.com/in/me/edit/forms/project/new/", active: true },
-                                                tab => {
-                                                    chrome.scripting
-                                                        .executeScript({
-                                                            target: { tabId: tab.id! },
-                                                            func: populateDataToLinkedIn,
-                                                            args: [data],
-                                                        })
-                                                        .then(() => console.log("script injected"))
-                                                        .catch(err => console.log(err));
-                                                },
+                                        .then(data => chrome.tabs.create(
+                                            { url: "https://www.linkedin.com/in/me/edit/forms/project/new/", active: true },
+                                            tab => {
+                                                chrome.scripting
+                                                    .executeScript({
+                                                        target: { tabId: tab.id! },
+                                                        func: populateDataToLinkedIn,
+                                                        args: [data],
+                                                    })
+                                                    .then(() => console.log("script injected"))
+                                                    .catch(err => console.log(err));
+                                            },
 
-                                            );
-                                        })
+                                        ))
                                         .catch(err => console.log(err));
                                 }}
                             >
