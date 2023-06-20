@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.8.1-beta.1](https://github.com/open-sauced/ai/compare/v1.8.0...v1.8.1-beta.1) (2023-06-20)
+
+
+### ✅ Tests
+
+* Tests for colorPreference and getUserPRVelocity ([#190](https://github.com/open-sauced/ai/issues/190)) ([6b9a5c3](https://github.com/open-sauced/ai/commit/6b9a5c320e07b10e4222d7210f8f8b7917e6abe7))
+
 ## [1.8.0](https://github.com/open-sauced/ai/compare/v1.7.0...v1.8.0) (2023-06-18)
 
 
