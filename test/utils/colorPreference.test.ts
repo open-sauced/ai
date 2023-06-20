@@ -29,7 +29,7 @@ describe("checkColorPreference", () => {
     const actual = prefersDarkMode(cookieString);
     expect(actual).toEqual(expected);
   });
-  it('should return false when the color_mode is set to "auto` and prefers-color-scheme is "dark"', () => {
+  it('should return true when the color_mode is set to "auto` and prefers-color-scheme is "dark"', () => {
     const cookieString =
       "color_mode=%7B%22color_mode%22%3A%22auto%22%7D;tz=Asia%2FCalcutta";
 
