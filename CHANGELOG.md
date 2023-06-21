@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.9.0-beta.2](https://github.com/open-sauced/ai/compare/v1.9.0-beta.1...v1.9.0-beta.2) (2023-06-21)
+
+
+### 🐛 Bug Fixes
+
+* separate vite and vitest configs ([#193](https://github.com/open-sauced/ai/issues/193)) ([7a980c8](https://github.com/open-sauced/ai/commit/7a980c82d1056cd1f798c39e51ba9fbc4d205ad7))
+
 ## [1.9.0-beta.1](https://github.com/open-sauced/ai/compare/v1.8.1-beta.1...v1.9.0-beta.1) (2023-06-21)
 
 

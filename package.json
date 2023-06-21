@@ -1,7 +1,7 @@
 {
   "name": "opensauced-browser-extension",
   "private": true,
-  "version": "1.9.0-beta.1",
+  "version": "1.9.0-beta.2",
   "files": [
     "dist"
   ],
