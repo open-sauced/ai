@@ -4,6 +4,7 @@ import {
     HiPencil,
     HiUserCircle,
 } from "react-icons/hi2";
+import { IoLogoLinkedin } from "react-icons/io5";
 import { FiSettings } from "react-icons/fi";
 import { Navigation, Pagination, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,20 +15,20 @@ import { useOpensaucedUserCheck } from "../../hooks/useOpensaucedUserCheck";
 import { Profile } from "./profile";
 import { goTo } from "react-chrome-extension-router";
 import PostOnHighlight from "./posthighlight";
+import { getRepoAPIURL } from "../../utils/urlMatchers";
 import { getEmojis, getHighlights } from "../../utils/fetchOpenSaucedApiData";
-
 import Help from "./help";
 import { useEffect, useState } from "react";
 import Settings from "./settings";
 import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../constants";
 import type { Highlight } from "../../ts/types";
-import { useIsGithubPRPageCheck } from "../../hooks/useGithubPRPageCheck";
+import { usGetGitHubPageInfo } from "../../hooks/useGetGitHubPageInfo";
 import { HighlightSlide } from "../components/HighlightSlide";
 
 const Home = () => {
     const { user } = useAuth();
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
-    const { isGithubPRPage, prUrl, prTitle } = useIsGithubPRPageCheck();
+    const { prUrl: pageURL, prTitle, type: GitHubPageType } = usGetGitHubPageInfo();
     const [highlights, setHighlights] = useState<Highlight[]>([]);
     const [emojis, setEmojis] = useState<Record<string, string>[]>([]);
 
@@ -141,11 +142,53 @@ const Home = () => {
 
                     <div className="tools flex flex-col gap-2">
 
-                        {isGithubPRPage && (
+                        {GitHubPageType === "REPO" && (
                             <button
                                 className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
                                 onClick={() => {
-                                    goTo(PostOnHighlight, { prUrl, prTitle });
+                                    function populateDataToLinkedIn (data: any) {
+                                        const inputFields: NodeListOf<HTMLInputElement> = document.querySelectorAll(".artdeco-text-input--input");
+
+                                        if (inputFields.length === 0) {
+                                            // set timeout to wait for the page to load
+                                            setTimeout(() => {
+                                                populateDataToLinkedIn(data);
+                                            }, 500);
+
+                                            return;
+                                        }
+                                        console.log(inputFields);
+                                        inputFields[0].value = data.name;
+                                        inputFields[1].value = data.description;
+                                    }
+                                    fetch(getRepoAPIURL(pageURL)).then(async res => res.json())
+                                        .then(data => chrome.tabs.create(
+                                            { url: "https://www.linkedin.com/in/me/edit/forms/project/new/", active: true },
+                                            tab => {
+                                                chrome.scripting
+                                                    .executeScript({
+                                                        target: { tabId: tab.id! },
+                                                        func: populateDataToLinkedIn,
+                                                        args: [data],
+                                                    })
+                                                    .then(() => console.log("script injected"))
+                                                    .catch(err => console.log(err));
+                                            },
+
+                                        ))
+                                        .catch(err => console.log(err));
+                                }}
+                            >
+                                <IoLogoLinkedin />
+                                Add to LinkedIn Projects.
+                            </button>
+                        )}
+
+                        {GitHubPageType === "PR" && (
+                            <button
+                                className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+                                onClick={() => {
+                                    goTo(PostOnHighlight, { pageURL, prTitle });
                                 }}
                             >
                                 <HiPencil />
@@ -189,7 +232,7 @@ const Home = () => {
                         }}
                     >
                         <FiSettings />
-            Settings
+                        Settings
                     </button>
                 </footer>
             </div>

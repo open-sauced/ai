@@ -50,6 +50,10 @@ export const isPullRequestFilesChangedPage = (url: string) => {
     return githubPullRequestFilesChangedPattern.test(url);
 };
 
+export const isOnGitHub = (url: string) => url.includes("github.com");
+
+export const getRepoAPIURL = (url: string) => url.replace(/github\.com/, "api.github.com/repos");
+
 export const getPullRequestAPIURL = async (url: string) => {
     const apiURL = url.replace(/github\.com/, "api.github.com/repos");
 
