@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.9.0-beta.1](https://github.com/open-sauced/ai/compare/v1.8.1-beta.1...v1.9.0-beta.1) (2023-06-21)
+
+
+### 🍕 Features
+
+* post to linkedin projects ([#177](https://github.com/open-sauced/ai/issues/177)) ([a20bff4](https://github.com/open-sauced/ai/commit/a20bff4aaa762b40fb5d80da8a02ee76271f3ac4))
+
 ## [1.8.1-beta.1](https://github.com/open-sauced/ai/compare/v1.8.0...v1.8.1-beta.1) (2023-06-20)
 
 
