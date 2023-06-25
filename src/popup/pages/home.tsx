@@ -34,7 +34,7 @@ const Home = () => {
     const renderToolsConditions = [
         GitHubPageType === "REPO",
         GitHubPageType === "PR",
-        currentTabIsOpensaucedUser
+        currentTabIsOpensaucedUser,
     ];
 
     useEffect(() => {
@@ -117,7 +117,7 @@ const Home = () => {
                         rel="noreferrer"
                         target="_blank"
                     >
-                            Highlights feed
+                        Highlights feed
                         <HiArrowTopRightOnSquare />
                     </a>
 
@@ -151,7 +151,7 @@ const Home = () => {
                             <button
                                 className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
                                 onClick={() => {
-                                    function populateDataToLinkedIn (data: any) {
+                                    function populateDataToLinkedIn(data: any) {
                                         const inputFields: NodeListOf<HTMLInputElement> = document.querySelectorAll(".artdeco-text-input--input");
 
                                         if (inputFields.length === 0) {
