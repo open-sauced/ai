@@ -5,10 +5,12 @@ import {
     OPEN_SAUCED_REPOS_ENDPOINT,
     OPEN_SAUCED_USER_INSIGHTS_ENDPOINT,
     OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT,
-    OPEN_SAUCED_HIGHLIGHTS_ENDPOINT,
+    OPEN_SAUCED_HIGHLIGHTS_LIST_ENDPOINT,
+    OPEN_SAUCED_HIGHLIGHT_ENDPOINT,
+    OPEN_SAUCED_EMOJIS_ENDPOINT,
 } from "../constants";
 import { IInsight } from "../ts/InsightDto";
-import { Highlights } from "../ts/types";
+import { GeneralAPIResponse, Highlights } from "../ts/types";
 
 export const isOpenSaucedUser = async (username: string) => {
     try {
@@ -181,7 +183,7 @@ export const updateInsight = async (userToken: string, repoId: string, checked: 
 };
 export const getHighlights = async (): Promise<Highlights | undefined> => {
     const response = await cachedFetch(
-        `${OPEN_SAUCED_HIGHLIGHTS_ENDPOINT}?limit=10`,
+        `${OPEN_SAUCED_HIGHLIGHTS_LIST_ENDPOINT}?limit=10`,
         {
             method: "GET",
             expireInSeconds: 300,
@@ -208,3 +210,15 @@ export const createHighlight = async (userToken: string, url: string, title: str
         highlight,
     }),
 });
+
+export const getHighlightReactions = async (highlightId: string):Promise<Record<string, string>[]> => {
+    const response = await fetch(`${OPEN_SAUCED_HIGHLIGHT_ENDPOINT}/${highlightId}/reactions`, { method: "GET" });
+
+    return response.json();
+};
+
+export const getEmojis = async ():Promise<GeneralAPIResponse> => {
+    const response = await fetch(`${OPEN_SAUCED_EMOJIS_ENDPOINT}`, { method: "GET" });
+
+    return response.json();
+};

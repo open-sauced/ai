@@ -1,14 +1,40 @@
+import { useEffect, useState } from "react";
+import { getHighlightReactions } from "../../utils/fetchOpenSaucedApiData";
 
 interface HighlightSlideProps {
     highlight: {
+        id: string;
         url: string;
         title: string;
         login: string;
         highlight: string;
     };
+    emojis: Record<string, string>[];
 }
 
-export const HighlightSlide = ({ highlight }: HighlightSlideProps) => {
+export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
+    const [highlightReactions, setHighlightReactions] = useState<Record<string, string>[]>([]);
+
+    useEffect(() => {
+        async function fetchHighlightReactions () {
+            const highlightReactionData = await getHighlightReactions(highlight.id);
+
+            const highlightReactionsWithEmojiUrls = emojis.filter(emoji => highlightReactionData.some(highlightReaction => highlightReaction.emoji_id === emoji.id)).map(emoji => {
+                const highlightReaction = highlightReactionData.find(highlightReaction => highlightReaction.emoji_id === emoji.id)!;
+
+                return {
+                    url: emoji.url,
+                    reaction_count: highlightReaction.reaction_count,
+                    highlight_url: highlight.url,
+                };
+            });
+
+
+            setHighlightReactions(highlightReactionsWithEmojiUrls);
+        }
+        void fetchHighlightReactions();
+    }, []);
+
     const { url, title, login, highlight: highlightText } = highlight;
 
     const openGraphSearchParameter = url.split("/").slice(3)
@@ -64,6 +90,34 @@ export const HighlightSlide = ({ highlight }: HighlightSlideProps) => {
                 alt="OpenGraph"
                 src={openGraphUrl}
             />
+
+            <div className="flex gap-2 mt-2 h-6 items-center">
+                {
+                    highlightReactions.length > 0
+                        ? (
+                            highlightReactions.map(highlightReaction => (
+                                <div
+                                    key={highlightReaction.url}
+                                    className="flex gap-1 items-center"
+                                >
+                                    <img
+                                        alt="Emoji"
+                                        className="rounded-full w-6 aspect-square border border-orange p-1"
+                                        src={highlightReaction.url}
+                                    />
+
+                                    <span className="text-slate-500">
+                                        {highlightReaction.reaction_count}
+                                    </span>
+                                </div>
+                            )))
+                        : (
+                            <span className="text-slate-500">
+                            No reactions yet.
+                            </span>
+                        )
+                }
+            </div>
 
         </div>);
 };

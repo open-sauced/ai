@@ -19,7 +19,9 @@ export const OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}
 export const OPEN_SAUCED_AI_CODE_REFACTOR_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/suggestion/generate`;
 export const OPEN_SAUCED_AI_CODE_EXPLANATION_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/explanation/generate`;
 export const OPEN_SAUCED_AI_CODE_TEST_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/test/generate`;
-export const OPEN_SAUCED_HIGHLIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/highlights/list`;
+export const OPEN_SAUCED_HIGHLIGHT_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/highlights`;
+export const OPEN_SAUCED_HIGHLIGHTS_LIST_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/highlights/list`;
+export const OPEN_SAUCED_EMOJIS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/emojis`;
 
 // GitHub constants/selectors
 export const GITHUB_PROFILE_MENU_SELECTOR = ".p-nickname.vcard-username.d-block";
