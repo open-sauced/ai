@@ -31,6 +31,11 @@ const Home = () => {
     const { prUrl: pageURL, prTitle, type: GitHubPageType } = usGetGitHubPageInfo();
     const [highlights, setHighlights] = useState<Highlight[]>([]);
     const [emojis, setEmojis] = useState<Record<string, string>[]>([]);
+    const renderToolsConditions = [
+        GitHubPageType === "REPO",
+        GitHubPageType === "PR",
+        currentTabIsOpensaucedUser
+    ];
 
     useEffect(() => {
         const fetchHighlights = async () => {
@@ -138,7 +143,7 @@ const Home = () => {
                     )}
 
 
-                    <h3 className="text font-medium text-base leading-10">Tools:</h3>
+                    {renderToolsConditions.includes(true) && <h3 className="text font-medium text-base leading-10">Tools:</h3>}
 
                     <div className="tools flex flex-col gap-2">
 
