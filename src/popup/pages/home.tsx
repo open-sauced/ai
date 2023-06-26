@@ -18,7 +18,7 @@ import PostOnHighlight from "./posthighlight";
 import { getRepoAPIURL } from "../../utils/urlMatchers";
 import { getEmojis, getHighlights } from "../../utils/fetchOpenSaucedApiData";
 import Help from "./help";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Settings from "./settings";
 import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../constants";
 import type { Highlight } from "../../ts/types";
@@ -31,11 +31,7 @@ const Home = () => {
     const { prUrl: pageURL, prTitle, type: GitHubPageType } = usGetGitHubPageInfo();
     const [highlights, setHighlights] = useState<Highlight[]>([]);
     const [emojis, setEmojis] = useState<Record<string, string>[]>([]);
-    const renderToolsConditions = [
-        GitHubPageType === "REPO",
-        GitHubPageType === "PR",
-        currentTabIsOpensaucedUser,
-    ];
+    const toolsRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const fetchHighlights = async () => {
@@ -142,10 +138,12 @@ const Home = () => {
                         </Swiper>
                     )}
 
+                    {Boolean(toolsRef.current?.children.length) && <h3 className="text font-medium text-base leading-10">Tools:</h3>}
 
-                    {renderToolsConditions.includes(true) && <h3 className="text font-medium text-base leading-10">Tools:</h3>}
-
-                    <div className="tools flex flex-col gap-2">
+                    <div
+                        ref={toolsRef}
+                        className="tools flex flex-col gap-2"
+                    >
 
                         {GitHubPageType === "REPO" && (
                             <button
