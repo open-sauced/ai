@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.9.0-beta.3](https://github.com/open-sauced/ai/compare/v1.9.0-beta.2...v1.9.0-beta.3) (2023-06-29)
+
+
+### 🐛 Bug Fixes
+
+* Made the "Tools:" conditional according to the current page ([#197](https://github.com/open-sauced/ai/issues/197)) ([b08ad07](https://github.com/open-sauced/ai/commit/b08ad0713e625f999a422f65b569b700649a963c)), closes [issue#112](https://github.com/open-sauced/issue/issues/112) [issue#112](https://github.com/open-sauced/issue/issues/112)
+
 ## [1.9.0-beta.2](https://github.com/open-sauced/ai/compare/v1.9.0-beta.1...v1.9.0-beta.2) (2023-06-21)
 
 
