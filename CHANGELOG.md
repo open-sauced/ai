@@ -5,6 +5,34 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.9.0-beta.3](https://github.com/open-sauced/ai/compare/v1.9.0-beta.2...v1.9.0-beta.3) (2023-06-29)
+
+
+### 🐛 Bug Fixes
+
+* Made the "Tools:" conditional according to the current page ([#197](https://github.com/open-sauced/ai/issues/197)) ([b08ad07](https://github.com/open-sauced/ai/commit/b08ad0713e625f999a422f65b569b700649a963c)), closes [issue#112](https://github.com/open-sauced/issue/issues/112) [issue#112](https://github.com/open-sauced/issue/issues/112)
+
+## [1.9.0-beta.2](https://github.com/open-sauced/ai/compare/v1.9.0-beta.1...v1.9.0-beta.2) (2023-06-21)
+
+
+### 🐛 Bug Fixes
+
+* separate vite and vitest configs ([#193](https://github.com/open-sauced/ai/issues/193)) ([7a980c8](https://github.com/open-sauced/ai/commit/7a980c82d1056cd1f798c39e51ba9fbc4d205ad7))
+
+## [1.9.0-beta.1](https://github.com/open-sauced/ai/compare/v1.8.1-beta.1...v1.9.0-beta.1) (2023-06-21)
+
+
+### 🍕 Features
+
+* post to linkedin projects ([#177](https://github.com/open-sauced/ai/issues/177)) ([a20bff4](https://github.com/open-sauced/ai/commit/a20bff4aaa762b40fb5d80da8a02ee76271f3ac4))
+
+## [1.8.1-beta.1](https://github.com/open-sauced/ai/compare/v1.8.0...v1.8.1-beta.1) (2023-06-20)
+
+
+### ✅ Tests
+
+* Tests for colorPreference and getUserPRVelocity ([#190](https://github.com/open-sauced/ai/issues/190)) ([6b9a5c3](https://github.com/open-sauced/ai/commit/6b9a5c320e07b10e4222d7210f8f8b7917e6abe7))
+
 ## [1.8.0](https://github.com/open-sauced/ai/compare/v1.7.0...v1.8.0) (2023-06-18)
 
 

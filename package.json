@@ -1,7 +1,7 @@
 {
   "name": "opensauced-browser-extension",
   "private": true,
-  "version": "1.8.0",
+  "version": "1.9.0-beta.3",
   "files": [
     "dist"
   ],
@@ -44,6 +44,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "jsdom": "^22.1.0",
     "postcss": "^8.4.22",
     "tailwindcss": "^3.3.1",
     "typescript": "^4.6.3",
