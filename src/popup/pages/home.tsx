@@ -160,7 +160,6 @@ const Home = () => {
 
                                             return;
                                         }
-                                        console.log(inputFields);
                                         inputFields[0].value = data.name;
                                         inputFields[1].value = data.description;
                                     }

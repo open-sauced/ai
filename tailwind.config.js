@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       colors: {
         orange: "hsla(19, 100%, 50%, 1)",
+        lightOrange: "hsla(19, 100%, 50%, 0.5)"
       },
       boxShadow: {
         button: "0 0 0.2rem 0.2rem rgb(245, 131, 106, 0.2)",
