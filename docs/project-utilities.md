@@ -1,16 +1,7 @@
----
-id: project-utilities
-title: The utility functions of the project
-sidebar_label: Project Utilities
-keywords:
-  - project utilities
-  - helper functions
----
-
 The utility functions used by the OpenSauced Extension project can be found in [src/utils](https://github.com/open-sauced/ai/tree/beta/src/utils). Each utility function serves a single purpose and is intended to be reusable across different parts of the project. The utilities are organized into domain-specific sub-directories within the utils folder, such as [/utils/dom-utils](https://github.com/open-sauced/ai/tree/beta/src/utils/dom-utils) for utilities related to manipulating the DOM.
 
 | NOTE: This page is not meant to be an exhaustive list of all utility functions used in the project, but to highlight a few of the ones that may otherwise be esoteric. |
-| :--- |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 ### [cachedFetch()](https://github.com/open-sauced/ai/blob/beta/src/utils/cache.ts)
 
