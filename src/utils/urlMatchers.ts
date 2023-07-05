@@ -33,7 +33,7 @@ export const isGithubProfilePage = (url: string) => {
 };
 
 export const isGithubRepoPage = (url: string) => {
-    const githubRepoPattern = /github\.com\/[^/]+\/[^/]+/;
+    const githubRepoPattern = /github\.com\/[^/]+\/[^/]+\/?$/;
 
     return githubRepoPattern.test(url);
 };
