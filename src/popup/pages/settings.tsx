@@ -1,6 +1,3 @@
-import { FaChevronLeft } from "react-icons/fa";
-import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
-import { goBack } from "react-chrome-extension-router";
 import Toggle from "../components/ToggleSwitch";
 import AIPRDescription from "./aiprdescription";
 import { useEffect, useState } from "react";

@@ -30,7 +30,7 @@ export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
                 url: emoji.url,
                 reaction_count: highlightReaction.reaction_count,
                 reactedByUser,
-                emojiId: emoji.id
+                emojiId: emoji.id,
             };
         });
 
