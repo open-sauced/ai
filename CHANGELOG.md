@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.10.0-beta.1](https://github.com/open-sauced/ai/compare/v1.9.0...v1.10.0-beta.1) (2023-07-10)
+
+
+### 🍕 Features
+
+* react/unreact on highlights ([#200](https://github.com/open-sauced/ai/issues/200)) ([c65eca0](https://github.com/open-sauced/ai/commit/c65eca043b78dd662d58768e6ab0bebb2fe9b845))
+
 ## [1.9.0](https://github.com/open-sauced/ai/compare/v1.8.0...v1.9.0) (2023-06-29)
 
 
