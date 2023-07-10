@@ -13,8 +13,15 @@ interface HighlightSlideProps {
     emojis: Record<string, string>[];
 }
 
+interface HighlightReaction {
+    url: string;
+    reaction_count: string;
+    reactedByUser: boolean;
+    emojiId: string;
+}
+
 export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
-    const [highlightReactions, setHighlightReactions] = useState<Record<string, any>[]>([]);
+    const [highlightReactions, setHighlightReactions] = useState<HighlightReaction[]>([]);
     const [reactingDivOpen, setReactingDivOpen] = useState(false);
 
     async function fetchHighlightReactions () {
@@ -31,7 +38,7 @@ export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
                 reaction_count: highlightReaction.reaction_count,
                 reactedByUser,
                 emojiId: emoji.id,
-            };
+            } as HighlightReaction;
         });
 
 
