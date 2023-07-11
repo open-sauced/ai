@@ -4,9 +4,10 @@ import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
 import { useAuth } from "../../hooks/useAuth";
 import toast, { Toaster } from "react-hot-toast";
 import { createHighlight } from "../../utils/fetchOpenSaucedApiData";
-import { goBack } from "react-chrome-extension-router";
+import { goBack, goTo } from "react-chrome-extension-router";
 import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../constants";
 import { getAiDescription } from "../../content-scripts/components/GenerateAIDescription/DescriptionGeneratorButton";
+import Home from "./home";
 
 const PostOnHighlight = ({ prUrl, prTitle }: { prUrl: string, prTitle: string }) => {
     const { authToken, user } = useAuth();
@@ -47,6 +48,7 @@ const PostOnHighlight = ({ prUrl, prTitle }: { prUrl: string, prTitle: string })
                 if (!data.ok) {
                     throw new Error(`Statues code ${data.status}`);
                 }
+                goTo(Home);
                 return (
                     <span>
                         <a
