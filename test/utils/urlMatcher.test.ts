@@ -67,7 +67,7 @@ test('isGithubRepoPage', () => {
   expect(isGithubRepoPage('https://www.github.com/')).toBe(false)
   expect(isGithubRepoPage('https://www.github.com/username/')).toBe(false)
   expect(isGithubRepoPage('https://www.github.com/username/repo')).toBe(true)
-  expect(isGithubRepoPage('https://www.github.com/username/repo/')).toBe(false)
+  expect(isGithubRepoPage('https://www.github.com/username/repo/')).toBe(true)
   expect(isGithubRepoPage('https://www.github.com/username/repo/https://google.com/')).toBe(false)
   expect(isGithubRepoPage('www.github.com/username/repo')).toBe(true)
   expect(isGithubRepoPage('github.com/username/repo')).toBe(true)
