@@ -5,6 +5,14 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.10.0-beta.3](https://github.com/open-sauced/ai/compare/v1.10.0-beta.2...v1.10.0-beta.3) (2023-07-11)
+
+
+### 🐛 Bug Fixes
+
+* Rename project-utilities.md to 3-project-utilities.md ([d0a6702](https://github.com/open-sauced/ai/commit/d0a67026188786cc91a004a2488723439b8a9051))
+* Updated RepoChecker to allow all types of repos ([#202](https://github.com/open-sauced/ai/issues/202)) ([2161918](https://github.com/open-sauced/ai/commit/2161918c3c4fe731a65e9aaa80cce154faf7b0b6)), closes [issue#112](https://github.com/open-sauced/issue/issues/112) [issue#112](https://github.com/open-sauced/issue/issues/112)
+
 ## [1.10.0-beta.2](https://github.com/open-sauced/ai/compare/v1.10.0-beta.1...v1.10.0-beta.2) (2023-07-11)
 
 
