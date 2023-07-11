@@ -217,8 +217,27 @@ export const getHighlightReactions = async (highlightId: string):Promise<Record<
     return response.json();
 };
 
+export const getUserHighlightReactions = async (userToken: string, highlightId: string):Promise<Record<string, string>[]> => {
+    const response = await fetch(`${OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT}/${highlightId}/reactions`, {
+        headers: { Authorization: `Bearer ${userToken}` },
+        method: "GET",
+    });
+
+    return response.json();
+};
+
 export const getEmojis = async ():Promise<GeneralAPIResponse> => {
     const response = await fetch(`${OPEN_SAUCED_EMOJIS_ENDPOINT}`, { method: "GET" });
 
     return response.json();
 };
+
+export const reactOnHighlight = async (userToken: string, highlightId: string, emojiId: string) => fetch(`${OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT}/${highlightId}/reactions/${emojiId}`, {
+    headers: { Authorization: `Bearer ${userToken}` },
+    method: "POST",
+});
+
+export const removeReactionOnHighlight = async (userToken: string, highlightId: string, emojiId: string) => fetch(`${OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT}/${highlightId}/reactions/${emojiId}`, {
+    headers: { Authorization: `Bearer ${userToken}` },
+    method: "DELETE",
+});
