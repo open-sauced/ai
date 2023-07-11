@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.10.0-beta.2](https://github.com/open-sauced/ai/compare/v1.10.0-beta.1...v1.10.0-beta.2) (2023-07-11)
+
+
+### 🍕 Features
+
+* Cherry pick susmita ([#204](https://github.com/open-sauced/ai/issues/204)) ([7458724](https://github.com/open-sauced/ai/commit/74587246034fb985d1a56cad0a1eface13a67ab0))
+
 ## [1.10.0-beta.1](https://github.com/open-sauced/ai/compare/v1.9.0...v1.10.0-beta.1) (2023-07-10)
 
 
