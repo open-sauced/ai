@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.10.0-beta.4](https://github.com/open-sauced/ai/compare/v1.10.0-beta.3...v1.10.0-beta.4) (2023-07-12)
+
+
+### 🐛 Bug Fixes
+
+* Create issue-metrics.yml ([4a6c19d](https://github.com/open-sauced/ai/commit/4a6c19dfe767c11e02206f40a8000a02a7139181))
+
 ## [1.10.0-beta.3](https://github.com/open-sauced/ai/compare/v1.10.0-beta.2...v1.10.0-beta.3) (2023-07-11)
 
 
