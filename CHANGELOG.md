@@ -5,6 +5,21 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.10.0](https://github.com/open-sauced/ai/compare/v1.9.0...v1.10.0) (2023-07-12)
+
+
+### 🍕 Features
+
+* Cherry pick susmita ([#204](https://github.com/open-sauced/ai/issues/204)) ([7458724](https://github.com/open-sauced/ai/commit/74587246034fb985d1a56cad0a1eface13a67ab0))
+* react/unreact on highlights ([#200](https://github.com/open-sauced/ai/issues/200)) ([c65eca0](https://github.com/open-sauced/ai/commit/c65eca043b78dd662d58768e6ab0bebb2fe9b845))
+
+
+### 🐛 Bug Fixes
+
+* Create issue-metrics.yml ([4a6c19d](https://github.com/open-sauced/ai/commit/4a6c19dfe767c11e02206f40a8000a02a7139181))
+* Rename project-utilities.md to 3-project-utilities.md ([d0a6702](https://github.com/open-sauced/ai/commit/d0a67026188786cc91a004a2488723439b8a9051))
+* Updated RepoChecker to allow all types of repos ([#202](https://github.com/open-sauced/ai/issues/202)) ([2161918](https://github.com/open-sauced/ai/commit/2161918c3c4fe731a65e9aaa80cce154faf7b0b6)), closes [issue#112](https://github.com/open-sauced/issue/issues/112) [issue#112](https://github.com/open-sauced/issue/issues/112)
+
 ## [1.10.0-beta.4](https://github.com/open-sauced/ai/compare/v1.10.0-beta.3...v1.10.0-beta.4) (2023-07-12)
 
 
