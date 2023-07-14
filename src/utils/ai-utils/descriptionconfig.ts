@@ -46,7 +46,7 @@ export const getDefaultDescriptionConfig = (): DescriptionConfig => ({
         maxInputLength: 3900,
         temperature: 7,
         language: "english",
-        tone: "informative",
+        tone: "formal",
         source: "diff",
     },
 });
