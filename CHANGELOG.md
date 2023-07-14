@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.11.0-beta.1](https://github.com/open-sauced/ai/compare/v1.10.0...v1.11.0-beta.1) (2023-07-14)
+
+
+### 🍕 Features
+
+* make formal the default tone ([#211](https://github.com/open-sauced/ai/issues/211)) ([814378d](https://github.com/open-sauced/ai/commit/814378d4cbe31aa4c38ea1f8900c9f8bd3c97ae0))
+
 ## [1.10.0](https://github.com/open-sauced/ai/compare/v1.9.0...v1.10.0) (2023-07-12)
 
 
