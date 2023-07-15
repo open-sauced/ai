@@ -1,0 +1,41 @@
+export interface UserResponse {
+    id: number;
+    open_issues: number;
+    created_at: string;
+    updated_at: string;
+    first_opened_pr_at: string;
+    first_pushed_commit_at: string;
+    connected_at: string;
+    node_id: string;
+    avatar_url: string;
+    gravatar_id: string;
+    url: string;
+    login: string;
+    is_private: boolean;
+    is_open_sauced_member: boolean;
+    is_onboarded: boolean;
+    is_waitlisted: boolean;
+    role: number;
+    bio: string;
+    blog: string;
+    name: string;
+    twitter_username: string;
+    linkedin_url: string;
+    github_sponsors_url: string;
+    company: string;
+    location: string;
+    display_local_time: boolean;
+    interests: string;
+    hireable: boolean;
+    public_repos: number;
+    public_gists: number;
+    followers: number;
+    following: number;
+    type: string;
+    display_email: boolean;
+    receive_collaboration: boolean;
+    timezone: string;
+    languages: {
+        [key: string]: number;
+    };
+}
