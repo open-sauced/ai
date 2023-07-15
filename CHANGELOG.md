@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.11.1-beta.2](https://github.com/open-sauced/ai/compare/v1.11.1-beta.1...v1.11.1-beta.2) (2023-07-15)
+
+
+### 🐛 Bug Fixes
+
+* Broken authentication on dev ([#215](https://github.com/open-sauced/ai/issues/215)) ([c6bf2c8](https://github.com/open-sauced/ai/commit/c6bf2c801a5dc39131e8bf6fb8a4965316d8bbb2))
+
 ## [1.11.1-beta.1](https://github.com/open-sauced/ai/compare/v1.11.0...v1.11.1-beta.1) (2023-07-15)
 
 
