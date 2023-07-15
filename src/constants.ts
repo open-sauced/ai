@@ -4,7 +4,7 @@ export const OPEN_SAUCED_API_ENDPOINT = import.meta.env.VITE_OPEN_SAUCED_API_END
 export const SUPABASE_LOGIN_URL = `https://${import.meta.env.VITE_OPEN_SAUCED_SUPABASE_ID}.supabase.co/auth/v1/authorize?provider=github&redirect_to=https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/`;
 
 
-export const SUPABASE_AUTH_COOKIE_NAME = "supabase-auth-token";
+export const SUPABASE_AUTH_COOKIE_NAME = import.meta.env.PROD ? "supabase-auth-token" : `sb-${import.meta.env.VITE_OPEN_SAUCED_SUPABASE_ID}-auth-token`;
 export const OPEN_SAUCED_AUTH_TOKEN_KEY = "os-access-token";
 export const OPEN_SAUCED_OPTED_LOG_OUT_KEY = "opted-log-out";
 export const AI_PR_DESCRIPTION_CONFIG_KEY = "ai-pr-description-config";
