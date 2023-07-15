@@ -54,7 +54,7 @@ const Home = () => {
                 const emojiResponse = await getEmojis();
                 const emojis = emojiResponse.data;
 
-                if (!emojis) {
+                if (!emojis.length) {
                     return;
                 }
 
@@ -167,14 +167,12 @@ const Home = () => {
                                         .then(data => chrome.tabs.create(
                                             { url: "https://www.linkedin.com/in/me/edit/forms/project/new/", active: true },
                                             tab => {
-                                                chrome.scripting
+                                                void chrome.scripting
                                                     .executeScript({
                                                         target: { tabId: tab.id! },
                                                         func: populateDataToLinkedIn,
                                                         args: [data],
-                                                    })
-                                                    .then(() => console.log("script injected"))
-                                                    .catch(err => console.log(err));
+                                                    });
                                             },
 
                                         ))

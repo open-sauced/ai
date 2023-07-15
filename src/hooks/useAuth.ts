@@ -1,49 +1,65 @@
 import { useEffect, useState } from "react";
-import { OPEN_SAUCED_AUTH_TOKEN_KEY, OPEN_SAUCED_SESSION_ENDPOINT } from "../constants";
+import {
+    OPEN_SAUCED_INSIGHTS_DOMAIN,
+    OPEN_SAUCED_SESSION_ENDPOINT,
+    SUPABASE_AUTH_COOKIE_NAME,
+} from "../constants";
 import { cachedFetch } from "../utils/cache";
-
-const removeTokenFromStorage = async () => new Promise(resolve => {
-    chrome.storage.sync.remove(OPEN_SAUCED_AUTH_TOKEN_KEY, () => {
-        resolve(true);
-    });
-});
+import {
+    hasOptedLogOut,
+    removeAuthTokenFromStorage,
+} from "../utils/checkAuthentication";
+import setAuthTokenInChromeStorage from "../utils/setAccessToken";
 
 export const useAuth = () => {
     const [authToken, setAuthToken] = useState<null | string>(null);
-    const [user, setUser] = useState<null | { id: string, user_name: string }>(null);
-    const [isTokenValid, setIsTokenValid] = useState<boolean|null>(null);
+    const [user, setUser] = useState<null | { id: string; user_name: string }>(
+        null,
+    );
+    const [isTokenValid, setIsTokenValid] = useState<boolean>(false);
 
     useEffect(() => {
-        chrome.storage.sync.get([OPEN_SAUCED_AUTH_TOKEN_KEY], async result => {
-            if (result[OPEN_SAUCED_AUTH_TOKEN_KEY]) {
-                setAuthToken(result[OPEN_SAUCED_AUTH_TOKEN_KEY]);
+        const authenticate = async () => {
+            try {
+                if (await hasOptedLogOut()) {
+                    return;
+                }
+                const cookie = await chrome.cookies.get({
+                    name: SUPABASE_AUTH_COOKIE_NAME,
+                    url: `https://${OPEN_SAUCED_INSIGHTS_DOMAIN}`,
+                });
 
-                const resp = await cachedFetch(OPEN_SAUCED_SESSION_ENDPOINT, {
+                if (!cookie) {
+                    return removeAuthTokenFromStorage();
+                }
+                const token = JSON.parse(decodeURIComponent(cookie.value))[0];
+
+                const response = await cachedFetch(OPEN_SAUCED_SESSION_ENDPOINT, {
                     expireInSeconds: 2 * 60 * 60,
                     headers: {
-                        Authorization: `Bearer ${result[OPEN_SAUCED_AUTH_TOKEN_KEY]}`,
+                        Authorization: `Bearer ${token}`,
                         Accept: "application/json",
                     },
                 });
 
-                if (!resp?.ok) {
-                    removeTokenFromStorage().then(() => {
-                        setAuthToken(null);
-                        setUser(null);
-                        setIsTokenValid(false);
-                        return null;
-                    })
-                        .catch(console.error);
-                } else {
-                    const json = await resp.json();
+                if (response?.ok) {
+                    const json = await response.json();
 
                     setUser(json);
                     setIsTokenValid(true);
+                    setAuthToken(token);
+                    void setAuthTokenInChromeStorage(token);
+                } else {
+                    await removeAuthTokenFromStorage();
                 }
-            } else {
-                setIsTokenValid(false);
+            } catch (error) {
+                if (error instanceof Error) {
+                    console.error(error.message);
+                }
             }
-        });
+        };
+
+        void authenticate();
     }, []);
 
     return { authToken, user, isTokenValid };
