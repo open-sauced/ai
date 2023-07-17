@@ -6,6 +6,7 @@ import {
     OPEN_SAUCED_HIGHLIGHTS_LIST_ENDPOINT,
     OPEN_SAUCED_HIGHLIGHT_ENDPOINT,
     OPEN_SAUCED_EMOJIS_ENDPOINT,
+    OPEN_SAUCED_INSIGHTS_DOMAIN,
 } from "../constants";
 import { IInsight } from "../ts/InsightDto";
 import { GeneralAPIResponse, Highlights } from "../ts/types";
@@ -230,3 +231,16 @@ export const removeReactionOnHighlight = async (userToken: string, highlightId: 
     headers: { Authorization: `Bearer ${userToken}` },
     method: "DELETE",
 });
+
+export const getRepoOpenSaucedURL = async (repoUrl: string) => {
+    const repoFullName = repoUrl.split("/").slice(-2)
+        .join("/");
+    const response = await fetch(`${OPEN_SAUCED_REPOS_ENDPOINT}/${repoFullName}`, { method: "GET" });
+
+    if (response.status === 200) {
+        const data = await response.json();
+
+        return `https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/${data.language}/repositories/filter/${data.full_name}`;
+    }
+    return "";
+};
