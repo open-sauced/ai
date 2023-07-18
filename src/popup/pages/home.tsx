@@ -28,7 +28,7 @@ import { HighlightSlide } from "../components/HighlightSlide";
 const Home = () => {
     const { user } = useAuth();
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
-    const { prUrl: pageURL, prTitle, type: GitHubPageType } = usGetGitHubPageInfo();
+    const { pageUrl, pageTitle, type: GitHubPageType } = usGetGitHubPageInfo();
     const [repoOpenSaucedURL, setRepoOpenSaucedURL] = useState<string>("");
     const [highlights, setHighlights] = useState<Highlight[]>([]);
     const [emojis, setEmojis] = useState<Record<string, string>[]>([]);
@@ -72,7 +72,7 @@ const Home = () => {
     useEffect(() => {
         const fetchRepoOpenSaucedURL = async () => {
             try {
-                const openSaucedUrl = await getRepoOpenSaucedURL(pageURL);
+                const openSaucedUrl = await getRepoOpenSaucedURL(pageUrl);
 
                 setRepoOpenSaucedURL(openSaucedUrl);
             } catch (error) {
@@ -83,7 +83,7 @@ const Home = () => {
         if (GitHubPageType === "REPO") {
             void fetchRepoOpenSaucedURL();
         }
-    }, [pageURL]);
+    }, [pageUrl]);
 
     return (
         <div className="p-4 bg-slate-800">
@@ -181,7 +181,7 @@ const Home = () => {
                                             inputFields[0].value = data.name;
                                             inputFields[1].value = data.description;
                                         }
-                                        fetch(getRepoAPIURL(pageURL)).then(async res => res.json())
+                                        fetch(getRepoAPIURL(pageUrl)).then(async res => res.json())
                                             .then(data => chrome.tabs.create(
                                                 { url: "https://www.linkedin.com/in/me/edit/forms/project/new/", active: true },
                                                 tab => {
@@ -221,7 +221,7 @@ const Home = () => {
                             <button
                                 className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
                                 onClick={() => {
-                                    goTo(PostOnHighlight, { pageURL, prTitle });
+                                    goTo(PostOnHighlight, { pageUrl, pageTitle });
                                 }}
                             >
                                 <HiPencil />
