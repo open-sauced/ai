@@ -1,8 +1,6 @@
 import { cachedFetch } from "./cache";
 import {
-    OPEN_SAUCED_USERS_ENDPOINT,
-    OPEN_SAUCED_SESSION_ENDPOINT,
-    OPEN_SAUCED_REPOS_ENDPOINT,
+    OPEN_SAUCED_USERS_ENDPOINT, OPEN_SAUCED_REPOS_ENDPOINT,
     OPEN_SAUCED_USER_INSIGHTS_ENDPOINT,
     OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT,
     OPEN_SAUCED_HIGHLIGHTS_LIST_ENDPOINT,
@@ -27,15 +25,6 @@ export const isOpenSaucedUser = async (username: string) => {
     } catch (error) {
         return false;
     }
-};
-
-export const checkTokenValidity = async (token: string) => {
-    const response = await fetch(OPEN_SAUCED_SESSION_ENDPOINT, {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-    });
-
-    return response.status === 200;
 };
 
 export const getUserData = async (userName: string, forceRefresh: boolean = false) => cachedFetch(`${OPEN_SAUCED_USERS_ENDPOINT}/${userName}`, {
