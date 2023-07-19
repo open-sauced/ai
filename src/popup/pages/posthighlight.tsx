@@ -48,7 +48,7 @@ const PostOnHighlight = ({ prUrl, prTitle }: { prUrl: string, prTitle: string })
                 if (!data.ok) {
                     throw new Error(`Statues code ${data.status}`);
                 }
-                goTo(Home);
+                goTo(Home, { forceRefresh: true });
                 return (
                     <span>
                         <a

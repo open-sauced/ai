@@ -25,7 +25,7 @@ import type { Highlight } from "../../ts/types";
 import { usGetGitHubPageInfo } from "../../hooks/useGetGitHubPageInfo";
 import { HighlightSlide } from "../components/HighlightSlide";
 
-const Home = () => {
+const Home = ({ forceRefresh }: { forceRefresh?: boolean }) => {
     const { user } = useAuth();
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
     const { pageUrl, pageTitle, type: GitHubPageType } = usGetGitHubPageInfo();
@@ -37,7 +37,7 @@ const Home = () => {
     useEffect(() => {
         const fetchHighlights = async () => {
             try {
-                const userHighlightsData = await getHighlights();
+                const userHighlightsData = await getHighlights(forceRefresh);
 
                 if (!userHighlightsData) {
                     return;
