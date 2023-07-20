@@ -4,14 +4,14 @@ import { createHtmlElement } from "../../../utils/createHtmlElement";
 import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../../constants";
 
 export const ViewOnOpenSaucedButton = (username: string) => {
-    const viewOnOpenSaucedButton = createHtmlElement("a", {
-        id: "view-on-opensauced-button",
-        href: `https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/user/${username}/contributions`,
-        className:
-      "inline-block mt-4 text-black bg-gh-white dark:bg-gh-gray dark:text-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline",
-        target: "_blank",
-        rel: "noopener noreferrer",
-        innerHTML: `
+  const viewOnOpenSaucedButton = createHtmlElement("a", {
+    id: "view-on-opensauced-button",
+    href: `https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/user/${username}/contributions`,
+    className:
+      "inline-block my-4 text-black bg-gh-white dark:bg-gh-gray dark:text-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline",
+    target: "_blank",
+    rel: "noopener noreferrer",
+    innerHTML: `
     <img
       class="mx-2 inline-block align-top"
       src="${chrome.runtime.getURL(logoIcon)}"
@@ -21,7 +21,7 @@ export const ViewOnOpenSaucedButton = (username: string) => {
     />
     <span>View On OpenSauced</span>
     `,
-    });
+  });
 
-    return viewOnOpenSaucedButton;
+  return viewOnOpenSaucedButton;
 };
