@@ -46,7 +46,7 @@ const PostOnHighlight = ({ prUrl, prTitle }: { prUrl: string, prTitle: string })
             success: data => {
                 enableSendButton(true);
                 if (!data.ok) {
-                    throw new Error(`Statues code ${data.status}`);
+                    throw new Error(`Status code ${data.status}`);
                 }
                 goTo(Home, { forceRefresh: true });
                 return (

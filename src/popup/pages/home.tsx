@@ -25,7 +25,7 @@ import type { Highlight } from "../../ts/types";
 import { usGetGitHubPageInfo } from "../../hooks/useGetGitHubPageInfo";
 import { HighlightSlide } from "../components/HighlightSlide";
 
-const Home = ({ forceRefresh }: { forceRefresh?: boolean }) => {
+const Home = ({ forceRefresh }: { forceRefresh: boolean } = { forceRefresh: false }) => {
     const { user } = useAuth();
     const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
     const { pageUrl, pageTitle, type: GitHubPageType } = usGetGitHubPageInfo();
