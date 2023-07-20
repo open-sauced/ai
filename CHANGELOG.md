@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.12.0-beta.3](https://github.com/open-sauced/ai/compare/v1.12.0-beta.2...v1.12.0-beta.3) (2023-07-20)
+
+
+### 🐛 Bug Fixes
+
+* redirect to home page after posting a highlight ([#203](https://github.com/open-sauced/ai/issues/203)) ([4ebd2d1](https://github.com/open-sauced/ai/commit/4ebd2d15b8b3bae0ea6b563568b0b7b01a86f832))
+
 ## [1.12.0-beta.2](https://github.com/open-sauced/ai/compare/v1.12.0-beta.1...v1.12.0-beta.2) (2023-07-19)
 
 
