@@ -1,9 +1,9 @@
-import { ChatDialog } from "../../content-scripts/components/ChatDialog/ChatDialog";
+import { RepoQueryRoot } from "../../content-scripts/components/RepoQuery/RepoQuery";
 import { isLoggedIn } from "../checkAuthentication";
 import { isPublicRepository } from "../fetchGithubAPIData";
 
 const injectChatDialog = async (ownerName: string, repoName: string) => {
-    const chatDialog = ChatDialog(ownerName, repoName);
+    const chatDialog = RepoQueryRoot(ownerName, repoName);
 
     if (document.getElementById("chat-dialog") || !(await isLoggedIn()) || !(await isPublicRepository(window.location.href))) {
         return;
