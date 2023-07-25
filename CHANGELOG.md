@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.12.0-beta.4](https://github.com/open-sauced/ai/compare/v1.12.0-beta.3...v1.12.0-beta.4) (2023-07-25)
+
+
+### 🐛 Bug Fixes
+
+* view on open sauced location ([#225](https://github.com/open-sauced/ai/issues/225)) ([0ecfef0](https://github.com/open-sauced/ai/commit/0ecfef0dda3a83b43deaa12189a7dc0474f29d78))
+
 ## [1.12.0-beta.3](https://github.com/open-sauced/ai/compare/v1.12.0-beta.2...v1.12.0-beta.3) (2023-07-20)
 
 
