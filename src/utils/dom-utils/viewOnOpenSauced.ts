@@ -11,7 +11,7 @@ const injectViewOnOpenSaucedButton = (username: string) => {
     const userEditableArea = document.getElementsByClassName(
         GITHUB_PROFILE_USER_PROFILE_EDITABLE_AREA_SELECTOR,
     );
-    const editableAreaElement = userEditableArea[0] as HTMLElement;
+    const editableAreaElement = userEditableArea[0];
 
     editableAreaElement.parentNode?.insertBefore(viewOnOpenSaucedButton, editableAreaElement);
 };
