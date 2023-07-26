@@ -18,6 +18,7 @@ import injectDescriptionGeneratorButton from "../utils/dom-utils/addDescriptionG
 import injectChangeSuggestorButton from "../utils/dom-utils/changeSuggestorButton";
 import prEditWatch, { prReviewWatch } from "../utils/dom-utils/prWatcher";
 import injectChatDialog from "../utils/dom-utils/addChatDialog";
+import { pageUrlWatch } from "../utils/dom-utils/pageUrlWatcher";
 
 const processGithubPage = async () => {
     if (prefersDarkMode(document.cookie)) {
@@ -46,6 +47,12 @@ const processGithubPage = async () => {
         const repoName = window.location.href.split("/").pop() ?? "";
 
         await injectChatDialog(ownerName, repoName);
+
+        pageUrlWatch(() => {
+            if (document.getElementById("repo-query-root")) {
+                document.getElementById("repo-query-root")?.remove();
+            }
+        }, 50);
     }
 
     /*
