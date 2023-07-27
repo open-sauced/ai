@@ -2,6 +2,7 @@ import { useState } from "react";
 import openSaucedLogoIcon from "../../assets/open-sauced-orange-bg-logo.svg";
 import { Home } from "../pages/home";
 import { IndexingPage } from "../pages/indexing";
+import { Chat } from "../pages/chat";
 
 // pages enum
 export enum RepoQueryPages {
@@ -11,7 +12,7 @@ export enum RepoQueryPages {
 }
 
 export const Dialog = ({ isOpen, toggleDialog, ownerName, repoName }: { isOpen: boolean, toggleDialog: () => void, ownerName: string, repoName: string }) => {
-    const [currentPage, setCurrentPage] = useState(RepoQueryPages.Home);
+    const [currentPage, setCurrentPage] = useState(RepoQueryPages.Chat);
 
     return (
         <div
@@ -117,7 +118,17 @@ Ask queries about
                                     setCurrentPage={setCurrentPage}
                                 />
                             )
-                            : null
+
+                            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+                            : currentPage === RepoQueryPages.Chat
+                                ? (
+                                    <Chat
+                                        ownerName={ownerName}
+                                        repoName={repoName}
+                                        setCurrentPage={setCurrentPage}
+                                    />
+                                )
+                                : null
                 }
             </div>
         </div>
