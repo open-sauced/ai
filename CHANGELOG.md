@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.12.0-beta.5](https://github.com/open-sauced/ai/compare/v1.12.0-beta.4...v1.12.0-beta.5) (2023-07-28)
+
+
+### 🍕 Features
+
+* Login with pkce ([#230](https://github.com/open-sauced/ai/issues/230)) ([42e8d4a](https://github.com/open-sauced/ai/commit/42e8d4ad4d3bc47c4138b2eeec20920015183849))
+
 ## [1.12.0-beta.4](https://github.com/open-sauced/ai/compare/v1.12.0-beta.3...v1.12.0-beta.4) (2023-07-25)
 
 
