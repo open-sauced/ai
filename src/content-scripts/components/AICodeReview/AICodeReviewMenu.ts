@@ -1,13 +1,10 @@
-import {
-    SUPABASE_LOGIN_URL,
-    GITHUB_PR_SUGGESTION_TEXT_AREA_SELECTOR,
-} from "../../../constants";
+import { GITHUB_PR_SUGGESTION_TEXT_AREA_SELECTOR } from "../../../constants";
 import { insertTextAtCursor } from "../../../utils/ai-utils/cursorPositionInsert";
 import {
     DescriptionConfig,
     getAIDescriptionConfig,
 } from "../../../utils/ai-utils/descriptionconfig";
-import { getAuthToken, isLoggedIn } from "../../../utils/checkAuthentication";
+import { getAuthToken, isLoggedIn, optLogIn } from "../../../utils/checkAuthentication";
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 import { isOutOfContextBounds } from "../../../utils/fetchGithubAPIData";
 
@@ -73,7 +70,7 @@ const handleSubmit = async (
 
     try {
         if (!(await isLoggedIn())) {
-            return window.open(SUPABASE_LOGIN_URL, "_blank");
+            return void optLogIn();
         }
 
         if (!logo || !button) {
