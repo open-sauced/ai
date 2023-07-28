@@ -168,6 +168,7 @@ const Home = ({ forceRefresh }: { forceRefresh: boolean } = { forceRefresh: fals
                                     className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
                                     onClick={() => {
                                         function populateDataToLinkedIn (data: any) {
+                                            console.log("OpenSauced Extension is running on Linkedin", "\n Repo name:", data.name);
                                             const inputFields: NodeListOf<HTMLInputElement> = document.querySelectorAll(".artdeco-text-input--input");
 
                                             if (inputFields.length === 0) {
