@@ -1,13 +1,42 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { RepoQueryPages } from "../components/Dialog";
+import { REPO_QUERY_COLLECTION_ENDPOINT, REPO_QUERY_EMBED_ENDPOINT } from "../../constants";
 
 export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerName: string, repoName: string, setCurrentPage: (page: RepoQueryPages) => void }) => {
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setCurrentPage(RepoQueryPages.Chat);
-        }, 3000);
+    const [statusMessage, setStatusMessage] = useState("We are checking if this repository is indexed. This may take a while.");
 
-        return () => clearTimeout(timer);
+    useEffect(() => {
+        async function checkIndexingStatus () {
+            const status = await fetch(`${REPO_QUERY_COLLECTION_ENDPOINT}?owner=${ownerName}&name=${repoName}&branch=beta`);
+            const statusText = await status.text();
+
+            if (statusText.includes("not indexed")) {
+                setStatusMessage("This repository is not indexed. We are indexing it now. This may take a while.");
+                await fetch(
+                    `${REPO_QUERY_EMBED_ENDPOINT}`,
+                    {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            owner: ownerName,
+                            name: repoName,
+                            branch: "beta",
+                        }),
+                    },
+                );
+                setStatusMessage("Indexing Complete. Redirecting to the Chat Dialog.");
+                setTimeout(() => {
+                    setCurrentPage(RepoQueryPages.Chat);
+                }, 1000);
+            } else {
+                setStatusMessage("This repository is already indexed! Redirecting to the Chat Dialog.");
+                setTimeout(() => {
+                    setCurrentPage(RepoQueryPages.Chat);
+                }, 1000);
+            }
+        }
+
+        void checkIndexingStatus();
     }, []);
 
 
@@ -19,14 +48,7 @@ export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerNam
             <div className="text-2xl font-bold text-slate-700">RepoQuery</div>
 
             <p className="text-sm text-gray-500 w-5/6 text-center mt-4">
-                We are indexing
-                {" "}
-
-                {ownerName}
-                /
-
-                {repoName}
-                . This may take a while.
+                {statusMessage}
             </p>
 
             <div className="mt-4">

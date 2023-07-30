@@ -12,7 +12,7 @@ export enum RepoQueryPages {
 }
 
 export const Dialog = ({ isOpen, toggleDialog, ownerName, repoName }: { isOpen: boolean, toggleDialog: () => void, ownerName: string, repoName: string }) => {
-    const [currentPage, setCurrentPage] = useState(RepoQueryPages.Chat);
+    const [currentPage, setCurrentPage] = useState(RepoQueryPages.Home);
 
     return (
         <div
@@ -54,13 +54,7 @@ OpenSauced
                                 className="text-sm text-gray-400"
                                 id="chat-dialog-header-left-text-subtitle"
                             >
-Ask queries about
-                                {" "}
-
-                                {ownerName}
-/
-
-                                {repoName}
+RepoQuery
                             </div>
                         </div>
                     </div>
