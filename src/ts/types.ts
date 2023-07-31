@@ -52,3 +52,10 @@ interface HighlightsMeta {
     hasPreviousPage: boolean;
     hasNextPage: boolean;
 }
+
+// pages enum
+export enum RepoQueryPages {
+    Home = "home",
+    Indexing = "indexing",
+    Chat = "chat",
+}

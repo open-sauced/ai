@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { RepoQueryPages } from "../components/Dialog";
+import { RepoQueryPages } from "../../ts/types";
 import { REPO_QUERY_QUERY_ENDPOINT } from "../../constants";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -28,8 +28,9 @@ export const Chat = ({ ownerName, repoName, setCurrentPage }: { ownerName: strin
         try {
             data = JSON.parse(dataLine.split(": ")[1]);
         } catch (e) {
-            // untermindated stirng
-            console.log(e, dataLine);
+            // untermindated string
+            data = JSON.parse(dataLine.slice(6, dataLine.length - 1));
+            console.error(dataLine);
         }
 
 
@@ -39,6 +40,8 @@ export const Chat = ({ ownerName, repoName, setCurrentPage }: { ownerName: strin
             setStatusMessage(`Searching ${data.path} for your query...🔍`);
         } else if (event === "GENERATE_RESPONSE") {
             setStatusMessage("Generating a response...🧠");
+        } else if (event === "SEARCH_PATH") {
+            setStatusMessage(`Looking for ${data.path} in the codebase...🔍`);
         } else if (event === "DONE") {
             setBotThinking(false);
             setSendEnabled(true);
@@ -62,7 +65,7 @@ export const Chat = ({ ownerName, repoName, setCurrentPage }: { ownerName: strin
                     repository: {
                         owner: ownerName,
                         name: repoName,
-                        branch: "beta",
+                        branch: "HEAD",
                     },
                 }),
             },
@@ -76,6 +79,7 @@ export const Chat = ({ ownerName, repoName, setCurrentPage }: { ownerName: strin
 
             // eslint-disable-next-line no-loops/no-loops
             while (!readerDone) {
+                // eslint-disable-next-line no-await-in-loop
                 const { value, done } = await reader.read();
                 const chunkString = decoder.decode(value);
 

@@ -1,4 +1,4 @@
-import { RepoQueryPages } from "../components/Dialog";
+import { RepoQueryPages } from "../../ts/types";
 
 export const Home = ({ ownerName, repoName, setCurrentPage }: { ownerName: string, repoName: string, setCurrentPage: (page: RepoQueryPages) => void }) => (
     <div

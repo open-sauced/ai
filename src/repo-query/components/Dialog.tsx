@@ -3,16 +3,10 @@ import openSaucedLogoIcon from "../../assets/open-sauced-orange-bg-logo.svg";
 import { Home } from "../pages/home";
 import { IndexingPage } from "../pages/indexing";
 import { Chat } from "../pages/chat";
-
-// pages enum
-export enum RepoQueryPages {
-    Home = "home",
-    Indexing = "indexing",
-    Chat = "chat",
-}
+import { RepoQueryPages } from "../../ts/types";
 
 export const Dialog = ({ isOpen, toggleDialog, ownerName, repoName }: { isOpen: boolean, toggleDialog: () => void, ownerName: string, repoName: string }) => {
-    const [currentPage, setCurrentPage] = useState(RepoQueryPages.Home);
+    const [currentPage, setCurrentPage] = useState(RepoQueryPages.Chat);
 
     return (
         <div

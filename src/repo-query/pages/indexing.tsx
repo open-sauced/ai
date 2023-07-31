@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { RepoQueryPages } from "../components/Dialog";
+import { RepoQueryPages } from "../../ts/types";
 import { REPO_QUERY_COLLECTION_ENDPOINT, REPO_QUERY_EMBED_ENDPOINT } from "../../constants";
 
 export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerName: string, repoName: string, setCurrentPage: (page: RepoQueryPages) => void }) => {
@@ -7,10 +7,9 @@ export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerNam
 
     useEffect(() => {
         async function checkIndexingStatus () {
-            const status = await fetch(`${REPO_QUERY_COLLECTION_ENDPOINT}?owner=${ownerName}&name=${repoName}&branch=beta`);
-            const statusText = await status.text();
+            const response = await fetch(`${REPO_QUERY_COLLECTION_ENDPOINT}?owner=${ownerName}&name=${repoName}&branch=HEAD`);
 
-            if (statusText.includes("not indexed")) {
+            if (response.status !== 200) {
                 setStatusMessage("This repository is not indexed. We are indexing it now. This may take a while.");
                 await fetch(
                     `${REPO_QUERY_EMBED_ENDPOINT}`,
@@ -20,7 +19,7 @@ export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerNam
                         body: JSON.stringify({
                             owner: ownerName,
                             name: repoName,
-                            branch: "beta",
+                            branch: "HEAD",
                         }),
                     },
                 );
