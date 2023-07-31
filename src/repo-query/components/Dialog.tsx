@@ -6,7 +6,7 @@ import { Chat } from "../pages/chat";
 import { RepoQueryPages } from "../../ts/types";
 
 export const Dialog = ({ isOpen, toggleDialog, ownerName, repoName }: { isOpen: boolean, toggleDialog: () => void, ownerName: string, repoName: string }) => {
-    const [currentPage, setCurrentPage] = useState(RepoQueryPages.Chat);
+    const [currentPage, setCurrentPage] = useState(RepoQueryPages.Home);
 
     return (
         <div

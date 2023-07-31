@@ -23,14 +23,15 @@ export const Chat = ({ ownerName, repoName, setCurrentPage }: { ownerName: strin
         const dataLine = chunkLines[1];
 
         const event = eventLine.split(": ")[1];
-        let data = { path: "" };
+        let data:any;
 
         try {
             data = JSON.parse(dataLine.split(": ")[1]);
         } catch (e) {
-            // untermindated string
-            data = JSON.parse(dataLine.slice(6, dataLine.length - 1));
             console.error(dataLine);
+
+            // eslint-disable-next-line prefer-destructuring
+            data = dataLine.split("data: ")[1];
         }
 
 
@@ -45,8 +46,10 @@ export const Chat = ({ ownerName, repoName, setCurrentPage }: { ownerName: strin
         } else if (event === "DONE") {
             setBotThinking(false);
             setSendEnabled(true);
+            const response = data as string;
+
             setChatHistory(prevChatHistory => [...prevChatHistory, {
-                message: data as unknown as string,
+                message: response,
                 isUser: false,
             }]);
         }
@@ -103,6 +106,8 @@ export const Chat = ({ ownerName, repoName, setCurrentPage }: { ownerName: strin
         ]);
     }, []);
 
+    const suggestedQuestions = ["What's the tech stack for this project?", "How do I set this up?", "List some functions with side effects."];
+
     return (
 
         <div
@@ -116,47 +121,101 @@ export const Chat = ({ ownerName, repoName, setCurrentPage }: { ownerName: strin
                 {chatHistory.map((chatMessage, index) => (
                     <div
                         key={index}
-                        className={`flex flex-col justify-start items-start h-auto p-4 rounded-xl m-2 inline-block max-w-xs ${chatMessage.isUser ? "bg-slate-800 self-end" : "bg-slate-700 self-start"}`}
-                        id="chat-bubble"
+                        className="flex flex-col justify-start items-start w-full"
                     >
                         <div
-                            className={`text-sm text-gray-300 w-full ${chatMessage.isUser ? "text-right" : "text-left"}`}
-                            id="chat-bubble-message"
+                            key={index}
+                            className={`flex flex-col justify-start items-start h-auto p-4 rounded-xl m-2 inline-block max-w-xs ${chatMessage.isUser ? "bg-slate-800 self-end" : "bg-slate-700 self-start"}`}
+                            id="chat-bubble"
                         >
-                            {/* this might contain markdown if its from the bot*/}
-                            {chatMessage.isUser
-                                ? chatMessage.message
-                                : (
-                                    <ReactMarkdown components={{
-                                        code ({ node, inline, className, children, ...props }) {
-                                            const match = (/language-(\w+)/).exec(className || "");
+                            <div
+                                className={`text-sm text-gray-300 w-full ${chatMessage.isUser ? "text-right" : "text-left"}`}
+                                id="chat-bubble-message"
+                            >
+                                {/* this might contain markdown if its from the bot*/}
+                                {chatMessage.isUser
+                                    ? chatMessage.message
+                                    : (
+                                        <ReactMarkdown components={{
+                                            code ({ node, inline, className, children, ...props }) {
+                                                const match = (/language-(\w+)/).exec(className || "");
 
-                                            return !inline && match
-                                                ? (
-                                                    <SyntaxHighlighter
-                                                        PreTag="div"
-                                                        language={match[1]}
-                                                        {...props}
-                                                        style={darcula}
-                                                    >
-                                                        {String(children).replace(/\n$/, "")}
-                                                    </SyntaxHighlighter>
-                                                )
-                                                : (
-                                                    <code
-                                                        className={className}
-                                                        {...props}
-                                                    >
-                                                        {children}
-                                                    </code>
-                                                );
-                                        },
-                                    }}
-                                    >
-                                        {chatMessage.message}
-                                    </ReactMarkdown>
-                                )}
+                                                return !inline && match
+                                                    ? (
+                                                        <SyntaxHighlighter
+                                                            PreTag="div"
+                                                            language={match[1]}
+                                                            {...props}
+                                                            style={darcula}
+                                                        >
+                                                            {String(children).replace(/\n$/, "")}
+                                                        </SyntaxHighlighter>
+                                                    )
+                                                    : (
+                                                        <code
+                                                            className={className}
+                                                            {...props}
+                                                        >
+                                                            {children}
+                                                        </code>
+                                                    );
+                                            },
+                                        }}
+                                        >
+                                            {chatMessage.message}
+                                        </ReactMarkdown>
+                                    )}
+                            </div>
                         </div>
+
+                        {!chatMessage.isUser &&
+                            index === chatHistory.length - 1 &&
+                        (
+
+                            <div
+                                className="flex flex-col justify-start items-start w-full pl-4"
+                                id="chat-dialog-body-chat-history-chat-bubble"
+                            >
+                                <p
+                                    className="text-md text-gray-600 w-full text-left mb-2"
+                                    id="chat-dialog-body-chat-history-chat-bubble-message"
+                                >
+                                    Here&apos;s some example questions you can ask:
+                                </p>
+
+                                <div
+                                    className="flex flex-col justify-start items-start w-full"
+                                    id="question-suggestions"
+                                >
+                                    {
+                                        suggestedQuestions.map((question, index) => (
+                                            <button
+                                                key={index}
+                                                className="h-auto p-2 rounded-xl mb-2 inline-block bg-gradient-to-r from-[#e67e22] to-[#d35400] border-none"
+                                                id="question-suggestion"
+                                                onClick={
+                                                    async () => {
+                                                        setChatHistory([...chatHistory, {
+                                                            message: question,
+                                                            isUser: true,
+                                                        }]);
+
+                                                        await askQuery(question);
+                                                    }
+                                                }
+                                            >
+                                                <div
+                                                    className="text-sm text-white w-full text-left"
+                                                    id="question-suggestion-message"
+                                                >
+                                                    {question}
+                                                </div>
+                                            </button>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+                        )}
                     </div>
                 ))}
 
