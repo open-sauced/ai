@@ -29,7 +29,6 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
         } catch (e) {
             console.error(dataLine);
 
-            // eslint-disable-next-line prefer-destructuring
             // remove quotes from string
             data = dataLine.split("data: ")[1].substring(1, dataLine.split("data: ")[1].length - 2);
         }
