@@ -1,12 +1,12 @@
 {
   "name": "opensauced-browser-extension",
-  "version": "1.12.0-beta.5",
+  "version": "1.12.0-beta.6",
   "lockfileVersion": 3,
   "requires": true,
   "packages": {
     "": {
       "name": "opensauced-browser-extension",
-      "version": "1.12.0-beta.5",
+      "version": "1.12.0-beta.6",
       "dependencies": {
         "date-fns": "^2.30.0",
         "gpt-tokenizer": "^1.0.5",
