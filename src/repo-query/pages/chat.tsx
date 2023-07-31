@@ -52,6 +52,14 @@ export const Chat = ({ ownerName, repoName, setCurrentPage }: { ownerName: strin
                 message: response,
                 isUser: false,
             }]);
+        } else if (event === "ERROR") {
+            setBotThinking(false);
+            setSendEnabled(true);
+            console.error(data);
+            setChatHistory(prevChatHistory => [...prevChatHistory, {
+                message: "Something went wrong. Please try again.",
+                isUser: false,
+            }]);
         }
     };
 
@@ -125,7 +133,7 @@ export const Chat = ({ ownerName, repoName, setCurrentPage }: { ownerName: strin
                     >
                         <div
                             key={index}
-                            className={`flex flex-col justify-start items-start h-auto p-4 rounded-xl m-2 inline-block max-w-xs ${chatMessage.isUser ? "bg-slate-800 self-end" : "bg-slate-700 self-start"}`}
+                            className={`flex flex-col justify-start items-start h-auto p-4 rounded-xl m-2 max-w-xs ${chatMessage.isUser ? "bg-slate-800 self-end" : "bg-slate-700 self-start"}`}
                             id="chat-bubble"
                         >
                             <div
