@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { RepoQueryPages } from "../../ts/types";
 import { REPO_QUERY_QUERY_ENDPOINT } from "../../constants";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -10,7 +9,7 @@ interface ChatMessage {
     isUser: boolean;
 }
 
-export const Chat = ({ ownerName, repoName, setCurrentPage }: { ownerName: string, repoName: string, setCurrentPage: (page: RepoQueryPages) => void }) => {
+export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: string }) => {
     // chat ui with bubbles and input
     const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
     const [sendEnabled, setSendEnabled] = useState(true);
@@ -87,7 +86,7 @@ export const Chat = ({ ownerName, repoName, setCurrentPage }: { ownerName: strin
 
         if (reader) {
             const decoder = new TextDecoder("utf-8");
-            const { value: chunk, done: readerDone } = await reader.read();
+            const { done: readerDone } = await reader.read();
 
             // eslint-disable-next-line no-loops/no-loops
             while (!readerDone) {
@@ -146,8 +145,9 @@ export const Chat = ({ ownerName, repoName, setCurrentPage }: { ownerName: strin
                                     ? chatMessage.message
                                     : (
                                         <ReactMarkdown components={{
+                                            // eslint-disable-next-line @typescript-eslint/no-unused-vars
                                             code ({ node, inline, className, children, ...props }) {
-                                                const match = (/language-(\w+)/).exec(className || "");
+                                                const match = (/language-(\w+)/).exec(className ?? "");
 
                                                 return !inline && match
                                                     ? (

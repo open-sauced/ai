@@ -79,7 +79,7 @@ export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerNam
 
                 if (reader) {
                     const decoder = new TextDecoder("utf-8");
-                    const { value: chunk, done: readerDone } = await reader.read();
+                    const { done: readerDone } = await reader.read();
 
                     // eslint-disable-next-line no-loops/no-loops
                     while (!readerDone) {

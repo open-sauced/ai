@@ -113,7 +113,6 @@ RepoQuery
                                     <Chat
                                         ownerName={ownerName}
                                         repoName={repoName}
-                                        setCurrentPage={setCurrentPage}
                                     />
                                 )
                                 : null
