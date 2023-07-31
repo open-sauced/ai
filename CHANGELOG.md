@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.12.0-beta.6](https://github.com/open-sauced/ai/compare/v1.12.0-beta.5...v1.12.0-beta.6) (2023-07-31)
+
+
+### 🐛 Bug Fixes
+
+* manual release.yml ([a41de3f](https://github.com/open-sauced/ai/commit/a41de3f288b1147e5cf9fc0139ac80fcd1c8e2ee))
+
 ## [1.12.0-beta.5](https://github.com/open-sauced/ai/compare/v1.12.0-beta.4...v1.12.0-beta.5) (2023-07-28)
 
 
