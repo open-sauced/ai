@@ -171,12 +171,13 @@ export const updateInsight = async (userToken: string, repoId: string, checked: 
 
     return response.status === 200;
 };
-export const getHighlights = async (): Promise<Highlights | undefined> => {
+export const getHighlights = async (forceRefresh?: boolean): Promise<Highlights | undefined> => {
     const response = await cachedFetch(
         `${OPEN_SAUCED_HIGHLIGHTS_LIST_ENDPOINT}?limit=10`,
         {
             method: "GET",
             expireInSeconds: 300,
+            forceRefresh,
         },
     );
 

@@ -1,7 +1,4 @@
-import {
-    GITHUB_PROFILE_USER_PROFILE_BIO_SELECTOR,
-    GITHUB_PROFILE_EDIT_MENU_SELECTOR,
-} from "../../constants";
+import { GITHUB_PROFILE_USER_PROFILE_EDITABLE_AREA_SELECTOR } from "../../constants";
 import { ViewOnOpenSaucedButton } from "../../content-scripts/components/ViewOnOpenSaucedButton/ViewOnOpenSaucedButton";
 
 const injectViewOnOpenSaucedButton = (username: string) => {
@@ -11,11 +8,12 @@ const injectViewOnOpenSaucedButton = (username: string) => {
 
     const viewOnOpenSaucedButton = ViewOnOpenSaucedButton(username);
 
-    const userBio = document.querySelector(
-        `${GITHUB_PROFILE_USER_PROFILE_BIO_SELECTOR}, ${GITHUB_PROFILE_EDIT_MENU_SELECTOR}`,
+    const userEditableArea = document.getElementsByClassName(
+        GITHUB_PROFILE_USER_PROFILE_EDITABLE_AREA_SELECTOR,
     );
+    const editableAreaElement = userEditableArea[0];
 
-    userBio?.append(viewOnOpenSaucedButton);
+    editableAreaElement.parentNode?.insertBefore(viewOnOpenSaucedButton, editableAreaElement);
 };
 
 export default injectViewOnOpenSaucedButton;

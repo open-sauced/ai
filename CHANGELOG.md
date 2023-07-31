@@ -5,6 +5,50 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.12.0](https://github.com/open-sauced/ai/compare/v1.11.1...v1.12.0) (2023-07-31)
+
+
+### 🍕 Features
+
+* Login with pkce ([#230](https://github.com/open-sauced/ai/issues/230)) ([42e8d4a](https://github.com/open-sauced/ai/commit/42e8d4ad4d3bc47c4138b2eeec20920015183849))
+* view repos on opensauced ([#218](https://github.com/open-sauced/ai/issues/218)) ([f33d9fd](https://github.com/open-sauced/ai/commit/f33d9fd8ab66242aecf07be23d961c33b9779727))
+
+
+### 🐛 Bug Fixes
+
+* manual release.yml ([a41de3f](https://github.com/open-sauced/ai/commit/a41de3f288b1147e5cf9fc0139ac80fcd1c8e2ee))
+* post highlights from the extension ([#223](https://github.com/open-sauced/ai/issues/223)) ([7d91011](https://github.com/open-sauced/ai/commit/7d910114ed4c094e8040549496873c79aff2196e))
+* redirect to home page after posting a highlight ([#203](https://github.com/open-sauced/ai/issues/203)) ([4ebd2d1](https://github.com/open-sauced/ai/commit/4ebd2d15b8b3bae0ea6b563568b0b7b01a86f832))
+* view on open sauced location ([#225](https://github.com/open-sauced/ai/issues/225)) ([0ecfef0](https://github.com/open-sauced/ai/commit/0ecfef0dda3a83b43deaa12189a7dc0474f29d78))
+
+## [1.12.0-beta.6](https://github.com/open-sauced/ai/compare/v1.12.0-beta.5...v1.12.0-beta.6) (2023-07-31)
+
+
+### 🐛 Bug Fixes
+
+* manual release.yml ([a41de3f](https://github.com/open-sauced/ai/commit/a41de3f288b1147e5cf9fc0139ac80fcd1c8e2ee))
+
+## [1.12.0-beta.5](https://github.com/open-sauced/ai/compare/v1.12.0-beta.4...v1.12.0-beta.5) (2023-07-28)
+
+
+### 🍕 Features
+
+* Login with pkce ([#230](https://github.com/open-sauced/ai/issues/230)) ([42e8d4a](https://github.com/open-sauced/ai/commit/42e8d4ad4d3bc47c4138b2eeec20920015183849))
+
+## [1.12.0-beta.4](https://github.com/open-sauced/ai/compare/v1.12.0-beta.3...v1.12.0-beta.4) (2023-07-25)
+
+
+### 🐛 Bug Fixes
+
+* view on open sauced location ([#225](https://github.com/open-sauced/ai/issues/225)) ([0ecfef0](https://github.com/open-sauced/ai/commit/0ecfef0dda3a83b43deaa12189a7dc0474f29d78))
+
+## [1.12.0-beta.3](https://github.com/open-sauced/ai/compare/v1.12.0-beta.2...v1.12.0-beta.3) (2023-07-20)
+
+
+### 🐛 Bug Fixes
+
+* redirect to home page after posting a highlight ([#203](https://github.com/open-sauced/ai/issues/203)) ([4ebd2d1](https://github.com/open-sauced/ai/commit/4ebd2d15b8b3bae0ea6b563568b0b7b01a86f832))
+
 ## [1.12.0-beta.2](https://github.com/open-sauced/ai/compare/v1.12.0-beta.1...v1.12.0-beta.2) (2023-07-19)
 
 
