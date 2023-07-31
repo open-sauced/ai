@@ -31,7 +31,8 @@ export const Chat = ({ ownerName, repoName, setCurrentPage }: { ownerName: strin
             console.error(dataLine);
 
             // eslint-disable-next-line prefer-destructuring
-            data = dataLine.split("data: ")[1];
+            // remove quotes from string
+            data = dataLine.split("data: ")[1].substring(1, dataLine.split("data: ")[1].length - 2);
         }
 
 
