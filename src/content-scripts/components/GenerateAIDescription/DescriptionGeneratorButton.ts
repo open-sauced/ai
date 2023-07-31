@@ -3,10 +3,10 @@ import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
 import { getPullRequestAPIURL } from "../../../utils/urlMatchers";
 import { getDescriptionContext, isOutOfContextBounds } from "../../../utils/fetchGithubAPIData";
 import { generateDescription } from "../../../utils/ai-utils/openai";
-import { GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR, SUPABASE_LOGIN_URL } from "../../../constants";
+import { GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR } from "../../../constants";
 import { insertTextAtCursor } from "../../../utils/ai-utils/cursorPositionInsert";
 import { getAIDescriptionConfig } from "../../../utils/ai-utils/descriptionconfig";
-import { getAuthToken, isLoggedIn } from "../../../utils/checkAuthentication";
+import { getAuthToken, isLoggedIn, optLogIn } from "../../../utils/checkAuthentication";
 
 export const DescriptionGeneratorButton = () => {
     const descriptionGeneratorButton = createHtmlElement("a", {
@@ -27,7 +27,7 @@ const handleSubmit = async () => {
 
     try {
         if (!(await isLoggedIn())) {
-            return window.open(SUPABASE_LOGIN_URL, "_blank");
+            return void optLogIn();
         }
 
         if (!logo || !button) {

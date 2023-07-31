@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { isGithubPullRequestPage, isGithubRepoPage } from "../utils/urlMatchers";
 
 interface GitHubPageInfo {
-    prUrl: string;
-    prTitle: string;
+    pageUrl: string;
+    pageTitle: string;
     type: "unknown" | "PR" | "REPO";
 }
 
 export const usGetGitHubPageInfo = () => {
-    const [GithubPRPage, setGithubPRPage] = useState<GitHubPageInfo>({ prUrl: "", prTitle: "", type: "unknown" });
+    const [GithubPage, setGithubPage] = useState<GitHubPageInfo>({ pageUrl: "", pageTitle: "", type: "unknown" });
 
     useEffect(() => {
         chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
@@ -16,14 +16,14 @@ export const usGetGitHubPageInfo = () => {
                 const tab = tabs[0];
 
                 if (isGithubPullRequestPage(tab.url!)) {
-                    setGithubPRPage({ prUrl: tab.url!, prTitle: tab.title!.split("by")[0].trim(), type: "PR" });
+                    setGithubPage({ pageUrl: tab.url!, pageTitle: tab.title!.split("by")[0].trim(), type: "PR" });
                 } else if (isGithubRepoPage(tab.url!)) {
-                    setGithubPRPage({ prUrl: tab.url!, prTitle: "", type: "REPO" });
+                    setGithubPage({ pageUrl: tab.url!, pageTitle: "", type: "REPO" });
                 }
             }
         });
     }, []);
 
 
-    return GithubPRPage;
+    return GithubPage;
 };
