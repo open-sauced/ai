@@ -40,7 +40,7 @@ export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerNam
 
             if (response.status !== 200) {
                 setStatusMessage("This repository is not indexed. We are indexing it now. This may take a while.");
-                const response = await fetch(
+                const embedResponse = await fetch(
                     `${REPO_QUERY_EMBED_ENDPOINT}`,
                     {
                         method: "POST",
@@ -53,7 +53,7 @@ export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerNam
                     },
                 );
 
-                if (response.status === 403) {
+                if (embedResponse.status === 403) {
                     setStatusMessage("This repository's license does not allow us to index it. Redirecting to the Home Page.");
                     setTimeout(
                         () => {
@@ -61,6 +61,18 @@ export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerNam
                         }
                         , 3000,
                     );
+                    return;
+                }
+
+                if (embedResponse.status !== 200) {
+                    setStatusMessage("There was an error while indexing this repository. Redirecting to the Home Page.");
+                    setTimeout(
+                        () => {
+                            setCurrentPage(RepoQueryPages.Home);
+                        }
+                        , 3000,
+                    );
+                    return;
                 }
 
                 const reader = response.body?.getReader();
