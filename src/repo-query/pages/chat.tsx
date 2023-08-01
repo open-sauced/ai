@@ -18,8 +18,7 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
 
     const processChunk = (chunk: string) => {
         const chunkLines = chunk.split("\n");
-        const eventLine = chunkLines[0];
-        const dataLine = chunkLines[1];
+        const [eventLine, dataLine] = chunkLines;
 
         const event = eventLine.split(": ")[1];
         let data:any;
@@ -33,32 +32,40 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
             data = dataLine.split("data: ")[1].substring(1, dataLine.split("data: ")[1].length - 2);
         }
 
+        switch (event) {
+            case "SEARCH_CODEBASE":
+                setStatusMessage("Searching the codebase for your query...🔍");
+                break;
+            case "SEARCH_FILE":
+                setStatusMessage(`Searching ${data.path} for your query...🔍`);
+                break;
+            case "SEARCH_PATH":
+                setStatusMessage(`Looking for ${data.path} in the codebase...🔍`);
+                break;
+            case "GENERATE_RESPONSE":
+                setStatusMessage("Generating a response...🧠");
+                break;
+            case "DONE":
+                setBotThinking(false);
+                setSendEnabled(true);
 
-        if (event === "SEARCH_CODEBASE") {
-            setStatusMessage("Searching the codebase for your query...🔍");
-        } else if (event === "SEARCH_FILE") {
-            setStatusMessage(`Searching ${data.path} for your query...🔍`);
-        } else if (event === "GENERATE_RESPONSE") {
-            setStatusMessage("Generating a response...🧠");
-        } else if (event === "SEARCH_PATH") {
-            setStatusMessage(`Looking for ${data.path} in the codebase...🔍`);
-        } else if (event === "DONE") {
-            setBotThinking(false);
-            setSendEnabled(true);
-            const response = data as string;
+                setChatHistory(prevChatHistory => [...prevChatHistory, {
+                    message: data,
+                    isUser: false,
+                }]);
+                break;
+            case "ERROR":
+                setBotThinking(false);
+                setSendEnabled(true);
+                console.error(data);
 
-            setChatHistory(prevChatHistory => [...prevChatHistory, {
-                message: response,
-                isUser: false,
-            }]);
-        } else if (event === "ERROR") {
-            setBotThinking(false);
-            setSendEnabled(true);
-            console.error(data);
-            setChatHistory(prevChatHistory => [...prevChatHistory, {
-                message: "Something went wrong. Please try again.",
-                isUser: false,
-            }]);
+                setChatHistory(prevChatHistory => [...prevChatHistory, {
+                    message: "Something went wrong. Please try again.",
+                    isUser: false,
+                }]);
+                break;
+            default:
+                break;
         }
     };
 

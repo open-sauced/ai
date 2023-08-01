@@ -1,9 +1,7 @@
 import openSaucedLogoIcon from "../../assets/open-sauced-orange-bg-logo.svg";
 
 export const ChatCircle = ({ toggleDialog }: { toggleDialog: () => void }) => (
-    <div
-        role="button"
-        tabIndex={0}
+    <button
         onClick={toggleDialog}
         onKeyDown={
             e => {
@@ -19,5 +17,5 @@ export const ChatCircle = ({ toggleDialog }: { toggleDialog: () => void }) => (
             id="chat-dialog-button-logo"
             src={chrome.runtime.getURL(openSaucedLogoIcon)}
         />
-    </div>
+    </button>
 );

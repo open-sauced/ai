@@ -8,30 +8,41 @@ export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerNam
     useEffect(() => {
         const processChunk = (chunk: string) => {
             const chunkLines = chunk.split("\n");
-            const eventLine = chunkLines[0];
+            const [eventLine] = chunkLines;
 
             const event = eventLine.split(": ")[1];
 
+            switch (event) {
+                case "FETCH_REPO":
+                    setStatusMessage("Fetching Repository from GitHub...");
+                    break;
+                case "EMBED_REPO":
+                    setStatusMessage("Embedding Repository...");
+                    break;
+                case "SAVE_EMBEDDINGS":
+                    setStatusMessage("Saving the embeddings to our database...");
+                    break;
+                case "ERROR":
+                    setStatusMessage("There was an error while indexing this repository. Redirecting to the Home Page.");
+                    setTimeout(
+                        () => {
+                            setCurrentPage(RepoQueryPages.Home);
+                        }
+                        , 3000,
+                    );
+                    break;
+                case "DONE":
+                    setStatusMessage("Indexing Complete. Redirecting to the Chat Dialog.");
+                    setTimeout(
+                        () => {
+                            setCurrentPage(RepoQueryPages.Chat);
+                        }
 
-            if (event === "FETCH_REPO") {
-                setStatusMessage("Fetching Repository from GitHub...");
-            } else if (event === "EMBED_REPO") {
-                setStatusMessage("Embedding Repository...");
-            } else if (event === "SAVE_EMBEDDINGS") {
-                setStatusMessage("Saving the embeddings to our database...");
-            } else if (event === "ERROR") {
-                setStatusMessage("There was an error while indexing this repository. Redirecting to the Home Page.");
-                setTimeout(
-                    () => {
-                        setCurrentPage(RepoQueryPages.Home);
-                    }
-                    , 3000,
-                );
-            } else if (event === "DONE") {
-                setStatusMessage("Indexing Complete. Redirecting to the Chat Dialog.");
-                setTimeout(() => {
-                    setCurrentPage(RepoQueryPages.Chat);
-                }, 1000);
+                        , 1000,
+                    );
+                    break;
+                default:
+                    break;
             }
         };
 

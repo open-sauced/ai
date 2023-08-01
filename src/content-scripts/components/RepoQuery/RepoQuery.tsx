@@ -4,13 +4,7 @@ import { RepoQuery } from "../../../repo-query/pages/main";
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 
 export const RepoQueryRoot = (ownerName: string, repoName: string) => {
-    const repoQueryRoot = createHtmlElement("div", {
-        id: "repo-query-root",
-        innerHTML: `
-            <div>
-            </div>
-        `,
-    });
+    const repoQueryRoot = createHtmlElement("div", { id: "repo-query-root" });
 
     ReactDOM.createRoot(repoQueryRoot).render(
         <React.StrictMode>
