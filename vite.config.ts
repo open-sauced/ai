@@ -17,9 +17,8 @@ function classnamePrefixer({ prefix }: { prefix: string }): Plugin {
         name: 'classname-prefixer',
         transform(code, id) {
               if (id.endsWith('home.tsx')) {
-                  code = code.replace(/className\s*:\s*("[^"]*")/g, (_, quote: string) => {
-                      const classNames = quote
-                        .slice(1, -1)
+                  code = code.replace(/className:\s*(['"`])(.*?)\1/g, (_, quote, styles: string) => {
+                      const classNames = styles
                         .split(' ')
                         .map((className) => {
                             if (!className.includes(":")) {
@@ -31,7 +30,7 @@ function classnamePrefixer({ prefix }: { prefix: string }): Plugin {
                             return pre + prefix + style;
                         })
                         .join(' ');
-                      return `className: "${classNames}"`;
+                      return `className: ${quote}${classNames}${quote}`;
                   });
                   console.log(code);
               }
