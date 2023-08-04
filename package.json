@@ -13,7 +13,7 @@
     "format": "npm run lint -- --fix",
     "test": "vitest run",
     "coverage": "vitest run --coverage",
-    "cypress": "cypress run",
+    "test:e2e": "cypress run",
     "cypress:open": "cypress open"
   },
   "dependencies": {
