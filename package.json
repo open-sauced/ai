@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "lint": "eslint . --report-unused-disable-directives",
     "format": "npm run lint -- --fix",
-    "test": "vitest run",
+    "test": "vitest run && npm run test:e2e",
     "coverage": "vitest run --coverage",
     "test:e2e": "cypress run",
     "cypress:open": "cypress open"
