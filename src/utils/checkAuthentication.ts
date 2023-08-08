@@ -16,9 +16,10 @@ export const optLogOut = () => {
 };
 
 export const optLogIn = async () => {
-    if (typeof window === "undefined") {
-        return;
-    }
+    // TODO: Figure out a better check here or remove it as window is always undefined in Firefox.
+    // if (typeof window === "undefined") {
+    //     return;
+    // }
 
     const optedLogOut = { [OPEN_SAUCED_OPTED_LOG_OUT_KEY]: true };
 
