@@ -10,14 +10,19 @@ export const getAuthToken = async (): Promise<string> => (await chrome.storage.s
 
 export const optLogOut = () => {
     void removeAuthTokenFromStorage();
-    void chrome.storage.local.set({ [OPEN_SAUCED_OPTED_LOG_OUT_KEY]: true });
+    const optedLogOut = { [OPEN_SAUCED_OPTED_LOG_OUT_KEY]: true };
+
+    void chrome.storage.local.set(optedLogOut);
 };
 
 export const optLogIn = async () => {
     if (typeof window === "undefined") {
         return;
     }
-    void chrome.storage.local.set({ [OPEN_SAUCED_OPTED_LOG_OUT_KEY]: false });
+
+    const optedLogOut = { [OPEN_SAUCED_OPTED_LOG_OUT_KEY]: true };
+
+    void chrome.storage.local.set(optedLogOut);
 
     const verifier = generatePKCEVerifier();
     const challenge = await generatePKCEChallenge(verifier);
