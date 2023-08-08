@@ -11,7 +11,7 @@
     }
   ],
   "background": {
-    "service_worker": "src/worker/background.ts",
+    "scripts": ["src/worker/background.ts"],
     "type": "module"
   },
   "icons": {
@@ -21,5 +21,11 @@
     "128": "src/assets/os-icons/os-icon-128.png"
   },
   "host_permissions": ["https://github.com/*", "https://*.insights.opensauced.pizza/*" , "https://www.linkedin.com/*"],
-  "permissions": ["scripting", "storage", "tabs", "cookies"]
+  "permissions": ["scripting", "storage", "tabs", "cookies"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "ai@opensauced.pizza",
+      "strict_min_version": "1.0"
+    }
+  }
 }
