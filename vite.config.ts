@@ -16,23 +16,51 @@ function classnamePrefixer({ prefix }: { prefix: string }): Plugin {
     return {
         name: 'classname-prefixer',
         transform(code, id) {
-              if (id.endsWith('home.tsx')) {
+              if (id.endsWith('.tsx')) {
                   code = code.replace(/className:\s*(['"`])(.*?)\1/g, (_, quote, styles: string) => {
-                      const classNames = styles
-                        .split(' ')
+                      const classNames = customSplit(styles
+                        .trim())
                         .map((className) => {
-                            if (!className.includes(":")) {
-                                return prefix + className
+                            if (className.startsWith("${") && className.endsWith("}")) {
+                                let startQuote = null;
+                                let startQuoteIndex = -1;
+                                let updatedClassName = "";
+                                let indexOfLastSplit: null | number = null;
+                                for (let i = 0; i < className.length; i++) {
+                                    if (!startQuote && (className[i] === "'" || className[i] === '"')) {
+                                        startQuote = className[i];
+                                        startQuoteIndex = i;
+                                    } else if (startQuote && (className[i] === startQuote)) {
+                                        const beforeStartStyles = className.slice(indexOfLastSplit ?? 0, startQuoteIndex + 1);
+                                        const styles = className.slice(startQuoteIndex + 1, i);
+                                        const prefixedStyles = styles.split(" ").map((style) => {
+                                            if (style.length) {
+                                                return prefix + style
+                                            }
+                                            return style;
+                                        }).join(" ");
+                                        updatedClassName += beforeStartStyles + prefixedStyles;
+                                        indexOfLastSplit = i;
+                                        startQuote = null;
+                                        startQuoteIndex = -1;
+                                    }
+                                }
+                                updatedClassName += className.slice(indexOfLastSplit ?? 0);
+                                return updatedClassName;
+                            }
+                            else if (!className.includes(":")) {
+                                if (className.length) {
+                                    return prefix + className
+                                }
+                                return className;
                             }
                             const indexOfLastColon = className.lastIndexOf(":");
                             const pre = className.slice(0, indexOfLastColon + 1);
                             const style = className.slice(indexOfLastColon + 1);
                             return pre + prefix + style;
-                        })
-                        .join(' ');
+                        }).join(" ");
                       return `className: ${quote}${classNames}${quote}`;
                   });
-                  console.log(code);
               }
               return {
                   code,
@@ -40,4 +68,22 @@ function classnamePrefixer({ prefix }: { prefix: string }): Plugin {
               };
         },
     };
+}
+
+function customSplit(str: string) {
+    const result: string[] = [];
+    let start = 0;
+    for (let end = 0; end < str.length; end++) {
+        if (str[start] === "$" && str[start + 1] === "{" && str[end - 1] === "}" && str[end] === " ") {
+            result.push(str.slice(start, end + 1));
+            start = end + 1;
+        }
+        else if (str[end] === " " && str[start] !== "$") {
+            result.push(str.slice(start, end));
+            start = end + 1;
+        }
+    }
+    if (start < str.length)
+    result.push(str.slice(start))
+    return result;
 }
