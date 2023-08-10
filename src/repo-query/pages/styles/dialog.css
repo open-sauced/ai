@@ -1,0 +1,23 @@
+#chat-dialog-body-chat-history::-webkit-scrollbar {
+  width: 8px;
+}
+#chat-dialog-body-chat-history::-webkit-scrollbar-track{
+    background: #f1f1f1;
+}
+#chat-dialog-body-chat-history::-webkit-scrollbar-thumb{
+    background: #EE6C28;
+    border-radius: 4px;
+}
+#chat-bubble-message pre{
+    /* allow horizontal scrolling for code */
+    overflow: auto;
+}
+#chat-bubble-message pre::-webkit-scrollbar {
+  width: 2px;
+}
+#chat-bubble-message pre::-webkit-scrollbar-track{
+    background: #f1f1f1;
+}
+#chat-bubble-message pre::-webkit-scrollbar-thumb{
+    background: #EE6C28;
+}
