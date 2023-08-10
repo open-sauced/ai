@@ -1,3 +1,5 @@
+import domUpdateWatch from "./domUpdateWatcher";
+
 const prEditWatch = (callback: () => void, delayInMs = 0) => {
     const observer = new MutationObserver((mutationList: MutationRecord[], observer: MutationObserver) => {
         mutationList.forEach(mutation => {
@@ -6,6 +8,11 @@ const prEditWatch = (callback: () => void, delayInMs = 0) => {
                 observer.disconnect();
             }
         });
+    });
+
+    // Disconnect the observer when the user navigates to a new page
+    domUpdateWatch(() => {
+        observer.disconnect();
     });
 
     observer.observe(document.body, { attributes: true, subtree: true });
