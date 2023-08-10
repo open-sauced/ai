@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.13.0-beta.1](https://github.com/open-sauced/ai/compare/v1.12.1...v1.13.0-beta.1) (2023-08-10)
+
+
+### 🍕 Features
+
+* chat dialog for talking to repos ([#226](https://github.com/open-sauced/ai/issues/226)) ([67f04d7](https://github.com/open-sauced/ai/commit/67f04d7420a1cddc6c99a8bedc1382b460e35ed5))
+
 ## [1.12.1](https://github.com/open-sauced/ai/compare/v1.12.0...v1.12.1) (2023-08-10)
 
 

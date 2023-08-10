@@ -1,8 +1,12 @@
 // OpenSauced constants
 export const OPEN_SAUCED_INSIGHTS_DOMAIN = import.meta.env.VITE_OPEN_SAUCED_INSIGHTS_DOMAIN;
 export const OPEN_SAUCED_API_ENDPOINT = import.meta.env.VITE_OPEN_SAUCED_API_ENDPOINT;
+export const REPO_QUERY_API_ENDPOINT = "https://opensauced.tools";
 export const SUPABASE_LOGIN_URL = `https://${import.meta.env.VITE_OPEN_SAUCED_SUPABASE_ID}.supabase.co/auth/v1/authorize`;
 
+export const REPO_QUERY_EMBED_ENDPOINT = `${REPO_QUERY_API_ENDPOINT}/embed`;
+export const REPO_QUERY_QUERY_ENDPOINT = `${REPO_QUERY_API_ENDPOINT}/query`;
+export const REPO_QUERY_COLLECTION_ENDPOINT = `${REPO_QUERY_API_ENDPOINT}/collection`;
 
 export const SUPABASE_AUTH_COOKIE_NAME = `sb-${import.meta.env.VITE_OPEN_SAUCED_SUPABASE_ID}-auth-token`;
 export const SUPABASE_PKCE_VERIFIER_COOKIE_NAME = `sb-${import.meta.env.VITE_OPEN_SAUCED_SUPABASE_ID}-auth-token-code-verifier`;
