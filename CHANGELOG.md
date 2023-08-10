@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.12.1](https://github.com/open-sauced/ai/compare/v1.12.0...v1.12.1) (2023-08-10)
+
+
+### 🐛 Bug Fixes
+
+* Multiple button injections ([#244](https://github.com/open-sauced/ai/issues/244)) ([0e06d3e](https://github.com/open-sauced/ai/commit/0e06d3edd5639f469dc8504077487cfd88eb3506))
+
 ## [1.12.1-beta.1](https://github.com/open-sauced/ai/compare/v1.12.0...v1.12.1-beta.1) (2023-08-10)
 
 
