@@ -39,13 +39,13 @@ export const isGithubRepoPage = (url: string) => {
 };
 
 export const isPullRequestCreatePage = (url: string) => {
-    const githubPullRequestPattern = /^https:\/\/github\.com\/[\w.-]+\/[^/]+\/compare\/\w+$/;
+    const githubPullRequestPattern = /^https:\/\/(www\.)?github\.com\/[\w.-]+\/[^/]+\/compare\/\w+/;
 
     return githubPullRequestPattern.test(url);
 };
 
 export const isPullRequestFilesChangedPage = (url: string) => {
-    const githubPullRequestFilesChangedPattern = /^https:\/\/github\.com\/[\w.-]+\/[^/]+\/pull\/\d+\/files$/;
+    const githubPullRequestFilesChangedPattern = /^https:\/\/(www\.)?github\.com\/[\w.-]+\/[^/]+\/pull\/\d+\/files/;
 
     return githubPullRequestFilesChangedPattern.test(url);
 };
