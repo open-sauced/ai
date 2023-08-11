@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.13.1-beta.1](https://github.com/open-sauced/ai/compare/v1.13.0...v1.13.1-beta.1) (2023-08-11)
+
+
+### 🐛 Bug Fixes
+
+* incorrect embedding status, regex security warnings ([#253](https://github.com/open-sauced/ai/issues/253)) ([34f66b1](https://github.com/open-sauced/ai/commit/34f66b18bd8c665a6d7199143eeeec8c18ac8379))
+
 ## [1.13.0](https://github.com/open-sauced/ai/compare/v1.12.1...v1.13.0) (2023-08-10)
 
 
