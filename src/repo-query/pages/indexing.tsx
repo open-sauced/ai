@@ -86,7 +86,7 @@ export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerNam
                     return;
                 }
 
-                const reader = response.body?.getReader();
+                const reader = embedResponse.body?.getReader();
 
                 if (reader) {
                     const decoder = new TextDecoder("utf-8");
