@@ -120,7 +120,7 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
         ]);
     }, []);
 
-    const suggestedQuestions = ["What's the tech stack for this project?", "How do I set this up?", "List some functions with side effects."];
+    const suggestedQuestions = ["What's the tech stack for this project?", "How do I run this locally?", "List some functions with side effects."];
 
     return (
 
