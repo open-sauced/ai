@@ -45,7 +45,7 @@ export const isPullRequestCreatePage = (url: string) => {
 };
 
 export const isPullRequestFilesChangedPage = (url: string) => {
-    const githubPullRequestFilesChangedPattern = /github\.com\/[\w.-]+\/[^/]+\/pull\/\d+\/files/;
+    const githubPullRequestFilesChangedPattern = /^https:\/\/github\.com\/[\w.-]+\/[^/]+\/pull\/\d+\/files$/;
 
     return githubPullRequestFilesChangedPattern.test(url);
 };
