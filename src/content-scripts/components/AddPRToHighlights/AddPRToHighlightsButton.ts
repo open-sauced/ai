@@ -10,7 +10,7 @@ export const AddPRToHighlightsButton = () => {
             openSaucedLogoIcon,
         )}>
     <details-menu id="details-menu-os" class="dropdown-menu hidden dropdown-menu-sw color-fg-default w-48 mt-2">
-    <a href="https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed?prurl=${encodeURIComponent(
+    <a href="https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed?new=true&prurl=${encodeURIComponent(
     window.location.href,
 )}" class="dropdown-item" target="_blank">
       <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-plus">
