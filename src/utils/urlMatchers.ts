@@ -39,18 +39,18 @@ export const isGithubRepoPage = (url: string) => {
 };
 
 export const isPullRequestCreatePage = (url: string) => {
-    const githubPullRequestPattern = /github\.com\/[\w.-]+\/[^/]+\/compare\/\w+/;
+    const githubPullRequestPattern = /^https:\/\/(www\.)?github\.com\/[\w.-]+\/[^/]+\/compare\/\w+/;
 
     return githubPullRequestPattern.test(url);
 };
 
 export const isPullRequestFilesChangedPage = (url: string) => {
-    const githubPullRequestFilesChangedPattern = /github\.com\/[\w.-]+\/[^/]+\/pull\/\d+\/files/;
+    const githubPullRequestFilesChangedPattern = /^https:\/\/(www\.)?github\.com\/[\w.-]+\/[^/]+\/pull\/\d+\/files/;
 
     return githubPullRequestFilesChangedPattern.test(url);
 };
 
-export const isOnGitHub = (url: string) => url.includes("github.com");
+export const isOnGitHub = (url: string) => new URL(url).hostname === "github.com";
 
 export const getRepoAPIURL = (url: string) => url.replace(/github\.com/, "api.github.com/repos");
 
