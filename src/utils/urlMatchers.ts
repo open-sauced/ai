@@ -39,7 +39,7 @@ export const isGithubRepoPage = (url: string) => {
 };
 
 export const isPullRequestCreatePage = (url: string) => {
-    const githubPullRequestPattern = /github\.com\/[\w.-]+\/[^/]+\/compare\/\w+/;
+    const githubPullRequestPattern = /^https:\/\/github\.com\/[\w.-]+\/[^/]+\/compare\/\w+$/;
 
     return githubPullRequestPattern.test(url);
 };
