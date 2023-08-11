@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.14.0-beta.1](https://github.com/open-sauced/ai/compare/v1.13.1-beta.1...v1.14.0-beta.1) (2023-08-11)
+
+
+### 🍕 Features
+
+* modify suggested queries ([#251](https://github.com/open-sauced/ai/issues/251)) ([d3ac35a](https://github.com/open-sauced/ai/commit/d3ac35a3bc7183c26a4bdf5687734e248a942b36))
+
 ## [1.13.1-beta.1](https://github.com/open-sauced/ai/compare/v1.13.0...v1.13.1-beta.1) (2023-08-11)
 
 
