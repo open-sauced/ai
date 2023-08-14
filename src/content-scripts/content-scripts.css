@@ -3,6 +3,7 @@ style for content-scripts
 not using tailwindcss base styles because it's interfering with the github page styles
 */
 
+@config  "../../tailwind.content-scripts.config.js";
 @tailwind components;
 @tailwind utilities;
 

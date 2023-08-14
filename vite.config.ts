@@ -8,7 +8,6 @@ export default defineConfig({
   plugins: [
       react(),
       crx({ manifest } as any),
-      classnamePrefixer({ prefix: 'tw-' }),
   ],
 });
 
