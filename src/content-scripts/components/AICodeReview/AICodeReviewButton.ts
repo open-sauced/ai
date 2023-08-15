@@ -16,7 +16,7 @@ export const AICodeReviewButton = (commentNode: HTMLElement) => {
       </span>`,
         onclick: (event: MouseEvent) => {
             event.stopPropagation();
-            menu.classList.toggle("hidden");
+            menu.classList.toggle("oss-hidden");
         },
         id: "os-ai-change-gen",
     });

@@ -3,7 +3,7 @@ const plugin = require("tailwindcss/plugin");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   prefix: "oss-",
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./src/content-scripts/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {

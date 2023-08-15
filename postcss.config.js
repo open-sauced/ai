@@ -1,6 +1,8 @@
 module.exports = {
   plugins: {
-    tailwindcss: {},
+    tailwindcss: {
+      config: "./tailwind.popup.config.js",
+    },
     autoprefixer: {},
   },
 }

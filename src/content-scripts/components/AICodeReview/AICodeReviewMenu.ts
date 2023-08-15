@@ -16,17 +16,17 @@ type SuggestionGenerator = (
 
 export const AICodeReviewMenu = (items: HTMLLIElement[]) => {
     const menu = createHtmlElement("div", {
-        className: "SelectMenu js-slash-command-menu hidden mt-6",
+        className: "SelectMenu js-slash-command-menu oss-hidden oss-mt-6",
         innerHTML: `<div class="SelectMenu-modal no-underline">
     <header class="SelectMenu-header">
-       <div class="flex-1">
+       <div class="oss-flex-1">
           <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" class="octicon octicon-code-square">
              <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25Zm7.47 3.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L10.69 8 9.22 6.53a.75.75 0 0 1 0-1.06ZM6.78 6.53 5.31 8l1.47 1.47a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-2-2a.75.75 0 0 1 0-1.06l2-2a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
           </svg>
-          <span class="color-fg-muted text-small pl-1">OpenSauced.ai</span>
+          <span class="color-fg-muted oss-text-small oss-pl-1">OpenSauced.ai</span>
        </div>
        <div class="Label Label--success">AI</div>
-       <a class="ml-1 color-fg-muted d-block" target="_blank" href="https://github.com/orgs/open-sauced/discussions">
+       <a class="oss-ml-1 color-fg-muted d-block" target="_blank" href="https://github.com/orgs/open-sauced/discussions">
        Give feedback
        </a>
     </header>
@@ -41,7 +41,7 @@ export const AICodeReviewMenu = (items: HTMLLIElement[]) => {
 
     document.addEventListener("click", event => {
         if (event.target instanceof HTMLElement) {
-            menu.classList.add("hidden");
+            menu.classList.add("oss-hidden");
         }
     });
     return menu;
@@ -83,8 +83,8 @@ const handleSubmit = async (
             return;
         }
 
-        logo.classList.toggle("animate-spin");
-        button.classList.toggle("pointer-events-none");
+        logo.classList.toggle("oss-animate-spin");
+        button.classList.toggle("oss-pointer-events-none");
 
         const selectedLines = document.querySelectorAll(
             ".code-review.selected-line",
@@ -112,7 +112,7 @@ const handleSubmit = async (
                 descriptionConfig.config.maxInputLength,
             )
         ) {
-            logo.classList.toggle("animate-spin");
+            logo.classList.toggle("oss-animate-spin");
             return alert(
                 `Max input length exceeded. Try reducing the number of selected lines to refactor.`,
             );
@@ -124,8 +124,8 @@ const handleSubmit = async (
             descriptionConfig,
         );
 
-        logo.classList.toggle("animate-spin");
-        button.classList.toggle("pointer-events-none");
+        logo.classList.toggle("oss-animate-spin");
+        button.classList.toggle("oss-pointer-events-none");
         if (!suggestionStream) {
             return console.error("No description was generated!");
         }
@@ -135,8 +135,8 @@ const handleSubmit = async (
 
         insertTextAtCursor(textArea as HTMLTextAreaElement, suggestionStream);
     } catch (error: unknown) {
-        logo?.classList.toggle("animate-spin");
-        button?.classList.toggle("pointer-events-none");
+        logo?.classList.toggle("oss-animate-spin");
+        button?.classList.toggle("oss-pointer-events-none");
 
         if (error instanceof Error) {
             console.error("Description generation error:", error.message);

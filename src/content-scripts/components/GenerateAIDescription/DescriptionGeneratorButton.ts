@@ -40,22 +40,22 @@ const handleSubmit = async () => {
             return;
         }
 
-        logo.classList.toggle("animate-spin");
-        button.classList.toggle("pointer-events-none");
+        logo.classList.toggle("oss-animate-spin");
+        button.classList.toggle("oss-pointer-events-none");
 
 
         const { protocol, hostname, pathname } = window.location;
         const descriptionStream = await getAiDescription(`${protocol}//${hostname}${pathname}`);
 
-        logo.classList.toggle("animate-spin");
-        button.classList.toggle("pointer-events-none");
+        logo.classList.toggle("oss-animate-spin");
+        button.classList.toggle("oss-pointer-events-none");
 
         const textArea = document.getElementsByName(GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR)[0] as HTMLTextAreaElement;
 
         insertTextAtCursor(textArea, descriptionStream);
     } catch (error: unknown) {
-        logo?.classList.toggle("animate-spin");
-        button?.classList.toggle("pointer-events-none");
+        logo?.classList.toggle("oss-animate-spin");
+        button?.classList.toggle("oss-pointer-events-none");
 
         if (error instanceof Error) {
             alert(error.message);
