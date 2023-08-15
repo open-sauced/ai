@@ -5,6 +5,19 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.14.0](https://github.com/open-sauced/ai/compare/v1.13.0...v1.14.0) (2023-08-15)
+
+
+### 🍕 Features
+
+* modify suggested queries ([#251](https://github.com/open-sauced/ai/issues/251)) ([d3ac35a](https://github.com/open-sauced/ai/commit/d3ac35a3bc7183c26a4bdf5687734e248a942b36))
+
+
+### 🐛 Bug Fixes
+
+* incorrect embedding status, regex security warnings ([#253](https://github.com/open-sauced/ai/issues/253)) ([34f66b1](https://github.com/open-sauced/ai/commit/34f66b18bd8c665a6d7199143eeeec8c18ac8379))
+* updated link ([#245](https://github.com/open-sauced/ai/issues/245)) ([fe1a58b](https://github.com/open-sauced/ai/commit/fe1a58b6244c9ca1aba1700c3efb406267929ed0))
+
 ## [1.14.0-beta.2](https://github.com/open-sauced/ai/compare/v1.14.0-beta.1...v1.14.0-beta.2) (2023-08-15)
 
 
