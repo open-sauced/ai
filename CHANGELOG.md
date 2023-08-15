@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.14.1-beta.1](https://github.com/open-sauced/ai/compare/v1.14.0...v1.14.1-beta.1) (2023-08-15)
+
+
+### 🐛 Bug Fixes
+
+* syntax error being thrown in Firefox for anonymous objects with computed property names ([#241](https://github.com/open-sauced/ai/issues/241)) ([00ba2c8](https://github.com/open-sauced/ai/commit/00ba2c8408486bcdba4698848b52adf0f807cc2a))
+
 ## [1.14.0](https://github.com/open-sauced/ai/compare/v1.13.0...v1.14.0) (2023-08-15)
 
 
