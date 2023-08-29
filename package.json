@@ -12,6 +12,7 @@
     "lint": "eslint . --report-unused-disable-directives",
     "format": "npm run lint -- --fix",
     "test": "vitest run",
+    "e2e": "npx playwright test",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
