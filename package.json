@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^1.0.14",
+    "@playwright/test": "^1.37.1",
     "@types/chrome": "^0.0.237",
     "@types/node": "^20.1.4",
     "@types/node-emoji": "^1.8.2",
