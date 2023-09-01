@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.14.1-beta.3](https://github.com/open-sauced/ai/compare/v1.14.1-beta.2...v1.14.1-beta.3) (2023-09-01)
+
+
+### ✅ Tests
+
+* setup playwright for e2e testing ([#262](https://github.com/open-sauced/ai/issues/262)) ([fc9acca](https://github.com/open-sauced/ai/commit/fc9acca13bd0ea97173eb81598037244272bc4ea))
+
 ## [1.14.1-beta.2](https://github.com/open-sauced/ai/compare/v1.14.1-beta.1...v1.14.1-beta.2) (2023-08-22)
 
 
