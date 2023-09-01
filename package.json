@@ -12,6 +12,7 @@
     "lint": "eslint . --report-unused-disable-directives",
     "format": "npm run lint -- --fix",
     "test": "vitest run",
+    "e2e": "npx playwright test",
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^1.0.14",
+    "@playwright/test": "^1.37.1",
     "@types/chrome": "^0.0.237",
     "@types/node": "^20.1.4",
     "@types/node-emoji": "^1.8.2",
