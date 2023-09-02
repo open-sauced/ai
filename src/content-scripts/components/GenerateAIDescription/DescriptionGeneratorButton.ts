@@ -14,7 +14,7 @@ export const DescriptionGeneratorButton = () => {
         innerHTML: `<span id="ai-description-gen" class="toolbar-item btn-octicon">
     <img class="octicon octicon-heading" height="16px" width="16px" id="ai-description-button-logo" src=${chrome.runtime.getURL(openSaucedLogoIcon)}>
     </span>
-    <tool-tip for="ai-description-gen">Generate PR description</tool-tip>`,
+    <tool-tip for="ai-description-gen" popover="manual">Generate PR description</tool-tip>`,
         onclick: handleSubmit,
     });
 
