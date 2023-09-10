@@ -10,15 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 18
+    - name: "🔧 setup Bun"
+      uses: oven-sh/setup-bun@v1
     - name: Install dependencies
-      run: npm ci
+      run: bun install
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
+      run: bun x playwright install --with-deps
     - name: Run Playwright tests
-      run: npx playwright test
+      run: bun x playwright test
     - uses: actions/upload-artifact@v3
       if: always()
       with:
