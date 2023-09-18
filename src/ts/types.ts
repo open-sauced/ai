@@ -59,3 +59,12 @@ export enum RepoQueryPages {
     Indexing = "indexing",
     Chat = "chat",
 }
+
+export enum MessageType {
+    LinkedInProject,
+}
+
+export interface Message {
+    type: MessageType;
+    data: Record<string, string>;
+}
