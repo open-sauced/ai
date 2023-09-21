@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.14.1-beta.5](https://github.com/open-sauced/ai/compare/v1.14.1-beta.4...v1.14.1-beta.5) (2023-09-21)
+
+
+### 🔁 Continuous Integration
+
+* bun install, x ([#265](https://github.com/open-sauced/ai/issues/265)) ([6c765e0](https://github.com/open-sauced/ai/commit/6c765e05e16c8d90c3a2638328e7df4a32e83b14))
+
 ## [1.14.1-beta.4](https://github.com/open-sauced/ai/compare/v1.14.1-beta.3...v1.14.1-beta.4) (2023-09-18)
 
 
