@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.14.1-beta.6](https://github.com/open-sauced/ai/compare/v1.14.1-beta.5...v1.14.1-beta.6) (2023-11-01)
+
+
+### 🐛 Bug Fixes
+
+* login to the website after rename ([1070a0c](https://github.com/open-sauced/ai/commit/1070a0c2693cf46d99219f4fe3b102032ce6a671))
+
 ## [1.14.1-beta.5](https://github.com/open-sauced/ai/compare/v1.14.1-beta.4...v1.14.1-beta.5) (2023-09-21)
 
 
