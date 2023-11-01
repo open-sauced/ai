@@ -20,6 +20,6 @@
     "48": "src/assets/os-icons/os-icon-48.png",
     "128": "src/assets/os-icons/os-icon-128.png"
   },
-  "host_permissions": ["https://github.com/*", "https://*.insights.opensauced.pizza/*" , "https://www.linkedin.com/*"],
+  "host_permissions": ["https://github.com/*", "https://*.app.opensauced.pizza/*" , "https://www.linkedin.com/*"],
   "permissions": ["scripting", "storage", "tabs", "cookies"]
 }
