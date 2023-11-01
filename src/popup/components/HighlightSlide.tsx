@@ -24,7 +24,7 @@ export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
     const [highlightReactions, setHighlightReactions] = useState<HighlightReaction[]>([]);
     const [reactingDivOpen, setReactingDivOpen] = useState(false);
 
-    async function fetchHighlightReactions() {
+    async function fetchHighlightReactions () {
         const highlightReactionData = await getHighlightReactions(highlight.id);
         const userHighlightReactionData = await getUserHighlightReactions(await getAuthToken(), highlight.id);
 
@@ -70,24 +70,27 @@ export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
         <div className="border border-white/40 rounded-md p-3 mt-2 bg-white">
             {/* fixed height, content ellipsis */}
 
-            {title ? <h3 className="
-                text-base font-medium
-                overflow-hidden
-                line-clamp-2
-                h-6
-                leading-5
-            "
-            >
-                <a
-                    className="text-slate-800 cursor-pointer"
-                    href={url}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                >
-                    {title}
-                </a>
-            </h3>: null
-            
+            {
+
+                title
+                    ? (
+                        <h3 className="
+                    text-base font-medium
+                    overflow-hidden
+                    line-clamp-2
+                    h-6
+                    leading-5"
+                        >
+                            <a
+                                className="text-slate-800 cursor-pointer"
+                                href={url}
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                {title}
+                            </a>
+                        </h3>)
+                    : null
             }
 
             <div className="flex items-center">
