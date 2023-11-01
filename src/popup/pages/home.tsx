@@ -15,13 +15,12 @@ import { useOpensaucedUserCheck } from "../../hooks/useOpensaucedUserCheck";
 import { Profile } from "./profile";
 import { goTo } from "react-chrome-extension-router";
 import PostOnHighlight from "./posthighlight";
-import { getRepoAPIURL } from "../../utils/urlMatchers";
 import { getEmojis, getHighlights, getRepoOpenSaucedURL } from "../../utils/fetchOpenSaucedApiData";
 import Help from "./help";
 import { useEffect, useState, useRef } from "react";
 import Settings from "./settings";
 import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../constants";
-import type { Highlight } from "../../ts/types";
+import { MessageType, type Highlight, type Message } from "../../ts/types";
 import { usGetGitHubPageInfo } from "../../hooks/useGetGitHubPageInfo";
 import { HighlightSlide } from "../components/HighlightSlide";
 
@@ -167,34 +166,12 @@ const Home = ({ forceRefresh }: { forceRefresh: boolean } = { forceRefresh: fals
                                 <button
                                     className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
                                     onClick={() => {
-                                        function populateDataToLinkedIn (data: any) {
-                                            const inputFields: NodeListOf<HTMLInputElement> = document.querySelectorAll(".artdeco-text-input--input");
+                                        const message: Message = {
+                                            type: MessageType.LinkedInProject,
+                                            data: { url: pageUrl },
+                                        };
 
-                                            if (inputFields.length === 0) {
-                                            // set timeout to wait for the page to load
-                                                setTimeout(() => {
-                                                    populateDataToLinkedIn(data);
-                                                }, 500);
-
-                                                return;
-                                            }
-                                            inputFields[0].value = data.name;
-                                            inputFields[1].value = data.description;
-                                        }
-                                        fetch(getRepoAPIURL(pageUrl)).then(async res => res.json())
-                                            .then(data => chrome.tabs.create(
-                                                { url: "https://www.linkedin.com/in/me/edit/forms/project/new/", active: true },
-                                                tab => {
-                                                    void chrome.scripting
-                                                        .executeScript({
-                                                            target: { tabId: tab.id! },
-                                                            func: populateDataToLinkedIn,
-                                                            args: [data],
-                                                        });
-                                                },
-
-                                            ))
-                                            .catch(err => console.log(err));
+                                        void chrome.runtime.sendMessage(message);
                                     }}
                                 >
                                     <IoLogoLinkedin />

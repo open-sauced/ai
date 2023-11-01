@@ -5,6 +5,48 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.14.1-beta.6](https://github.com/open-sauced/ai/compare/v1.14.1-beta.5...v1.14.1-beta.6) (2023-11-01)
+
+
+### 🐛 Bug Fixes
+
+* login to the website after rename ([1070a0c](https://github.com/open-sauced/ai/commit/1070a0c2693cf46d99219f4fe3b102032ce6a671))
+
+## [1.14.1-beta.5](https://github.com/open-sauced/ai/compare/v1.14.1-beta.4...v1.14.1-beta.5) (2023-09-21)
+
+
+### 🔁 Continuous Integration
+
+* bun install, x ([#265](https://github.com/open-sauced/ai/issues/265)) ([6c765e0](https://github.com/open-sauced/ai/commit/6c765e05e16c8d90c3a2638328e7df4a32e83b14))
+
+## [1.14.1-beta.4](https://github.com/open-sauced/ai/compare/v1.14.1-beta.3...v1.14.1-beta.4) (2023-09-18)
+
+
+### 🐛 Bug Fixes
+
+* linkedin projects share ([#264](https://github.com/open-sauced/ai/issues/264)) ([481472b](https://github.com/open-sauced/ai/commit/481472bf073f5c8d4c279ec13b751ab827a2c50f))
+
+## [1.14.1-beta.3](https://github.com/open-sauced/ai/compare/v1.14.1-beta.2...v1.14.1-beta.3) (2023-09-01)
+
+
+### ✅ Tests
+
+* setup playwright for e2e testing ([#262](https://github.com/open-sauced/ai/issues/262)) ([fc9acca](https://github.com/open-sauced/ai/commit/fc9acca13bd0ea97173eb81598037244272bc4ea))
+
+## [1.14.1-beta.2](https://github.com/open-sauced/ai/compare/v1.14.1-beta.1...v1.14.1-beta.2) (2023-08-22)
+
+
+### 🐛 Bug Fixes
+
+* prevent error when viewing repo and not logged in ([#260](https://github.com/open-sauced/ai/issues/260)) ([05fcf5e](https://github.com/open-sauced/ai/commit/05fcf5ea658e34472fc0913d1154b03ceca87e8b))
+
+## [1.14.1-beta.1](https://github.com/open-sauced/ai/compare/v1.14.0...v1.14.1-beta.1) (2023-08-15)
+
+
+### 🐛 Bug Fixes
+
+* syntax error being thrown in Firefox for anonymous objects with computed property names ([#241](https://github.com/open-sauced/ai/issues/241)) ([00ba2c8](https://github.com/open-sauced/ai/commit/00ba2c8408486bcdba4698848b52adf0f807cc2a))
+
 ## [1.14.0](https://github.com/open-sauced/ai/compare/v1.13.0...v1.14.0) (2023-08-15)
 
 

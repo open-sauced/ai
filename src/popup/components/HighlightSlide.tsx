@@ -92,7 +92,7 @@ export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
 
                 <a
                     className="text-orange cursor-pointer"
-                    href={`https://insights.opensauced.pizza/user/${login}`}
+                    href={`https://app.opensauced.pizza/user/${login}`}
                     rel="noopener noreferrer"
                     target="_blank"
                 >
