@@ -26,7 +26,7 @@ export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
 
     async function fetchHighlightReactions () {
         const highlightReactionData = await getHighlightReactions(highlight.id);
-        const userHighlightReactionData = await getUserHighlightReactions( await getAuthToken(), highlight.id);
+        const userHighlightReactionData = await getUserHighlightReactions(await getAuthToken(), highlight.id);
 
         const highlightReactionsWithEmojiUrls = emojis.filter(emoji => highlightReactionData.some(highlightReaction => highlightReaction.emoji_id === emoji.id)).map(emoji => {
             const highlightReaction = highlightReactionData.find(highlightReaction => highlightReaction.emoji_id === emoji.id)!;
@@ -69,23 +69,29 @@ export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
     return (
         <div className="border border-white/40 rounded-md p-3 mt-2 bg-white">
             {/* fixed height, content ellipsis */}
-            <h3 className="
-                text-base font-medium
-                overflow-hidden
-                line-clamp-2
-                h-6
-                leading-5
-            "
-            >
-                <a
-                    className="text-slate-800 cursor-pointer"
-                    href={url}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                >
-                    {title}
-                </a>
-            </h3>
+
+            {
+
+                title
+                    ? (
+                        <h3 className="
+                    text-base font-medium
+                    overflow-hidden
+                    line-clamp-2
+                    h-6
+                    leading-5"
+                        >
+                            <a
+                                className="text-slate-800 cursor-pointer"
+                                href={url}
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                {title}
+                            </a>
+                        </h3>)
+                    : null
+            }
 
             <div className="flex items-center">
                 <span className="mr-2 text-slate-500">Author:</span>
@@ -158,10 +164,10 @@ export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
                             role="menuitem"
                             tabIndex={-1}
                             onClick={async () => {
-                                await addReactionToHighlight( highlight.id, emoji.id);
+                                await addReactionToHighlight(highlight.id, emoji.id);
                             }}
                             onKeyDown={async () => {
-                                await addReactionToHighlight( highlight.id, emoji.id);
+                                await addReactionToHighlight(highlight.id, emoji.id);
                             }}
                         >
                             <img
