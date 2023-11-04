@@ -31,7 +31,6 @@ export const OPEN_SAUCED_EMOJIS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/emojis`;
 // Content-scripts selectors
 export const GITHUB_PROFILE_MENU_SELECTOR = ".p-nickname.vcard-username.d-block";
 export const GITHUB_PROFILE_EDIT_MENU_SELECTOR = "button.js-profile-editable-edit-button";
-export const GITHUB_PROFILE_USER_PROFILE_EDITABLE_AREA_SELECTOR = ".btn-block.js-profile-editable-edit-button";
 export const GITHUB_PR_COMMENT_HEADER_SELECTOR = "timeline-comment-header clearfix d-flex";
 export const GITHUB_NEW_PR_COMMENT_EDITOR_SELECTOR = "flex-nowrap d-none d-md-inline-block mr-md-0 mr-3";
 export const GITHUB_PR_COMMENT_EDITOR_SELECTOR = "flex-nowrap d-inline-block mr-3";
