@@ -17,7 +17,8 @@ const injectViewOnOpenSaucedButton = (username: string) => {
     if (editProfileButton) {
         editProfileButton.parentNode?.insertBefore(viewOnOpenSaucedButton, editProfileButton)
     } else {
-        editableAreaElement.parentNode?.insertBefore(viewOnOpenSaucedButton, editableAreaElement);
+        const ButtonArea = document.querySelector(".js-user-profile-follow-button")?.closest(".flex-order-1.flex-md-order-none")
+        ButtonArea?.insertBefore(viewOnOpenSaucedButton, ButtonArea?.firstChild);
     }
 };
 
