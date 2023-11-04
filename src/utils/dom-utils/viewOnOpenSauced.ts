@@ -12,8 +12,13 @@ const injectViewOnOpenSaucedButton = (username: string) => {
         GITHUB_PROFILE_USER_PROFILE_EDITABLE_AREA_SELECTOR,
     );
     const editableAreaElement = userEditableArea[0];
-
-    editableAreaElement.parentNode?.insertBefore(viewOnOpenSaucedButton, editableAreaElement);
+    const editProfileButtonSelector = ".btn-block.js-profile-editable-edit-button"
+    const editProfileButton = document.querySelector(editProfileButtonSelector);
+    if (editProfileButton) {
+        editProfileButton.parentNode?.insertBefore(viewOnOpenSaucedButton, editProfileButton)
+    } else {
+        editableAreaElement.parentNode?.insertBefore(viewOnOpenSaucedButton, editableAreaElement);
+    }
 };
 
 export default injectViewOnOpenSaucedButton;
