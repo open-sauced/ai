@@ -22,10 +22,13 @@ const injectDescriptionGeneratorButton = async () => {
     }
 
     const prActionsClassName = "ActionBar-item-container";
-    const commentFormatRow = document.getElementsByClassName(prActionsClassName)[0];
+    const actionBars = document.getElementsByClassName(prActionsClassName);
+    const actionBarsArray = Array.from(actionBars);
     const addGeneratorButton = DescriptionGeneratorButton();
+    if (!actionBarsArray[0].querySelector("#ai-description-button")) {
+        actionBarsArray[0].insertBefore(addGeneratorButton, actionBarsArray[0].firstChild);
 
-    commentFormatRow.insertBefore(addGeneratorButton, commentFormatRow.firstChild);
+    }
 };
 
 export default injectDescriptionGeneratorButton;
