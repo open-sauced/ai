@@ -25,17 +25,11 @@ const injectDescriptionGeneratorButton = async () => {
     const actionBars = document.getElementsByClassName(prActionsClassName);
     const actionBarsArray = Array.from(actionBars);
     const addGeneratorButton = DescriptionGeneratorButton();
-    const firstChild = actionBarsArray[0].firstChild;
-    if (!actionBarsArray[0].querySelector("#ai-description-button")) {
-        actionBarsArray[0].insertBefore(addGeneratorButton, actionBar.firstChild);
+    const firstPrDescription = actionBarsArray[0];
 
+    if (!firstPrDescription.querySelector("#ai-description-button")) {
+        firstPrDescription.insertBefore(addGeneratorButton, firstPrDescription.firstChild);
     }
-
-    actionBarsArray.forEach(actionBar => {
-        if (!actionBar.querySelector("#ai-description-button")) {
-            actionBar.insertBefore(addGeneratorButton, actionBar.firstChild);
-        }
-    });
 };
 
 export default injectDescriptionGeneratorButton;
