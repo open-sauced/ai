@@ -5,6 +5,14 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.14.3-beta.1](https://github.com/open-sauced/ai/compare/v1.14.2...v1.14.3-beta.1) (2023-11-09)
+
+
+### 🐛 Bug Fixes
+
+* change the classname and remove extra code ([241c385](https://github.com/open-sauced/ai/commit/241c385e82f3757b95b045423fbb01e512772bfd))
+* elemenet to the dom if it's not added already ([c654b82](https://github.com/open-sauced/ai/commit/c654b826d2443adc6cffbeaa61970b6294596ca6))
+
 ## [1.14.2](https://github.com/open-sauced/ai/compare/v1.14.1...v1.14.2) (2023-11-06)
 
 
