@@ -21,13 +21,11 @@ const injectDescriptionGeneratorButton = async () => {
         }
     }
 
-    const prActionsClassName = "ActionBar-item-container";
-    const actionBars = document.getElementsByClassName(prActionsClassName);
-    const actionBarsArray = Array.from(actionBars);
-    const addGeneratorButton = DescriptionGeneratorButton();
-    const firstPrDescription = actionBarsArray[0];
+    const firstPrDescription = document.querySelector(".ActionBar-item-container");
+	
+    if (firstPrDescription && !firstPrDescription.querySelector("#ai-description-button")) {
+        const addGeneratorButton = DescriptionGeneratorButton();
 
-    if (!firstPrDescription.querySelector("#ai-description-button")) {
         firstPrDescription.insertBefore(addGeneratorButton, firstPrDescription.firstChild);
     }
 };
