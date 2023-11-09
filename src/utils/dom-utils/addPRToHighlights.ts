@@ -1,5 +1,5 @@
 import { AddPRToHighlightsButton } from "../../content-scripts/components/AddPRToHighlights/AddPRToHighlightsButton";
-import { GITHUB_PR_COMMENT_HEADER_SELECTOR } from "../../constants";
+import { GITHUB_PR_COMMENT_HEADER_CLASS } from "../../constants";
 import { isLoggedIn } from "../checkAuthentication";
 import { isPublicRepository } from "../fetchGithubAPIData";
 
@@ -9,7 +9,7 @@ const injectAddPRToHighlightsButton = async () => {
     }
 
     const commentFormatRow = document.getElementsByClassName(
-        GITHUB_PR_COMMENT_HEADER_SELECTOR,
+        GITHUB_PR_COMMENT_HEADER_CLASS,
     )[0];
     const addPRToHighlightsButton = AddPRToHighlightsButton();
 
