@@ -21,9 +21,10 @@ export const DescriptionGeneratorButton = (number: Number) => {
     return descriptionGeneratorButton;
 };
 
-const handleSubmit = async () => {
-    const logo = document.getElementById("ai-description-button-logo");
-    const button = document.getElementById("ai-description-button");
+const handleSubmit = async (event: Event) => {
+    const button = event?.currentTarget as HTMLElement;
+    const logo = button.querySelector("#ai-description-button-logo");
+
 
     try {
         if (!(await isLoggedIn())) {
@@ -45,12 +46,13 @@ const handleSubmit = async () => {
 
 
         const { protocol, hostname, pathname } = window.location;
-        const descriptionStream = await getAiDescription(`${protocol}//${hostname}${pathname}`);
-
+        // const descriptionStream = await getAiDescription(`${protocol}//${hostname}${pathname}`);
+        const descriptionStream = "hello world";
+        
         logo.classList.toggle("animate-spin");
         button.classList.toggle("pointer-events-none");
 
-        const textArea = document.getElementsByName(GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR)[0] as HTMLTextAreaElement;
+        const textArea = button.closest(".Box.CommentBox")?.querySelector("textArea") as HTMLTextAreaElement;
 
         insertTextAtCursor(textArea, descriptionStream);
     } catch (error: unknown) {
