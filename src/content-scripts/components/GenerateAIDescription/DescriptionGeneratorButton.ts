@@ -3,7 +3,6 @@ import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
 import { getPullRequestAPIURL } from "../../../utils/urlMatchers";
 import { getDescriptionContext, isOutOfContextBounds } from "../../../utils/fetchGithubAPIData";
 import { generateDescription } from "../../../utils/ai-utils/openai";
-import { GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR } from "../../../constants";
 import { insertTextAtCursor } from "../../../utils/ai-utils/cursorPositionInsert";
 import { getAIDescriptionConfig } from "../../../utils/ai-utils/descriptionconfig";
 import { getAuthToken, isLoggedIn, optLogIn } from "../../../utils/checkAuthentication";
@@ -46,8 +45,7 @@ const handleSubmit = async (event: Event) => {
 
 
         const { protocol, hostname, pathname } = window.location;
-        // const descriptionStream = await getAiDescription(`${protocol}//${hostname}${pathname}`);
-        const descriptionStream = "hello world";
+        const descriptionStream = await getAiDescription(`${protocol}//${hostname}${pathname}`);
         
         logo.classList.toggle("animate-spin");
         button.classList.toggle("pointer-events-none");
