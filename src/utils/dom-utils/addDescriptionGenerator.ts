@@ -21,13 +21,13 @@ const injectDescriptionGeneratorButton = async () => {
         }
     }
 
-    const firstPrDescription = document.querySelector(".ActionBar-item-container");
+    const firstPrDescription = document.querySelectorAll(".ActionBar-item-container");
+    firstPrDescription.forEach((item, index) => {
+    if (firstPrDescription && !item.querySelector("#ai-description-button-"+index)) {
+        const addGeneratorButton = DescriptionGeneratorButton(index);
 
-    if (firstPrDescription && !firstPrDescription.querySelector("#ai-description-button")) {
-        const addGeneratorButton = DescriptionGeneratorButton();
-
-        firstPrDescription.insertBefore(addGeneratorButton, firstPrDescription.firstChild);
-    }
+        item.insertBefore(addGeneratorButton, item.firstChild);
+    }});
 };
 
 export default injectDescriptionGeneratorButton;

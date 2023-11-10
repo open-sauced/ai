@@ -8,9 +8,9 @@ import { insertTextAtCursor } from "../../../utils/ai-utils/cursorPositionInsert
 import { getAIDescriptionConfig } from "../../../utils/ai-utils/descriptionconfig";
 import { getAuthToken, isLoggedIn, optLogIn } from "../../../utils/checkAuthentication";
 
-export const DescriptionGeneratorButton = () => {
+export const DescriptionGeneratorButton = (number: Number) => {
     const descriptionGeneratorButton = createHtmlElement("a", {
-        id: "ai-description-button",
+        id: "ai-description-button-"+number,
         innerHTML: `<span id="ai-description-gen" class="toolbar-item btn-octicon">
     <img class="octicon octicon-heading" height="16px" width="16px" id="ai-description-button-logo" src=${chrome.runtime.getURL(openSaucedLogoIcon)}>
     </span>
