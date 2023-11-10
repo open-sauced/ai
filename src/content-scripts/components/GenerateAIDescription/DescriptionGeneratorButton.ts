@@ -51,7 +51,7 @@ const handleSubmit = async (event: Event) => {
         insertTextAtCursor(textArea, descriptionStream);
     } catch (error: unknown) {
         logo?.classList.toggle("animate-spin");
-        button?.classList.toggle("pointer-events-none");
+        button.classList.toggle("pointer-events-none");
 
         if (error instanceof Error) {
             alert(error.message);
