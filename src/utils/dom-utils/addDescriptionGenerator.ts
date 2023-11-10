@@ -24,7 +24,7 @@ const injectDescriptionGeneratorButton = async () => {
     const firstPrDescription = document.querySelectorAll(".ActionBar-item-container");
 
     firstPrDescription.forEach((item, index) => {
-        if (firstPrDescription && !item.querySelector(`#ai-description-button-${index}`)) {
+        if (!item.querySelector(`#ai-description-button-${index}`)) {
             const addGeneratorButton = DescriptionGeneratorButton(index);
 
             item.insertBefore(addGeneratorButton, item.firstChild);
