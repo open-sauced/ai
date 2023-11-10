@@ -7,9 +7,9 @@ import { insertTextAtCursor } from "../../../utils/ai-utils/cursorPositionInsert
 import { getAIDescriptionConfig } from "../../../utils/ai-utils/descriptionconfig";
 import { getAuthToken, isLoggedIn, optLogIn } from "../../../utils/checkAuthentication";
 
-export const DescriptionGeneratorButton = (number: Number) => {
+export const DescriptionGeneratorButton = (number: number) => {
     const descriptionGeneratorButton = createHtmlElement("a", {
-        id: "ai-description-button-"+number,
+        id: `ai-description-button-${number}`,
         innerHTML: `<span id="ai-description-gen" class="toolbar-item btn-octicon">
     <img class="octicon octicon-heading" height="16px" width="16px" id="ai-description-button-logo" src=${chrome.runtime.getURL(openSaucedLogoIcon)}>
     </span>
@@ -21,7 +21,7 @@ export const DescriptionGeneratorButton = (number: Number) => {
 };
 
 const handleSubmit = async (event: Event) => {
-    const button = event?.currentTarget as HTMLElement;
+    const button = event.currentTarget as HTMLElement;
     const logo = button.querySelector("#ai-description-button-logo");
 
 
@@ -30,27 +30,23 @@ const handleSubmit = async (event: Event) => {
             return void optLogIn();
         }
 
-        if (!logo || !button) {
-            return;
-        }
-
         const descriptionConfig = await getAIDescriptionConfig();
 
         if (!descriptionConfig) {
             return;
         }
 
-        logo.classList.toggle("animate-spin");
+        logo?.classList.toggle("animate-spin");
         button.classList.toggle("pointer-events-none");
 
 
         const { protocol, hostname, pathname } = window.location;
         const descriptionStream = await getAiDescription(`${protocol}//${hostname}${pathname}`);
-        
-        logo.classList.toggle("animate-spin");
+
+        logo?.classList.toggle("animate-spin");
         button.classList.toggle("pointer-events-none");
 
-        const textArea = button.closest(".Box.CommentBox")?.querySelector("textArea") as HTMLTextAreaElement;
+        const textArea = button.closest(".Box.CommentBox")?.querySelector("textArea");
 
         insertTextAtCursor(textArea, descriptionStream);
     } catch (error: unknown) {
