@@ -46,10 +46,10 @@ const handleSubmit = async (event: Event) => {
         logo?.classList.toggle("animate-spin");
         button.classList.toggle("pointer-events-none");
         const textArea = button.closest(".Box.CommentBox")?.querySelector("textarea");
-        if(textArea) {
+
+        if (textArea) {
             insertTextAtCursor(textArea, descriptionStream);
         }
-        
     } catch (error: unknown) {
         logo?.classList.toggle("animate-spin");
         button.classList.toggle("pointer-events-none");
