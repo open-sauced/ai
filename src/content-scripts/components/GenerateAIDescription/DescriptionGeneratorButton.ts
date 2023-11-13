@@ -3,7 +3,7 @@ import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
 import { getPullRequestAPIURL } from "../../../utils/urlMatchers";
 import { getDescriptionContext, isOutOfContextBounds } from "../../../utils/fetchGithubAPIData";
 import { generateDescription } from "../../../utils/ai-utils/openai";
-import { GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR } from "../../../constants";
+import { GITHUB_PR_COMMENT_TEXT_AREA_CLASS } from "../../../constants";
 import { insertTextAtCursor } from "../../../utils/ai-utils/cursorPositionInsert";
 import { getAIDescriptionConfig } from "../../../utils/ai-utils/descriptionconfig";
 import { getAuthToken, isLoggedIn, optLogIn } from "../../../utils/checkAuthentication";
@@ -50,7 +50,7 @@ const handleSubmit = async () => {
         logo.classList.toggle("animate-spin");
         button.classList.toggle("pointer-events-none");
 
-        const textArea = document.getElementsByName(GITHUB_PR_COMMENT_TEXT_AREA_SELECTOR)[0] as HTMLTextAreaElement;
+        const textArea = document.getElementsByName(GITHUB_PR_COMMENT_TEXT_AREA_CLASS)[0] as HTMLTextAreaElement;
 
         insertTextAtCursor(textArea, descriptionStream);
     } catch (error: unknown) {
