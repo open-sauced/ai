@@ -34,7 +34,6 @@ export const GITHUB_PROFILE_EDIT_MENU_CLASS = "button.js-profile-editable-edit-b
 export const GITHUB_PR_COMMENT_HEADER_CLASS = "timeline-comment-header clearfix d-flex";
 export const GITHUB_REVIEW_SUGGESTION_CLASS = "js-suggestion-button-placeholder";
 export const GITHUB_REPO_ACTIONS_SELECTOR = ".pagehead-actions";
-export const GITHUB_PR_COMMENT_TEXT_AREA_CLASS = "pull_request[body]";
 export const GITHUB_PR_SUGGESTION_TEXT_AREA_Attribute = "[name='comment[body]']";
 export const GITHUB_PR_BASE_BRANCH_CLASS = "css-truncate css-truncate-target";
 export const LINKEDIN_PROJECT_FORM_SELECTOR = ".artdeco-text-input--input";
