@@ -18,7 +18,8 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
 
     const processChunk = (chunk: string) => {
         const chunkLines = chunk.split("\n");
-        const [eventLine, dataLine] = chunkLines;
+        const indexOfEvent = chunkLines.findIndex((e) => e.includes("event: "))
+        const [eventLine, dataLine] = [chunkLines[indexOfEvent], chunkLines[indexOfEvent + 1]];
 
         const event = eventLine.split(": ")[1];
         let data:any;
@@ -26,8 +27,7 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
         try {
             data = JSON.parse(dataLine.split(": ")[1]);
         } catch (e) {
-            console.error(dataLine);
-
+            console.error("The recieved data line", dataLine);
             // remove quotes from string
             data = dataLine.split("data: ")[1].substring(1, dataLine.split("data: ")[1].length - 2);
         }
