@@ -23,7 +23,10 @@ Leverage AI to generate pull request descriptions based on the diff & commit mes
 
 ## Documentation
 
-The developer documentation for the project can be found [here](./docs/). For a usage guide, click [here](https://docs.opensauced.pizza/chrome-extension/introduction-to-the-chrome-extension/).
+You can find the documentation for the Chrome extension below:
+
+- [Developer documentation](./docs/) for the project
+- [Usage guide](https://docs.opensauced.pizza/tools/chrome-extension/introduction-to-the-chrome-extension/)
 
 ## Running the project locally
 
@@ -38,7 +41,6 @@ To install the project dependencies:
 npm ci
 ```
 
-
 To run a local instance of the project:
 
 ### On development environment
@@ -47,23 +49,25 @@ To run a local instance of the project:
 npm run dev
 ```
 
-### On Production environment 
+### On Production environment
 
 ```shell
 npm run build
 npm run preview
 ```
 
-
 ## Installing the local build on a Chromium based browser:
+
 After running the above commands,
-1. Navigate to `chrome://extensions`. 
+
+1. Navigate to `chrome://extensions`.
 2. Enable the `Developer Mode`.
 3. Select `Load unpacked` and choose the generated `dist` directory from the project folder to install it.
 
 You should now have the extension installed and running.
 
 ## 🙌🏼 Core Team
+
 <p align="left>
   <a href="https://github.com"/></a>
   <a href="https://github.com/bdougie">
