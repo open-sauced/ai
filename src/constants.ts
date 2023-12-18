@@ -50,4 +50,4 @@ export const EXTERNAL_RESOURCES = [
         link: "https://github.com/orgs/open-sauced/discussions",
         key: "Discussions",
     },
-]
+];
