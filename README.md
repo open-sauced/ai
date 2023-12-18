@@ -28,7 +28,7 @@ You can find the documentation for the Chrome extension below:
 - [Developer documentation](./docs/) for the project
 - [Usage guide](https://docs.opensauced.pizza/tools/chrome-extension/introduction-to-the-chrome-extension/)
 
-## Running the project locally
+## Running the Project Locally
 
 To run the project, you'll need the following software binaries installed on your development machines:
 
@@ -41,22 +41,22 @@ To install the project dependencies:
 npm ci
 ```
 
-To run a local instance of the project:
+To run a local instance of the project on:
 
-### On development environment
+### Development Environment
 
 ```shell
 npm run dev
 ```
 
-### On Production environment
+### Production Environment
 
 ```shell
 npm run build
 npm run preview
 ```
 
-## Installing the local build on a Chromium based browser:
+## Installing the Local Build on a Chromium-Based Browser:
 
 After running the above commands,
 
