@@ -83,7 +83,9 @@ You should now have the extension installed and running.
 
 ## 🤝 Contributing
 
-We encourage you to contribute to OpenSauced! Please check out the [Contributing guide](https://docs.opensauced.pizza/contributing/introduction-to-contributing/) for guidelines about how to proceed.
+_We encourage contributors to open issues or take a look at the [Bugs](https://github.com/orgs/open-sauced/projects/6). If you would like to find **good first issues**, please check out the `#good-first-issues` channel in our [Discord](https://discord.gg/opensauced)._
+
+We encourage you to contribute to OpenSauced! Please check out the [Contributing Guide](https://docs.opensauced.pizza/contributing/introduction-to-contributing/) for guidelines about how to self-assign an issue and how to get started.
 
 We have a commit utility called [@open-sauced/conventional-commit](https://github.com/open-sauced/conventional-commit) that helps you write your commits in a way that is easy to understand and process by others.
 
@@ -95,12 +97,12 @@ The `beta` branch is the default branch. We squash & merge PRs to the `beta` bra
 
 A merge to `beta` will trigger a beta release. A merge to `main` will trigger a full release.
 
-Make sure to checkout the beta branch for the latest changes, and follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification when writing commit messages.
+Make sure to checkout the `beta` branch for the latest changes, and follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification when writing commit messages.
 
 ## 🍕 Community
 
 Got Questions? Join the conversation in our [Discord](https://discord.gg/U2peSNf23P).  
-Find Open Sauced videos and release overviews on our [YouTube Channel](https://www.youtube.com/channel/UCklWxKrTti61ZCROE1e5-MQ).
+Find Open Sauced videos and release overviews on our [YouTube Channel](https://www.youtube.com/channel/UCklWxKrTti61ZCROE1e5-MQ), and check out the resources on our [Dev.to org](https://dev.to/opensauced).
 
 ## ⚖️ LICENSE
 
