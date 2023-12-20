@@ -1,2 +1,3 @@
 # Explicitly declare text files you want to always be normalized and converted to native line endings on checkout.
 *.ts text eol=lf
+*.tsx text eol=lf
