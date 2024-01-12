@@ -5,6 +5,14 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.14.3-beta.2](https://github.com/open-sauced/ai/compare/v1.14.3-beta.1...v1.14.3-beta.2) (2024-01-12)
+
+
+### 🐛 Bug Fixes
+
+* add `.gitattributes` file and normalize all the line endings ([#301](https://github.com/open-sauced/ai/issues/301)) ([a6279ea](https://github.com/open-sauced/ai/commit/a6279eaea274922b16b8854ab7b4fb39b66de69c))
+* chunk processing in Chat component ([#289](https://github.com/open-sauced/ai/issues/289)) ([f1c29ff](https://github.com/open-sauced/ai/commit/f1c29ff9e219c46a768bc46b22553bb8a436e6c1))
+
 ## [1.14.3-beta.1](https://github.com/open-sauced/ai/compare/v1.14.2...v1.14.3-beta.1) (2023-11-09)
 
 
