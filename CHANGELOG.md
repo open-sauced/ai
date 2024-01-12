@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.15.0-beta.1](https://github.com/open-sauced/ai/compare/v1.14.3-beta.3...v1.15.0-beta.1) (2024-01-12)
+
+
+### 🍕 Features
+
+* enable AI description generator on comments ([#285](https://github.com/open-sauced/ai/issues/285)) ([a30380b](https://github.com/open-sauced/ai/commit/a30380b1def14b97cf28f3945a1608cca6e3ba54))
+
 ## [1.14.3-beta.3](https://github.com/open-sauced/ai/compare/v1.14.3-beta.2...v1.14.3-beta.3) (2024-01-12)
 
 
