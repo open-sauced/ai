@@ -30,6 +30,7 @@ const processGithubPage = async () => {
         prReviewWatch(injectChangeSuggestorButton, 500);
     } else if (isGithubPullRequestPage(window.location.href)) {
         prEditWatch(injectDescriptionGeneratorButton, 500);
+        void injectDescriptionGeneratorButton();
         void injectAddPRToHighlightsButton();
     } else if (isGithubProfilePage(window.location.href)) {
         const username = getGithubUsername(window.location.href);

@@ -3,14 +3,13 @@ import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
 import { getPullRequestAPIURL } from "../../../utils/urlMatchers";
 import { getDescriptionContext, isOutOfContextBounds } from "../../../utils/fetchGithubAPIData";
 import { generateDescription } from "../../../utils/ai-utils/openai";
-import { GITHUB_PR_COMMENT_TEXT_AREA_CLASS } from "../../../constants";
 import { insertTextAtCursor } from "../../../utils/ai-utils/cursorPositionInsert";
 import { getAIDescriptionConfig } from "../../../utils/ai-utils/descriptionconfig";
 import { getAuthToken, isLoggedIn, optLogIn } from "../../../utils/checkAuthentication";
 
-export const DescriptionGeneratorButton = () => {
+export const DescriptionGeneratorButton = (number: number) => {
     const descriptionGeneratorButton = createHtmlElement("a", {
-        id: "ai-description-button",
+        id: `ai-description-button-${number}`,
         innerHTML: `<span id="ai-description-gen" class="toolbar-item btn-octicon">
     <img class="octicon octicon-heading" height="16px" width="16px" id="ai-description-button-logo" src=${chrome.runtime.getURL(openSaucedLogoIcon)}>
     </span>
@@ -21,17 +20,14 @@ export const DescriptionGeneratorButton = () => {
     return descriptionGeneratorButton;
 };
 
-const handleSubmit = async () => {
-    const logo = document.getElementById("ai-description-button-logo");
-    const button = document.getElementById("ai-description-button");
+const handleSubmit = async (event: Event) => {
+    const button = event.currentTarget as HTMLElement;
+    const logo = button.querySelector("#ai-description-button-logo");
+
 
     try {
         if (!(await isLoggedIn())) {
             return void optLogIn();
-        }
-
-        if (!logo || !button) {
-            return;
         }
 
         const descriptionConfig = await getAIDescriptionConfig();
@@ -40,22 +36,23 @@ const handleSubmit = async () => {
             return;
         }
 
-        logo.classList.toggle("animate-spin");
+        logo?.classList.toggle("animate-spin");
         button.classList.toggle("pointer-events-none");
 
 
         const { protocol, hostname, pathname } = window.location;
         const descriptionStream = await getAiDescription(`${protocol}//${hostname}${pathname}`);
 
-        logo.classList.toggle("animate-spin");
+        logo?.classList.toggle("animate-spin");
         button.classList.toggle("pointer-events-none");
+        const textArea = button.closest(".Box.CommentBox")?.querySelector("textarea");
 
-        const textArea = document.getElementsByName(GITHUB_PR_COMMENT_TEXT_AREA_CLASS)[0] as HTMLTextAreaElement;
-
-        insertTextAtCursor(textArea, descriptionStream);
+        if (textArea) {
+            insertTextAtCursor(textArea, descriptionStream);
+        }
     } catch (error: unknown) {
         logo?.classList.toggle("animate-spin");
-        button?.classList.toggle("pointer-events-none");
+        button.classList.toggle("pointer-events-none");
 
         if (error instanceof Error) {
             alert(error.message);
