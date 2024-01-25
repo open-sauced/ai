@@ -5,6 +5,13 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.15.0-beta.2](https://github.com/open-sauced/ai/compare/v1.15.0-beta.1...v1.15.0-beta.2) (2024-01-25)
+
+
+### 🍕 Features
+
+* Upgrade to v2 API ([693d459](https://github.com/open-sauced/ai/commit/693d45998dba2cacc18be10b397fdc624668fb03))
+
 ## [1.15.0-beta.1](https://github.com/open-sauced/ai/compare/v1.14.3-beta.3...v1.15.0-beta.1) (2024-01-12)
 
 
