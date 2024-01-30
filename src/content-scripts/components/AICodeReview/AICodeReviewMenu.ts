@@ -1,4 +1,4 @@
-import { GITHUB_PR_SUGGESTION_TEXT_AREA_SELECTOR } from "../../../constants";
+import { GITHUB_PR_SUGGESTION_TEXT_AREA_Attribute } from "../../../constants";
 import { insertTextAtCursor } from "../../../utils/ai-utils/cursorPositionInsert";
 import {
     DescriptionConfig,
@@ -130,7 +130,7 @@ const handleSubmit = async (
             return console.error("No description was generated!");
         }
         const textArea = commentNode.querySelector(
-            GITHUB_PR_SUGGESTION_TEXT_AREA_SELECTOR,
+            GITHUB_PR_SUGGESTION_TEXT_AREA_Attribute,
         )!;
 
         insertTextAtCursor(textArea as HTMLTextAreaElement, suggestionStream);

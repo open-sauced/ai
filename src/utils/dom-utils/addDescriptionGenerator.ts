@@ -1,6 +1,4 @@
 import { DescriptionGeneratorButton } from "../../content-scripts/components/GenerateAIDescription/DescriptionGeneratorButton";
-import { GITHUB_NEW_PR_COMMENT_EDITOR_SELECTOR, GITHUB_PR_COMMENT_EDITOR_SELECTOR } from "../../constants";
-import { isGithubPullRequestPage } from "../urlMatchers";
 import { isPublicRepository } from "../fetchGithubAPIData";
 import { SettingsConfig } from "../../popup/pages/settings";
 
@@ -23,11 +21,15 @@ const injectDescriptionGeneratorButton = async () => {
         }
     }
 
-    const selector = isGithubPullRequestPage(window.location.href) ? GITHUB_PR_COMMENT_EDITOR_SELECTOR : GITHUB_NEW_PR_COMMENT_EDITOR_SELECTOR;
-    const commentFormatRow = document.getElementsByClassName(selector)[0];
-    const addGeneratorButton = DescriptionGeneratorButton();
+    const firstPrDescription = document.querySelectorAll(".ActionBar-item-container");
 
-    commentFormatRow.insertBefore(addGeneratorButton, commentFormatRow.firstChild);
+    firstPrDescription.forEach((item, index) => {
+        if (!item.querySelector(`#ai-description-button-${index}`)) {
+            const addGeneratorButton = DescriptionGeneratorButton(index);
+
+            item.insertBefore(addGeneratorButton, item.firstChild);
+        }
+    });
 };
 
 export default injectDescriptionGeneratorButton;

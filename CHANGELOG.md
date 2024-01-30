@@ -5,6 +5,43 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.15.0-beta.2](https://github.com/open-sauced/ai/compare/v1.15.0-beta.1...v1.15.0-beta.2) (2024-01-25)
+
+
+### 🍕 Features
+
+* Upgrade to v2 API ([693d459](https://github.com/open-sauced/ai/commit/693d45998dba2cacc18be10b397fdc624668fb03))
+
+## [1.15.0-beta.1](https://github.com/open-sauced/ai/compare/v1.14.3-beta.3...v1.15.0-beta.1) (2024-01-12)
+
+
+### 🍕 Features
+
+* enable AI description generator on comments ([#285](https://github.com/open-sauced/ai/issues/285)) ([a30380b](https://github.com/open-sauced/ai/commit/a30380b1def14b97cf28f3945a1608cca6e3ba54))
+
+## [1.14.3-beta.3](https://github.com/open-sauced/ai/compare/v1.14.3-beta.2...v1.14.3-beta.3) (2024-01-12)
+
+
+### 🐛 Bug Fixes
+
+* Link to Usage Guide and Update README ([#298](https://github.com/open-sauced/ai/issues/298)) ([ba5cef6](https://github.com/open-sauced/ai/commit/ba5cef65dad7c2bc8340e274195b8a5b37e57b4f))
+
+## [1.14.3-beta.2](https://github.com/open-sauced/ai/compare/v1.14.3-beta.1...v1.14.3-beta.2) (2024-01-12)
+
+
+### 🐛 Bug Fixes
+
+* add `.gitattributes` file and normalize all the line endings ([#301](https://github.com/open-sauced/ai/issues/301)) ([a6279ea](https://github.com/open-sauced/ai/commit/a6279eaea274922b16b8854ab7b4fb39b66de69c))
+* chunk processing in Chat component ([#289](https://github.com/open-sauced/ai/issues/289)) ([f1c29ff](https://github.com/open-sauced/ai/commit/f1c29ff9e219c46a768bc46b22553bb8a436e6c1))
+
+## [1.14.3-beta.1](https://github.com/open-sauced/ai/compare/v1.14.2...v1.14.3-beta.1) (2023-11-09)
+
+
+### 🐛 Bug Fixes
+
+* change the classname and remove extra code ([241c385](https://github.com/open-sauced/ai/commit/241c385e82f3757b95b045423fbb01e512772bfd))
+* elemenet to the dom if it's not added already ([c654b82](https://github.com/open-sauced/ai/commit/c654b826d2443adc6cffbeaa61970b6294596ca6))
+
 ## [1.14.2](https://github.com/open-sauced/ai/compare/v1.14.1...v1.14.2) (2023-11-06)
 
 

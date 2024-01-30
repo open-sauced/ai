@@ -23,9 +23,12 @@ Leverage AI to generate pull request descriptions based on the diff & commit mes
 
 ## Documentation
 
-The developer documentation for the project can be found [here](./docs/). For a usage guide, click [here](https://docs.opensauced.pizza/chrome-extension/introduction-to-the-chrome-extension/).
+You can find the documentation for the Chrome extension below:
 
-## Running the project locally
+- [Developer documentation](./docs/) for the project
+- [Usage guide](https://docs.opensauced.pizza/tools/chrome-extension/introduction-to-the-chrome-extension/)
+
+## Running the Project Locally
 
 To run the project, you'll need the following software binaries installed on your development machines:
 
@@ -38,32 +41,33 @@ To install the project dependencies:
 npm ci
 ```
 
+To run a local instance of the project on:
 
-To run a local instance of the project:
-
-### On development environment
+### Development Environment
 
 ```shell
 npm run dev
 ```
 
-### On Production environment 
+### Production Environment
 
 ```shell
 npm run build
 npm run preview
 ```
 
+## Installing the Local Build on a Chromium-Based Browser:
 
-## Installing the local build on a Chromium based browser:
 After running the above commands,
-1. Navigate to `chrome://extensions`. 
+
+1. Navigate to `chrome://extensions`.
 2. Enable the `Developer Mode`.
 3. Select `Load unpacked` and choose the generated `dist` directory from the project folder to install it.
 
 You should now have the extension installed and running.
 
 ## 🙌🏼 Core Team
+
 <p align="left>
   <a href="https://github.com"/></a>
   <a href="https://github.com/bdougie">
@@ -79,7 +83,9 @@ You should now have the extension installed and running.
 
 ## 🤝 Contributing
 
-We encourage you to contribute to OpenSauced! Please check out the [Contributing guide](https://docs.opensauced.pizza/contributing/introduction-to-contributing/) for guidelines about how to proceed.
+_We encourage contributors to open issues or take a look at the [Bugs](https://github.com/orgs/open-sauced/projects/6). If you would like to find **good first issues**, please check out the `#good-first-issues` channel in our [Discord](https://discord.gg/opensauced)._
+
+We encourage you to contribute to OpenSauced! Please check out the [Contributing Guide](https://docs.opensauced.pizza/contributing/introduction-to-contributing/) for guidelines about how to self-assign an issue and how to get started.
 
 We have a commit utility called [@open-sauced/conventional-commit](https://github.com/open-sauced/conventional-commit) that helps you write your commits in a way that is easy to understand and process by others.
 
@@ -91,12 +97,12 @@ The `beta` branch is the default branch. We squash & merge PRs to the `beta` bra
 
 A merge to `beta` will trigger a beta release. A merge to `main` will trigger a full release.
 
-Make sure to checkout the beta branch for the latest changes, and follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification when writing commit messages.
+Make sure to checkout the `beta` branch for the latest changes, and follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification when writing commit messages.
 
 ## 🍕 Community
 
 Got Questions? Join the conversation in our [Discord](https://discord.gg/U2peSNf23P).  
-Find Open Sauced videos and release overviews on our [YouTube Channel](https://www.youtube.com/channel/UCklWxKrTti61ZCROE1e5-MQ).
+Find Open Sauced videos and release overviews on our [YouTube Channel](https://www.youtube.com/channel/UCklWxKrTti61ZCROE1e5-MQ), and check out the resources on our [Dev.to org](https://dev.to/opensauced).
 
 ## ⚖️ LICENSE
 
