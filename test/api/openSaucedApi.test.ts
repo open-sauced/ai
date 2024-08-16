@@ -14,9 +14,10 @@ describe("openSaucedUserEndpoint", () => {
         expect(data.login).toBe("bdougie");
     })
 
-    it("should not return a 200 error for a user that does not exist", async () => {
+    it("should return a bad request for a user that does not exist", async () => {
         const response = await fetch(`${OPEN_SAUCED_USERS_ENDPOINT}/foolala`);
-        expect(response.status).not.toBe(200);
+        expect(response.status).toBe(400);
+    })
     })
 })
 
