@@ -14,7 +14,6 @@ import injectAddPRToHighlightsButton from "../utils/dom-utils/addPRToHighlights"
 
 // import injectRepoVotingButtons from "../utils/dom-utils/repoVotingButtons";
 import domUpdateWatch from "../utils/dom-utils/domUpdateWatcher";
-import injectDescriptionGeneratorButton from "../utils/dom-utils/addDescriptionGenerator";
 import injectChangeSuggestorButton from "../utils/dom-utils/changeSuggestorButton";
 import prEditWatch, { prReviewWatch } from "../utils/dom-utils/prWatcher";
 import injectChatDialog from "../utils/dom-utils/addChatDialog";
@@ -25,12 +24,12 @@ const processGithubPage = async () => {
         document.documentElement.classList.add("dark");
     }
     if (isPullRequestCreatePage(window.location.href)) {
-        void injectDescriptionGeneratorButton();
+        // void injectDescriptionGeneratorButton();
     } else if (isPullRequestFilesChangedPage(window.location.href)) {
         prReviewWatch(injectChangeSuggestorButton, 500);
     } else if (isGithubPullRequestPage(window.location.href)) {
-        prEditWatch(injectDescriptionGeneratorButton, 500);
-        void injectDescriptionGeneratorButton();
+        prEditWatch(injectChangeSuggestorButton, 500);
+        // void injectDescriptionGeneratorButton();
         void injectAddPRToHighlightsButton();
     } else if (isGithubProfilePage(window.location.href)) {
         const username = getGithubUsername(window.location.href);

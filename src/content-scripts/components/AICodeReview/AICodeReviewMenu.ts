@@ -1,9 +1,5 @@
 import { GITHUB_PR_SUGGESTION_TEXT_AREA_Attribute } from "../../../constants";
 import { insertTextAtCursor } from "../../../utils/ai-utils/cursorPositionInsert";
-import {
-    DescriptionConfig,
-    getAIDescriptionConfig,
-} from "../../../utils/ai-utils/descriptionconfig";
 import { getAuthToken, isLoggedIn, optLogIn } from "../../../utils/checkAuthentication";
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 import { isOutOfContextBounds } from "../../../utils/fetchGithubAPIData";
@@ -11,7 +7,6 @@ import { isOutOfContextBounds } from "../../../utils/fetchGithubAPIData";
 type SuggestionGenerator = (
     token: string,
     code: string,
-    config: DescriptionConfig
 ) => Promise<string | undefined>;
 
 export const AICodeReviewMenu = (items: HTMLLIElement[]) => {
@@ -77,12 +72,6 @@ const handleSubmit = async (
             return;
         }
 
-        const descriptionConfig = await getAIDescriptionConfig();
-
-        if (!descriptionConfig) {
-            return;
-        }
-
         logo.classList.toggle("animate-spin");
         button.classList.toggle("pointer-events-none");
 
@@ -109,7 +98,7 @@ const handleSubmit = async (
         if (
             isOutOfContextBounds(
                 [selectedCode, [] ],
-                descriptionConfig.config.maxInputLength,
+                3900,
             )
         ) {
             logo.classList.toggle("animate-spin");
@@ -121,7 +110,6 @@ const handleSubmit = async (
         const suggestionStream = await suggestionGenerator(
             token,
             selectedCode,
-            descriptionConfig,
         );
 
         logo.classList.toggle("animate-spin");

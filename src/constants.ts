@@ -1,4 +1,3 @@
-// OpenSauced constants
 export const OPEN_SAUCED_INSIGHTS_DOMAIN = import.meta.env.VITE_OPEN_SAUCED_INSIGHTS_DOMAIN;
 export const OPEN_SAUCED_API_ENDPOINT = import.meta.env.VITE_OPEN_SAUCED_API_ENDPOINT;
 export const REPO_QUERY_API_ENDPOINT = "https://opensauced.tools";
@@ -12,14 +11,11 @@ export const SUPABASE_AUTH_COOKIE_NAME = `sb-${import.meta.env.VITE_OPEN_SAUCED_
 export const SUPABASE_PKCE_VERIFIER_COOKIE_NAME = `sb-${import.meta.env.VITE_OPEN_SAUCED_SUPABASE_ID}-auth-token-code-verifier`;
 export const OPEN_SAUCED_AUTH_TOKEN_KEY = "os-access-token";
 export const OPEN_SAUCED_OPTED_LOG_OUT_KEY = "opted-log-out";
-export const AI_PR_DESCRIPTION_CONFIG_KEY = "ai-pr-description-config";
-
 
 export const OPEN_SAUCED_USERS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/users`;
 export const OPEN_SAUCED_REPOS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/repos`;
 export const OPEN_SAUCED_SESSION_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/auth/session`;
 export const OPEN_SAUCED_USER_INSIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/user/insights`;
-export const OPEN_SAUCED_AI_PR_DESCRIPTION_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/description/generate`;
 export const OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/user/highlights`;
 export const OPEN_SAUCED_AI_CODE_REFACTOR_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/suggestion/generate`;
 export const OPEN_SAUCED_AI_CODE_EXPLANATION_ENDPOINT = `${OPEN_SAUCED_API_ENDPOINT}/prs/explanation/generate`;
