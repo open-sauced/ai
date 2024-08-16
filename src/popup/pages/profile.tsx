@@ -189,7 +189,7 @@ export const Profile = ({ username }: { username: string }) => {
             </div>
 
             <div className="flex flex-col items-center justify-center p-2 text-xs">
-              <p>PR Count</p>
+              <p>PR Count (30 days)</p>
 
               <p className="font-medium text-5xl">{userPR?.meta.itemCount}</p>
             </div>
@@ -203,7 +203,7 @@ export const Profile = ({ username }: { username: string }) => {
             </div>
 
             <div className="flex flex-col items-center justify-center p-2 text-xs">
-              <p>Contributed Repos</p>
+              <p>Contributed Repos (30 days)</p>
 
               <p className="font-medium text-5xl">{countUniqueRepos(userPR)}</p>
             </div>
