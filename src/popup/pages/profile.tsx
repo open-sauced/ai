@@ -197,7 +197,7 @@ export const Profile = ({ username }: { username: string }) => {
             <div className="flex flex-col items-center justify-center p-2 text-xs">
               <p>OSCR</p>
 
-              {user?.bio && (
+              {user && (
                 <p className="font-medium text-5xl">{Math.ceil(user.oscr)}</p>
               )}
             </div>
