@@ -4,7 +4,10 @@ const domUpdateWatch = (callback: () => void, delayInMs = 0) => {
         (_: unknown, observer: MutationObserver) => {
             const newLocation = document.location.href;
 
-            if (oldLocation === newLocation || document.readyState !== "complete") {
+            if (
+                oldLocation === newLocation ||
+                document.readyState !== "complete"
+            ) {
                 return;
             }
             observer.disconnect();

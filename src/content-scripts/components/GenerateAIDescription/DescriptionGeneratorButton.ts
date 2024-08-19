@@ -1,11 +1,18 @@
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 import openSaucedLogoIcon from "../../../assets/opensauced-icon.svg";
 import { getPullRequestAPIURL } from "../../../utils/urlMatchers";
-import { getDescriptionContext, isOutOfContextBounds } from "../../../utils/fetchGithubAPIData";
+import {
+    getDescriptionContext,
+    isOutOfContextBounds,
+} from "../../../utils/fetchGithubAPIData";
 import { generateDescription } from "../../../utils/ai-utils/openai";
 import { insertTextAtCursor } from "../../../utils/ai-utils/cursorPositionInsert";
 import { getAIDescriptionConfig } from "../../../utils/ai-utils/descriptionconfig";
-import { getAuthToken, isLoggedIn, optLogIn } from "../../../utils/checkAuthentication";
+import {
+    getAuthToken,
+    isLoggedIn,
+    optLogIn,
+} from "../../../utils/checkAuthentication";
 
 export const DescriptionGeneratorButton = (number: number) => {
     const descriptionGeneratorButton = createHtmlElement("a", {
@@ -24,7 +31,6 @@ const handleSubmit = async (event: Event) => {
     const button = event.currentTarget as HTMLElement;
     const logo = button.querySelector("#ai-description-button-logo");
 
-
     try {
         if (!(await isLoggedIn())) {
             return void optLogIn();
@@ -39,13 +45,16 @@ const handleSubmit = async (event: Event) => {
         logo?.classList.toggle("animate-spin");
         button.classList.toggle("pointer-events-none");
 
-
         const { protocol, hostname, pathname } = window.location;
-        const descriptionStream = await getAiDescription(`${protocol}//${hostname}${pathname}`);
+        const descriptionStream = await getAiDescription(
+            `${protocol}//${hostname}${pathname}`,
+        );
 
         logo?.classList.toggle("animate-spin");
         button.classList.toggle("pointer-events-none");
-        const textArea = button.closest(".Box.CommentBox")?.querySelector("textarea");
+        const textArea = button
+            .closest(".Box.CommentBox")
+            ?.querySelector("textarea");
 
         if (textArea) {
             insertTextAtCursor(textArea, descriptionStream);
@@ -70,13 +79,23 @@ export const getAiDescription = async (prUrl: string) => {
         throw new Error("Configuration file is empty!");
     }
 
-    const [diff, commitMessages] = await getDescriptionContext(prApiUrl, descriptionConfig.config.source);
+    const [diff, commitMessages] = await getDescriptionContext(
+        prApiUrl,
+        descriptionConfig.config.source,
+    );
 
     if (!diff && !commitMessages) {
         throw new Error(`No input context was generated.`);
     }
-    if (isOutOfContextBounds([diff, commitMessages], descriptionConfig.config.maxInputLength)) {
-        throw new Error(`Max input length exceeded. Try setting the description source to commit-messages.`);
+    if (
+        isOutOfContextBounds(
+            [diff, commitMessages],
+            descriptionConfig.config.maxInputLength,
+        )
+    ) {
+        throw new Error(
+            `Max input length exceeded. Try setting the description source to commit-messages.`,
+        );
     }
     const token = await getAuthToken();
     const description = await generateDescription(
@@ -95,5 +114,3 @@ export const getAiDescription = async (prUrl: string) => {
 
     return description;
 };
-
-

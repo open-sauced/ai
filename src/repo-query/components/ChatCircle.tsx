@@ -3,13 +3,11 @@ import openSaucedLogoIcon from "../../assets/open-sauced-orange-bg-logo.svg";
 export const ChatCircle = ({ toggleDialog }: { toggleDialog: () => void }) => (
     <button
         onClick={toggleDialog}
-        onKeyDown={
-            e => {
-                if (e.key === "Enter") {
-                    toggleDialog();
-                }
+        onKeyDown={(e) => {
+            if (e.key === "Enter") {
+                toggleDialog();
             }
-        }
+        }}
     >
         <img
             alt="Open Sauced Logo"

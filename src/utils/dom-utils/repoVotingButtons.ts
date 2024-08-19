@@ -8,7 +8,11 @@ import {
 } from "../fetchOpenSaucedApiData";
 
 const injectRepoVotingButtons = async (ownerName: string, repoName: string) => {
-    if (document.getElementById("repo-voting-button") || !(await isLoggedIn()) || !(await repoExistsOnOpenSauced(ownerName, repoName))) {
+    if (
+        document.getElementById("repo-voting-button") ||
+        !(await isLoggedIn()) ||
+        !(await repoExistsOnOpenSauced(ownerName, repoName))
+    ) {
         return;
     }
 

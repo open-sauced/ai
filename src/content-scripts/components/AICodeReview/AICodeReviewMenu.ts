@@ -4,14 +4,18 @@ import {
     DescriptionConfig,
     getAIDescriptionConfig,
 } from "../../../utils/ai-utils/descriptionconfig";
-import { getAuthToken, isLoggedIn, optLogIn } from "../../../utils/checkAuthentication";
+import {
+    getAuthToken,
+    isLoggedIn,
+    optLogIn,
+} from "../../../utils/checkAuthentication";
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 import { isOutOfContextBounds } from "../../../utils/fetchGithubAPIData";
 
 type SuggestionGenerator = (
     token: string,
     code: string,
-    config: DescriptionConfig
+    config: DescriptionConfig,
 ) => Promise<string | undefined>;
 
 export const AICodeReviewMenu = (items: HTMLLIElement[]) => {
@@ -39,7 +43,7 @@ export const AICodeReviewMenu = (items: HTMLLIElement[]) => {
 
     menu.querySelector("ul")?.append(...items);
 
-    document.addEventListener("click", event => {
+    document.addEventListener("click", (event) => {
         if (event.target instanceof HTMLElement) {
             menu.classList.add("hidden");
         }
@@ -47,7 +51,12 @@ export const AICodeReviewMenu = (items: HTMLLIElement[]) => {
     return menu;
 };
 
-export const AICodeReviewMenuItem = (title: string, description: string, suggestionGenerator: SuggestionGenerator, commentNode: HTMLElement) => {
+export const AICodeReviewMenuItem = (
+    title: string,
+    description: string,
+    suggestionGenerator: SuggestionGenerator,
+    commentNode: HTMLElement,
+) => {
     const menuItem = createHtmlElement("li", {
         className: "SelectMenu-item d-block slash-command-menu-item",
         role: "option",
@@ -90,7 +99,7 @@ const handleSubmit = async (
             ".code-review.selected-line",
         );
         let selectedCode = Array.from(selectedLines)
-            .map(line => line.textContent)
+            .map((line) => line.textContent)
             .join("\n");
 
         // find input with name="position" and get its value
@@ -100,15 +109,17 @@ const handleSubmit = async (
             )!;
             const position = positionElement.getAttribute("value")!;
 
-            const codeDiv = document.querySelector(`[data-line-number="${position}"]`)
-                ?.nextSibling?.nextSibling as HTMLElement;
+            const codeDiv = document.querySelector(
+                `[data-line-number="${position}"]`,
+            )?.nextSibling?.nextSibling as HTMLElement;
 
             selectedCode =
-        codeDiv.getElementsByClassName("blob-code-inner")[0].textContent!;
+                codeDiv.getElementsByClassName("blob-code-inner")[0]
+                    .textContent!;
         }
         if (
             isOutOfContextBounds(
-                [selectedCode, [] ],
+                [selectedCode, []],
                 descriptionConfig.config.maxInputLength,
             )
         ) {

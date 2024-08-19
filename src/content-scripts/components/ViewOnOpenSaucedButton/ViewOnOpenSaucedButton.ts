@@ -7,7 +7,8 @@ export const ViewOnOpenSaucedButton = (username: string) => {
     const viewOnOpenSaucedButton = createHtmlElement("a", {
         id: "view-on-opensauced-button",
         href: `https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/user/${username}/contributions`,
-        className: "inline-block mb-2 text-black bg-gh-white dark:bg-gh-gray dark:text-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline",
+        className:
+            "inline-block mb-2 text-black bg-gh-white dark:bg-gh-gray dark:text-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline",
         target: "_blank",
         rel: "noopener noreferrer",
         innerHTML: `

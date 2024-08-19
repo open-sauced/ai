@@ -1,6 +1,7 @@
 import { cachedFetch } from "./cache";
 import {
-    OPEN_SAUCED_USERS_ENDPOINT, OPEN_SAUCED_REPOS_ENDPOINT,
+    OPEN_SAUCED_USERS_ENDPOINT,
+    OPEN_SAUCED_REPOS_ENDPOINT,
     OPEN_SAUCED_USER_INSIGHTS_ENDPOINT,
     OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT,
     OPEN_SAUCED_HIGHLIGHTS_LIST_ENDPOINT,
@@ -28,43 +29,63 @@ export const isOpenSaucedUser = async (username: string) => {
     }
 };
 
-export const getUserData = async (userName: string, forceRefresh: boolean = false) => cachedFetch(`${OPEN_SAUCED_USERS_ENDPOINT}/${userName}`, {
-    expireInSeconds: 2 * 60 * 60,
-    forceRefresh,
-    headers: { Accept: "application/json" },
-}).then(async resp => {
-    if (!resp?.ok) {
-        console.log("error getting user info");
-    }
-    return resp?.json();
-})
-    .then(json => json);
+export const getUserData = async (
+    userName: string,
+    forceRefresh: boolean = false,
+) =>
+    cachedFetch(`${OPEN_SAUCED_USERS_ENDPOINT}/${userName}`, {
+        expireInSeconds: 2 * 60 * 60,
+        forceRefresh,
+        headers: { Accept: "application/json" },
+    })
+        .then(async (resp) => {
+            if (!resp?.ok) {
+                console.log("error getting user info");
+            }
+            return resp?.json();
+        })
+        .then((json) => json);
 
-export const getUserPRData = async (userName: string, forceRefresh: boolean = false) => cachedFetch(`${OPEN_SAUCED_USERS_ENDPOINT}/${userName}/prs`, {
-    expireInSeconds: 2 * 60 * 60,
-    forceRefresh,
-    headers: { Accept: "application/json" },
-}).then(async resp => {
-    if (!resp?.ok) {
-        console.log("error getting user PR info");
-    }
-    return resp?.json();
-})
-    .then(json => json);
+export const getUserPRData = async (
+    userName: string,
+    forceRefresh: boolean = false,
+) =>
+    cachedFetch(`${OPEN_SAUCED_USERS_ENDPOINT}/${userName}/prs`, {
+        expireInSeconds: 2 * 60 * 60,
+        forceRefresh,
+        headers: { Accept: "application/json" },
+    })
+        .then(async (resp) => {
+            if (!resp?.ok) {
+                console.log("error getting user PR info");
+            }
+            return resp?.json();
+        })
+        .then((json) => json);
 
-export const getUserHighlightsData = async (userName: string, forceRefresh: boolean = false) => cachedFetch(`${OPEN_SAUCED_USERS_ENDPOINT}/${userName}/highlights`, {
-    expireInSeconds: 2 * 60 * 60,
-    forceRefresh,
-    headers: { Accept: "application/json" },
-}).then(async resp => {
-    if (!resp?.ok) {
-        console.log("error getting user highlights info");
-    }
-    return resp?.json();
-})
-    .then(json => json);
+export const getUserHighlightsData = async (
+    userName: string,
+    forceRefresh: boolean = false,
+) =>
+    cachedFetch(`${OPEN_SAUCED_USERS_ENDPOINT}/${userName}/highlights`, {
+        expireInSeconds: 2 * 60 * 60,
+        forceRefresh,
+        headers: { Accept: "application/json" },
+    })
+        .then(async (resp) => {
+            if (!resp?.ok) {
+                console.log("error getting user highlights info");
+            }
+            return resp?.json();
+        })
+        .then((json) => json);
 
-const getUserVotes = async (userToken: string, page: number = 1, limit: number = 1000, repos: any[] = []): Promise<any[]> => {
+const getUserVotes = async (
+    userToken: string,
+    page: number = 1,
+    limit: number = 1000,
+    repos: any[] = [],
+): Promise<any[]> => {
     const response = await fetch(
         `${OPEN_SAUCED_REPOS_ENDPOINT}/listUserVoted?page=${page}&limit=${limit}`,
         {
@@ -86,14 +107,19 @@ const getUserVotes = async (userToken: string, page: number = 1, limit: number =
     return repos;
 };
 
-
-export const checkUserVotedRepo = async (userToken: string, repoName: string) => {
+export const checkUserVotedRepo = async (
+    userToken: string,
+    repoName: string,
+) => {
     const userVotes = await getUserVotes(userToken);
 
     return userVotes.some((repo: any) => repo.name === repoName);
 };
 
-export const repoExistsOnOpenSauced = async (ownerName: string, repoName: string) => {
+export const repoExistsOnOpenSauced = async (
+    ownerName: string,
+    repoName: string,
+) => {
     const response = await fetch(
         `${OPEN_SAUCED_REPOS_ENDPOINT}/${ownerName}/${repoName}`,
     );
@@ -101,19 +127,30 @@ export const repoExistsOnOpenSauced = async (ownerName: string, repoName: string
     return response.status === 200;
 };
 
-export const getRepoData = async (ownerName: string, repoName: string, forceRefresh: boolean = false) => cachedFetch(`${OPEN_SAUCED_REPOS_ENDPOINT}/${ownerName}/${repoName}`, {
-    expireInSeconds: 2 * 60 * 60,
-    forceRefresh,
-    headers: { Accept: "application/json" },
-}).then(async resp => {
-    if (!resp?.ok) {
-        console.log("error getting repo info");
-    }
-    return resp?.json();
-})
-    .then(json => json);
+export const getRepoData = async (
+    ownerName: string,
+    repoName: string,
+    forceRefresh: boolean = false,
+) =>
+    cachedFetch(`${OPEN_SAUCED_REPOS_ENDPOINT}/${ownerName}/${repoName}`, {
+        expireInSeconds: 2 * 60 * 60,
+        forceRefresh,
+        headers: { Accept: "application/json" },
+    })
+        .then(async (resp) => {
+            if (!resp?.ok) {
+                console.log("error getting repo info");
+            }
+            return resp?.json();
+        })
+        .then((json) => json);
 
-export const voteOrUnvoteRepo = async (userToken: string, ownerName: string, repoName: string, method: "PUT" | "DELETE") => {
+export const voteOrUnvoteRepo = async (
+    userToken: string,
+    ownerName: string,
+    repoName: string,
+    method: "PUT" | "DELETE",
+) => {
     const response = await fetch(
         `${OPEN_SAUCED_REPOS_ENDPOINT}/${ownerName}/${repoName}/vote`,
         {
@@ -126,18 +163,21 @@ export const voteOrUnvoteRepo = async (userToken: string, ownerName: string, rep
 };
 
 export const getUserInsightsData = async (userToken: string) => {
-    const response = await fetch(
-        `${OPEN_SAUCED_USER_INSIGHTS_ENDPOINT}`,
-        {
-            method: "GET",
-            headers: { Authorization: `Bearer ${userToken}` },
-        },
-    );
+    const response = await fetch(`${OPEN_SAUCED_USER_INSIGHTS_ENDPOINT}`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${userToken}` },
+    });
 
     return response.json();
 };
 
-export const updateInsight = async (userToken: string, repoId: string, checked: boolean, repoFullName: string, insight: IInsight) => {
+export const updateInsight = async (
+    userToken: string,
+    repoId: string,
+    checked: boolean,
+    repoFullName: string,
+    insight: IInsight,
+) => {
     insight.repos = insight.repos.map((repo: any) => ({
         id: repo.repo_id,
         fullName: repo.full_name,
@@ -156,22 +196,22 @@ export const updateInsight = async (userToken: string, repoId: string, checked: 
                 is_public: insight.is_public,
                 repos: checked
                     ? [
-                        ...insight.repos,
-                        {
-                            id: repoId,
-                            fullName: `${repoFullName}`,
-                        },
-                    ]
-                    : insight.repos.filter(
-                        (repo: any) => repo.id !== repoId,
-                    ),
+                          ...insight.repos,
+                          {
+                              id: repoId,
+                              fullName: `${repoFullName}`,
+                          },
+                      ]
+                    : insight.repos.filter((repo: any) => repo.id !== repoId),
             }),
         },
     );
 
     return response.status === 200;
 };
-export const getHighlights = async (forceRefresh?: boolean): Promise<Highlights | undefined> => {
+export const getHighlights = async (
+    forceRefresh?: boolean,
+): Promise<Highlights | undefined> => {
     const response = await cachedFetch(
         `${OPEN_SAUCED_HIGHLIGHTS_LIST_ENDPOINT}?limit=10`,
         {
@@ -187,56 +227,94 @@ export const getHighlights = async (forceRefresh?: boolean): Promise<Highlights 
     return response.json();
 };
 
-export const createHighlight = async (userToken: string, url: string, title: string, highlight: string, shipped_at?: string) => fetch(OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT, {
-    headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${userToken}`,
-    },
-    method: "POST",
-    body: JSON.stringify({
-        url,
-        title,
-        shipped_at,
-        highlight,
-    }),
-});
+export const createHighlight = async (
+    userToken: string,
+    url: string,
+    title: string,
+    highlight: string,
+    shipped_at?: string,
+) =>
+    fetch(OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT, {
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${userToken}`,
+        },
+        method: "POST",
+        body: JSON.stringify({
+            url,
+            title,
+            shipped_at,
+            highlight,
+        }),
+    });
 
-export const getHighlightReactions = async (highlightId: string):Promise<Record<string, string>[]> => {
-    const response = await fetch(`${OPEN_SAUCED_HIGHLIGHT_ENDPOINT}/${highlightId}/reactions`, { method: "GET" });
+export const getHighlightReactions = async (
+    highlightId: string,
+): Promise<Record<string, string>[]> => {
+    const response = await fetch(
+        `${OPEN_SAUCED_HIGHLIGHT_ENDPOINT}/${highlightId}/reactions`,
+        { method: "GET" },
+    );
 
     return response.json();
 };
 
-export const getUserHighlightReactions = async (userToken: string, highlightId: string):Promise<Record<string, string>[]> => {
-    const response = await fetch(`${OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT}/${highlightId}/reactions`, {
-        headers: { Authorization: `Bearer ${userToken}` },
+export const getUserHighlightReactions = async (
+    userToken: string,
+    highlightId: string,
+): Promise<Record<string, string>[]> => {
+    const response = await fetch(
+        `${OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT}/${highlightId}/reactions`,
+        {
+            headers: { Authorization: `Bearer ${userToken}` },
+            method: "GET",
+        },
+    );
+
+    return response.json();
+};
+
+export const getEmojis = async (): Promise<GeneralAPIResponse> => {
+    const response = await fetch(`${OPEN_SAUCED_EMOJIS_ENDPOINT}`, {
         method: "GET",
     });
 
     return response.json();
 };
 
-export const getEmojis = async ():Promise<GeneralAPIResponse> => {
-    const response = await fetch(`${OPEN_SAUCED_EMOJIS_ENDPOINT}`, { method: "GET" });
+export const reactOnHighlight = async (
+    userToken: string,
+    highlightId: string,
+    emojiId: string,
+) =>
+    fetch(
+        `${OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT}/${highlightId}/reactions/${emojiId}`,
+        {
+            headers: { Authorization: `Bearer ${userToken}` },
+            method: "POST",
+        },
+    );
 
-    return response.json();
-};
-
-export const reactOnHighlight = async (userToken: string, highlightId: string, emojiId: string) => fetch(`${OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT}/${highlightId}/reactions/${emojiId}`, {
-    headers: { Authorization: `Bearer ${userToken}` },
-    method: "POST",
-});
-
-export const removeReactionOnHighlight = async (userToken: string, highlightId: string, emojiId: string) => fetch(`${OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT}/${highlightId}/reactions/${emojiId}`, {
-    headers: { Authorization: `Bearer ${userToken}` },
-    method: "DELETE",
-});
+export const removeReactionOnHighlight = async (
+    userToken: string,
+    highlightId: string,
+    emojiId: string,
+) =>
+    fetch(
+        `${OPEN_SAUCED_USER_HIGHLIGHTS_ENDPOINT}/${highlightId}/reactions/${emojiId}`,
+        {
+            headers: { Authorization: `Bearer ${userToken}` },
+            method: "DELETE",
+        },
+    );
 
 export const getRepoOpenSaucedURL = async (repoUrl: string) => {
-    const repoFullName = repoUrl.split("/").slice(-2)
-        .join("/");
-    const response = await fetch(`${OPEN_SAUCED_REPOS_ENDPOINT}/${repoFullName}`, { method: "GET" });
+    const repoFullName = repoUrl.split("/").slice(-2).join("/");
+    const response = await fetch(
+        `${OPEN_SAUCED_REPOS_ENDPOINT}/${repoFullName}`,
+        { method: "GET" },
+    );
 
     if (response.status === 200) {
         const data = await response.json();

@@ -19,7 +19,8 @@ chrome.runtime.onMessage.addListener(async (message: Message) => {
             target: { tabId: tab.id! },
             func: (data, selector) => {
                 const populateDataToLinkedIn = (data: any) => {
-                    const inputFields: NodeListOf<HTMLInputElement> = document.querySelectorAll(selector);
+                    const inputFields: NodeListOf<HTMLInputElement> =
+                        document.querySelectorAll(selector);
 
                     if (inputFields.length === 0) {
                         // Set timeout to wait for the page to load
