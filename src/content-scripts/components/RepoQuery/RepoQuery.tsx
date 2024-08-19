@@ -8,14 +8,9 @@ export const RepoQueryRoot = (ownerName: string, repoName: string) => {
 
     ReactDOM.createRoot(repoQueryRoot).render(
         <React.StrictMode>
-            <RepoQuery
-                ownerName={ownerName}
-                repoName={repoName}
-            />
+            <RepoQuery ownerName={ownerName} repoName={repoName} />
         </React.StrictMode>,
     );
 
-
     return repoQueryRoot;
 };
-

@@ -1,9 +1,22 @@
 import { useEffect, useState } from "react";
 import { RepoQueryPages } from "../../ts/types";
-import { REPO_QUERY_COLLECTION_ENDPOINT, REPO_QUERY_EMBED_ENDPOINT } from "../../constants";
+import {
+    REPO_QUERY_COLLECTION_ENDPOINT,
+    REPO_QUERY_EMBED_ENDPOINT,
+} from "../../constants";
 
-export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerName: string, repoName: string, setCurrentPage: (page: RepoQueryPages) => void }) => {
-    const [statusMessage, setStatusMessage] = useState("We are checking if this repository is indexed. This may take a while.");
+export const IndexingPage = ({
+    ownerName,
+    repoName,
+    setCurrentPage,
+}: {
+    ownerName: string;
+    repoName: string;
+    setCurrentPage: (page: RepoQueryPages) => void;
+}) => {
+    const [statusMessage, setStatusMessage] = useState(
+        "We are checking if this repository is indexed. This may take a while.",
+    );
 
     useEffect(() => {
         const processChunk = (chunk: string) => {
@@ -20,25 +33,28 @@ export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerNam
                     setStatusMessage("Embedding Repository...");
                     break;
                 case "SAVE_EMBEDDINGS":
-                    setStatusMessage("Saving the embeddings to our database...");
-                    break;
-                case "ERROR":
-                    setStatusMessage("There was an error while indexing this repository. Redirecting to the Home Page.");
-                    setTimeout(
-                        () => {
-                            setCurrentPage(RepoQueryPages.Home);
-                        }
-                        , 3000,
+                    setStatusMessage(
+                        "Saving the embeddings to our database...",
                     );
                     break;
+                case "ERROR":
+                    setStatusMessage(
+                        "There was an error while indexing this repository. Redirecting to the Home Page.",
+                    );
+                    setTimeout(() => {
+                        setCurrentPage(RepoQueryPages.Home);
+                    }, 3000);
+                    break;
                 case "DONE":
-                    setStatusMessage("Indexing Complete. Redirecting to the Chat Dialog.");
+                    setStatusMessage(
+                        "Indexing Complete. Redirecting to the Chat Dialog.",
+                    );
                     setTimeout(
                         () => {
                             setCurrentPage(RepoQueryPages.Chat);
-                        }
+                        },
 
-                        , 1000,
+                        1000,
                     );
                     break;
                 default:
@@ -46,11 +62,15 @@ export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerNam
             }
         };
 
-        async function checkIndexingStatus () {
-            const response = await fetch(`${REPO_QUERY_COLLECTION_ENDPOINT}?owner=${ownerName}&name=${repoName}&branch=HEAD`);
+        async function checkIndexingStatus() {
+            const response = await fetch(
+                `${REPO_QUERY_COLLECTION_ENDPOINT}?owner=${ownerName}&name=${repoName}&branch=HEAD`,
+            );
 
             if (response.status !== 200) {
-                setStatusMessage("This repository is not indexed. We are indexing it now. This may take a while.");
+                setStatusMessage(
+                    "This repository is not indexed. We are indexing it now. This may take a while.",
+                );
                 const embedResponse = await fetch(
                     `${REPO_QUERY_EMBED_ENDPOINT}`,
                     {
@@ -65,24 +85,22 @@ export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerNam
                 );
 
                 if (embedResponse.status === 403) {
-                    setStatusMessage("This repository's license does not allow us to index it. Redirecting to the Home Page.");
-                    setTimeout(
-                        () => {
-                            setCurrentPage(RepoQueryPages.Home);
-                        }
-                        , 3000,
+                    setStatusMessage(
+                        "This repository's license does not allow us to index it. Redirecting to the Home Page.",
                     );
+                    setTimeout(() => {
+                        setCurrentPage(RepoQueryPages.Home);
+                    }, 3000);
                     return;
                 }
 
                 if (embedResponse.status !== 200) {
-                    setStatusMessage("There was an error while indexing this repository. Redirecting to the Home Page.");
-                    setTimeout(
-                        () => {
-                            setCurrentPage(RepoQueryPages.Home);
-                        }
-                        , 3000,
+                    setStatusMessage(
+                        "There was an error while indexing this repository. Redirecting to the Home Page.",
                     );
+                    setTimeout(() => {
+                        setCurrentPage(RepoQueryPages.Home);
+                    }, 3000);
                     return;
                 }
 
@@ -107,7 +125,9 @@ export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerNam
                     }
                 }
             } else {
-                setStatusMessage("This repository is already indexed! Redirecting to the Chat Dialog.");
+                setStatusMessage(
+                    "This repository is already indexed! Redirecting to the Chat Dialog.",
+                );
                 setTimeout(() => {
                     setCurrentPage(RepoQueryPages.Chat);
                 }, 1000);
@@ -116,7 +136,6 @@ export const IndexingPage = ({ ownerName, repoName, setCurrentPage }: { ownerNam
 
         void checkIndexingStatus();
     }, []);
-
 
     return (
         <div

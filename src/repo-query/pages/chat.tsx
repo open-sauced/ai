@@ -9,7 +9,13 @@ interface ChatMessage {
     isUser: boolean;
 }
 
-export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: string }) => {
+export const Chat = ({
+    ownerName,
+    repoName,
+}: {
+    ownerName: string;
+    repoName: string;
+}) => {
     // chat ui with bubbles and input
     const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
     const [sendEnabled, setSendEnabled] = useState(true);
@@ -18,11 +24,14 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
 
     const processChunk = (chunk: string) => {
         const chunkLines = chunk.split("\n");
-        const indexOfEvent = chunkLines.findIndex(e => e.includes("event: "));
-        const [eventLine, dataLine] = [chunkLines[indexOfEvent], chunkLines[indexOfEvent + 1]];
+        const indexOfEvent = chunkLines.findIndex((e) => e.includes("event: "));
+        const [eventLine, dataLine] = [
+            chunkLines[indexOfEvent],
+            chunkLines[indexOfEvent + 1],
+        ];
 
         const event = eventLine.split(": ")[1];
-        let data:any;
+        let data: any;
 
         try {
             data = JSON.parse(dataLine.split(": ")[1]);
@@ -30,7 +39,9 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
             console.error("The recieved data line", dataLine);
 
             // remove quotes from string
-            data = dataLine.split("data: ")[1].substring(1, dataLine.split("data: ")[1].length - 2);
+            data = dataLine
+                .split("data: ")[1]
+                .substring(1, dataLine.split("data: ")[1].length - 2);
         }
 
         switch (event) {
@@ -41,7 +52,9 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
                 setStatusMessage(`Searching ${data.path} for your query...🔍`);
                 break;
             case "SEARCH_PATH":
-                setStatusMessage(`Looking for ${data.path} in the codebase...🔍`);
+                setStatusMessage(
+                    `Looking for ${data.path} in the codebase...🔍`,
+                );
                 break;
             case "GENERATE_RESPONSE":
                 setStatusMessage("Generating a response...🧠");
@@ -50,20 +63,26 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
                 setBotThinking(false);
                 setSendEnabled(true);
 
-                setChatHistory(prevChatHistory => [...prevChatHistory, {
-                    message: data,
-                    isUser: false,
-                }]);
+                setChatHistory((prevChatHistory) => [
+                    ...prevChatHistory,
+                    {
+                        message: data,
+                        isUser: false,
+                    },
+                ]);
                 break;
             case "ERROR":
                 setBotThinking(false);
                 setSendEnabled(true);
                 console.error(data);
 
-                setChatHistory(prevChatHistory => [...prevChatHistory, {
-                    message: "Something went wrong. Please try again.",
-                    isUser: false,
-                }]);
+                setChatHistory((prevChatHistory) => [
+                    ...prevChatHistory,
+                    {
+                        message: "Something went wrong. Please try again.",
+                        isUser: false,
+                    },
+                ]);
                 break;
             default:
                 break;
@@ -73,21 +92,18 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
     const askQuery = async (query: string) => {
         setBotThinking(true);
         setSendEnabled(false);
-        const response = await fetch(
-            `${REPO_QUERY_QUERY_ENDPOINT}`,
-            {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    query,
-                    repository: {
-                        owner: ownerName,
-                        name: repoName,
-                        branch: "HEAD",
-                    },
-                }),
-            },
-        );
+        const response = await fetch(`${REPO_QUERY_QUERY_ENDPOINT}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                query,
+                repository: {
+                    owner: ownerName,
+                    name: repoName,
+                    branch: "HEAD",
+                },
+            }),
+        });
 
         const reader = response.body?.getReader();
 
@@ -111,7 +127,6 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
         }
     };
 
-
     useEffect(() => {
         setChatHistory([
             {
@@ -121,10 +136,13 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
         ]);
     }, []);
 
-    const suggestedQuestions = ["What's the tech stack for this project?", "How do I run this locally?", "List some functions with side effects."];
+    const suggestedQuestions = [
+        "What's the tech stack for this project?",
+        "How do I run this locally?",
+        "List some functions with side effects.",
+    ];
 
     return (
-
         <div
             className="flex flex-col justify-between items-center w-full h-full"
             id="chat-dialog-body"
@@ -140,102 +158,123 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
                     >
                         <div
                             key={index}
-                            className={`flex flex-col justify-start items-start h-auto p-4 rounded-xl m-2 max-w-xs ${chatMessage.isUser ? "bg-slate-800 self-end" : "bg-slate-700 self-start"}`}
+                            className={`flex flex-col justify-start items-start h-auto p-4 rounded-xl m-2 max-w-xs ${
+                                chatMessage.isUser
+                                    ? "bg-slate-800 self-end"
+                                    : "bg-slate-700 self-start"
+                            }`}
                             id="chat-bubble"
                         >
                             <div
-                                className={`text-sm text-gray-300 w-full ${chatMessage.isUser ? "text-right" : "text-left"}`}
+                                className={`text-sm text-gray-300 w-full ${
+                                    chatMessage.isUser
+                                        ? "text-right"
+                                        : "text-left"
+                                }`}
                                 id="chat-bubble-message"
                             >
                                 {/* this might contain markdown if its from the bot*/}
-                                {chatMessage.isUser
-                                    ? chatMessage.message
-                                    : (
-                                        <ReactMarkdown components={{
-                                            // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                                            code ({ node, inline, className, children, ...props }) {
-                                                const match = (/language-(\w+)/).exec(className ?? "");
-
-                                                return !inline && match
-                                                    ? (
-                                                        <SyntaxHighlighter
-                                                            PreTag="div"
-                                                            language={match[1]}
-                                                            {...props}
-                                                            style={darcula}
-                                                        >
-                                                            {String(children).replace(/\n$/, "")}
-                                                        </SyntaxHighlighter>
-                                                    )
-                                                    : (
-                                                        <code
-                                                            className={className}
-                                                            {...props}
-                                                        >
-                                                            {children}
-                                                        </code>
+                                {chatMessage.isUser ? (
+                                    chatMessage.message
+                                ) : (
+                                    <ReactMarkdown
+                                        components={{
+                                            code({
+                                                // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                                                node,
+                                                inline,
+                                                className,
+                                                children,
+                                                ...props
+                                            }) {
+                                                const match =
+                                                    /language-(\w+)/.exec(
+                                                        className ?? "",
                                                     );
+
+                                                return !inline && match ? (
+                                                    <SyntaxHighlighter
+                                                        PreTag="div"
+                                                        language={match[1]}
+                                                        {...props}
+                                                        style={darcula}
+                                                    >
+                                                        {String(
+                                                            children,
+                                                        ).replace(/\n$/, "")}
+                                                    </SyntaxHighlighter>
+                                                ) : (
+                                                    <code
+                                                        className={className}
+                                                        {...props}
+                                                    >
+                                                        {children}
+                                                    </code>
+                                                );
                                             },
                                         }}
-                                        >
-                                            {chatMessage.message}
-                                        </ReactMarkdown>
-                                    )}
+                                    >
+                                        {chatMessage.message}
+                                    </ReactMarkdown>
+                                )}
                             </div>
                         </div>
 
                         {!chatMessage.isUser &&
-                            index === chatHistory.length - 1 &&
-                        (
-
-                            <div
-                                className="flex flex-col justify-start items-start w-full pl-4"
-                                id="chat-dialog-body-chat-history-chat-bubble"
-                            >
-                                <p
-                                    className="text-md text-gray-600 w-full text-left mb-2"
-                                    id="chat-dialog-body-chat-history-chat-bubble-message"
-                                >
-                                    Here&apos;s some example questions you can ask:
-                                </p>
-
+                            index === chatHistory.length - 1 && (
                                 <div
-                                    className="flex flex-col justify-start items-start w-full"
-                                    id="question-suggestions"
+                                    className="flex flex-col justify-start items-start w-full pl-4"
+                                    id="chat-dialog-body-chat-history-chat-bubble"
                                 >
-                                    {
-                                        suggestedQuestions.map((question, index) => (
-                                            <button
-                                                key={index}
-                                                className="h-auto p-2 rounded-xl mb-2 inline-block bg-gradient-to-r from-[#e67e22] to-[#d35400] border-none"
-                                                id="question-suggestion"
-                                                onClick={
-                                                    async () => {
-                                                        setChatHistory([...chatHistory, {
-                                                            message: question,
-                                                            isUser: true,
-                                                        }]);
+                                    <p
+                                        className="text-md text-gray-600 w-full text-left mb-2"
+                                        id="chat-dialog-body-chat-history-chat-bubble-message"
+                                    >
+                                        Here&apos;s some example questions you
+                                        can ask:
+                                    </p>
 
-                                                        await askQuery(question);
-                                                    }
-                                                }
-                                            >
-                                                <div
-                                                    className="text-sm text-white w-full text-left"
-                                                    id="question-suggestion-message"
+                                    <div
+                                        className="flex flex-col justify-start items-start w-full"
+                                        id="question-suggestions"
+                                    >
+                                        {suggestedQuestions.map(
+                                            (question, index) => (
+                                                <button
+                                                    key={index}
+                                                    className="h-auto p-2 rounded-xl mb-2 inline-block bg-gradient-to-r from-[#e67e22] to-[#d35400] border-none"
+                                                    id="question-suggestion"
+                                                    onClick={async () => {
+                                                        setChatHistory([
+                                                            ...chatHistory,
+                                                            {
+                                                                message:
+                                                                    question,
+                                                                isUser: true,
+                                                            },
+                                                        ]);
+
+                                                        await askQuery(
+                                                            question,
+                                                        );
+                                                    }}
                                                 >
-                                                    {question}
-                                                </div>
-                                            </button>
-                                        ))
-                                    }
+                                                    <div
+                                                        className="text-sm text-white w-full text-left"
+                                                        id="question-suggestion-message"
+                                                    >
+                                                        {question}
+                                                    </div>
+                                                </button>
+                                            ),
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
-                        )}
+                            )}
                     </div>
                 ))}
 
-                { botThinking && (
+                {botThinking && (
                     <div
                         className="flex flex-row justify-start items-start h-auto p-4 rounded-xl m-2 inline-block max-w-xs bg-slate-700 self-start"
                         id="chat-dialog-body-chat-history-chat-bubble"
@@ -244,9 +283,7 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
                             className="text-sm text-gray-400 w-full text-left"
                             id="chat-dialog-body-chat-history-chat-bubble-message"
                         >
-                            <i>
-                                {statusMessage}
-                            </i>
+                            <i>{statusMessage}</i>
 
                             <div className="flex flex-row items-center mt-2">
                                 <div className="w-2 h-2 bg-gray-400 rounded-full mr-1 animate-bounce" />
@@ -254,11 +291,10 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
                                 <div className="w-2 h-2 bg-gray-400 rounded-full mr-1 animate-[bounce_1s_infinite_250ms_reverse]" />
 
                                 <div className="w-2 h-2 bg-gray-400 rounded-full animate-[bounce_1s_infinite_500ms]" />
-
                             </div>
                         </div>
                     </div>
-                ) }
+                )}
             </div>
 
             <div
@@ -269,52 +305,57 @@ export const Chat = ({ ownerName, repoName }: { ownerName: string, repoName: str
                     className="w-5/6 h-10 rounded-xl bg-slate-700 text-white text-sm px-4 mr-2 border-none focus:outline-none"
                     id="chat-dialog-body-input-text"
                     placeholder="Ask a question"
-                    onKeyDown={
-                        async event => {
-                            if (sendEnabled && event.key === "Enter") {
-                                const input = document.getElementById("chat-dialog-body-input-text") as HTMLInputElement;
-                                const query = input.value;
-
-                                if (query) {
-                                    setChatHistory([...chatHistory, {
-                                        message: query,
-                                        isUser: true,
-                                    }]);
-
-                                    input.value = "";
-
-                                    await askQuery(query);
-                                }
-                            }
-                        }
-                    }
-                />
-
-                <button
-                    className="w-1/6 h-10 rounded-xl bg-orange text-white text-sm border-none disabled:opacity-50 focus:outline-none disabled:cursor-not-allowed"
-                    disabled={!sendEnabled}
-                    id="chat-dialog-body-input-submit"
-                    onClick={
-                        async () => {
-                            const input = document.getElementById("chat-dialog-body-input-text") as HTMLInputElement;
+                    onKeyDown={async (event) => {
+                        if (sendEnabled && event.key === "Enter") {
+                            const input = document.getElementById(
+                                "chat-dialog-body-input-text",
+                            ) as HTMLInputElement;
                             const query = input.value;
 
                             if (query) {
-                                setChatHistory([...chatHistory, {
-                                    message: query,
-                                    isUser: true,
-                                }]);
+                                setChatHistory([
+                                    ...chatHistory,
+                                    {
+                                        message: query,
+                                        isUser: true,
+                                    },
+                                ]);
 
                                 input.value = "";
 
                                 await askQuery(query);
                             }
                         }
-                    }
+                    }}
+                />
+
+                <button
+                    className="w-1/6 h-10 rounded-xl bg-orange text-white text-sm border-none disabled:opacity-50 focus:outline-none disabled:cursor-not-allowed"
+                    disabled={!sendEnabled}
+                    id="chat-dialog-body-input-submit"
+                    onClick={async () => {
+                        const input = document.getElementById(
+                            "chat-dialog-body-input-text",
+                        ) as HTMLInputElement;
+                        const query = input.value;
+
+                        if (query) {
+                            setChatHistory([
+                                ...chatHistory,
+                                {
+                                    message: query,
+                                    isUser: true,
+                                },
+                            ]);
+
+                            input.value = "";
+
+                            await askQuery(query);
+                        }
+                    }}
                 >
                     Send
                 </button>
-
             </div>
         </div>
     );

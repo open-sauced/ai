@@ -4,7 +4,11 @@ import { isLoggedIn } from "../checkAuthentication";
 import { isPublicRepository } from "../fetchGithubAPIData";
 
 const injectAddPRToHighlightsButton = async () => {
-    if (document.getElementById("add-pr-to-highlights-button") || !(await isLoggedIn()) || !(await isPublicRepository(window.location.href))) {
+    if (
+        document.getElementById("add-pr-to-highlights-button") ||
+        !(await isLoggedIn()) ||
+        !(await isPublicRepository(window.location.href))
+    ) {
         return;
     }
 

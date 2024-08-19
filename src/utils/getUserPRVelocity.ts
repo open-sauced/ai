@@ -16,7 +16,7 @@ export const getUserPRVelocity = (prDetails: IUserPR[]) => {
     }, 0);
 
     const averageVelocity: number =
-    mergedPRs.length > 0 ? Math.floor(totalDays / mergedPRs.length) : 0;
+        mergedPRs.length > 0 ? Math.floor(totalDays / mergedPRs.length) : 0;
 
     return averageVelocity;
 };

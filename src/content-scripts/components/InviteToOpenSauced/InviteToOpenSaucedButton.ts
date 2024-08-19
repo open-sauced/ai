@@ -6,7 +6,7 @@ export const InviteToOpenSaucedButton = () => {
     const inviteToOpenSaucedButton = createHtmlElement("a", {
         id: "invite-to-opensauced-button",
         className:
-      "inline-block mt-4 text-black bg-gh-white dark:bg-gh-gray dark:text-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline",
+            "inline-block mt-4 text-black bg-gh-white dark:bg-gh-gray dark:text-white rounded-md p-2 text-sm font-semibold text-center select-none w-full border hover:shadow-button hover:no-underline",
         innerHTML: `<img
           class="mx-2 inline-block align-top"
           src="${chrome.runtime.getURL(logoIcon)}"

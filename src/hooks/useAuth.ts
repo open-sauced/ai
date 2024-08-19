@@ -34,13 +34,16 @@ export const useAuth = () => {
                 }
                 const token = JSON.parse(decodeURIComponent(cookie.value))[0];
 
-                const response = await cachedFetch(OPEN_SAUCED_SESSION_ENDPOINT, {
-                    expireInSeconds: 2 * 60 * 60,
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        Accept: "application/json",
+                const response = await cachedFetch(
+                    OPEN_SAUCED_SESSION_ENDPOINT,
+                    {
+                        expireInSeconds: 2 * 60 * 60,
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            Accept: "application/json",
+                        },
                     },
-                });
+                );
 
                 if (response?.ok) {
                     const json = await response.json();
