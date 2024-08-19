@@ -15,7 +15,11 @@ import { useOpensaucedUserCheck } from "../../hooks/useOpensaucedUserCheck";
 import { Profile } from "./profile";
 import { goTo } from "react-chrome-extension-router";
 import PostOnHighlight from "./posthighlight";
-import { getEmojis, getHighlights, getRepoOpenSaucedURL } from "../../utils/fetchOpenSaucedApiData";
+import {
+    getEmojis,
+    getHighlights,
+    getRepoOpenSaucedURL,
+} from "../../utils/fetchOpenSaucedApiData";
 import Help from "./help";
 import { useEffect, useState, useRef } from "react";
 import Settings from "./settings";
@@ -24,9 +28,12 @@ import { MessageType, type Highlight, type Message } from "../../ts/types";
 import { usGetGitHubPageInfo } from "../../hooks/useGetGitHubPageInfo";
 import { HighlightSlide } from "../components/HighlightSlide";
 
-const Home = ({ forceRefresh }: { forceRefresh: boolean } = { forceRefresh: false }) => {
+const Home = (
+    { forceRefresh }: { forceRefresh: boolean } = { forceRefresh: false },
+) => {
     const { user } = useAuth();
-    const { currentTabIsOpensaucedUser, checkedUser } = useOpensaucedUserCheck();
+    const { currentTabIsOpensaucedUser, checkedUser } =
+        useOpensaucedUserCheck();
     const { pageUrl, pageTitle, type: GitHubPageType } = usGetGitHubPageInfo();
     const [repoOpenSaucedURL, setRepoOpenSaucedURL] = useState<string>("");
     const [highlights, setHighlights] = useState<Highlight[]>([]);
@@ -94,15 +101,20 @@ const Home = ({ forceRefresh }: { forceRefresh: boolean } = { forceRefresh: fals
                         role="presentation"
                         src={OpenSaucedLogo}
                         onClick={() => {
-                            window.open(`https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed`, "_blank");
+                            window.open(
+                                `https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed`,
+                                "_blank",
+                            );
                         }}
-                        onKeyDown={e => {
+                        onKeyDown={(e) => {
                             if (e.key === "Enter") {
-                                window.open(`https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed`, "_blank");
+                                window.open(
+                                    `https://${OPEN_SAUCED_INSIGHTS_DOMAIN}/feed`,
+                                    "_blank",
+                                );
                             }
                         }}
                     />
-
 
                     {user && (
                         <button
@@ -141,26 +153,24 @@ const Home = ({ forceRefresh }: { forceRefresh: boolean } = { forceRefresh: fals
                             slidesPerView={1}
                             spaceBetween={50}
                         >
-                            {
-                                highlights.map((highlight, index) => (
-                                    <SwiperSlide key={index}>
-                                        <HighlightSlide
-                                            emojis={emojis}
-                                            highlight={highlight}
-                                        />
-                                    </SwiperSlide>
-                                ))
-                            }
+                            {highlights.map((highlight, index) => (
+                                <SwiperSlide key={index}>
+                                    <HighlightSlide
+                                        emojis={emojis}
+                                        highlight={highlight}
+                                    />
+                                </SwiperSlide>
+                            ))}
                         </Swiper>
                     )}
 
-                    {Boolean(toolsRef.current?.children.length) && <h3 className="text font-medium text-base leading-10">Tools:</h3>}
+                    {Boolean(toolsRef.current?.children.length) && (
+                        <h3 className="text font-medium text-base leading-10">
+                            Tools:
+                        </h3>
+                    )}
 
-                    <div
-                        ref={toolsRef}
-                        className="tools flex flex-col gap-2"
-                    >
-
+                    <div ref={toolsRef} className="tools flex flex-col gap-2">
                         {GitHubPageType === "REPO" && (
                             <>
                                 <button
@@ -171,26 +181,26 @@ const Home = ({ forceRefresh }: { forceRefresh: boolean } = { forceRefresh: fals
                                             data: { url: pageUrl },
                                         };
 
-                                        void chrome.runtime.sendMessage(message);
+                                        void chrome.runtime.sendMessage(
+                                            message,
+                                        );
                                     }}
                                 >
                                     <IoLogoLinkedin />
-                                Add to LinkedIn Projects.
+                                    Add to LinkedIn Projects.
                                 </button>
 
-                                {
-                                    repoOpenSaucedURL && (
-                                        <a
-                                            className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
-                                            href={repoOpenSaucedURL}
-                                            rel="noreferrer"
-                                            target="_blank"
-                                        >
-                                            <FiExternalLink />
-                                            View On OpenSauced
-                                        </a>
-                                    )
-                                }
+                                {repoOpenSaucedURL && (
+                                    <a
+                                        className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
+                                        href={repoOpenSaucedURL}
+                                        rel="noreferrer"
+                                        target="_blank"
+                                    >
+                                        <FiExternalLink />
+                                        View On OpenSauced
+                                    </a>
+                                )}
                             </>
                         )}
 
@@ -198,18 +208,16 @@ const Home = ({ forceRefresh }: { forceRefresh: boolean } = { forceRefresh: fals
                             <button
                                 className="flex items-center bg-slate-700 hover:bg-slate-700/70 hover:text-orange text-white gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
                                 onClick={() => {
-                                    goTo(
-                                        PostOnHighlight,
-                                        {
-                                            prUrl: pageUrl,
-                                            prTitle: pageTitle,
-                                        },
-                                    );
+                                    goTo(PostOnHighlight, {
+                                        prUrl: pageUrl,
+                                        prTitle: pageTitle,
+                                    });
                                 }}
                             >
                                 <HiPencil />
                                 Post Highlight
-                            </button>)}
+                            </button>
+                        )}
 
                         {currentTabIsOpensaucedUser && (
                             <button
@@ -219,11 +227,7 @@ const Home = ({ forceRefresh }: { forceRefresh: boolean } = { forceRefresh: fals
                                 }}
                             >
                                 <HiUserCircle />
-                                View
-
-                                {" "}
-
-                                {checkedUser}
+                                View {checkedUser}
                                 &apos;s profile
                             </button>
                         )}

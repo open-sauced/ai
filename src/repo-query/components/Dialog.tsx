@@ -5,7 +5,17 @@ import { IndexingPage } from "../pages/indexing";
 import { Chat } from "../pages/chat";
 import { RepoQueryPages } from "../../ts/types";
 
-export const Dialog = ({ isOpen, toggleDialog, ownerName, repoName }: { isOpen: boolean, toggleDialog: () => void, ownerName: string, repoName: string }) => {
+export const Dialog = ({
+    isOpen,
+    toggleDialog,
+    ownerName,
+    repoName,
+}: {
+    isOpen: boolean;
+    toggleDialog: () => void;
+    ownerName: string;
+    repoName: string;
+}) => {
     const [currentPage, setCurrentPage] = useState(RepoQueryPages.Home);
 
     return (
@@ -33,22 +43,19 @@ export const Dialog = ({ isOpen, toggleDialog, ownerName, repoName }: { isOpen: 
                             src={`${chrome.runtime.getURL(openSaucedLogoIcon)}`}
                         />
 
-                        <div
-                            className="ml-4"
-                            id="chat-dialog-header-left-text"
-                        >
+                        <div className="ml-4" id="chat-dialog-header-left-text">
                             <div
                                 className="text-lg font-bold text-white"
                                 id="chat-dialog-header-left-text-title"
                             >
-OpenSauced
+                                OpenSauced
                             </div>
 
                             <div
                                 className="text-sm text-gray-400"
                                 id="chat-dialog-header-left-text-subtitle"
                             >
-RepoQuery
+                                RepoQuery
                             </div>
                         </div>
                     </div>
@@ -59,13 +66,11 @@ RepoQuery
                         role="button"
                         tabIndex={0}
                         onClick={toggleDialog}
-                        onKeyDown={
-                            e => {
-                                if (e.key === "Enter") {
-                                    toggleDialog();
-                                }
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                toggleDialog();
                             }
-                        }
+                        }}
                     >
                         <svg
                             className="w-4 h-4 text-gray-500"
@@ -89,34 +94,22 @@ RepoQuery
                 className="flex flex-col w-96 h-96 rounded-bl-xl rounded-br-lg bg-white shadow-lg"
                 id="chat-dialog-body"
             >
-                {
-                    currentPage === RepoQueryPages.Home
-                        ? (
-                            <Home
-                                ownerName={ownerName}
-                                repoName={repoName}
-                                setCurrentPage={setCurrentPage}
-                            />
-                        )
-                        : currentPage === RepoQueryPages.Indexing
-                            ? (
-                                <IndexingPage
-                                    ownerName={ownerName}
-                                    repoName={repoName}
-                                    setCurrentPage={setCurrentPage}
-                                />
-                            )
-
-                            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-                            : currentPage === RepoQueryPages.Chat
-                                ? (
-                                    <Chat
-                                        ownerName={ownerName}
-                                        repoName={repoName}
-                                    />
-                                )
-                                : null
-                }
+                {currentPage === RepoQueryPages.Home ? (
+                    <Home
+                        ownerName={ownerName}
+                        repoName={repoName}
+                        setCurrentPage={setCurrentPage}
+                    />
+                ) : currentPage === RepoQueryPages.Indexing ? (
+                    <IndexingPage
+                        ownerName={ownerName}
+                        repoName={repoName}
+                        setCurrentPage={setCurrentPage}
+                    />
+                ) : // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+                currentPage === RepoQueryPages.Chat ? (
+                    <Chat ownerName={ownerName} repoName={repoName} />
+                ) : null}
             </div>
         </div>
     );

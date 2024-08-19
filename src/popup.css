@@ -3,34 +3,34 @@
 @tailwind utilities;
 
 * {
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
 }
 
 :root {
-  --swiper-theme-color: hsla(19, 100%, 50%, 1);
-  --swiper-pagination-top: 5px;
-  --swiper-pagination-bullet-inactive-color: rgb(255, 159, 115);
-  --swiper-pagination-bullet-size: 6px;
-  --swiper-navigation-size: 18px;
-  --swiper-navigation-sides-offset:5px;
+    --swiper-theme-color: hsla(19, 100%, 50%, 1);
+    --swiper-pagination-top: 5px;
+    --swiper-pagination-bullet-inactive-color: rgb(255, 159, 115);
+    --swiper-pagination-bullet-size: 6px;
+    --swiper-navigation-size: 18px;
+    --swiper-navigation-sides-offset: 5px;
 }
 
-.swiper-pagination{
-  position: relative;
+.swiper-pagination {
+    position: relative;
 }

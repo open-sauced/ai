@@ -1,10 +1,26 @@
 import { useEffect, useState } from "react";
 import { FaBrain, FaChevronLeft, FaRobot } from "react-icons/fa";
 import { RiLinkedinFill, RiLinkM, RiTwitterFill } from "react-icons/ri";
-import { SiC, SiCplusplus, SiCsharp, SiGoland, SiJavascript, SiPhp, SiPython, SiReact, SiRuby, SiRust, SiTypescript } from "react-icons/si";
+import {
+    SiC,
+    SiCplusplus,
+    SiCsharp,
+    SiGoland,
+    SiJavascript,
+    SiPhp,
+    SiPython,
+    SiReact,
+    SiRuby,
+    SiRust,
+    SiTypescript,
+} from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import OpenSaucedLogo from "../../assets/opensauced-logo.svg";
-import { getUserData, getUserPRData, getUserHighlightsData } from "../../utils/fetchOpenSaucedApiData";
+import {
+    getUserData,
+    getUserPRData,
+    getUserHighlightsData,
+} from "../../utils/fetchOpenSaucedApiData";
 import { emojify } from "node-emoji";
 import { goBack, goTo } from "react-chrome-extension-router";
 import { getRelativeDays } from "../../utils/dateUtils";
@@ -35,14 +51,31 @@ const interestIcon = {
 type InterestIconKeys = keyof typeof interestIcon;
 
 export const Profile = ({ username }: { username: string }) => {
-    const [user, setUser] = useState<null | { id: string, user_name: string, bio: string, created_at: string, linkedin_url: string, twitter_username: string, blog: string, interests: string, open_issues: number }>(null);
+    const [user, setUser] = useState<null | {
+        id: string;
+        user_name: string;
+        bio: string;
+        created_at: string;
+        linkedin_url: string;
+        twitter_username: string;
+        blog: string;
+        interests: string;
+        open_issues: number;
+    }>(null);
     const [userPR, setUserPR] = useState<PRResponse | null>(null);
-    const [userHighlights, setUserHighlights] = useState<null | { meta: { itemCount: number } }>(null);
+    const [userHighlights, setUserHighlights] = useState<null | {
+        meta: { itemCount: number };
+    }>(null);
     const [userPRVelocity, setUserPRVelocity] = useState<number>(0);
 
     useEffect(() => {
         const fetchUserData = async () => {
-            const [userData, userPRData, userHighlightsData] = await Promise.all([getUserData(username), getUserPRData(username), getUserHighlightsData(username)]);
+            const [userData, userPRData, userHighlightsData] =
+                await Promise.all([
+                    getUserData(username),
+                    getUserPRData(username),
+                    getUserHighlightsData(username),
+                ]);
 
             setUser(userData);
             setUserPR(userPRData);
@@ -52,7 +85,6 @@ export const Profile = ({ username }: { username: string }) => {
 
         void fetchUserData();
     }, []);
-
 
     return (
         <div className="p-4 bg-slate-800">
@@ -101,15 +133,12 @@ export const Profile = ({ username }: { username: string }) => {
                                 src={`https://github.com/${username}.png`}
                             />
 
-                            <p className="font-medium">
-                                @
-                                {username}
-                            </p>
+                            <p className="font-medium">@{username}</p>
                         </a>
 
-                        {(user?.linkedin_url || user?.twitter_username) &&
+                        {(user?.linkedin_url || user?.twitter_username) && (
                             <div className="social flex gap-0.5">
-                                {user.linkedin_url &&
+                                {user.linkedin_url && (
                                     <a
                                         className="rounded-sm border bg-slate-700 hover:bg-slate-700/50 hover:text-cyan-400 p-1"
                                         href={user.linkedin_url}
@@ -118,9 +147,10 @@ export const Profile = ({ username }: { username: string }) => {
                                         title={user.linkedin_url}
                                     >
                                         <RiLinkedinFill className="text-lg" />
-                                    </a>}
+                                    </a>
+                                )}
 
-                                {user.twitter_username &&
+                                {user.twitter_username && (
                                     <a
                                         className="rounded-sm border bg-slate-700 hover:bg-slate-700/50 hover:text-cyan-400 p-1"
                                         href={`https://twitter.com/${user.twitter_username}`}
@@ -129,16 +159,14 @@ export const Profile = ({ username }: { username: string }) => {
                                         title={`https://twitter.com/${user.twitter_username}`}
                                     >
                                         <RiTwitterFill className="text-lg" />
-                                    </a>}
-                            </div>}
-
-                        {user?.bio && (
-                            <span>
-                                {emojify(user.bio)}
-                            </span>
+                                    </a>
+                                )}
+                            </div>
                         )}
 
-                        {user?.blog &&
+                        {user?.bio && <span>{emojify(user.bio)}</span>}
+
+                        {user?.blog && (
                             <a
                                 className="flex text-orange items-center gap-0.5"
                                 href={user.blog}
@@ -148,7 +176,8 @@ export const Profile = ({ username }: { username: string }) => {
                                 <RiLinkM />
 
                                 {user.blog}
-                            </a>}
+                            </a>
+                        )}
                     </div>
 
                     <div className="grid grid-cols-2 text-white bg-osOrange -mx-4 mb-4 p-4 py-8">
@@ -186,13 +215,15 @@ export const Profile = ({ username }: { username: string }) => {
                     </div>
 
                     <div>
-                        <h2 className="font-medium text-lg mb-2">Current Interest</h2>
+                        <h2 className="font-medium text-lg mb-2">
+                            Current Interest
+                        </h2>
 
                         <div
                             className="flex gap-1.5"
                             style={{ flexWrap: "wrap" }}
                         >
-                            {user?.interests.split(",").map(interest => (
+                            {user?.interests.split(",").map((interest) => (
                                 <a
                                     key={interest}
                                     className="flex gap-1 items-center p-1.5 px-4 rounded-full bg-slate-700 hover:bg-slate-700/50"

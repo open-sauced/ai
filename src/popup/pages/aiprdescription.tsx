@@ -15,12 +15,31 @@ import { configurationReducer } from "../../utils/ai-utils/configurationReducer"
 import { goBack } from "react-chrome-extension-router";
 
 const AIPRDescription = () => {
-    const [config, dispatch] = useReducer(configurationReducer, getDefaultDescriptionConfig());
+    const [config, dispatch] = useReducer(
+        configurationReducer,
+        getDefaultDescriptionConfig(),
+    );
 
-    const tones: DescriptionTone[] = ["exciting", "persuasive", "informative", "humorous", "formal"];
+    const tones: DescriptionTone[] = [
+        "exciting",
+        "persuasive",
+        "informative",
+        "humorous",
+        "formal",
+    ];
     const sources: DescriptionSource[] = ["diff", "commitMessage", "both"];
-    const languages: DescriptionLanguage[] = ["english", "spanish", "french", "german", "italian", "portuguese", "dutch", "russian", "chinese", "korean"];
-
+    const languages: DescriptionLanguage[] = [
+        "english",
+        "spanish",
+        "french",
+        "german",
+        "italian",
+        "portuguese",
+        "dutch",
+        "russian",
+        "chinese",
+        "korean",
+    ];
 
     useEffect(() => {
         const descriptionConfig = async () => {
@@ -39,7 +58,6 @@ const AIPRDescription = () => {
     };
 
     return (
-
         <>
             <Toaster />
 
@@ -65,22 +83,17 @@ const AIPRDescription = () => {
                     </header>
 
                     <main className="text-white">
-                        <form
-                            onSubmit={handleFormSubmit}
-                        >
+                        <form onSubmit={handleFormSubmit}>
                             <fieldset>
                                 <h3 className="text font-medium text-base leading-10">
-                AI Configuration:
+                                    AI Configuration:
                                 </h3>
 
                                 <div className="grid grid-cols-2 -mx-4 mb-4 text-gray-300 text-sm">
                                     <div className="flex flex-col items-center justify-center">
                                         <p>
-                    Description Length [
-                                            <b>
-                                                {config.config.length}
-                                            </b>
-                    ]
+                                            Description Length [
+                                            <b>{config.config.length}</b>]
                                         </p>
 
                                         <input
@@ -91,17 +104,24 @@ const AIPRDescription = () => {
                                             name="length"
                                             type="range"
                                             value={config.config.length}
-                                            onChange={e => dispatch({ type: "SET_LENGTH", value: parseInt(e.target.value) })}
+                                            onChange={(e) =>
+                                                dispatch({
+                                                    type: "SET_LENGTH",
+                                                    value: parseInt(
+                                                        e.target.value,
+                                                    ),
+                                                })
+                                            }
                                         />
                                     </div>
 
                                     <div className="flex flex-col items-center justify-center">
                                         <p>
-                    Temperature [
+                                            Temperature [
                                             <b>
                                                 {config.config.temperature / 10}
                                             </b>
-                    ]
+                                            ]
                                         </p>
 
                                         <input
@@ -112,17 +132,24 @@ const AIPRDescription = () => {
                                             name="length"
                                             type="range"
                                             value={config.config.temperature}
-                                            onChange={e => dispatch({ type: "SET_TEMPERATURE", value: parseInt(e.target.value) })}
+                                            onChange={(e) =>
+                                                dispatch({
+                                                    type: "SET_TEMPERATURE",
+                                                    value: parseInt(
+                                                        e.target.value,
+                                                    ),
+                                                })
+                                            }
                                         />
                                     </div>
 
                                     <div className="flex flex-col items-center justify-center">
                                         <p>
-                    Max Input Length [
+                                            Max Input Length [
                                             <b>
                                                 {config.config.maxInputLength}
                                             </b>
-                    ]
+                                            ]
                                         </p>
 
                                         <input
@@ -133,7 +160,14 @@ const AIPRDescription = () => {
                                             name="inputlength"
                                             type="range"
                                             value={config.config.maxInputLength}
-                                            onChange={e => dispatch({ type: "SET_MAX_INPUT_LENGTH", value: parseInt(e.target.value) })}
+                                            onChange={(e) =>
+                                                dispatch({
+                                                    type: "SET_MAX_INPUT_LENGTH",
+                                                    value: parseInt(
+                                                        e.target.value,
+                                                    ),
+                                                })
+                                            }
                                         />
                                     </div>
 
@@ -145,14 +179,22 @@ const AIPRDescription = () => {
                                             id="descriptionlanguage"
                                             name="descriptionlanguage"
                                             value={config.config.language}
-                                            onChange={e => dispatch({ type: "SET_LANGUAGE", value: e.target.value })}
+                                            onChange={(e) =>
+                                                dispatch({
+                                                    type: "SET_LANGUAGE",
+                                                    value: e.target.value,
+                                                })
+                                            }
                                         >
-                                            {languages.map(language => (
+                                            {languages.map((language) => (
                                                 <option
                                                     key={language}
                                                     value={language}
                                                 >
-                                                    {language.charAt(0).toUpperCase() + language.slice(1)}
+                                                    {language
+                                                        .charAt(0)
+                                                        .toUpperCase() +
+                                                        language.slice(1)}
                                                 </option>
                                             ))}
                                         </select>
@@ -166,14 +208,19 @@ const AIPRDescription = () => {
                                             id="tone"
                                             name="tone"
                                             value={config.config.tone}
-                                            onChange={e => dispatch({ type: "SET_TONE", value: e.target.value })}
+                                            onChange={(e) =>
+                                                dispatch({
+                                                    type: "SET_TONE",
+                                                    value: e.target.value,
+                                                })
+                                            }
                                         >
-                                            {tones.map(tone => (
-                                                <option
-                                                    key={tone}
-                                                    value={tone}
-                                                >
-                                                    {tone.charAt(0).toUpperCase() + tone.slice(1)}
+                                            {tones.map((tone) => (
+                                                <option key={tone} value={tone}>
+                                                    {tone
+                                                        .charAt(0)
+                                                        .toUpperCase() +
+                                                        tone.slice(1)}
                                                 </option>
                                             ))}
                                         </select>
@@ -187,14 +234,22 @@ const AIPRDescription = () => {
                                             id="source"
                                             name="source"
                                             value={config.config.source}
-                                            onChange={e => dispatch({ type: "SET_SOURCE", value: e.target.value })}
+                                            onChange={(e) =>
+                                                dispatch({
+                                                    type: "SET_SOURCE",
+                                                    value: e.target.value,
+                                                })
+                                            }
                                         >
-                                            {sources.map(source => (
+                                            {sources.map((source) => (
                                                 <option
                                                     key={source}
                                                     value={source}
                                                 >
-                                                    {source.charAt(0).toUpperCase() + source.slice(1)}
+                                                    {source
+                                                        .charAt(0)
+                                                        .toUpperCase() +
+                                                        source.slice(1)}
                                                 </option>
                                             ))}
                                         </select>

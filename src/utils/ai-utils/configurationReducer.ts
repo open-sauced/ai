@@ -1,6 +1,12 @@
-import { DescriptionConfig, getDefaultDescriptionConfig } from "./descriptionconfig";
+import {
+    DescriptionConfig,
+    getDefaultDescriptionConfig,
+} from "./descriptionconfig";
 
-export const configurationReducer = (state: DescriptionConfig, action: { type: string, value: any }) => {
+export const configurationReducer = (
+    state: DescriptionConfig,
+    action: { type: string; value: any },
+) => {
     let newState: DescriptionConfig = { ...state };
 
     switch (action.type) {
