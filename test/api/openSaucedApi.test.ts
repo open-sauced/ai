@@ -18,7 +18,6 @@ describe("openSaucedUserEndpoint", () => {
         const response = await fetch(`${OPEN_SAUCED_USERS_ENDPOINT}/foolala`);
         expect(response.status).toBe(400);
     })
-    })
 })
 
 describe("openSaucedRepoEndpoint", () => {
