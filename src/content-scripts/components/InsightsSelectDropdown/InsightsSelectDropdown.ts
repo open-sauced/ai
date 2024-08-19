@@ -1,11 +1,18 @@
 import "../../content-scripts.css";
 import { createHtmlElement } from "../../../utils/createHtmlElement";
 import { getAuthToken } from "../../../utils/checkAuthentication";
-import { getUserInsightsData, getRepoData, updateInsight } from "../../../utils/fetchOpenSaucedApiData";
+import {
+    getUserInsightsData,
+    getRepoData,
+    updateInsight,
+} from "../../../utils/fetchOpenSaucedApiData";
 import { IInsight } from "../../../ts/InsightDto";
 import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../../constants";
 
-export const InsightsSelectDropdown = async (ownerName: string, repoName: string) => {
+export const InsightsSelectDropdown = async (
+    ownerName: string,
+    repoName: string,
+) => {
     const insightsDropdown = createHtmlElement("div", {
         className: "SelectMenu cursor-default right-0 mt-1 hidden text-inherit",
         innerHTML: `
@@ -46,9 +53,7 @@ export const InsightsSelectDropdown = async (ownerName: string, repoName: string
         insightsDropdown.classList.add("hidden");
     });
 
-    const insightsList = insightsDropdown.querySelector(
-        ".SelectMenu-list",
-    )!;
+    const insightsList = insightsDropdown.querySelector(".SelectMenu-list")!;
 
     userInsights.forEach((insight: IInsight) => {
         const insightLabel = createHtmlElement("div", {
@@ -63,11 +68,13 @@ export const InsightsSelectDropdown = async (ownerName: string, repoName: string
             `,
         });
 
-        const insightCheckbox = insightLabel.querySelector(
-            "input",
-        )!;
+        const insightCheckbox = insightLabel.querySelector("input")!;
 
-        if (insight.repos.some((repo: any) => repo.repo_id === currentRepoData.id)) {
+        if (
+            insight.repos.some(
+                (repo: any) => repo.repo_id === currentRepoData.id,
+            )
+        ) {
             insightCheckbox.setAttribute("checked", "true");
         }
 
@@ -91,12 +98,11 @@ export const InsightsSelectDropdown = async (ownerName: string, repoName: string
         insightsList.appendChild(insightLabel);
     });
 
-
     document.addEventListener("click", () => {
         insightsDropdown.classList.add("hidden");
     });
 
-    insightsDropdown.addEventListener("click", e => {
+    insightsDropdown.addEventListener("click", (e) => {
         e.stopPropagation();
     });
 
@@ -113,4 +119,3 @@ export const InsightsSelectDropdown = async (ownerName: string, repoName: string
 
     return insightsDropdown;
 };
-

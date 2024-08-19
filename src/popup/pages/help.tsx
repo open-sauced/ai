@@ -28,7 +28,6 @@ const Help = () => (
                         className="w-[100%]"
                         src={OpenSaucedLogo}
                     />
-
                 </div>
 
                 <div className="flex justify-center flex-col">
@@ -40,14 +39,13 @@ const Help = () => (
                         {version}
                     </a>
                 </div>
-
             </header>
 
             <main className="main-content text-white">
                 <h3 className="text font-medium text-base leading-10">Help:</h3>
 
                 <div className="tools flex flex-col gap-2">
-                    {EXTERNAL_RESOURCES.map(externalLink => (
+                    {EXTERNAL_RESOURCES.map((externalLink) => (
                         <a
                             key={externalLink.key}
                             className="flex items-center bg-slate-700 hover:bg-slate-700/70 text-white hover:text-orange no-underline gap-2 p-1.5 px-3 w-full rounded-sm font-medium text-sm"
@@ -55,7 +53,9 @@ const Help = () => (
                             rel="noreferrer"
                             target="_blank"
                         >
-                            {externalLink.key === "Docs" && <HiOutlineBookOpen />}
+                            {externalLink.key === "Docs" && (
+                                <HiOutlineBookOpen />
+                            )}
 
                             {externalLink.key === "Issues" && <VscIssues />}
 

@@ -1,18 +1,32 @@
 import { useState } from "react";
 
-const Toggle = ({ settingName, settingLabel, enabledSetting }: { settingName: string; enabledSetting: boolean; settingLabel: string }) => {
+const Toggle = ({
+    settingName,
+    settingLabel,
+    enabledSetting,
+}: {
+    settingName: string;
+    enabledSetting: boolean;
+    settingLabel: string;
+}) => {
     const [enabled, setEnabled] = useState(enabledSetting);
 
     const changeSetting = async (value: boolean) => {
-        const settingsConfig = await chrome.storage.sync.get("osSettingsConfig");
+        const settingsConfig =
+            await chrome.storage.sync.get("osSettingsConfig");
 
         if (settingsConfig.osSettingsConfig === undefined) {
             const defaultSettings = { aiPrDescription: false };
 
-            await chrome.storage.sync.set({ osSettingsConfig: defaultSettings });
+            await chrome.storage.sync.set({
+                osSettingsConfig: defaultSettings,
+            });
         }
 
-        const newSettingsConfig = { ...settingsConfig.osSettingsConfig, [settingName]: value };
+        const newSettingsConfig = {
+            ...settingsConfig.osSettingsConfig,
+            [settingName]: value,
+        };
 
         await chrome.storage.sync.set({ osSettingsConfig: newSettingsConfig });
 
@@ -38,12 +52,16 @@ const Toggle = ({ settingName, settingLabel, enabledSetting }: { settingName: st
                     className="w-11 h-6 bg-gray-200 rounded-full peer  peer-focus:ring-green-300  peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"
                     role="checkbox"
                     tabIndex={0}
-                    onClick={ async () => {
-                        enabled ? await changeSetting(false) : await changeSetting(true);
+                    onClick={async () => {
+                        enabled
+                            ? await changeSetting(false)
+                            : await changeSetting(true);
                     }}
-                    onKeyDown={ async e => {
+                    onKeyDown={async (e) => {
                         if (e.key === "Enter") {
-                            enabled ? await changeSetting(false) : await changeSetting(true);
+                            enabled
+                                ? await changeSetting(false)
+                                : await changeSetting(true);
                         }
                     }}
                 />

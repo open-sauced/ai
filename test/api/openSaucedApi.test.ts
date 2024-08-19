@@ -14,9 +14,9 @@ describe("openSaucedUserEndpoint", () => {
         expect(data.login).toBe("bdougie");
     })
 
-    it("should return a 404 error for a user that does not exist", async () => {
-        const response = await fetch(`${OPEN_SAUCED_USERS_ENDPOINT}/1`);
-        expect(response.status).toBe(404);
+    it("should return a bad request for a user that does not exist", async () => {
+        const response = await fetch(`${OPEN_SAUCED_USERS_ENDPOINT}/foolala`);
+        expect(response.status).toBe(400);
     })
 })
 

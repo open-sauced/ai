@@ -7,15 +7,24 @@ const injectViewOnOpenSaucedButton = (username: string) => {
 
     const viewOnOpenSaucedButton = ViewOnOpenSaucedButton(username);
 
-    const editProfileButtonSelector = ".btn-block.js-profile-editable-edit-button";
+    const editProfileButtonSelector =
+        ".btn-block.js-profile-editable-edit-button";
     const editProfileButton = document.querySelector(editProfileButtonSelector);
 
     if (editProfileButton) {
-        editProfileButton.parentNode?.insertBefore(viewOnOpenSaucedButton, editProfileButton);
+        editProfileButton.parentNode?.insertBefore(
+            viewOnOpenSaucedButton,
+            editProfileButton,
+        );
     } else {
-        const callToActionButtonsArea = document.querySelector(".js-user-profile-follow-button")?.closest(".flex-order-1.flex-md-order-none");
+        const callToActionButtonsArea = document
+            .querySelector(".js-user-profile-follow-button")
+            ?.closest(".flex-order-1.flex-md-order-none");
 
-        callToActionButtonsArea?.insertBefore(viewOnOpenSaucedButton, callToActionButtonsArea.firstChild);
+        callToActionButtonsArea?.insertBefore(
+            viewOnOpenSaucedButton,
+            callToActionButtonsArea.firstChild,
+        );
     }
 };
 

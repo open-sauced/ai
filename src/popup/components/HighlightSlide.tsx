@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { getHighlightReactions, getUserHighlightReactions, reactOnHighlight, removeReactionOnHighlight } from "../../utils/fetchOpenSaucedApiData";
+import {
+    getHighlightReactions,
+    getUserHighlightReactions,
+    reactOnHighlight,
+    removeReactionOnHighlight,
+} from "../../utils/fetchOpenSaucedApiData";
 import { getAuthToken } from "../../utils/checkAuthentication";
 
 interface HighlightSlideProps {
@@ -21,26 +26,43 @@ interface HighlightReaction {
 }
 
 export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
-    const [highlightReactions, setHighlightReactions] = useState<HighlightReaction[]>([]);
+    const [highlightReactions, setHighlightReactions] = useState<
+        HighlightReaction[]
+    >([]);
     const [reactingDivOpen, setReactingDivOpen] = useState(false);
 
-    async function fetchHighlightReactions () {
+    async function fetchHighlightReactions() {
         const highlightReactionData = await getHighlightReactions(highlight.id);
-        const userHighlightReactionData = await getUserHighlightReactions(await getAuthToken(), highlight.id);
+        const userHighlightReactionData = await getUserHighlightReactions(
+            await getAuthToken(),
+            highlight.id,
+        );
 
-        const highlightReactionsWithEmojiUrls = emojis.filter(emoji => highlightReactionData.some(highlightReaction => highlightReaction.emoji_id === emoji.id)).map(emoji => {
-            const highlightReaction = highlightReactionData.find(highlightReaction => highlightReaction.emoji_id === emoji.id)!;
+        const highlightReactionsWithEmojiUrls = emojis
+            .filter((emoji) =>
+                highlightReactionData.some(
+                    (highlightReaction) =>
+                        highlightReaction.emoji_id === emoji.id,
+                ),
+            )
+            .map((emoji) => {
+                const highlightReaction = highlightReactionData.find(
+                    (highlightReaction) =>
+                        highlightReaction.emoji_id === emoji.id,
+                )!;
 
-            const reactedByUser = userHighlightReactionData.some(userHighlightReaction => userHighlightReaction.emoji_id === emoji.id);
+                const reactedByUser = userHighlightReactionData.some(
+                    (userHighlightReaction) =>
+                        userHighlightReaction.emoji_id === emoji.id,
+                );
 
-            return {
-                url: emoji.url,
-                reaction_count: highlightReaction.reaction_count,
-                reactedByUser,
-                emojiId: emoji.id,
-            } as HighlightReaction;
-        });
-
+                return {
+                    url: emoji.url,
+                    reaction_count: highlightReaction.reaction_count,
+                    reactedByUser,
+                    emojiId: emoji.id,
+                } as HighlightReaction;
+            });
 
         setHighlightReactions(highlightReactionsWithEmojiUrls);
     }
@@ -51,18 +73,27 @@ export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
 
     const { url, title, login, highlight: highlightText } = highlight;
 
-    const openGraphSearchParameter = url.split("/").slice(3)
-        .join("/");
+    const openGraphSearchParameter = url.split("/").slice(3).join("/");
     const openGraphUrl = `https://opengraph.githubassets.com/1/${openGraphSearchParameter}`;
 
-    const addReactionToHighlight = async (highlightId: string, emojiId: string) => {
+    const addReactionToHighlight = async (
+        highlightId: string,
+        emojiId: string,
+    ) => {
         await reactOnHighlight(await getAuthToken(), highlightId, emojiId);
         setReactingDivOpen(false);
         await fetchHighlightReactions();
     };
 
-    const removeReactionFromHighlight = async (highlightId: string, emojiId: string) => {
-        await removeReactionOnHighlight(await getAuthToken(), highlightId, emojiId);
+    const removeReactionFromHighlight = async (
+        highlightId: string,
+        emojiId: string,
+    ) => {
+        await removeReactionOnHighlight(
+            await getAuthToken(),
+            highlightId,
+            emojiId,
+        );
         await fetchHighlightReactions();
     };
 
@@ -70,28 +101,25 @@ export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
         <div className="border border-white/40 rounded-md p-3 mt-2 bg-white">
             {/* fixed height, content ellipsis */}
 
-            {
-
-                title
-                    ? (
-                        <h3 className="
+            {title ? (
+                <h3
+                    className="
                     text-base font-medium
                     overflow-hidden
                     line-clamp-2
                     h-6
                     leading-5"
-                        >
-                            <a
-                                className="text-slate-800 cursor-pointer"
-                                href={url}
-                                rel="noopener noreferrer"
-                                target="_blank"
-                            >
-                                {title}
-                            </a>
-                        </h3>)
-                    : null
-            }
+                >
+                    <a
+                        className="text-slate-800 cursor-pointer"
+                        href={url}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                    >
+                        {title}
+                    </a>
+                </h3>
+            ) : null}
 
             <div className="flex items-center">
                 <span className="mr-2 text-slate-500">Author:</span>
@@ -106,7 +134,8 @@ export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
                 </a>
             </div>
 
-            <p className="
+            <p
+                className="
                 py-2 text-sm text-slate-500
                 overflow-hidden
                 line-clamp-3
@@ -117,10 +146,7 @@ export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
                 {highlightText}
             </p>
 
-            <img
-                alt="OpenGraph"
-                src={openGraphUrl}
-            />
+            <img alt="OpenGraph" src={openGraphUrl} />
 
             <div className="flex gap-2 mt-2 h-6 items-center">
                 <div className="flex gap-1 items-center">
@@ -157,17 +183,23 @@ export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
                     id="reacting-div"
                     role="menu"
                 >
-                    {emojis.map(emoji => (
+                    {emojis.map((emoji) => (
                         <div
                             key={emoji.name}
                             className="p-2 text-sm hover:bg-gray-100 flex gap-2 items-center cursor-pointer"
                             role="menuitem"
                             tabIndex={-1}
                             onClick={async () => {
-                                await addReactionToHighlight(highlight.id, emoji.id);
+                                await addReactionToHighlight(
+                                    highlight.id,
+                                    emoji.id,
+                                );
                             }}
                             onKeyDown={async () => {
-                                await addReactionToHighlight(highlight.id, emoji.id);
+                                await addReactionToHighlight(
+                                    highlight.id,
+                                    emoji.id,
+                                );
                             }}
                         >
                             <img
@@ -179,49 +211,57 @@ export const HighlightSlide = ({ highlight, emojis }: HighlightSlideProps) => {
                     ))}
                 </div>
 
+                {highlightReactions.length > 0 && !reactingDivOpen
+                    ? highlightReactions.map((highlightReaction) => (
+                          <div
+                              key={highlightReaction.url}
+                              className="flex gap-1 items-center"
+                              role="button"
+                              tabIndex={0}
+                              onClick={
+                                  highlightReaction.reactedByUser
+                                      ? async () => {
+                                            await removeReactionFromHighlight(
+                                                highlight.id,
+                                                highlightReaction.emojiId,
+                                            );
+                                        }
+                                      : async () => {
+                                            await addReactionToHighlight(
+                                                highlight.id,
+                                                highlightReaction.emojiId,
+                                            );
+                                        }
+                              }
+                              onKeyDown={
+                                  highlightReaction.reactedByUser
+                                      ? async () => {
+                                            await removeReactionFromHighlight(
+                                                highlight.id,
+                                                highlightReaction.emojiId,
+                                            );
+                                        }
+                                      : async () => {
+                                            await addReactionToHighlight(
+                                                highlight.id,
+                                                highlightReaction.emojiId,
+                                            );
+                                        }
+                              }
+                          >
+                              <img
+                                  alt="Emoji"
+                                  className={`rounded-full w-6 aspect-square border border-orange p-1 ${highlightReaction.reactedByUser ? "bg-lightOrange" : ""}`}
+                                  src={highlightReaction.url}
+                              />
 
-                {
-                    highlightReactions.length > 0 && !reactingDivOpen
-                        ? (
-                            highlightReactions.map(highlightReaction => (
-                                <div
-                                    key={highlightReaction.url}
-                                    className="flex gap-1 items-center"
-                                    role="button"
-                                    tabIndex={0}
-                                    onClick={
-                                        highlightReaction.reactedByUser
-                                            ? async () => {
-                                                await removeReactionFromHighlight(highlight.id, highlightReaction.emojiId);
-                                            }
-                                            : async () => {
-                                                await addReactionToHighlight(highlight.id, highlightReaction.emojiId);
-                                            }
-                                    }
-                                    onKeyDown={
-                                        highlightReaction.reactedByUser
-                                            ? async () => {
-                                                await removeReactionFromHighlight(highlight.id, highlightReaction.emojiId);
-                                            }
-                                            : async () => {
-                                                await addReactionToHighlight(highlight.id, highlightReaction.emojiId);
-                                            }
-                                    }
-                                >
-                                    <img
-                                        alt="Emoji"
-                                        className={`rounded-full w-6 aspect-square border border-orange p-1 ${highlightReaction.reactedByUser ? "bg-lightOrange" : ""}`}
-                                        src={highlightReaction.url}
-                                    />
-
-                                    <span className="text-slate-500">
-                                        {highlightReaction.reaction_count}
-                                    </span>
-                                </div>
-                            )))
-                        : null
-                }
+                              <span className="text-slate-500">
+                                  {highlightReaction.reaction_count}
+                              </span>
+                          </div>
+                      ))
+                    : null}
             </div>
-
-        </div>);
+        </div>
+    );
 };

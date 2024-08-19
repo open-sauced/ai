@@ -7,8 +7,8 @@ const injectChangeSuggestorButton = async (commentNode: HTMLElement) => {
         return;
     }
 
-    const settingsConfig = await new Promise(resolve => {
-        chrome.storage.sync.get("osSettingsConfig", result => {
+    const settingsConfig = await new Promise((resolve) => {
+        chrome.storage.sync.get("osSettingsConfig", (result) => {
             resolve(result.osSettingsConfig);
         });
     });
