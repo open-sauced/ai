@@ -6,7 +6,6 @@ import toast, { Toaster } from "react-hot-toast";
 import { createHighlight } from "../../utils/fetchOpenSaucedApiData";
 import { goBack, goTo } from "react-chrome-extension-router";
 import { OPEN_SAUCED_INSIGHTS_DOMAIN } from "../../constants";
-import { getAiDescription } from "../../content-scripts/components/GenerateAIDescription/DescriptionGeneratorButton";
 import Home from "./home";
 
 const PostOnHighlight = ({
@@ -22,28 +21,6 @@ const PostOnHighlight = ({
     const [highlightContent, setHighlightContent] = useState("");
     const [isSendButtonEnabled, enableSendButton] = useState(true);
 
-    const generateAiDescription = () => {
-        enableSendButton(false);
-        const description = getAiDescription(prUrl);
-
-        toast
-            .promise(description, {
-                loading: "Generating summary...",
-                success: (data) => {
-                    enableSendButton(true);
-                    setHighlightContent(data);
-
-                    return "Successfully Generated Summary";
-                },
-                error: (e) => {
-                    enableSendButton(true);
-                    return `Uh oh, there was an error! ${e.message}`;
-                },
-            })
-            .catch(console.error);
-    };
-
-    // post highlight function
     const postHighlight = () => {
         enableSendButton(false);
         const postHighlightAPI = createHighlight(
@@ -130,14 +107,6 @@ const PostOnHighlight = ({
                     />
 
                     <div className="flex justify-evenly">
-                        <button
-                            className="inline-block disabled:bg-gray-500 text-black bg-gh-white rounded-md p-2 text-sm font-semibold text-center select-none w-5/12 border hover:shadow-button hover:no-underline"
-                            disabled={!isSendButtonEnabled}
-                            onClick={generateAiDescription}
-                        >
-                            Summarize
-                        </button>
-
                         <button
                             className="inline-block disabled:bg-gray-500 text-black bg-gh-white rounded-md p-2 text-sm font-semibold text-center select-none w-5/12 border hover:shadow-button hover:no-underline"
                             disabled={!isSendButtonEnabled}

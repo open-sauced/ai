@@ -1,9 +1,6 @@
 import { LINKEDIN_PROJECT_FORM_SELECTOR } from "../constants";
 import { Message, MessageType } from "../ts/types";
-import { setDefaultDescriptionConfig } from "../utils/ai-utils/descriptionconfig";
 import { getRepoAPIURL } from "../utils/urlMatchers";
-
-chrome.runtime.onInstalled.addListener(setDefaultDescriptionConfig);
 
 chrome.runtime.onMessage.addListener(async (message: Message) => {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition

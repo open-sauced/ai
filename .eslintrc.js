@@ -81,7 +81,7 @@ module.exports = {
 			},
 		],
 		"no-useless-rename": "error",
-		"no-useless-return": "error",
+		"no-useless-return": "warn",
 		"no-var": "error",
 		"object-shorthand": "error",
 		"one-var": ["error", "never"],
