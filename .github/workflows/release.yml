@@ -64,7 +64,6 @@ jobs:
           app_id: ${{ secrets.OS_GITHUB_APP_ID }}
           private_key: ${{ secrets.OS_GITHUB_APP_PRIVATE_KEY }}
 
-    steps:
       - name: "☁️ checkout repository"
         uses: actions/checkout@v3
         with:
