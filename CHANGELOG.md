@@ -5,6 +5,21 @@
 
 > All notable changes to this project will be documented in this file
 
+## [1.16.0-beta.1](https://github.com/open-sauced/ai/compare/v1.15.0...v1.16.0-beta.1) (2024-08-20)
+
+
+### 🍕 Features
+
+* adds .prettierrc ([#310](https://github.com/open-sauced/ai/issues/310)) ([c1f0d1e](https://github.com/open-sauced/ai/commit/c1f0d1e8ab968d379ee3789f74529536a2bc2114))
+* Remove PR description generator ([#308](https://github.com/open-sauced/ai/issues/308)) ([e342847](https://github.com/open-sauced/ai/commit/e342847f2dadfaaca5ce5d52a5b1fe48e01e9d58)), closes [#307](https://github.com/open-sauced/ai/issues/307)
+* Replaces velocity with OSCR ([#309](https://github.com/open-sauced/ai/issues/309)) ([5a0172d](https://github.com/open-sauced/ai/commit/5a0172d22074c935a5b516daea8daf8c6c716a41))
+
+
+### 🐛 Bug Fixes
+
+* Generates a token so the open-sauce bot can push to beta ([#313](https://github.com/open-sauced/ai/issues/313)) ([985b482](https://github.com/open-sauced/ai/commit/985b48232330cb3bbe3fef61936f62a526263882))
+* test driftage ([#311](https://github.com/open-sauced/ai/issues/311)) ([83c2415](https://github.com/open-sauced/ai/commit/83c24159a7e2c33bf93bceeda424e59ced494448))
+
 ## [1.15.0](https://github.com/open-sauced/ai/compare/v1.14.2...v1.15.0) (2024-01-30)
 
 
