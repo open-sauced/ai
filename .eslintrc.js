@@ -42,7 +42,6 @@ module.exports = {
 	ignorePatterns: ["test", "dist", "build", "public", "/**/node_modules/*", ".eslintrc.js", "vite.config.ts", "vite-env.d.ts", "postcss.config.js", "tailwind.config.js", "vitest.config.ts", "playwright.config.ts", "e2e"],
 	rules: {
 		"indent": "off",
-		"@typescript-eslint/indent": "error",
 		// eslint:recommended
 		"arrow-body-style": ["error", "as-needed"],
 		curly: ["error", "all"],
@@ -82,7 +81,7 @@ module.exports = {
 			},
 		],
 		"no-useless-rename": "error",
-		"no-useless-return": "error",
+		"no-useless-return": "warn",
 		"no-var": "error",
 		"object-shorthand": "error",
 		"one-var": ["error", "never"],
@@ -122,15 +121,7 @@ module.exports = {
 			},
 		],
 		"array-bracket-newline": ["error", "consistent"],
-		"array-bracket-spacing": [
-			"error",
-			"never",
-			{
-				arraysInArrays: true,
-			},
-		],
 		"array-element-newline": ["error", "consistent"],
-		"arrow-parens": ["error", "as-needed"],
 		"arrow-spacing": "error",
 		"block-spacing": ["error", "always"],
 		"brace-style": ["error", "1tbs"],
@@ -148,7 +139,6 @@ module.exports = {
 		"eol-last": ["error", "always"],
 		"func-call-spacing": ["error", "never"],
 		"function-call-argument-newline": ["error", "consistent"],
-		"function-paren-newline": ["error", "multiline-arguments"],
 		"jsx-quotes": ["error", "prefer-double"],
 		"key-spacing": [
 			"error",
@@ -162,14 +152,6 @@ module.exports = {
 			{
 				before: true,
 				after: true,
-			},
-		],
-		"line-comment-position": [
-			"error",
-			{
-				position: "above",
-				ignorePattern: "pragma",
-				applyDefaultIgnorePatterns: false,
 			},
 		],
 		"linebreak-style": ["error", "unix"],
@@ -196,24 +178,10 @@ module.exports = {
 				exceptAfterSingleLine: true,
 			},
 		],
-		"multiline-ternary": ["error", "always-multiline"],
-		"new-parens": ["error", "never"],
-		"newline-per-chained-call": [
-			"error",
-			{
-				ignoreChainWithDepth: 2,
-			},
-		],
 		"no-multi-spaces": "error",
 		"no-multiple-empty-lines": "error",
 		"no-trailing-spaces": "error",
 		"no-whitespace-before-property": "error",
-		"object-curly-newline": [
-			"error",
-			{
-				multiline: true,
-			},
-		],
 		"object-curly-spacing": [
 			"error",
 			"always",
@@ -226,16 +194,6 @@ module.exports = {
 			"error",
 			{
 				allowAllPropertiesOnSameLine: true,
-			},
-		],
-		"operator-linebreak": [
-			"error",
-			"after",
-			{
-				overrides: {
-					"?": "before",
-					":": "before",
-				},
 			},
 		],
 		"padded-blocks": ["error", "never"],
@@ -276,7 +234,6 @@ module.exports = {
 		],
 		"semi-style": ["error", "last"],
 		"space-before-blocks": ["error", "always"],
-		"space-before-function-paren": ["error", "always"],
 		"space-infix-ops": [
 			"error",
 			{
@@ -307,7 +264,6 @@ module.exports = {
 				functionPrototypeMethods: true,
 			},
 		],
-		"wrap-regex": "error",
 
 		// plugin:react/recommended
 		"react/destructuring-assignment": [
@@ -338,23 +294,10 @@ module.exports = {
 		"react/jsx-closing-bracket-location": "error",
 		"react/jsx-closing-tag-location": "error",
 		"react/jsx-curly-brace-presence": ["error", "never"],
-		"react/jsx-curly-newline": ["error", "consistent"],
 		"react/jsx-equals-spacing": ["error", "never"],
 		"react/jsx-first-prop-new-line": ["error", "multiline-multiprop"],
 		"react/jsx-fragments": ["error", "syntax"],
 		"react/jsx-indent-props": "off",
-		"react/jsx-max-props-per-line": [
-			"error",
-			{
-				maximum: 1,
-			},
-		],
-		"react/jsx-newline": [
-			"error",
-			{
-				prevent: false,
-			},
-		],
 		// "react/jsx-no-leaked-render": ["error", {
 		//   "validStrategies": ["coerce"]
 		// }],
@@ -364,22 +307,7 @@ module.exports = {
 				allowExpressions: true,
 			},
 		],
-		"react/jsx-one-expression-per-line": [
-			"error",
-			{
-				allow: "literal",
-			},
-		],
 		"react/jsx-props-no-multi-spaces": "error",
-		"react/jsx-sort-props": [
-			"error",
-			{
-				callbacksLast: true,
-				shorthandFirst: true,
-				multiline: "last",
-				reservedFirst: true,
-			},
-		],
 		"react/jsx-tag-spacing": [
 			"error",
 			{

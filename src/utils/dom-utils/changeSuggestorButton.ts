@@ -1,4 +1,3 @@
-import { AICodeReviewButton } from "../../content-scripts/components/AICodeReview/AICodeReviewButton";
 import { GITHUB_REVIEW_SUGGESTION_CLASS } from "../../constants";
 import { isPublicRepository } from "../fetchGithubAPIData";
 import { SettingsConfig } from "../../popup/pages/settings";
@@ -8,8 +7,8 @@ const injectChangeSuggestorButton = async (commentNode: HTMLElement) => {
         return;
     }
 
-    const settingsConfig = await new Promise(resolve => {
-        chrome.storage.sync.get("osSettingsConfig", result => {
+    const settingsConfig = await new Promise((resolve) => {
+        chrome.storage.sync.get("osSettingsConfig", (result) => {
             resolve(result.osSettingsConfig);
         });
     });
@@ -21,14 +20,6 @@ const injectChangeSuggestorButton = async (commentNode: HTMLElement) => {
             return;
         }
     }
-
-    const suggestChangesIcon = commentNode.getElementsByClassName(GITHUB_REVIEW_SUGGESTION_CLASS)[0];
-    const changeSuggestorButton = AICodeReviewButton(commentNode);
-
-    if (suggestChangesIcon.querySelector("#os-ai-change-gen")) {
-        return;
-    }
-    suggestChangesIcon.insertBefore(changeSuggestorButton, suggestChangesIcon.firstChild);
 };
 
 export default injectChangeSuggestorButton;

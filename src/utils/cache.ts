@@ -1,9 +1,9 @@
 export const cachedFetch = async (
     url: string,
     options:
-    | number
-    | (RequestInit & { expireInSeconds?: number; forceRefresh?: boolean })
-    | undefined,
+        | number
+        | (RequestInit & { expireInSeconds?: number; forceRefresh?: boolean })
+        | undefined,
 ) => {
     let expiry = 5 * 60;
 
@@ -16,7 +16,9 @@ export const cachedFetch = async (
 
     const cacheKey = url;
     const cached = (await chrome.storage.local.get(cacheKey))[cacheKey];
-    const whenCached = (await chrome.storage.local.get(`${cacheKey}:ts`))[`${cacheKey}:ts`];
+    const whenCached = (await chrome.storage.local.get(`${cacheKey}:ts`))[
+        `${cacheKey}:ts`
+    ];
 
     if (cached && whenCached !== null && !options?.forceRefresh) {
         const age = (Date.now() - parseInt(whenCached)) / 1000;
@@ -30,18 +32,21 @@ export const cachedFetch = async (
         void chrome.storage.local.remove(`${cacheKey}:ts`);
     }
 
-    return fetch(url, options).then(async response => {
-        if (response.status === 200) {
-            const ct = response.headers.get("Content-Type");
+    return fetch(url, options)
+        .then(async (response) => {
+            if (response.status === 200) {
+                const ct = response.headers.get("Content-Type");
 
-            if (ct?.match(/(application\/json|text\/.*)/i)) {
-                const content = await response.clone().text();
+                if (ct?.match(/(application\/json|text\/.*)/i)) {
+                    const content = await response.clone().text();
 
-                void chrome.storage.local.set({ [cacheKey]: content });
-                void chrome.storage.local.set({ [`${cacheKey}:ts`]: Date.now() });
+                    void chrome.storage.local.set({ [cacheKey]: content });
+                    void chrome.storage.local.set({
+                        [`${cacheKey}:ts`]: Date.now(),
+                    });
+                }
             }
-        }
-        return response;
-    })
+            return response;
+        })
         .catch(console.error);
 };
