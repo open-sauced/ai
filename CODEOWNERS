@@ -1,0 +1,71 @@
+# This file is generated automatically by OpenSauced pizza-cli. DO NOT EDIT. Stay saucy!
+#
+# Generated with command:
+# $ pizza generate codeowners ai/ --config /Users/briandouglas/code/ai/.sauced.yaml
+
+.eslintrc.js @Brian Douglas
+.github/workflows/release.yml @John McBride @dependabot[bot]
+.prettierrc @Brian Douglas
+CHANGELOG.md @John McBride
+npm-shrinkwrap.json @John McBride
+package.json @John McBride
+src/constants.ts @Brian Douglas
+src/content-scripts/components/AICodeReview/AICodeReviewButton.ts @Brian Douglas
+src/content-scripts/components/AICodeReview/AICodeReviewMenu.ts @Brian Douglas
+src/content-scripts/components/AddPRToHighlights/AddPRToHighlightsButton.ts @Brian Douglas
+src/content-scripts/components/GenerateAIDescription/DescriptionGeneratorButton.ts @Brian Douglas
+src/content-scripts/components/InsightsSelectDropdown/InsightsSelectDropdown.ts @Brian Douglas
+src/content-scripts/components/InviteToOpenSauced/InviteToOpenSaucedButton.ts @Brian Douglas
+src/content-scripts/components/InviteToOpenSauced/InviteToOpenSaucedModal.ts @Brian Douglas
+src/content-scripts/components/RepoQuery/RepoQuery.tsx @Brian Douglas
+src/content-scripts/components/RepoVoting/RepoUnvoteButton.ts @Brian Douglas
+src/content-scripts/components/RepoVoting/RepoVoteButton.ts @Brian Douglas
+src/content-scripts/components/ViewOnOpenSaucedButton/ViewOnOpenSaucedButton.ts @Brian Douglas
+src/content-scripts/content-scripts.css @Brian Douglas
+src/content-scripts/github.ts @Brian Douglas
+src/hooks/useAuth.ts @Brian Douglas
+src/hooks/useGetGitHubPageInfo.ts @Brian Douglas
+src/hooks/useOpensaucedUserCheck.ts @Brian Douglas
+src/popup.css @Brian Douglas
+src/popup/components/HighlightSlide.tsx @Brian Douglas
+src/popup/components/ToggleSwitch.tsx @Brian Douglas
+src/popup/pages/aiprdescription.tsx @Brian Douglas
+src/popup/pages/help.tsx @Brian Douglas
+src/popup/pages/home.tsx @Brian Douglas
+src/popup/pages/posthighlight.tsx @Brian Douglas
+src/popup/pages/profile.tsx @Brian Douglas
+src/popup/pages/settings.tsx @Brian Douglas
+src/popup/pages/start.tsx @Brian Douglas
+src/repo-query/components/ChatCircle.tsx @Brian Douglas
+src/repo-query/components/Dialog.tsx @Brian Douglas
+src/repo-query/pages/chat.tsx @Brian Douglas
+src/repo-query/pages/home.tsx @Brian Douglas
+src/repo-query/pages/indexing.tsx @Brian Douglas
+src/repo-query/pages/main.tsx @Brian Douglas
+src/repo-query/pages/styles/dialog.css @Brian Douglas
+src/utils/ai-utils/configurationReducer.ts @Brian Douglas
+src/utils/ai-utils/cursorPositionInsert.ts @Brian Douglas
+src/utils/ai-utils/descriptionconfig.ts @Brian Douglas
+src/utils/ai-utils/openai.ts @Brian Douglas
+src/utils/cache.ts @Brian Douglas
+src/utils/checkAuthentication.ts @Brian Douglas
+src/utils/createHtmlElement.ts @Brian Douglas
+src/utils/dom-utils/addChatDialog.ts @Brian Douglas
+src/utils/dom-utils/addDescriptionGenerator.ts @Brian Douglas
+src/utils/dom-utils/addPRToHighlights.ts @Brian Douglas
+src/utils/dom-utils/changeSuggestorButton.ts @Brian Douglas
+src/utils/dom-utils/domUpdateWatcher.ts @Brian Douglas
+src/utils/dom-utils/pageUrlWatcher.ts @Brian Douglas
+src/utils/dom-utils/prWatcher.ts @Brian Douglas
+src/utils/dom-utils/repoVotingButtons.ts @Brian Douglas
+src/utils/dom-utils/viewOnOpenSauced.ts @Brian Douglas
+src/utils/fetchGithubAPIData.ts @Brian Douglas
+src/utils/fetchOpenSaucedApiData.ts @Brian Douglas
+src/utils/getContributedRepos.ts @Brian Douglas
+src/utils/getUserPRVelocity.ts @Brian Douglas
+src/utils/setAccessToken.ts @Brian Douglas
+src/utils/urlMatchers.ts @Brian Douglas
+src/vite-env.d.ts @Brian Douglas
+src/worker/background.ts @Brian Douglas
+test/api/openSaucedApi.test.ts @Brian Douglas
+test/utils/urlMatcher.test.ts @Brian Douglas
